@@ -1,0 +1,33 @@
+<!-- Transaction Info -->
+<section class="txSection">
+  <div class="txContainer">
+    <div class="txTitle">Handshake Blocks</div>
+    <table class="table anon">
+      <thead>
+				<tr>
+					<th>
+						Height
+					</th>
+					<th>
+						Age
+					</th>
+					<th>
+						Transactions
+					</th>
+					<th>
+						Miner
+					</th>
+					<th>
+						Size
+					</th>
+				</tr>
+			</thead>
+  		<tbody>
+        {{{listBlocks blocks}}}
+      </tbody>
+    </table>
+
+    {{> pagination pagination}}
+
+  </div>
+</section>

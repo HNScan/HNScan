@@ -1,0 +1,37 @@
+{
+  "name": "Block-Explorer-Backend",
+  "version": "0.0.0",
+  "description": "The backend api that runs our block explorer.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon -e js,html,css src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProjectKnucks/blockBackend.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ProjectKnucks/backend/issues"
+  },
+  "homepage": "https://github.com/ProjectKnucks/backend#readme",
+  "dependencies": {
+    "config": "^2.0.1",
+    "decimal.js": "^10.0.1",
+    "handlebars": "^4.0.12",
+    "hapi": "^17.5.3",
+    "hs-client": "0.0.3",
+    "humanize-duration": "^3.15.3",
+    "inert": "^5.1.0",
+    "vision": "^5.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "nodemon": "^1.18.3",
+    "prettier": "^1.14.2"
+  }
+}

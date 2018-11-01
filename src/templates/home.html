@@ -1,0 +1,64 @@
+<div class="homeContent">
+  <div class="summaryContainer">
+    <div class="card networkCard">
+      <header class="card-header">
+        <p class="card-header-title">Network Summary</p>
+      </header>
+      <div class="card-content">
+        <div class="columns">
+          <div class="column">
+            <div class="networkLabel">Hashrate</div>
+            <div class="networkDetail">{{hashrate}}</div>
+            <!-- getmininginfo.networkhashps -->
+          </div>
+          <div class="column">
+            <div class="networkLabel"v>Unconfirmed Transactions</div>
+            <div class="networkDetail">{{unconfirmedTxs}} ({{txsSizeMB}} MB)</div>
+            <!-- getmempoolinfo (the size field), show bytes in MB next to it -->
+          </div>
+          <div class="column">
+            <div class="networkLabel">Network</div>
+            <div class="networkDetail">{{network}}</div>
+            <!-- getnetworkinfo -->
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <div class="networkLabel">Blockchain Size</div>
+            <!-- Later -->
+          </div>
+          <div class="column">
+            <div class="networkLabel">Difficulty</div>
+            <div class="networkDetail">{{difficulty}} x 10<sup>{{difficultyExponent}}</sup></div>
+            <!-- client.execute('getblockchaininfo')...Maybe Node.getInfo? -->
+          </div>
+          <div class="column">
+            <div class="networkLabel">Chainwork</div>
+            <div class="networkDetail">{{chainwork}} x 10<sup>{{chainworkExponent}}</sup></div>
+            <!-- client.execute('getblockchaininfo') -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="summaryContainer">
+    <div class="card homeCard">
+      <header class="card-header">
+        <p class="card-header-title">Transactions</p>
+        <a class="card-header-icon" href="/txs">View All</a>
+      </header>
+
+      {{{txSummary txs}}}
+    </div>
+
+    <div class="card homeCard">
+      <header class="card-header">
+        <p class="card-header-title">Blocks</p>
+        <a class="card-header-icon">View All</a>
+      </header>
+      {{{blockSummary blocks}}}
+    </div>
+  </div>
+</div>
