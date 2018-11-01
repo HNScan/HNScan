@@ -5,7 +5,7 @@ It is originally designed to be run locally and explore regtest or tesnet networ
 
 ## Getting Started
 
-There are 3 ways in which you can interact with HNScan.
+There are 2 ways in which you can interact with HNScan.
 
 1. Docker
 
@@ -17,8 +17,7 @@ docker run -p 8080:8080 HandshakeAlliance/HNScan
 
 After cloning this repository,
 
-
-4.
+Work in progress...
 
 
 ## Licence
