@@ -43,17 +43,12 @@ async function blocksHandler(request, h) {
     //Take another check at these options here.
     //We want as little info as possible while still filling out all values.
     try {
-      // block = await client.execute("getblockbyheight", [
-      //   currentBlock,
-      //   true,
-      //   true
-      // ]);
-      block = await client.getBlock(currentBlock);
-      block1 = await client.execute("getblockbyheight", [
+      block = await client.execute("getblockbyheight", [
         currentBlock,
         true,
         true
       ]);
+      block.coinbaseTx = await client.getTX(block.tx[0].txid);
     } catch (e) {
       console.log(e);
     }
@@ -62,16 +57,6 @@ async function blocksHandler(request, h) {
 
     currentBlock--;
   }
-
-  console.log(blocks[blocks.length - 1]);
-
-  console.log(block1.tx[0].hash);
-  console.log(block1.tx[0].txid);
-
-  let coinbaseTx = await client.getTX(block1.tx[0].txid);
-
-  console.log(coinbaseTx);
-  console.log(coinbaseTx.outputs);
 
   return h.view("blocks", {
     blocks,

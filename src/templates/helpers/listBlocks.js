@@ -5,7 +5,7 @@ module.exports = function(blocks) {
 
   for (block of blocks) {
     let duration = Math.floor(Date.now() / 1000) - block.time;
-    let minerAddress = block.txs[0].outputs[0].address;
+    let minerAddress = block.coinbaseTx.outputs[0].address;
 
     returnString += `<tr><td><a class="minerLinks" href="/block/${
       block.height
@@ -13,7 +13,7 @@ module.exports = function(blocks) {
       round: true,
       largest: 1
     })} ago</td><td><a class="minerLinks" href="/txs?block=${block.height}">${
-      block.txs.length
+      block.tx.length
     }</a></td><td><a class="minerLinks" href="/address/${minerAddress}">${minerAddress}</a></td><td>${
       block.size
     }</td></tr>`;

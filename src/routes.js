@@ -1,6 +1,7 @@
 var Joi = require("joi");
 
 txHandler = require("./handlers/tx.js");
+txsHandler = require("./handlers/txs.js");
 blockHandler = require("./handlers/block.js");
 blocksHandler = require("./handlers/blocks.js");
 addressHandler = require("./handlers/address.js");
@@ -33,6 +34,18 @@ var routes = [
           //This will be relatively straight forward to validate I believe
           //XXX
           hash: Joi.string()
+        }
+      }
+    }
+  },
+  {
+    method: "GET",
+    path: "/txs",
+    handler: txsHandler,
+    options: {
+      validate: {
+        query: {
+          block: Joi.string()
         }
       }
     }

@@ -1,43 +1,55 @@
 const { getClient } = require("../util/clients.js");
 
 async function txsHandler(request, h) {
-  let amount;
-  let page;
+  // let amount;
+  // let page;
 
   const client = getClient();
 
-  if (request.query.amt) {
-    amount = request.query.amt;
-  } else {
-    amount = 25;
-  }
+  //   if (request.query.amt) {
+  //     amount = request.query.amt;
+  //   } else {
+  //     amount = 25;
+  //   }
 
-  if (request.query.p) {
-    page = request.query.p;
-  } else {
-    page = 1;
-  }
+  //   if (request.query.p) {
+  //     page = request.query.p;
+  //   } else {
+  //     page = 1;
+  //   }
 
-  let offset = (page - 1) * amount;
-  let info = await client.getInfo();
+  //   let offset = (page - 1) * amount;
+  //   let info = await client.getInfo();
 
-  let currentBlock = info.chain.height - offset;
-  let txns = [];
+  //   let currentBlock = info.chain.height - offset;
+  //   let txns = [];
 
+  //   let block;
+
+  //   endBlock = currentBlock - amount;
+
+  //   while (currentBlock > endBlock) {
+
+  //   let tx;
+  //   try {
+  //     tx = await client.getTX(hash);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  //
+
+  let txs;
   let block;
 
-  endBlock = currentBlock - amount;
+  if (request.query.block) {
+    blockNumber = parseInt(request.query.block);
 
-  while (currentBlock > endBlock) {
+    let block = await client.getBlock(blockNumber);
 
-  let tx;
-  try {
-    tx = await client.getTX(hash);
-  } catch (e) {
-    console.log(e);
+    txs = block.txs;
   }
 
-  return h.view("tx", { tx });
+  return h.view("txs", { txs });
 }
 
-module.exports = txHandler;
+module.exports = txsHandler;

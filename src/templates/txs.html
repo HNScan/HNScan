@@ -1,11 +1,19 @@
 <!-- Transaction Info -->
 <section class="txSection">
   <div class="txContainer">
-    <div class="txTitle">Transaction Detail</div>
-    <div class="detailContainer">
-      {{#each tx}}
-				Key: {{@key}} Value = {{this}}
-			{{/each}}
-    </div>
+    <div class="txTitle">Transactions by Block</div>
+    <table class="table anon">
+      <thead>
+				<tr>
+					<th>
+						Hash
+					</th>
+				</tr>
+			</thead>
+  		<tbody>
+        {{{listTxs txs}}}
+      </tbody>
+    </table>
+
   </div>
 </section>

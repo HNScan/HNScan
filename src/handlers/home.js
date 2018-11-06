@@ -10,19 +10,44 @@ async function homeHandler(request, h) {
   let blocks = [];
   var block;
 
-  for (var i = 0; i < Math.min(3, blockHeight); i++) {
+  for (var i = 0; i < Math.min(4, blockHeight); i++) {
     try {
       block = await client.execute("getblockbyheight", [
         blockHeight - i,
         true,
         true
       ]);
+      block.coinbaseTx = await client.getTX(block.tx[0].txid);
       blocks.push(block);
     } catch (e) {
       console.log(e);
     }
   }
   // end blockSummary
+
+  //txSummary
+  //Iterate through the lastest blocks, grab every transaction until you hit 4
+  let transactions = [];
+  let transaction;
+  block = null;
+  var i = 0;
+  while (transactions.length <= 4 && i !== blockHeight) {
+    try {
+      block = await client.execute("getblockbyheight", [
+        blockHeight - i,
+        true,
+        true
+      ]);
+      for (el of block.tx) {
+        transaction = await client.getTX(el.txid);
+        transactions.push(transaction);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+    i++;
+  }
+  //end txSummary
 
   // Hashrate
   let miningInfo = await client.execute("getmininginfo");
@@ -58,6 +83,7 @@ async function homeHandler(request, h) {
     difficultyExponent,
     hashrate,
     network,
+    transactions,
     txsSizeMB,
     unconfirmedTxs,
     templateName: "home"

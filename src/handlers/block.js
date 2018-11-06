@@ -11,6 +11,7 @@ async function blockHandler(request, h) {
   let block;
   try {
     block = await client.execute("getblockbyheight", [blockNumber, true, true]);
+    block.coinbaseTx = await client.getTX(block.tx[0].txid);
   } catch (e) {
     console.log(e);
   }

@@ -22,8 +22,9 @@ module.exports = function(block) {
   }
 
   //Mined By
-  let minerAddress = block.tx[0].vout[0].address.hash;
-  returnString += `<tr><td>Mined By:</td><td><a href="/address/minerAddress">${minerAddress}</a></td></tr>`;
+  let minerAddress = block.coinbaseTx.outputs[0].address;
+  console.log(block.coinbaseTx);
+  returnString += `<tr><td>Mined By:</td><td><a href="/address/${minerAddress}">${minerAddress}</a></td></tr>`;
 
   //Version
   returnString += `<tr><td>Version:</td><td>${block.version}</td></tr>`;

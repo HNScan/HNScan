@@ -3,9 +3,20 @@
   <div class="txContainer">
     <div class="txTitle">Address Detail</div>
     <div class="detailContainer">
-      {{#each addressData}}
-				Key: {{@key}} Value = {{this}}
-			{{/each}}
+      <!-- {{{showAddress address}}} -->
     </div>
+    <h1>Transactions</h1>
+    <table class="table anon">
+      <thead>
+				<tr>
+					<th>
+						Hash
+					</th>
+				</tr>
+			</thead>
+  		<tbody>
+        {{{listTxs address.txs}}}
+      </tbody>
+    </table>
   </div>
 </section>

@@ -56,7 +56,32 @@ function formatLargeNumber(n, decimalPlaces) {
   return [new Decimal(n).toDecimalPlaces(decimalPlaces), {}];
 }
 
+function truncateHash(hash, num) {
+  if (num * 2 >= hash) {
+    //can't be truncated with given num value
+    return hash;
+  }
+
+  var len = hash.length;
+  var firstHalf = hash.substring(0, num);
+  var secondHalf = hash.substring(len - num, len);
+  return firstHalf + "...." + secondHalf;
+}
+
+//We need to use Bignum across the board in this app. Make that a v2 task XXX
+function prettyPrintHNS(amount) {
+  let realAmount = amount / 1000000;
+
+  let stringAmount = realAmount.toString();
+
+  stringAmount += " HNS";
+
+  return stringAmount;
+}
+
 module.exports = {
   exponentScales: exponentScales,
-  formatLargeNumber: formatLargeNumber
+  formatLargeNumber: formatLargeNumber,
+  truncateHash: truncateHash,
+  prettyPrintHNS: prettyPrintHNS
 };

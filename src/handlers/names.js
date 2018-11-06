@@ -26,6 +26,18 @@ async function namesHandler(request, h) {
     console.log(e);
   }
 
+  //Sort the names by block height, and then alphabetical.
+  //XXX Probably break this out to util.
+  names.sort(function(a, b) {
+    if (b.height !== a.height) {
+      return b.height - a.height;
+    }
+    if (a.name === b.name) {
+      return 0;
+    }
+    return a.name > b.name ? 1 : -1;
+  });
+
   let returnNames = names.slice(offset, offset + amount);
   let totalPages = Math.ceil((names.length + 1) / amount);
 

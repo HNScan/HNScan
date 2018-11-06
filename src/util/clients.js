@@ -16,7 +16,9 @@ const clientOptions = {
   network: network.type,
   port: network.rpcPort,
   //Get from config
-  apiKey: config.get("Nodes.BaseNodeConfig.apiKey")
+  apiKey: config.get("Nodes.BaseNodeConfig.apiKey"),
+  //XXX We probably should not have the limit this high, but it's required for some of the miner transactions
+  limit: 100000000000
 };
 
 let _walletClient = new WalletClient(walletOptions);
