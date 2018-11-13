@@ -30,6 +30,6 @@ After cloning this repository:
 Visit [HNScan](https://HNScan.com)
 
 
-## Licence
+## License
 
 This project is licensed under [MIT License](/LICENSE).
