@@ -11,7 +11,7 @@ async function txHandler(request, h) {
     console.log(e);
   }
 
-  return h.view("tx", { tx });
+  return h.view("tx.pug", { tx });
 }
 
 module.exports = txHandler;

@@ -1,12 +1,5 @@
 {
-	"Server": {
-		"host": localhost,
-		"port": 3000
-	},
-	"Database": {
-		"host": "localhost",
-		"user": "root",
-		"password": "my-secret-pw",
-		"database": "knucks"
-	}
+  "server-host": "0.0.0.0",
+  "server-port": 4000,
+  "node-host": "node"
 }

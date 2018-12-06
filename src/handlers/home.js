@@ -1,5 +1,5 @@
 const { getClient } = require("../util/clients.js");
-const { formatLargeNumber } = require("../util/util.js");
+const { namesRegistered } = require("../util/util.js");
 
 async function homeHandler(request, h) {
   const client = getClient();
@@ -10,7 +10,7 @@ async function homeHandler(request, h) {
   let blocks = [];
   var block;
 
-  for (var i = 0; i < Math.min(4, blockHeight); i++) {
+  for (var i = 0; i < Math.min(5, blockHeight); i++) {
     try {
       block = await client.execute("getblockbyheight", [
         blockHeight - i,
@@ -39,8 +39,10 @@ async function homeHandler(request, h) {
         true
       ]);
       for (el of block.tx) {
-        transaction = await client.getTX(el.txid);
-        transactions.push(transaction);
+        if (transactions.length <= 4) {
+          transaction = await client.getTX(el.txid);
+          transactions.push(transaction);
+        }
       }
     } catch (e) {
       console.log(e);
@@ -56,37 +58,32 @@ async function homeHandler(request, h) {
   //Unconfirmed Transactions
   let memPoolInfo = await client.execute("getmempoolinfo");
   let unconfirmedTxs = memPoolInfo.size;
-  let txsSizeMB = memPoolInfo.bytes / 1000000;
+  let txsSizeB = memPoolInfo.bytes;
 
   //Network
   let serverInfo = await client.getInfo();
   let network = serverInfo.network;
 
+  //Names Registered
+  let names = await namesRegistered();
+  let registeredNames = names.length;
+
   //Blockchain Info
   let chainInfo = await client.execute("getblockchaininfo");
-  let chainworkDecimal = formatLargeNumber(
-    parseInt("0x" + chainInfo.chainwork),
-    3
-  );
-  let chainwork = chainworkDecimal[0];
-  let chainworkExponent = chainworkDecimal[1].exponent;
+  let chainwork = parseInt("0x" + chainInfo.chainwork);
 
-  let difficultyDecimal = formatLargeNumber(chainInfo.difficulty, 3);
-  let difficulty = difficultyDecimal[0];
-  let difficultyExponent = difficultyDecimal[1].exponent;
+  let difficulty = chainInfo.difficulty;
 
-  return h.view("home", {
+  return h.view("home.pug", {
     blocks,
     chainwork,
-    chainworkExponent,
     difficulty,
-    difficultyExponent,
     hashrate,
     network,
+    registeredNames,
     transactions,
-    txsSizeMB,
-    unconfirmedTxs,
-    templateName: "home"
+    txsSizeB,
+    unconfirmedTxs
   });
 }
 

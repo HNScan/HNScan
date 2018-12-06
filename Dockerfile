@@ -7,20 +7,8 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN npm install
-# If you are building your code for production
 
-# Bundle app source
 COPY . .
 
-WORKDIR /usr/src/
-
-RUN git clone https://github.com/handshake-org/hsd.git
-
-WORKDIR /usr/src/hsd
-
-RUN npm install --production
-
-WORKDIR /usr/src/app
-
-EXPOSE 8080
-CMD [ "npm", "start" ]
+EXPOSE 4000
+CMD [ "npm", "run", "start:prod" ]

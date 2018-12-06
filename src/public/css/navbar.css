@@ -1,0 +1,52 @@
+.navbar {
+  width: 100%;
+  height: $navbar-height;
+  border-bottom: 1px solid rgb(222, 222, 222);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.navbarContainer {
+  width: 90%;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: $tablet) {
+  .navbar-brand {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: $tablet) {
+  .navbar-menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+  }
+}
+
+.navOption {
+  margin: 0 10px;
+  padding: 10px 15px;
+  justify-content: center;
+}
+
+.fa-search {
+  padding-left: 20px !important;
+}
+
+.searchbar {
+  width: 350px;
+  border-width: 1.25px;
+  padding-left: 55px !important;
+}
+
+.searchbar:focus,
+.searchbar:hover {
+  outline: none;
+  box-shadow: none;
+}

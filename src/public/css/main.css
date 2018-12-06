@@ -1,71 +1,35 @@
-body {
-  display: flex;
-  flex-flow: column;
-  margin: 0;
-  padding: 0;
-}
+/* ---- Variables ---- */
+@import "variables.css";
 
-/* ----- NAVIGATION BAR ----- */
-.navbar {
-  width: 100%;
-  height: 60px;
-  background-color: #fff;
-  border-bottom: 1px solid rgb(222, 222, 222);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-}
+/* ----- Config ----- */
+@import "base.css";
 
-.navbarContainer {
-  width: 90%;
-  display: flex;
-  align-items: center;
-}
+/* ----- Navbar ----- */
+@import "navbar.css";
 
-.navOption {
-  margin: 0 10px;
-  padding: 10px 15px;
-  justify-content: center;
-}
+/* ----- Home ----- */
+@import "home.css";
 
-.fa-search {
-  padding-left: 20px !important;
-}
+/* ----- About ----- */
+@import "about.css";
 
-.searchbar {
-  width: 350px;
-  border-width: 1.25px;
-  padding-left: 55px !important;
-}
+/* ----- Block ----- */
+@import "block.css";
 
-.searchbar:focus,
-.searchbar:hover {
-  outline: none;
-  box-shadow: none;
-}
+/* ----- Footer ----- */
+@import "footer.css";
 
-/* ----- EMPTY STATES ----- */
-.emptyStateContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-}
+/* ----- Block Card ----- */
+@import "summaryCard.css";
 
-.emptyStateHeader {
-  margin-top: 120px;
-  font-weight: 600px;
-  font-size: 18px;
-}
+/* ----- Peers Map ----- */
+@import "peers.css";
 
-.emptyStateSubheader {
-  font-weight: 300px;
-  font-size: 12px;
-}
+/* ----- Any Error Pages ----- */
+@import "errors.css";
+
+/* ----- Address ----- */
+@import "address.css";
 
 /* ----- TRANSACTION SUMMARY ----- */
 .txSection {
@@ -78,15 +42,17 @@ body {
 
 .txContainer {
   height: auto;
-  margin: 50px 0 100px 0;
   width: 80%;
+
+  @media (max-width: 768px) {
+    width: 95%;
+  }
 }
 
 .txTitle {
   display: flex;
   align-items: center;
   height: 40px;
-  margin-bottom: 30px;
   padding-left: 10px;
   font-size: 30px;
   letter-spacing: 1px;
@@ -98,73 +64,34 @@ body {
   display: flex;
 }
 
-/* ----- HOME CONTENT ----- */
-.homeContent {
-  padding: 84px 24px;
+/* ----- NAMES SUMMARY ----- */
+.namesSection {
+  height: auto;
+  width: 100%;
   display: flex;
-  flex-flow: column;
-}
-
-.summaryContainer {
-  display: flex;
-  flex-flow: row;
   justify-content: center;
+  align-items: center;
 }
 
-.summaryDetailImage {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  position:relative;
-  top:5px;
+.namesContainer {
+  height: auto;
+  margin: 10px auto;
+  width: 95%;
 }
 
-.homeCard {
-  border-radius: 10px;
-  margin: 10px;
+/* ----- BLOCKS SUMMARY ----- */
+.blocksSection {
+  height: auto;
   width: 100%;
-  max-width: 500px;
-  height: 100%;
-  min-height: 350px;
-  min-width: 340px;
-}
-
-.networkCard {
-  max-width: 1020px;
-  min-width: 675px;
-  border-radius: 10px;
-  margin: 10px;
-  width: 100%;
-}
-
-.networkLabel {
-  font-weight: 800;
-}
-
-.networkDetail {
-  font-size: 24px;
-}
-
-.cardItemDetailContainer {
-  margin-left: 36px;
   display: flex;
-  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.cardItemDetailContainer-R {
-  margin-left: 36px;
-  display: flex;
-  flex-flow: row;
-}
-
-.cardItemDetail {
-  font-size: 12px;
-  display: inline-block;
-}
-
-.cardItemContainer {
-  border-bottom: 1px solid rgba(10, 10, 10, .1);
-  padding: 10px 10px 12px;
+.blocksContainer {
+  height: auto;
+  margin: 10px auto;
+  width: 95%;
 }
 
 /* ----- Table CSS ----- */
@@ -174,41 +101,6 @@ body {
 
 .contentSection {
   flex: 1;
-}
-
-/* ----- FOOTER ----- */
-
-.footerSection {
-  border: 1px solid black;
-  background-color: #224465;
-  color: white;
-  min-height: 160px;
-  padding: 8px 60px;
-}
-
-.poweredContainer {
-  float: left;
-  display: flex;
-  flex-direction: column;
-}
-
-.urkelSigniture {
-  color: #ff8e00;
-  font-size: 24px;
-  /* font-family:  */
-  margin: 0 auto;
-}
-
-.footerLinks {
-  float: right;
-  display: flex;
-  flex-direction: column;
-}
-
-.footerLink {
-  text-decoration: none;
-  color: #dfdfdf;
-  margin: 8px;
 }
 
 .blockContainer {
@@ -228,47 +120,63 @@ body {
 
 /* Tooltip container */
 .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
+  position: relative;
+  display: inline;
+}
+
+/* Label/Element styles */
+.stacked {
+  display: flex;
+  flex-direction: column;
+}
+
+.stackedLabel {
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.stackedElement {
+  font-size: 12px;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 /* Tooltip text */
 .tooltip .tooltiptext {
-    visibility: hidden;
-    width: auto;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    padding: 5px 7px;
-    border-radius: 6px;
+  visibility: hidden;
+  width: auto;
+  background-color: $tooltip-colors;
+  color: #fff;
+  text-align: center;
+  padding: 5px 7px;
+  border-radius: 6px;
 
-    /* Position the tooltip text */
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -150px;
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -150px;
 
-    /* Fade in tooltip */
-    opacity: 0;
-    transition: opacity 0.3s;
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 /* Tooltip arrow */
 .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: $tooltip-colors transparent transparent transparent;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }

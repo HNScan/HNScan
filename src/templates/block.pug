@@ -1,0 +1,99 @@
+extends layouts/layout
+
+block content
+  .contentContainer
+    .card
+      header.card-header
+        p.card-header-title Block #{block.height} Summary
+      .card-content
+        .columns
+          .column
+            .blockFullLabel Received
+            .blockFullDetail=timeAgo(block.time)
+          .column
+            .blockFullLabel Total Transactions
+            .blockFullDetail
+              //- a(href=`/txs?block=${block.height}`)=txs.length
+              span=txs.length
+          .column
+            .blockFullLabel Total Fees
+            .blockFullDetail #{prettyPrintHNS(block.totalFees)}
+            // .blockFullDetail=block.totalFees
+        .columns
+          .column
+            .blockFullLabel Mined By
+            - let address = block.coinbaseTx.outputs[0].address
+            .blockFullDetail.hash
+              a(href=`/address/${address}`)=address
+          .column
+            .blockFullLabel Weight
+            .blockFullDetail #{numberWithCommas(block.weight)} wu
+          .column
+            .blockFullLabel Confirmations
+            .blockFullDetail=block.confirmations
+    .card
+      header.card-header
+        p.card-header-title Advanced
+      .card-content
+        .columns
+          .column.is-half
+            .tableContainer
+              table.table.is-fullwidth
+                tbody
+                  tr
+                    td.stacked
+                      span.stackedLabel Previous Block:
+                      span.stackedElement
+                        a(href=`/block/${block.height - 1}`)=block.previousblockhash
+                  tr
+                    td.stacked
+                      span.stackedLabel Difficulty:
+                      span.stackedElement=block.difficulty
+                  tr
+                    td.stacked
+                      span.stackedLabel Version:
+                      span.stackedElement=block.version
+                  tr
+                    td.stacked
+                      span.stackedLabel Bits:
+                      span.stackedElement=block.bits
+                  tr
+                    td.stacked
+                      span.stackedLabel Size:
+                      span.stackedElement #{numberWithCommas(block.size)} bytes
+                  tr
+                    td.stacked
+                      span.stackedLabel Average Fee
+                      span.stackedElement #{prettyPrintHNS((block.totalFees / txs.length))}
+          .column.is-half
+            .tableContainer
+              table.table.is-fullwidth
+                tbody
+                  if (block.nextblockhash)
+                    tr
+                      td.stacked
+                        span.stackedLabel Next Block:
+                        span.stackedElement
+                          a(href=`/block/${block.height + 1}`)=block.nextblockhash
+                  tr
+                    td.stacked
+                      span.stackedLabel Hash:
+                      span.stackedElement=block.hash
+                  tr
+                    td.stacked
+                      span.stackedLabel Merkle Root:
+                      span.stackedElement=block.merkleroot
+                  tr
+                    td.stacked
+                      span.stackedLabel Tree Root:
+                      span.stackedElement=block.treeroot
+                  tr
+                    td.stacked
+                      span.stackedLabel Reserved Root:
+                      span.stackedElement=block.reservedroot
+                  tr
+                    td.stacked
+                      span.stackedLabel Chainwork:
+                      span.stackedElement=block.chainwork
+    if (txs)
+      include includes/transactionList.pug

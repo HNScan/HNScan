@@ -1,0 +1,13 @@
+mixin tooltip(href, hash, alwaysTruncated)
+  span
+    if (alwaysTruncated)
+      .tooltip
+        a(href=href)=truncateHash(hash, 7)
+        .tooltiptext=hash
+    else
+      .is-hidden-desktop
+        .tooltip
+          a(href=href)=truncateHash(hash, 7)
+          .tooltiptext=hash
+      .is-hidden-touch
+        a(href=href)=hash

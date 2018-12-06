@@ -1,42 +1,54 @@
 const config = require("config");
 const { WalletClient, NodeClient } = require("hs-client");
-const { Network } = require("../../../hsd");
-const network = Network.get(config.get("Chain.network"));
+const NomenclateClient = require("nomenclate-js");
 
-//This needs to be moved somewhere else.
+const { Network } = require("hsd");
+const sleep = require("sleep");
+const network = Network.get(config.get("node-network"));
+
 const walletOptions = {
   network: network.type,
+  host: config.get("node-host"),
   port: network.walletPort,
-  apiKey: config.get("Nodes.BaseNodeConfig.apiKey")
+  apiKey: config.get("node-api-key")
 };
-
-console.log(network.walletPort);
 
 const clientOptions = {
+  host: config.get("node-host"),
   network: network.type,
   port: network.rpcPort,
-  //Get from config
-  apiKey: config.get("Nodes.BaseNodeConfig.apiKey"),
-  //XXX We probably should not have the limit this high, but it's required for some of the miner transactions
-  limit: 100000000000
+  apiKey: config.get("node-api-key")
 };
 
-let _walletClient = new WalletClient(walletOptions);
-let _client = new NodeClient(clientOptions);
-let _wallet;
+const nomenclateOptions = {
+  host: config.get("node-host"),
+  port: 8080
+};
 
+let _walletClient;
+let _client;
+let _wallet;
+let _nomenclate;
+
+//Can't figure out error handling on here... Doesn't respect Try/Catch blocks.
+//XXX
 async function initWalletAndClient() {
   _walletClient = new WalletClient(walletOptions);
-  _wallet = await _walletClient.wallet(config.get("Chain.walletID"));
+  _wallet = await _walletClient.wallet(config.get("wallet-id"));
   _client = new NodeClient(clientOptions);
+  _nomenclate = new NomenclateClient(nomenclateOptions);
   await _client.open();
-  // console.log(wallet);
   await _walletClient.open();
   await _wallet.open();
+  await _nomenclate.open();
 }
 
 function getClient() {
   return _client;
+}
+
+function getNomenclate() {
+  return _nomenclate;
 }
 
 function getWallet() {
@@ -49,6 +61,7 @@ function getWalletClient() {
 
 module.exports.getWallet = getWallet;
 module.exports.getClient = getClient;
+module.exports.getNomenclate = getNomenclate;
 module.exports.getWalletClient = getWalletClient;
 module.exports.initWalletAndClient = initWalletAndClient;
 module.exports.network = network;

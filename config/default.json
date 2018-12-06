@@ -1,28 +1,9 @@
 {
-	"Server": {
-		"host": "localhost",
-		"port": 4000
-	},
-	"Database": {
-		"client": "mysql",
-		"host": "localhost",
-		"user": "root",
-		"password": "my-secret-pw",
-		"database": "knucks"
-	},
-	"Chain": {
-		"network": "testnet",
-		"apiKey": "api-key",
-		"walletID": "primary"
-	},
-	"Nodes": {
-		"BaseNodeConfig": {
-			"config": true,
-			"memory": false,
-			"workers": true,
-			"listen": true,
-			"network": "testnet",
-			"apiKey": "api-key"
-		}
-	}
+  "server-host": "localhost",
+  "server-port": 4000,
+  "browsersync-port": 7000,
+  "wallet-id": "primary",
+  "node-api-key": "api-key",
+  "node-network": "testnet",
+  "node-host": "localhost"
 }

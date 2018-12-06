@@ -1,0 +1,26 @@
+.card.summaryCard
+  header.card-header
+    p.card-header-title Recent Transactions
+  if transactions.length <= 0
+    .emptyStateContainer
+      .emptyStateHeader No Transactions
+      .emptyStateSubheader The chain needs to be built
+  else
+    each tx in transactions
+      .summaryCardItem
+        .summaryCardBlock
+          .lineContainer
+            img.summaryCardImage(src="/img/right-arrow.svg", alt="arrow")
+            span="TX #: "
+              a(href="/tx/" + tx.hash)=truncateHash(tx.hash, 6)
+          if tx.inputs[0].coin
+            //- +tooltip("/address/" + tx.inputs[0].coin.address, tx.inputs[0].coin.address, true)
+            span.detailsText=`From: ${truncateHash(tx.inputs[0].coin.address, 7)}`
+          else
+            span.detailsText Miner Reward
+          span.detailsText="Amount: " + prettyPrintHNS(tx.outputs[0].value)
+        .summaryCardBlock.align-right
+          span="> " + humanizeDuration(Date.now() - tx.time * 1000, {largest: 1, round: true}) + " ago"
+          span.detailsText To: &nbsp;
+            //- +tooltip("/address/" + tx.outputs[0].address, tx.outputs[0].address, true)
+            a(href="/address/" + tx.outputs[0].address)=truncateHash(tx.outputs[0].address, 7)

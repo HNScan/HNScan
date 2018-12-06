@@ -1,6 +1,28 @@
 const { getClient } = require("../util/clients.js");
 
+//Handshake Helpers Functions
+const {
+  getBlockTotalFees,
+  currentBlockReward,
+  formatTransactions
+} = require("../util/util.js");
+
 async function blockHandler(request, h) {
+  let page;
+  const amount = 20;
+  let totalPages;
+
+  console.log(request.query);
+  console.log(request.params);
+
+  if (request.query.p) {
+    page = parseInt(request.query.p);
+  } else {
+    page = 1;
+  }
+
+  //Check if blockNumber is higher than client tip - throw error
+
   const client = getClient();
   //This will break if we ever reach 2 billion or so blocks.
   //Not sure of Handshake's exact block timing, but if it were 1 block/minute
@@ -8,19 +30,47 @@ async function blockHandler(request, h) {
   //XXX anyway let's maybe just future proof using Bignum.
   const blockNumber = parseInt(request.params.blockNumber);
 
+  let offset = (page - 1) * amount;
+
   let block;
+  let txs;
   try {
     block = await client.execute("getblockbyheight", [blockNumber, true, true]);
     block.coinbaseTx = await client.getTX(block.tx[0].txid);
+    txsBlock = await client.getBlock(blockNumber);
+
+    //Temporary Hack XXX
+    txsBlock.txs[0].height = block.height;
+
+    totalPages = Math.ceil(txsBlock.txs.length / amount);
+
+    if (offset > txsBlock.txs.length) {
+      return h.response().code(404);
+    }
+
+    txs = await formatTransactions(
+      txsBlock.txs.slice(offset, offset + (amount - 1))
+    );
+
+    console.log(txs[0]);
+
+    block.totalFees = getBlockTotalFees(block.coinbaseTx, block.height);
+    block.reward = currentBlockReward(block.height);
+    //Cleanup
+    delete block.tx;
   } catch (e) {
     console.log(e);
   }
 
-  //Note to self that the block reward is the output of the very first transaction.
-  //I think we should put that logic in here because i'm not sure if it might change - as in the reward is split amongst a pool
-
-  console.log(block);
-  return h.view("block", { block });
+  return h.view("block.pug", {
+    block,
+    txs,
+    pagination: {
+      url: "block",
+      page,
+      totalPages
+    }
+  });
 }
 
 module.exports = blockHandler;

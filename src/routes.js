@@ -8,6 +8,9 @@ addressHandler = require("./handlers/address.js");
 homeHandler = require("./handlers/home.js");
 nameHandler = require("./handlers/name.js");
 namesHandler = require("./handlers/names.js");
+//Tool Handlers
+peersHandler = require("./handlers/peers.js");
+statusHandler = require("./handlers/tools/status.js");
 searchHandler = require("./handlers/search.js");
 
 if (process.env.NODE_ENV !== "production") {
@@ -22,6 +25,13 @@ var routes = [
     method: "GET",
     path: "/",
     handler: homeHandler
+  },
+  {
+    method: "GET",
+    path: "/about",
+    handler: function(request, h) {
+      return h.view("about.pug", {});
+    }
   },
   {
     method: "GET",
@@ -57,9 +67,10 @@ var routes = [
     options: {
       validate: {
         params: {
-          //Same goes for block numbers, they are easy to parse so we can ensure this is correct.
-          //XXX
           blockNumber: Joi.string()
+        },
+        query: {
+          p: Joi.string()
         }
       }
     }
@@ -86,9 +97,10 @@ var routes = [
     options: {
       validate: {
         params: {
-          //Same goes for block numbers, they are easy to parse so we can ensure this is correct.
-          //XXX
           addressHash: Joi.string()
+        },
+        query: {
+          p: Joi.string()
         }
       }
     }
@@ -109,6 +121,16 @@ var routes = [
     method: "GET",
     path: "/names",
     handler: namesHandler
+  },
+  {
+    method: "GET",
+    path: "/peers",
+    handler: peersHandler
+  },
+  {
+    method: "GET",
+    path: "/status",
+    handler: statusHandler
   },
   {
     method: "POST",

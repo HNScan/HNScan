@@ -1,0 +1,66 @@
+extends layouts/layout
+
+block content
+  .contentContainer
+    .card
+      header.card-header
+        p.card-header-title Transaction Summary
+      .card-content
+        .columns
+          .column
+            .blockFullLabel Received
+            .blockFullDetail=timeAgo(tx.time)
+          .column
+            .blockFullLabel Amount
+            //- XXX This value is not accurate for real txs
+            .blockFullDetail=prettyPrintHNS(tx.outputs[0].value)
+          .column
+            .blockFullLabel Fee
+            .blockFullDetail=prettyPrintHNS(tx.fee)
+          .column
+            .blockFullLabel Confirmations
+            .blockFullDetail=tx.confirmations
+    .card
+      header.card-header
+        p.card-header-title Advanced
+      .card-content
+        .columns
+          .column.is-half
+            .tableContainer
+              table.table.is-fullwidth
+                tbody
+                  tr
+                    td.stacked
+                      span.stackedLabel Hash
+                      span.stackedElement=tx.hash
+                  tr
+                    td.stacked
+                      span.stackedLabel Block Height
+                      a(href=`/block/${tx.height}`).stackedElement=tx.height
+                  tr
+                    td.stacked
+                      span.stackedLabel Hex
+                      span.stackedElement=tx.hex
+          .column.is-half
+            .tableContainer
+              table.table.is-fullwidth
+                tbody
+                  tr
+                    td.stacked
+                      span.stackedLabel Witness Hash
+                      span.stackedElement=tx.witnessHash
+                  tr
+                    td.stacked
+                      span.stackedLabel Version
+                      span.stackedElement=tx.version
+                  tr
+                    td.stacked
+                      span.stackedLabel Index
+                      span.stackedElement=tx.index
+                  tr
+                    td.stacked
+                      span.stackedLabel Locktime
+                      span.stackedElement=tx.locktime
+
+    //- XXX one more card should be included for inputs/outputs
+    //- .card

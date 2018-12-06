@@ -1,0 +1,21 @@
+extends layouts/layout
+
+block content
+  .contentContainer
+    .card
+      header.card-header
+        p.card-header-title HNS Blocks
+      .card-content
+        .blocksContainer
+          table.table.anon
+            thead
+              tr
+                th Height
+                th.is-hidden-mobile Age
+                th Miner
+                th.is-hidden-mobile Size
+                th TXs
+            tbody
+              include includes/listBlocks
+
+    include includes/pagination

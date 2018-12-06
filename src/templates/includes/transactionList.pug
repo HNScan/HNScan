@@ -1,0 +1,44 @@
+.card
+  header.card-header
+    p.card-header-title #{txs.length} Transactions
+  .card-content
+    each tx, index in txs
+      .txsContainer
+        .txHashWrapper= `TX ${index + 1}:`
+          | &nbsp;
+          a(href=`/tx/${tx.hash}`).is-hidden-touch #{tx.hash}
+          a(href=`/tx/${tx.hash}`).is-hidden-desktop #{truncateHash(tx.hash, 7)}
+        .columns
+          .column.is-half
+            .txsPutsContainer
+              if (tx.inputs.length === 1)
+                span.txsTitle #{tx.inputs.length} Input
+              else
+                span.txsTitle #{tx.inputs.length} Inputs
+              each input in tx.inputs
+                .inputContainer
+                  if (!input.coin)
+                    span #{prettyPrintHNS(input.reward)} from Block Reward
+                  else
+                    span #{prettyPrintHNS(input.coin.value)} from
+                    span
+                      //- a(href=`/address/${input.coin.address}`)=input.coin.address
+                      span=input.coin.address
+          .column.is-half
+            .txsPutsContainer
+              if (tx.outputs.length === 1)
+                span.txsTitle #{tx.outputs.length} Output
+              else
+                span.txsTitle #{tx.outputs.length} Outputs
+              each output in tx.outputs
+                .outputContainer
+                  if (output.action === "NONE")
+                    span #{prettyPrintHNS(output.value)} to
+                    //- a(href=`/address/${output.address}`)=output.address
+                    span=output.address
+                  else
+                    span #{output.action} for #{output.name} to
+                    //- a(href=`/address/${output.address}`)=output.address
+                    span=output.address
+
+include pagination.pug

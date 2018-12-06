@@ -28,6 +28,10 @@ async function blocksHandler(request, h) {
   let totalPages = Math.ceil((info.chain.height + 1) / amount);
   let blocks = [];
 
+  if (currentBlock < 0) {
+    return h.response().code(404);
+  }
+
   let block;
 
   endBlock = currentBlock - amount;
@@ -58,18 +62,13 @@ async function blocksHandler(request, h) {
     currentBlock--;
   }
 
-  return h.view("blocks", {
+  return h.view("blocks.pug", {
     blocks,
     templateName: "blocks",
     pagination: {
       url: "blocks",
       page,
-      nextPage: page + 1,
-      previousPage: page - 1,
-      twoFromLastPage: totalPages - 2,
-      almostLastPage: totalPages - 1,
-      lastPage: totalPages,
-      amount
+      totalPages
     }
   });
 }

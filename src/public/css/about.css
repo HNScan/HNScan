@@ -1,0 +1,79 @@
+.aboutHeader {
+  font-weight: 800;
+  font-size: 24px;
+  padding: 0 24px;
+  border-bottom: 1px solid $dark-gray-color;
+  margin-bottom: 36px;
+}
+
+.imgParagraph {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 64px;
+}
+
+.inverse {
+  flex-direction: row-reverse;
+}
+
+.aboutImg {
+  width: auto;
+  height: 150px;
+  margin: 24px 60px;
+
+  @media (max-width: $mobile) {
+    margin: 24px;
+  }
+}
+
+.aboutParagraph {
+  max-width: 430px;
+  margin: 0 60px;
+
+  @media (max-width: $mobile) {
+    margin: 0;
+  }
+}
+
+
+
+/* -------- Avatar layout (we might not be using this for HNScan, but saving for later) ----- */
+.avatarContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.avatar {
+  display: row;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 24px;
+  width: 33%;
+
+  @media(max-width: $mobile) {
+    width: 50%;
+  }
+}
+
+.avatarImage {
+  width: 180px;
+  height: 180px;
+  border-radius: 100px;
+  border: 3px solid $dark-gray-color;
+  margin: auto;
+}
+
+.avatarHeader {
+  font-weight: 700;
+}
+
+.avatarSubheader {
+  font-weight: 300;
+  font-size: 12px;
+}

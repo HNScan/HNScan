@@ -1,0 +1,111 @@
+//- Not sure if this is the best way, but it works
+- let url = pagination.url
+- let page = pagination.page
+- let nextPage = pagination.page + 1
+- let previousPage = pagination.page - 1
+- let totalPages = pagination.totalPages
+- let lastPage = totalPages
+
+nav.pagination.is-centered.paginationNav(role="navigation" aria-label="pagination")
+  if (totalPages === 1)
+    a.pagination-previous(disabled) Previous
+    a.pagination-next(disabled) Next Page
+  else if (page === 1)
+    a.pagination-previous(disabled) Previous
+    a.pagination-next(href=`/${url}?p=${page + 1}`) Next Page
+  else if (page === totalPages)
+    a.pagination-previous(href=`/${url}?p=${page - 1}`) Previous
+    a.pagination-next(disabled) Next Page
+  else
+    a.pagination-previous(href=`/${url}?p=${page - 1}`) Previous
+    a.pagination-next(href=`/${url}?p=${page + 1}`) Next Page
+
+  ul.pagination-list
+    //If there is only 1 page, then we show just that number on the bottom
+    if (page === 1)
+      li
+        a.pagination-link.is-current(aria-label=`Page ${page}`, aria-current="page")=page
+      if (totalPages >= 2)
+        li
+          a.pagination-link(href="/" + url + "?p=" + nextPage, aria-label="Goto page " + nextPage)= nextPage
+      if (totalPages === 3)
+        li
+          a.pagination-link(href="/" + url + "?p=" + lastPage, aria-label="Goto page" + lastPage)=lastPage
+      if (totalPages > 3)
+        li.pagination-ellipsis &hellip;
+        li
+          a.pagination-link(href="/" + url + "?p=" + lastPage, aria-label="Goto page" + lastPage)=lastPage
+    else if (page === 2)
+      li
+        a.pagination-link(href="/" + url + "?p=" + previousPage, aria-label="Go to page ${previousPage}")=previousPage
+      li
+        a.pagination-link.is-current(aria-label="Page " + page, aria-current="page") #{page}
+      if (totalPages >= 3)
+        li
+          a.pagination-link(href="/" + url + "?p=" + nextPage, aria-label="Goto page " + nextPage) #{nextPage}
+      if (totalPages > 3)
+        li.pagination-ellipsis &hellip;
+        li
+          a.pagination-link(href="/" + url + "?p=" + lastPage, aria-label="Goto page " + lastPage) #{lastPage}
+    else if (page === 3)
+      li
+        a.pagination-link(href="/" + url + "?p=1", aria-label="Go to page 1") 1
+      li
+        a.pagination-link(href="/" + url + "?p=" + previousPage, aria-label="Goto page " + previousPage) #{previousPage}
+      li
+        a.pagination-link.is-current(aria-label="Page " + page, aria-current="page") #{page}
+      if (totalPages > 3)
+        li
+          a.pagination-link(href="/" + url + "?p=" + nextPage, aria-label="Goto page " + nextPage) #{nextPage}
+      if (totalPages === 5)
+        li
+          a.pagination-link(href="/" + url + "?p=" + lastPage, aria-label="Goto page " + lastPage) #{lastPage}
+      if (totalPages > 5)
+        li.pagination-ellipsis &hellip;
+        li
+          a.pagination-link(href="/" + url + "?p=" + lastPage, aria-label="Goto page " + lastPage) #{lastPage}
+    else if (page === (totalPages - 2))
+      li
+        a.pagination-link(href="/" + url + "?p=1", aria-label="Go to page 1") 1
+      li.pagination-ellipsis &hellip;
+      li
+        a.pagination-link(href="/" + url + "?p=" + previousPage, aria-label="Goto page " + previousPage) #{previousPage}
+      li
+        a.pagination-link.is-current(aria-label="Page " + page, aria-current="page") #{page}
+      li
+        a.pagination-link(href="/" + url + "?p=" + nextPage, aria-label="Goto page " + nextPage) #{nextPage}
+      li
+        a.pagination-link(href="/" + url + "?p=" + lastPage, aria-label="Goto page " + lastPage) #{lastPage}
+    else if (page === totalPages - 1)
+      li
+        a.pagination-link(href="/" + url + "?p=1", aria-label="Go to page 1") 1
+      li.pagination-ellipsis &hellip;
+      li
+        a.pagination-link(href="/" + url + "?p=" + previousPage, aria-label="Goto page " + previousPage) #{previousPage}
+      li
+        a.pagination-link.is-current(aria-label="Page " + page, aria-current="page") #{page}
+      li
+        a.pagination-link(href="/" + url + "?p=" + lastPage, aria-label="Goto page " + lastPage) #{lastPage}
+    else if (page === lastPage)
+      li
+        a.pagination-link(href="/" + url + "?p=1", aria-label="Go to page 1") 1
+      li.pagination-ellipsis &hellip;
+      li
+        a.pagination-link(href="/" + url + "?p=" + previousPage, aria-label="Goto page " + previousPage) #{previousPage}
+      li
+        a.pagination-link.is-current(aria-label="Page " + page, aria-current="page") #{page}
+    else
+      li
+        a.pagination-link(href="/" + url + "?p=1", aria-label="Go to page 1") 1
+      li.pagination-ellipsis &hellip;
+      li
+        a.pagination-link(href="/" + url + "?p=" + previousPage, aria-label="Goto page " + previousPage) #{previousPage}
+      li
+        a.pagination-link.is-current(aria-label="Page " + page, aria-current="page") #{page}
+      li
+        a.pagination-link(href="/" + url + "?p=" + nextPage, aria-label="Goto page " + nextPage) #{nextPage}
+      li.pagination-ellipsis &hellip;
+      li
+        a.pagination-link(href="/" + url + "?p=" + lastPage, aria-label="Goto page " + lastPage) #{lastPage}
+
+

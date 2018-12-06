@@ -26,6 +26,11 @@ async function namesHandler(request, h) {
     console.log(e);
   }
 
+  //Double check this works with all edgecases
+  if (offset > names.length) {
+    h.response().status(404);
+  }
+
   //Sort the names by block height, and then alphabetical.
   //XXX Probably break this out to util.
   names.sort(function(a, b) {
@@ -41,18 +46,13 @@ async function namesHandler(request, h) {
   let returnNames = names.slice(offset, offset + amount);
   let totalPages = Math.ceil((names.length + 1) / amount);
 
-  return h.view("names", {
+  return h.view("names.pug", {
     names: returnNames,
     templateName: "names",
     pagination: {
       url: "names",
       page,
-      nextPage: page + 1,
-      previousPage: page - 1,
-      twoFromLastPage: totalPages - 2,
-      almostLastPage: totalPages - 1,
-      lastPage: totalPages,
-      amount
+      totalPages
     }
   });
 }

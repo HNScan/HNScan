@@ -1,0 +1,149 @@
+/* ----- Reusable ----- */
+.companyLink {
+  margin: 30px 0;
+  text-decoration: none;
+  color: #000;
+  &:hover {
+    color: #000;
+  }
+}
+
+.footerSection {
+  background-color: $footer-background-color;
+  color: #000;
+  height: $footer-height;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    height: auto;
+  }
+}
+
+.spacer {
+  flex-grow: 1;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.linksTitle {
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.link {
+  color: $dark-gray-color;
+  margin-top: 15px;
+  letter-spacing: .75px;
+  font-size: 14px;
+}
+
+/* TEMP: only use on soon to be added products with no href */
+.linkDisabled {
+  text-decoration: none;
+  color: #a9a9a9;
+  margin-top: 15px;
+  letter-spacing: .75px;
+  font-size: 14px;
+}
+
+/* ----- Left ----- */
+.leftContainer {
+  height: 275px;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1.5px solid $border-color;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    height: auto;
+    min-width: 175px;
+    width: 40%;
+    padding-bottom: 25px;
+    border-right: none;
+    border-bottom: 1.5px solid $border-color;
+  }
+}
+
+.haContainer {
+  height: auto;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logoTitle {
+  font-family: 'Nunito', sans-serif;
+  margin-top: 5px;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.urkelContainer {
+  height: auto;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.poweredBy {
+  margin: 0 0 5px 2px;
+  font-size: 8px;
+  color: $dark-gray-color;
+}
+
+.urkel {
+  font-size: 32px;
+  font-weight: bolder;
+  color: $urkel-color;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ----- Center ----- */
+.centerContainer {
+  height: 150px;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: $tablet) {
+    height: auto;
+    width: 40%;
+    min-width: 175px;
+    margin-top: 50px;
+  }
+}
+
+/* ----- Right ----- */
+.rightContainer {
+  height: 150px;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: $tablet) {
+    height: auto;
+    min-width: 175px;
+    width: 40%;
+    margin-top: 75px;
+    margin-bottom: 75px;
+  }
+}

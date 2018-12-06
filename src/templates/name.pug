@@ -1,0 +1,95 @@
+extends layouts/layout
+
+block content
+  if (name.info)
+    .contentContainer
+      .card
+        header.card-header
+          p.card-header-title Name Summary
+        .card-content
+          .columns
+            .column
+              .blockFullLabel Name
+              .blockFullDetail= name.info.name
+            .column
+              .blockFullLabel State
+              .blockFullDetail= name.info.state
+            .column
+              .blockFullLabel Claimed
+              .blockFullDetail= name.info.claimed
+
+      .card
+        header.card-header
+          p.card-header-title Advanced
+        .card-content
+          .columns
+            .column.is-half
+              .tableContainer
+                table.table.is-fullwidth
+                  tbody
+                    tr
+                      td.stacked
+                        span.stackedLabel Name Hash:
+                        span.stackedElement= name.info.nameHash
+                    tr
+                      td.stacked
+                        span.stackedLabel Height:
+                        span.stackedElement=name.info.height
+                    tr
+                      td.stacked
+                        span.stackedLabel Renewal:
+                        span.stackedElement=name.info.renewal
+                    tr
+                      td.stacked
+                        span.stackedLabel Value:
+                        span.stackedElement=prettyPrintHNS(name.info.value)
+            .column.is-half
+              .tableContainer
+                table.table.is-fullwidth
+                  tbody
+                    tr
+                      td.stacked
+                        span.stackedLabel Highest:
+                        span.stackedElement=prettyPrintHNS(name.info.highest)
+                    tr
+                      td.stacked
+                        span.stackedLabel Weak:
+                        span.stackedElement= name.info.weak
+                    tr
+                      td.stacked
+                        span.stackedLabel Transfer:
+                        span.stackedElement= name.info.transfer
+                    tr
+                      td.stacked
+                        span.stackedLabel Revoked:
+                        span.stackedElement= name.info.revoked
+
+      if (name.records)
+        .card
+          header.card-header
+            p.card-header-title Records
+          .card-content
+            .columns
+              .column
+                .blockFullLabel Version
+                .blockFullDetail= name.records.version
+              .column
+                .blockFullLabel Compat
+                .blockFullDetail= name.records.compat
+              .column
+                .blockFullLabel TTL
+                .blockFullDetail= name.records.ttl
+  else
+    .contentContainer
+      .card
+        header.card-header
+          p.card-header-title Name Summary
+        .card-content
+          .columns
+            .column
+              .blockFullLabel Name
+              .blockFullDetail= auction.name
+            .column
+              .blockFullLabel State
+              .blockFullDetail AUCTION
+            .column

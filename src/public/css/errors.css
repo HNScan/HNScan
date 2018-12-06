@@ -1,0 +1,27 @@
+.errorSection {
+  min-height: 500px;
+  text-align: center;
+}
+
+.errorHeader {
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.errorSubtext {
+  font-size: 12px;
+}
+
+.container404 {
+  font-size: 108px;
+}
+
+.hugeBlock {
+  width: auto;
+  height: 85px;
+  opacity: .7;
+}
+
+path {
+  fill: blue;
+}

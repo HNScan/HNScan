@@ -1,0 +1,20 @@
+extends layouts/layout
+
+block content
+  .contentContainer
+    .card
+      header.card-header
+        p.card-header-title TLD Names
+      .card-content
+        .namesContainer
+          //- div.txTitle TLD Names
+          table.table.anon
+            thead
+              tr
+                th Name
+                th State
+                th Height
+            tbody
+              include includes/listNames
+
+    include includes/pagination

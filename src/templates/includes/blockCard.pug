@@ -1,0 +1,24 @@
+.card.summaryCard
+  header.card-header
+    p.card-header-title Blocks
+    a.card-header-icon(href="/blocks") View All
+  if blocks.length <= 0
+    .emptyStateContainer
+      .emptyStateHeader No Blocks
+      .emptyStateSubheader The chain needs to be built
+  else
+    each block in blocks
+      - let miningAddress = block.coinbaseTx.outputs[0].address
+      .summaryCardItem
+        .summaryCardBlock
+          .lineContainer
+            img.summaryCardImage(src="/img/3d.svg" alt="Cube")
+            span="Block #: "
+              a(href="/block/" + block.height)=block.height
+          .lineContainer.detailsText Mined By:&nbsp;
+            //- +tooltip("/address/" + miningAddress, miningAddress)
+            .is-hidden-mobile
+              a(href="/address/" + miningAddress)=miningAddress
+            .is-hidden-tablet
+              a(href="/address/" + miningAddress)=truncateHash(miningAddress, 7)
+          .summaryCardLine.detailsText="Block Reward: " + prettyPrintHNS(block.coinbaseTx.outputs[0].value)

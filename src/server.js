@@ -2,23 +2,40 @@
 const Hapi = require("hapi");
 const Path = require("path");
 const config = require("config");
+const templateFunctions = require("./util/templateFunctions.js");
 
 //File import
 const routes = require("./routes.js");
 
 const server = Hapi.server({
-  port: config.get("Server.port"),
-  host: config.get("Server.host"),
-  //Make sure this comes from config - depending on the env.
-  //TODO
+  port: config.get("server-port"),
+  host: config.get("server-host"),
   routes: {
-    cors: {
-      origin: ["*"]
-    },
     files: {
-      relativeTo: Path.join(__dirname, "public")
+      relativeTo: Path.join(__dirname, "dest")
     }
   }
+});
+
+// Setting up error handling for 404s (could be extended to other errors here)
+server.ext("onPreResponse", (request, reply) => {
+  if (request.response.isBoom) {
+    const err = request.response;
+    const errName = err.output.payload.error;
+    const statusCode = err.output.payload.statusCode;
+
+    if (process.env.NODE_ENV != "production") {
+      console.log(err);
+    }
+
+    return reply
+      .view("404.pug", {
+        statusCode: statusCode,
+        errName: errName
+      })
+      .code(statusCode);
+  }
+  return reply.continue;
 });
 
 /* ------- Server Setup -------- */
@@ -29,14 +46,14 @@ const initServer = async () => {
 
     server.views({
       engines: {
-        html: require("handlebars")
+        html: require("handlebars"),
+        pug: require("pug")
       },
       relativeTo: __dirname,
       path: "templates",
-      layout: true,
-      layoutPath: "templates/layouts",
-      helpersPath: "templates/helpers",
-      partialsPath: "templates/partials"
+      context: function(request) {
+        return templateFunctions;
+      }
     });
 
     server.route(routes);
