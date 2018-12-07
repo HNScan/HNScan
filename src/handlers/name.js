@@ -11,9 +11,9 @@ async function blockHandler(request, h) {
   let nameHistory = [];
   try {
     nameData = await client.execute("getnameinfo", [name]);
-    // data = await nomenclate.getNameHistory(name);
+    data = await nomenclate.getNameHistory(name);
 
-    // nameHistory = await formatAuctionHistory(name, data.result);
+    history = await formatAuctionHistory(name, data.result);
 
     if (!nameData.info) {
       // XXX anything for auctions?
@@ -34,7 +34,7 @@ async function blockHandler(request, h) {
     console.log(e);
   }
 
-  return h.view("name.pug", { name: nameData, auction: auctionData });
+  return h.view("name.pug", { name: nameData, auction: auctionData, history });
 }
 
 module.exports = blockHandler;

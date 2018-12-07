@@ -1,6 +1,6 @@
 const { getClient } = require("./clients.js");
-const rules = require("hsd/lib/covenants/rules");
 const Covenant = require("hsd/lib/primitives/covenant");
+const rules = require("hsd/lib/covenants/rules");
 
 function currentBlockReward(blockHeight) {
   //Block Reward starts at 1000, and halves every 340000 blocks
@@ -132,20 +132,55 @@ async function formatAuctionHistory(name, txs) {
 
   let history = [];
 
-  console.log(nameHash);
 
   //XXX Double check - but I believe that all name actions will be outputs
   for (let tx of txs) {
     let fulltx = await client.getTX(tx.tx_hash);
-    console.log(fulltx.inputs);
-    console.log(fulltx.inputs[0].coin.covenant);
-    console.log(fulltx.outputs);
+    let newtx = {};
     for (let o of fulltx.outputs) {
       let cov = new Covenant(o.covenant.type, o.covenant.items);
 
       if (cov.isName()) {
         if (cov.get(0) === nameHash) {
-          history.push(fulltx);
+          if (cov.isOpen()) {
+            newtx.action = "Opened";
+          }
+
+          if (cov.isBid()) {
+            newtx.action = "Bid";
+            newtx.value = o.value;
+          }
+
+          if (cov.isReveal()) {
+            //See if we can connect Reveals to Bids using the nonce.
+            newtx.action = "Reveal";
+            newtx.value = o.value;
+          }
+
+          if (cov.isRegister()) {
+            //Link to the data on a new page.
+            newtx.action = "Register";
+          }
+
+          if (cov.isRedeem()) {
+            //Redeem non winning bids?
+            //Possibly also connect these to reveals and bids.
+            newtx.action = "Redeem";
+          }
+
+          if (cov.isUpdate()) {
+            //Link data on new page
+            newtx.action = "Update";
+          }
+
+          if (cov.isRenew()) {
+            newtx.action = "Renew";
+          }
+
+          newtx.time = fulltx.mtime;
+          newtx.height = fulltx.height;
+
+          history.push(newtx);
         }
       }
     }
