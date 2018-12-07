@@ -8,8 +8,9 @@ addressHandler = require("./handlers/address.js");
 homeHandler = require("./handlers/home.js");
 nameHandler = require("./handlers/name.js");
 namesHandler = require("./handlers/names.js");
+
 //Tool Handlers
-peersHandler = require("./handlers/peers.js");
+peersHandler = require("./handlers/tools/peers.js");
 statusHandler = require("./handlers/tools/status.js");
 searchHandler = require("./handlers/search.js");
 
