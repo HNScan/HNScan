@@ -48,7 +48,8 @@ block content
                   tr
                     td.stacked
                       span.stackedLabel Difficulty:
-                      span.stackedElement=block.difficulty
+                      span.stackedElement
+                        +sciNotation(block.difficulty, 5)
                   tr
                     td.stacked
                       span.stackedLabel Version:
