@@ -32,7 +32,8 @@ block content
                   tr
                     td.stacked
                       span.stackedLabel Difficulty
-                      span.stackedElement=status.difficulty
+                      span.stackedElement
+                        +sciNotation(status.difficulty, 5)
                   tr
                     td.stacked
                       span.stackedLabel Uptime
@@ -54,4 +55,3 @@ block content
                         span.stackedElement=status.warnings
                       else
                         span.stackedElement None
-

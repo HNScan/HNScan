@@ -33,16 +33,13 @@ block content
           .column.is-one-third.columnCentered
             .cardItemContainer
               .cardItemLabel Difficulty
-              - difficulty = formatLargeNumber(difficulty, 3)
-              .cardItemDetail=difficulty[0] + " x 10"
-                sup=difficulty[1].exponent
+              .cardItemDetail
+                +sciNotation(difficulty, 3)
           .column.is-one-third.columnCentered
             .cardItemContainer
               .cardItemLabel Chainwork
-              - chainwork = formatLargeNumber(chainwork, 3)
-              .cardItemDetail=chainwork[0] + " x 10"
-                sup=chainwork[1].exponent
-                span=" hashes"
+              .cardItemDetail
+                +sciNotation(chainwork, 2)
 
     //- include includes/toolCard
 
