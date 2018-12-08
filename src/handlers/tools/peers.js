@@ -1,4 +1,4 @@
-const { getClient } = require("../util/clients.js");
+const { getClient } = require("../../util/clients.js");
 
 async function peersHandler(request, h) {
   const client = getClient();

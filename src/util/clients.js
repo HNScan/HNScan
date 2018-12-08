@@ -3,7 +3,6 @@ const { WalletClient, NodeClient } = require("hs-client");
 const NomenclateClient = require("nomenclate-js");
 
 const { Network } = require("hsd");
-const sleep = require("sleep");
 const network = Network.get(config.get("node-network"));
 
 const walletOptions = {
