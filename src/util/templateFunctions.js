@@ -119,7 +119,6 @@ function toSciNotation(num, decimalPlaces) {
       exponent++;
     }
   } else {
-    console.log(Math.floor(coefficient));
     while (Math.floor(coefficient) < 1) {
       coefficient *= 10;
       exponent--;
