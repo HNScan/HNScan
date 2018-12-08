@@ -97,6 +97,37 @@ function timeAgo(timestamp) {
   );
 }
 
+// Takes in a number and returns an array
+// return: [decimal, exponent]
+function toSciNotation(num, decimalPlaces) {
+  if (typeof num !== "number") {
+    return;
+  }
+
+  if (!num) {
+    return [0, 0];
+  }
+
+  var sign = Math.sign(num);
+  var coefficient = Math.abs(num);
+  var isLarge = Math.floor(coefficient);
+  var exponent = 0;
+
+  if (isLarge) {
+    while (Math.floor(coefficient / 10) > 0) {
+      coefficient /= 10;
+      exponent++;
+    }
+  } else {
+    console.log(Math.floor(coefficient));
+    while (Math.floor(coefficient) < 1) {
+      coefficient *= 10;
+      exponent--;
+    }
+  }
+  return [sign * coefficient, exponent];
+}
+
 module.exports = {
   exponentScales: exponentScales,
   formatLargeNumber: formatLargeNumber,
@@ -104,5 +135,6 @@ module.exports = {
   numberWithCommas: numberWithCommas,
   prettyPrintHNS: prettyPrintHNS,
   timeAgo: timeAgo,
+  toSciNotation: toSciNotation,
   truncateHash: truncateHash
 };
