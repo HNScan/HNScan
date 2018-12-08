@@ -12,10 +12,10 @@ function catchEnter(e) {
   //AJAX request to handle search results
   if (search !== "" && e.keyCode === 13) {
     xhr.onreadystatechange = () => {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log("Success!");
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        window.location.href = xhr.responseText;
       } else {
-        console.log("Error" + this.responseText);
+        console.log("Error" + xhr.responseText);
       }
     };
     xhr.open("POST", `/search?q=${search}`);
