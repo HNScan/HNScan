@@ -31,6 +31,9 @@
 /* ----- Address ----- */
 @import "address.css";
 
+/* ----- Airdrop ----- */
+@import "airdrop.css";
+
 /* ----- TRANSACTION SUMMARY ----- */
 .txSection {
   height: auto;

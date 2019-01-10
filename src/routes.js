@@ -12,7 +12,9 @@ namesHandler = require("./handlers/names.js");
 //Tool Handlers
 peersHandler = require("./handlers/tools/peers.js");
 statusHandler = require("./handlers/tools/status.js");
+airdropHandler = require("./handlers/tools/airdrop.js");
 searchHandler = require("./handlers/search.js");
+
 
 if (process.env.NODE_ENV !== "production") {
   //For development only routes.
@@ -132,6 +134,11 @@ var routes = [
     method: "GET",
     path: "/status",
     handler: statusHandler
+  },
+  {
+    method: "GET",
+    path: "/airdrop",
+    handler: airdropHandler
   },
   {
     method: "POST",

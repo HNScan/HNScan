@@ -1,0 +1,17 @@
+.progress {
+  height: 300px;
+
+  & > svg {
+    height: 100%;
+    display: block;
+  }
+}
+
+.progressLabel {
+  color: #4a4a4a !important;
+  font-weight: 800;
+}
+
+.airdropStatsContainer {
+  margin-top: 100px;
+}
