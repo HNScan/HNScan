@@ -34,7 +34,6 @@ async function airdropHandler(request, h) {
   const original = balance.received;
   const spent = balance.spent;
 
-  //Let's make sure to modulo this to .01 at the lowest %
   const percentClaimed = ((spent / original) * 100).toFixed(4);
 
   //Total Claimers = the number of transactions minus 1 (the funding tx)
