@@ -52,6 +52,9 @@
   text-align: left;
   display: flex;
   flex-direction: column;
+}
+
+.inputTX {
   padding: 10px;
 }
 
@@ -60,6 +63,9 @@
   text-align: left;
   display: flex;
   flex-direction: column;
+}
+
+.outputTX {
   padding: 10px;
 }
 

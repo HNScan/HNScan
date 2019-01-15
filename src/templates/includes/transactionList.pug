@@ -15,30 +15,32 @@
                 span.txsTitle #{tx.inputs.length} Input
               else
                 span.txsTitle #{tx.inputs.length} Inputs
-              each input in tx.inputs
-                .inputContainer
-                  if (!input.coin)
-                    span #{prettyPrintHNS(input.reward)} from Block Reward
-                  else
-                    span #{prettyPrintHNS(input.coin.value)} from
-                    span
-                      //- a(href=`/address/${input.coin.address}`)=input.coin.address
-                      span=input.coin.address
+              .inputContainer
+                each input in tx.inputs
+                  .inputTX
+                    if (!input.coin)
+                      span #{prettyPrintHNS(input.reward)} from Block Reward
+                    else
+                      span #{prettyPrintHNS(input.coin.value)} from
+                      span
+                        //- a(href=`/address/${input.coin.address}`)=input.coin.address
+                        span=input.coin.address
           .column.is-half
             .txsPutsContainer
               if (tx.outputs.length === 1)
                 span.txsTitle #{tx.outputs.length} Output
               else
                 span.txsTitle #{tx.outputs.length} Outputs
-              each output in tx.outputs
-                .outputContainer
-                  if (output.action === "NONE")
-                    span #{prettyPrintHNS(output.value)} to
-                    //- a(href=`/address/${output.address}`)=output.address
-                    span=output.address
-                  else
-                    span #{output.action} for #{output.name} to
-                    //- a(href=`/address/${output.address}`)=output.address
-                    span=output.address
+              .outputContainer
+                each output in tx.outputs
+                  .outputTX
+                    if (output.action === "NONE")
+                      span #{prettyPrintHNS(output.value)} to
+                      //- a(href=`/address/${output.address}`)=output.address
+                      span=output.address
+                    else
+                      span #{output.action} for #{output.name} to
+                      //- a(href=`/address/${output.address}`)=output.address
+                      span=output.address
 
 include pagination.pug
