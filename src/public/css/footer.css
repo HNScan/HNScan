@@ -9,18 +9,35 @@
 }
 
 .footerSection {
-  background-color: $footer-background-color;
-  color: #000;
   height: $footer-height;
-  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: $tablet) {
+    height: auto;
+  }
+}
+
+.footerContainer {
+  width: 100%;
+  height: 100%;
+  color: #000;
+  background-color: $footer-background-color;
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-top: 50px;
 
   @media (max-width: $tablet) {
     flex-direction: column;
     height: auto;
   }
+}
+
+.source {
+  font-size: 12px;
+  text-align: center;
+  padding-bottom: 10px;
 }
 
 .spacer {
@@ -39,7 +56,7 @@
 .link {
   color: $dark-gray-color;
   margin-top: 15px;
-  letter-spacing: .75px;
+  letter-spacing: 0.75px;
   font-size: 14px;
 }
 
@@ -48,7 +65,7 @@
   text-decoration: none;
   color: #a9a9a9;
   margin-top: 15px;
-  letter-spacing: .75px;
+  letter-spacing: 0.75px;
   font-size: 14px;
 }
 
@@ -83,7 +100,7 @@
 }
 
 .logoTitle {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   margin-top: 5px;
   letter-spacing: 1px;
   font-size: 14px;
@@ -110,7 +127,7 @@
   font-weight: bolder;
   color: $urkel-color;
   align-items: center;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 /* ----- Center ----- */

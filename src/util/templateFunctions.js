@@ -1,6 +1,7 @@
 const Decimal = require("decimal.js");
 const humanizeDuration = require("humanize-duration");
 const { getClient } = require("./clients.js");
+const pkg = require("../../package.json");
 
 var exponentScales = [
   {
@@ -127,6 +128,10 @@ function toSciNotation(num, decimalPlaces) {
   return [sign * coefficient, exponent];
 }
 
+function currentVersion() {
+  return pkg.version;
+}
+
 module.exports = {
   exponentScales: exponentScales,
   formatLargeNumber: formatLargeNumber,
@@ -135,5 +140,6 @@ module.exports = {
   prettyPrintHNS: prettyPrintHNS,
   timeAgo: timeAgo,
   toSciNotation: toSciNotation,
-  truncateHash: truncateHash
+  truncateHash: truncateHash,
+  currentVersion: currentVersion
 };

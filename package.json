@@ -1,6 +1,6 @@
 {
   "name": "Block-Explorer-Backend",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A developer focus block explorer for Handshake.",
   "main": "app.js",
   "scripts": {
