@@ -132,12 +132,11 @@ async function formatAuctionHistory(name, txs) {
 
   let history = [];
 
-
   //XXX Double check - but I believe that all name actions will be outputs
   for (let tx of txs) {
     let fulltx = await client.getTX(tx.tx_hash);
-    let newtx = {};
     for (let o of fulltx.outputs) {
+      let newtx = {};
       let cov = new Covenant(o.covenant.type, o.covenant.items);
 
       if (cov.isName()) {
