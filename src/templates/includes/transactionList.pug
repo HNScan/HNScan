@@ -38,9 +38,17 @@
                       span #{prettyPrintHNS(output.value)} to
                       //- a(href=`/address/${output.address}`)=output.address
                       span=output.address
-                    else
-                      span #{output.action} for #{output.name} to
+                    else if (output.action === "BID")
+                      span
+                        | #{output.action} for #{" "}
+                        a(href=`/name/${output.name}`)=output.name + " "
+                        | of #{prettyPrintHNS(output.value)}
+                        // | to
                       //- a(href=`/address/${output.address}`)=output.address
-                      span=output.address
+                      // span=output.address
+                    else
+                      span
+                        | #{output.action} for #{" "}
+                        a(href=`/name/${output.name}`)=output.name + " "
 
 include pagination.pug
