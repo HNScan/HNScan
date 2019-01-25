@@ -1,5 +1,6 @@
 {
   "server-host": "0.0.0.0",
   "server-port": 4000,
-  "node-host": "node"
+  "node-host": "node",
+  "ga-code": "UA-133243722-2"
 }

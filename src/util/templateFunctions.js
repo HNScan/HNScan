@@ -1,3 +1,4 @@
+const config = require("config");
 const Decimal = require("decimal.js");
 const humanizeDuration = require("humanize-duration");
 const { getClient } = require("./clients.js");
@@ -132,6 +133,15 @@ function currentVersion() {
   return pkg.version;
 }
 
+function outputGA() {
+  if (config.has("ga-code")) {
+    let gaCode = config.get("ga-code");
+    return gaCode;
+  }
+
+  return "";
+}
+
 module.exports = {
   exponentScales: exponentScales,
   formatLargeNumber: formatLargeNumber,
@@ -141,5 +151,6 @@ module.exports = {
   timeAgo: timeAgo,
   toSciNotation: toSciNotation,
   truncateHash: truncateHash,
-  currentVersion: currentVersion
+  currentVersion: currentVersion,
+  outputGA: outputGA
 };

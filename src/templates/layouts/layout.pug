@@ -23,3 +23,17 @@ html
     include ../includes/footer.pug
 
     script(type='text/javascript', src='/js/main.min.js', async)
+
+    - const gaCode = outputGA();
+    if (gaCode != "")
+      script( async src=`https://www.googletagmanager.com/gtag/js?id=${gaCode}`)
+      script.
+        var code = `#{gaCode}`;
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', code);
+
+
+
