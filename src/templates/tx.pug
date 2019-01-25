@@ -9,7 +9,10 @@ block content
         .columns
           .column
             .blockFullLabel Received
-            .blockFullDetail=timeAgo(tx.time)
+            if tx.height === -1
+              .blockFullDetail Pending
+            else
+              .blockFullDetail=timeAgo(tx.time)
           .column
             .blockFullLabel Amount
             //- XXX This value is not accurate for real txs
@@ -36,7 +39,10 @@ block content
                   tr
                     td.stacked
                       span.stackedLabel Block Height
-                      a(href=`/block/${tx.height}`).stackedElement=tx.height
+                      if tx.height === -1
+                        .stackedElement Pending
+                      else
+                        a(href=`/block/${tx.height}`).stackedElement=tx.height
                   tr
                     td.stacked
                       span.stackedLabel Hex
