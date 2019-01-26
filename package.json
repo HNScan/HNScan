@@ -39,6 +39,7 @@
     "gulp-terser": "^1.1.5",
     "handlebars": "^4.0.12",
     "hapi": "^17.5.3",
+    "hs-airdrop": "0.0.3",
     "hs-client": "0.0.3",
     "hsd": "handshake-org/hsd",
     "humanize-duration": "^3.15.3",

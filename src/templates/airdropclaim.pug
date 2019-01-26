@@ -1,0 +1,72 @@
+extends layouts/layout
+
+block content
+  .contentContainer
+    .card
+      header.card-header
+        p.card-header-title Claim Your Airdrop
+      .card-content
+        .columns
+          .column.is-half
+            .control
+              label.radio
+                input(name="claim" type="radio" checked)
+                | Faucet
+              // br
+              // label.radio
+              //   input(name="claim" type="radio")
+              //   | Github
+              // br
+              // label.radio
+              //   input(name="claim" type="radio")
+              //   | Web of Trust PGP
+              // br
+              // label.radio
+              //   input(name="claim" type="radio")
+              //   | Investor Claim
+          .column.is-half
+            h1 Claim Your Faucet Handshake
+            span This will submit your claim for the airdrop, and deposit the HNS into the private key that was provided to you in the faucet. We do not have access to your HNS, we are simply processing the claim for you.
+            form(onsubmit="submitClaim(event)")
+              input(placeholder="Provided HNS Address")
+              input(value="Confirm Claim" type="submit")
+
+  script.
+    function submitClaim(e) {
+      e.preventDefault();
+      const xhr = new XMLHttpRequest();
+      var data = new FormData();
+      data.append("addr", "hs1qvgffevanjay84nymtm2xs6s8nts4eagulwfdhu");
+
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          console.log(xhr.responseText);
+        } else {
+          console.log("Error" + xhr.responseText);
+        }
+      };
+      xhr.open("POST", "/submitclaim");
+      xhr.send(data);
+
+    }
+
+
+
+
+      //  .progress#progress
+      //  .airdropStatsContainer
+      //    .columns
+      //      .column
+      //        .blockFullLabel Total Claimers
+      //        .blockFullDetail=totalClaimers
+      //      .column
+      //        .blockFullLabel Remaining Claimers
+      //        //- XXX This value is not accurate for real txs
+      //        .blockFullDetail=numberWithCommas(remainingClaimers)
+      //    .columns
+      //      .column
+      //        .blockFullLabel Total HNS Claimed
+      //        .blockFullDetail=prettyPrintHNS(totalClaimed)
+      //      .column
+      //        .blockFullLabel Remaining HNS
+      //        .blockFullDetail=prettyPrintHNS(remaining)

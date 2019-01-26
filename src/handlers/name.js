@@ -9,6 +9,7 @@ async function blockHandler(request, h) {
 
   let nameData, auctionData;
   let nameHistory = [];
+  let nextState = {};
   try {
     nameData = await client.execute("getnameinfo", [name]);
     data = await nomenclate.getNameHistory(name);
@@ -26,6 +27,21 @@ async function blockHandler(request, h) {
       nameData.info.value = nameData.info.highest;
     }
 
+    console.log(nameData);
+    if (nameData.info.stats) {
+      switch (nameData.info.state) {
+        case "OPENING":
+          nextState.state = "BIDDING";
+          nextState.blocksUntil = nameData.info.stats.blocksUntilBidding;
+          break;
+
+        case "CLOSED":
+          nextState.state = "RENEWAL";
+          nextState.blocksUntil = nameData.info.stats.blocksUntilExpire;
+          break;
+      }
+    }
+
     //Not sure this covers all states, but this works for now.
     if ((nameData.state = "CLOSED")) {
       nameData.records = await client.execute("getnameresource", [name]);
@@ -34,7 +50,13 @@ async function blockHandler(request, h) {
     console.log(e);
   }
 
-  return h.view("name.pug", { name: nameData, auction: auctionData, history });
+  //Revamp the data passed when We pull this to it's own API file XXX
+  return h.view("name.pug", {
+    name: nameData,
+    nextState,
+    auction: auctionData,
+    history
+  });
 }
 
 module.exports = blockHandler;
