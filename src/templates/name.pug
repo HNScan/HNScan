@@ -17,6 +17,16 @@ block content
               .column
                 .blockFullLabel Claimed
                 .blockFullDetail= name.info.claimed
+            .columns
+              .column
+                .blockFullLabel Next State
+                .blockFullDetail=nextState.state
+              .column
+                .blockFullLabel Blocks Until Next State
+                .blockFullDetail= nextState.blocksUntil
+              .column
+                .blockFullLabel Claimed
+                .blockFullDetail= name.info.claimed
 
         .card
           header.card-header
