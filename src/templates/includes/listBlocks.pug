@@ -1,17 +1,16 @@
 - for (block of blocks)
-  - let duration = Math.floor(Date.now() / 1000) - block.time;
   - let minerAddress = block.coinbaseTx.outputs[0].address;
   tr
     td
       a.minerLinks(href="/block/" + block.height) #{block.height}
       div.is-hidden-tablet Size: #{block.size}
-    td.is-hidden-mobile #{humanizeDuration(duration * 1000, { round: true, largest: 1})} ago
+    td.is-hidden-mobile= timeAgo(block.time)
     td
       a.is-hidden-tablet.minerLinks(href="/address/" + minerAddress) #{truncateHash(minerAddress, 7)}
       //- .is-hidden-tablet #{truncateHash(minerAddress, 7)}
       a.is-hidden-mobile.minerLinks(href="/address/" + minerAddress) #{minerAddress}
       //- .is-hidden-mobile #{minerAddress}
-      div.is-hidden-tablet #{humanizeDuration(duration * 1000, { round: true, largest: 1})} ago
+      div.is-hidden-tablet= timeAgo(block.time)
     td.is-hidden-mobile #{block.size}
     td
       a.minerLinks(href="/txs?block=" + block.height) #{block.tx.length}
