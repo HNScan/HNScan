@@ -12,9 +12,6 @@ async function blockHandler(request, h) {
   const amount = 20;
   let totalPages;
 
-  console.log(request.query);
-  console.log(request.params);
-
   if (request.query.p) {
     page = parseInt(request.query.p);
   } else {
@@ -51,8 +48,6 @@ async function blockHandler(request, h) {
     txs = await formatTransactions(
       txsBlock.txs.slice(offset, offset + (amount - 1))
     );
-
-    console.log(txs[0]);
 
     block.totalFees = getBlockTotalFees(block.coinbaseTx, block.height);
     block.reward = currentBlockReward(block.height);
