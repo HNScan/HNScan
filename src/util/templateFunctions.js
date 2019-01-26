@@ -91,6 +91,7 @@ function numberWithCommas(x) {
 
 // Takes in a time stamp and returns the time ago something was (humanized)
 function timeAgo(timestamp) {
+  if (timestamp <= 0) return;
   return (
     humanizeDuration(Date.now() - timestamp * 1000, {
       largest: 1,
