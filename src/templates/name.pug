@@ -107,8 +107,7 @@ block content
           each tx in history
             tr
               td=tx.action
-              - let duration = Math.floor(Date.now() / 1000) -tx.time
-              td=humanizeDuration(duration * 1000, {round: true, largest: 1}) + " ago"
+              td=timeAgo(tx.time)
               td
                 a(href=`/block/${tx.height}`)=tx.height
               if tx.value
