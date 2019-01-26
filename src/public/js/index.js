@@ -26,9 +26,7 @@ function catchEnter(e) {
 function toggleMobileNav(e) {
   const navbarBurger = document.querySelector(".navbar-burger");
   const navbarMenu = document.querySelector(".navbar-menu");
-  const moreElement = document.querySelector("#navbarMore");
-
-  console.log(moreElement);
+  const moreElement = document.querySelector(".navbarMore");
 
   if (navbarBurger && navbarMenu && moreElement) {
     navbarBurger.classList.toggle("is-active");
@@ -39,3 +37,15 @@ function toggleMobileNav(e) {
 function goBack() {
   window.history.back();
 }
+
+function navDropdownListeners() {
+  let dropdowns = document.querySelectorAll(".navbarMore");
+  for (dropdown of dropdowns) {
+    dropdown.addEventListener("click", function(e) {
+      // Note, this will only work if navbarMore only has 1 sibling that is a navbar-dropdown
+      let sibling = e.target.nextSibling;
+      sibling.classList.toggle("navbar-dropdown-visible");
+    });
+  }
+}
+navDropdownListeners();
