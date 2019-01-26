@@ -93,6 +93,10 @@ async function _formatOutputs(outputs) {
         newOutput.value = output.value;
         break;
 
+      case "REDEEM":
+        console.log(items);
+        break;
+
       //Finish cases, add some tests for these.
       // case "REGISTER":
     }
@@ -165,6 +169,7 @@ async function formatAuctionHistory(name, txs) {
             //Redeem non winning bids?
             //Possibly also connect these to reveals and bids.
             newtx.action = "Redeem";
+            newtx.value = o.value;
           }
 
           if (cov.isUpdate()) {
