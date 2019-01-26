@@ -69,16 +69,16 @@ block content
             header.card-header
               p.card-header-title Records
             .card-content
-              .columns
-                .column
-                  .blockFullLabel Version
-                  .blockFullDetail= name.records.version
-                .column
-                  .blockFullLabel Compat
-                  .blockFullDetail= name.records.compat
-                .column
-                  .blockFullLabel TTL
-                  .blockFullDetail= name.records.ttl
+              table.table.is-fullwidth
+                thead
+                  tr
+                    td Record Type
+                    td Value
+                tbody
+                each value, key in name.records
+                  tr
+                    td=key
+                    td=value
     else
         .card
           header.card-header
