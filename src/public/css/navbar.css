@@ -14,20 +14,6 @@
   align-items: center;
 }
 
-@media only screen and (max-width: $tablet) {
-  .navbar-brand {
-    width: 100%;
-  }
-}
-
-@media only screen and (max-width: $tablet) {
-  .navbar-menu {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-  }
-}
 
 .navOption {
   margin: 0 10px;
@@ -49,4 +35,29 @@
 .searchbar:hover {
   outline: none;
   box-shadow: none;
+}
+
+@media only screen and (max-width: $tablet) {
+  .navbar-brand {
+    width: 100%;
+  }
+
+  .navbar-menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+  }
+
+  .navbar-dropdown {
+    height: 0;
+    overflow: hidden;
+    transition: height 1s ease;
+  }
+
+  .navbar-dropdown-visible {
+    height: auto;
+    margin-left: 12px;
+    transition: height 1s ease;
+  }
 }
