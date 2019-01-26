@@ -49,7 +49,7 @@ block content
                       .stackedLabel Last Send / Last Received
                       if (peer.lastsend && peer.lastrecv)
                         .stackedElement
-                          =humanizeDuration(Date.now() - peer.lastsend * 1000, {largest: 1, round: true}) + " ago / " + humanizeDuration(Date.now() - peer.lastrecv * 1000, {largest: 1, round: true}) + " ago"
+                          =timeAgo(peer.lastsend) + " / " + timeAgo(peer.lastrecv)
                       else
                         .stackedElement N/A
   //- Could be added to its own file
