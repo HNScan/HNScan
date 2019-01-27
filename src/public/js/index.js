@@ -34,10 +34,6 @@ function toggleMobileNav(e) {
   }
 }
 
-function goBack() {
-  window.history.back();
-}
-
 function navDropdownListeners() {
   let dropdowns = document.querySelectorAll(".navbarMore");
   for (dropdown of dropdowns) {
