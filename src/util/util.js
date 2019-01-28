@@ -160,6 +160,8 @@ async function formatAuctionHistory(name, txs) {
             newtx.value = o.value;
           }
 
+          //XXX Add owner information to this.
+          //See if this is called on a transfer as well.
           if (cov.isRegister()) {
             //Link to the data on a new page.
             newtx.action = "Register";
@@ -213,10 +215,44 @@ async function namesRegistered() {
   return namesClosed;
 }
 
+function formatName(name) {
+  //See: https://github.com/handshake-org/hsd/issues/74
+  //XXX Submit P.R. To fix this.
+  if (name.info && name.info.value === 0) {
+    name.info.value = name.info.highest;
+  }
+
+  name.nextState = formatNameNextState(name);
+
+  return name;
+}
+
+function formatNameNextState(name) {
+  let nextState = {};
+
+  if (name.info.stats) {
+    switch (name.info.state) {
+      case "OPENING":
+        nextState.state = "BIDDING";
+        nextState.blocksUntil = name.info.stats.blocksUntilBidding;
+        break;
+
+      case "CLOSED":
+        nextState.state = "RENEWAL";
+        nextState.blocksUntil = name.info.stats.blocksUntilExpire;
+        break;
+    }
+  }
+
+  return nextState;
+}
+
 module.exports = {
   getBlockTotalFees: getBlockTotalFees,
   currentBlockReward: currentBlockReward,
   formatTransactions: formatTransactions,
   formatAuctionHistory: formatAuctionHistory,
-  namesRegistered: namesRegistered
+  namesRegistered: namesRegistered,
+  formatNameNextState: formatNameNextState,
+  formatName: formatName
 };

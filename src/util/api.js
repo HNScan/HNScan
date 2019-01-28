@@ -2,7 +2,7 @@ const config = require("config");
 const assert = require("bsert");
 const { getClient, getNomenclate } = require("./clients.js");
 
-const { formatTransactions } = require("../util/util.js");
+const { formatTransactions, formatName } = require("../util/util.js");
 
 /**
  * getAddressHistory
@@ -146,9 +146,58 @@ async function _getBlockDaemon(height) {
 
 async function _getBlockUrkel(height) {}
 
+async function getName(name) {
+  if (config.has("urkel-url")) {
+    return _getNameUrkel(name);
+  } else {
+    return _getNameDaemon(name);
+  }
+}
+
+async function _getNameUrkel(name) {
+  return null;
+}
+
+async function _getNameDaemon(name) {
+  const client = getClient();
+
+  let data = await client.execute("getnameinfo", [name]);
+
+  //Format Next State Data.
+  let nameData = formatName(data);
+
+  //Not sure this covers all states, but this works for now.
+  if ((nameData.state = "CLOSED")) {
+    nameData.records = await client.execute("getnameresource", [name]);
+  }
+
+  return nameData;
+}
+
+async function getNameHistory(name) {
+  if (config.has("urkel-url")) {
+    return _getNameHistoryUrkel(name);
+  } else {
+    return _getNameHistoryDaemon(name);
+  }
+}
+
+async function _getNameHistoryUrkel(name) {}
+
+async function _getNameHistoryDaemon(name) {
+  const nomenclate = getNomenclate();
+
+  data = await nomenclate.getNameHistory(name);
+
+  history = await formatAuctionHistory(name, data.result);
+
+  return history;
+}
+
 module.exports = {
   getAddressBalance: getAddressBalance,
   getAddressHistory: getAddressHistory,
   getBlocks: getBlocks,
-  getBlock: getBlock
+  getBlock: getBlock,
+  getName: getName
 };

@@ -20,10 +20,10 @@ block content
             .columns
               .column
                 .blockFullLabel Next State
-                .blockFullDetail=nextState.state
+                .blockFullDetail=name.nextState.state
               .column
                 .blockFullLabel Blocks Until Next State
-                .blockFullDetail= nextState.blocksUntil
+                .blockFullDetail= name.nextState.blocksUntil
               .column
                 .blockFullLabel Claimed
                 .blockFullDetail= name.info.claimed
@@ -89,19 +89,19 @@ block content
                   tr
                     td=key
                     td=value
-    else
-        .card
-          header.card-header
-            p.card-header-title Name Summary
-          .card-content
-            .columns
-              .column
-                .blockFullLabel Name
-                .blockFullDetail= auction.name
-              .column
-                .blockFullLabel State
-                .blockFullDetail AUCTION
-              .column
+    // else
+    //     .card
+    //       header.card-header
+    //         p.card-header-title Name Summary
+    //       .card-content
+    //         .columns
+    //           .column
+    //             .blockFullLabel Name
+    //             .blockFullDetail= auction.name
+    //           .column
+    //             .blockFullLabel State
+    //             .blockFullDetail AUCTION
+    //           .column
     .card
       header.card-header
         p.card-header-title History
