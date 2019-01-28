@@ -39,12 +39,14 @@
 .detailsText {
   margin: 2px 0;
   font-size: 0.75rem;
+  white-space: nowrap;
 }
 
 .lineContainer {
   margin: 2px 0;
   display: flex;
   flex-direction: row;
+  white-space: nowrap;
 }
 
 /* ----- EMPTY STATES ----- */

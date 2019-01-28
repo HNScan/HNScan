@@ -20,7 +20,7 @@
             span.detailsText Miner Reward
           span.detailsText="Amount: " + prettyPrintHNS(tx.outputs[0].value)
         .summaryCardBlock.align-right
-          span="> " + timeAgo(tx.time)
+          span=timeAgo(tx.time)
           span.detailsText To: &nbsp;
             //- +tooltip("/address/" + tx.outputs[0].address, tx.outputs[0].address, true)
             a(href="/address/" + tx.outputs[0].address)=truncateHash(tx.outputs[0].address, 7)
