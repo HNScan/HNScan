@@ -1,29 +1,55 @@
-footer.footerSection
-  span.source
-    | Current Version: v#{currentVersion() + " "}
-    a(href="https://github.com/HandshakeAlliance/HNScan") Source
-  .footerContainer
-    .leftContainer
-      a.companyLink(href="https://handshakealliance.org" target="_blank" rel="noopener noreferrer")
-        .haContainer
-          img(src="/img/HAlogo.svg" height="50" width="50")
-          span.logoTitle Handshake Alliance
-      a.companyLink(href="https://urkel.io" target="_blank" rel="noopener noreferrer")
-        .urkelContainer
-          span.poweredBy Powered By
-          span.urkel URKEL
-    .spacer
-    .centerContainer
-      span.linksTitle Links
-      a(class="link" href="https://github.com/HandshakeAlliance" target="_blank" rel="noopener noreferrer") GitHub
-      a(class="link" href="https://twitter.com/HNSalliance" target="_blank" rel="noopener noreferrer") Twitter
-      a(class="link" href="https://medium.com/@handshakealliance" target="_blank" rel="noopener noreferrer") Medium
-      a(class="link" href="https://handshake.org" target="_blank" rel="noopener noreferrer") Handshake
-    .spacer
-    .rightContainer
-      span.linksTitle Related
-      a(class="link" href="https://handshakealliance.org" target="_blank" rel="noopener noreferrer") Handshake Alliance
-      //- a(class="link" href="#" disabled) Wallet Generator
-      span.linkDisabled Wallet Generator
-      a(class="link" href="https://faucet.handshakealliance.org" target="_blank" rel="noopener noreferrer") Testnet Faucet
-      a(class="link" href="https://handshake.org/files/handshake.txt" target="_blank" rel="noopener noreferrer") White Paper
+section.footer
+  .footerContent
+    .hnscan
+      img(src="/img/logo.svg" height="125" width="125")
+      .logoMessage
+        .logoText Your trusted source for
+        .logoText on chain Handshake
+        .logoText information.
+      .columnTitle.contactColumn CONTACT
+        .columnItem
+          a(class="contactItem" href="mailto:engineering@urkel.io") engineering@urkel.io
+    .linksContainer
+      .containerOne
+        .footerColumn
+          .columnTitle EXPLORE
+            .columnItem 
+              a(class="columnLink" href="/") Home
+            .columnItem 
+              a(class="columnLink" href="/about") About
+            .columnItem 
+              a(class="columnLink" href="/blocks") Blocks
+            .columnItem 
+              a(class="columnLink" href="/names") Names
+        .footerColumn
+          .columnTitle TOOLS
+            .columnItem 
+              a(class="columnLink" href="/status") Nodes
+            .columnItem 
+              a(class="columnLink" href="/peers") Peers
+            .columnItem 
+              a(class="columnLink" href="/airdrop") Airdrop
+      .containerOne
+        .footerColumn
+          .columnTitle RELATED
+            .columnItem 
+              a(class="columnLink" href="https://handshakeacademy.org" target="_blank" rel="noopener noreferrer") Academy
+            .columnItem 
+              a(class="columnLink" href="https://urkel.io" target="_blank" rel="noopener noreferrer") Urkel
+            .columnItem 
+              a(class="columnLink" href="https://faucet.handshakealliance.org" target="_blank" rel="noopener noreferrer") Faucet
+            .columnItem 
+              a(class="columnLink" href="https://handshake.org/files/handshake.txt" target="_blank" rel="noopener noreferrer") Paper
+        .footerColumn
+          .columnTitle FOLLOW
+            .columnItem 
+              a(class="columnLink" href="https://github.com/HandshakeAlliance" target="_blank" rel="noopener noreferrer") Github
+            .columnItem 
+              a(class="columnLink" href="https://medium.com/@handshakealliance" target="_blank" rel="noopener noreferrer") Medium
+            .columnItem 
+              a(class="columnLink" href="https://twitter.com/HNSalliance" target="_blank" rel="noopener noreferrer") Twitter
+  .legalContent
+    span.source 
+      | Current Version: v#{currentVersion() + " "}
+      a(href="https://github.com/HandshakeAlliance/HNScan" target="_blank" rel="noopener noreferrer") Source
+    | &copy; Handshake Alliance. All Rights Reserved.

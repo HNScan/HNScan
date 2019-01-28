@@ -61,7 +61,7 @@ body {
 
 /* HOME CARD OVERRIDES - REMOVE ASAP XXX */
 .override {
-  @media (max-width: 805px) {
+  @media (max-width: 808px) {
     flex-direction: column !important;
   }
 }
