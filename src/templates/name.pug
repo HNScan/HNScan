@@ -53,26 +53,26 @@ block content
                       td.stacked
                         span.stackedLabel Value:
                         span.stackedElement=prettyPrintHNS(name.info.value)
-          .column.is-half
-            .tableContainer
-              table.table.is-fullwidth
-                tbody
-                  tr
-                    td.stacked
-                      span.stackedLabel Highest:
-                      span.stackedElement=prettyPrintHNS(name.info.highest)
-                  tr
-                    td.stacked
-                      span.stackedLabel Weak:
-                      span.stackedElement= name.info.weak
-                  tr
-                    td.stacked
-                      span.stackedLabel Transfer:
-                      span.stackedElement= name.info.transfer
-                  tr
-                    td.stacked
-                      span.stackedLabel Revoked:
-                      span.stackedElement= name.info.revoked
+            .column.is-half
+              .tableContainer
+                table.table.is-fullwidth
+                  tbody
+                    tr
+                      td.stacked
+                        span.stackedLabel Highest:
+                        span.stackedElement=prettyPrintHNS(name.info.highest)
+                    tr
+                      td.stacked
+                        span.stackedLabel Weak:
+                        span.stackedElement= name.info.weak
+                    tr
+                      td.stacked
+                        span.stackedLabel Transfer:
+                        span.stackedElement= name.info.transfer
+                    tr
+                      td.stacked
+                        span.stackedLabel Revoked:
+                        span.stackedElement= name.info.revoked
     if (name.records)
           .card
             header.card-header
