@@ -198,11 +198,32 @@ async function _getNameHistoryDaemon(name) {
   return history;
 }
 
+async function getTX(hash) {
+  if (config.has("urkel-url")) {
+    return _getTXUrkel(hash);
+  } else {
+    return _getTXDaemon(hash);
+  }
+}
+
+async function _getTXUrkel(hash) {
+  return null;
+}
+
+async function _getTXDaemon(hash) {
+  const client = getClient();
+
+  let tx = await client.getTX(hash);
+
+  return tx;
+}
+
 module.exports = {
   getAddressBalance: getAddressBalance,
   getAddressHistory: getAddressHistory,
   getBlocks: getBlocks,
   getBlock: getBlock,
   getName: getName,
-  getNameHistory: getNameHistory
+  getNameHistory: getNameHistory,
+  getTX: getTX
 };

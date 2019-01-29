@@ -1,10 +1,8 @@
-const { getClient } = require("../util/clients.js");
+const { getBlock } = require("../util/api.js");
 
 async function txsHandler(request, h) {
   // let amount;
   // let page;
-
-  const client = getClient();
 
   // if (request.query.amt) {
   //   amount = request.query.amt;
@@ -43,7 +41,7 @@ async function txsHandler(request, h) {
   if (request.query.block) {
     blockNumber = parseInt(request.query.block);
 
-    let block = await client.getBlock(blockNumber);
+    let block = await getBlock(blockNumber);
 
     txs = block.txs;
   }

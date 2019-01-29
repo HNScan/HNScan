@@ -6,6 +6,7 @@ async function addressHandler(request, h) {
   let balance;
   let page;
 
+  //XXX Wrap pagination variables into one function.
   if (request.query.p) {
     page = parseInt(request.query.p);
   } else {
