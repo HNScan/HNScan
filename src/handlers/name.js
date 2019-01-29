@@ -1,6 +1,6 @@
 const { formatAuctionHistory } = require("../util/util.js");
 
-const { getNamem, getNameHistory } = require("../util/api.js");
+const { getName, getNameHistory } = require("../util/api.js");
 
 async function blockHandler(request, h) {
   const name = request.params.name;

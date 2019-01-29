@@ -2,7 +2,11 @@ const config = require("config");
 const assert = require("bsert");
 const { getClient, getNomenclate } = require("./clients.js");
 
-const { formatTransactions, formatName } = require("../util/util.js");
+const {
+  formatTransactions,
+  formatName,
+  formatAuctionHistory
+} = require("../util/util.js");
 
 /**
  * getAddressHistory
@@ -199,5 +203,6 @@ module.exports = {
   getAddressHistory: getAddressHistory,
   getBlocks: getBlocks,
   getBlock: getBlock,
-  getName: getName
+  getName: getName,
+  getNameHistory: getNameHistory
 };
