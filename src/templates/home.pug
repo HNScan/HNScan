@@ -16,11 +16,14 @@ block content
                 span=hashrateData[1].abbreviation + "H/s"
           .column.is-one-third.columnCentered
             .cardItemContainer
-              .cardItemLabel Unconfirmed Transactions
+              .cardItemLabel Unconfirmed
               .cardItemDetail
                 - let unconfirmed = formatLargeNumber(txsSizeB, 2)
-                span=unconfirmedTxs + " tx "
-                span (#{unconfirmed[0]} #{unconfirmed[1].abbreviation}B)
+                if (txsSizeB === 0)
+                  span="-"
+                else
+                  span=unconfirmedTxs + " tx "
+                  span (#{unconfirmed[0]} #{unconfirmed[1].abbreviation}B)
           .column.is-one-third.columnCentered
             .cardItemContainer
               .cardItemLabel Network
