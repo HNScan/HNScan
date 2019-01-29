@@ -13,8 +13,11 @@ namesHandler = require("./handlers/names.js");
 peersHandler = require("./handlers/tools/peers.js");
 statusHandler = require("./handlers/tools/status.js");
 airdropHandler = require("./handlers/tools/airdrop.js");
-searchHandler = require("./handlers/search.js");
+airdropclaimHandler = require("./handlers/tools/airdropclaim.js");
 
+//XXX Move these to an API folder or something along those lines - in the handlers folder structure.
+searchHandler = require("./handlers/search.js");
+submitclaimHandler = require("./handlers/tools/submitclaim.js");
 
 if (process.env.NODE_ENV !== "production") {
   //For development only routes.
@@ -141,6 +144,11 @@ var routes = [
     handler: airdropHandler
   },
   {
+    method: "GET",
+    path: "/airdropclaim",
+    handler: airdropclaimHandler
+  },
+  {
     method: "POST",
     path: "/search",
     handler: searchHandler,
@@ -148,6 +156,21 @@ var routes = [
       validate: {
         query: {
           q: Joi.string()
+        }
+      }
+    }
+  },
+  {
+    method: "POST",
+    path: "/submitclaim",
+    handler: submitclaimHandler,
+    options: {
+      validate: {
+        query: {
+          confirm: Joi.bool()
+        },
+        payload: {
+          addr: Joi.string()
         }
       }
     }

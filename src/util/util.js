@@ -93,6 +93,10 @@ async function _formatOutputs(outputs) {
         newOutput.value = output.value;
         break;
 
+      case "REDEEM":
+        console.log(items);
+        break;
+
       //Finish cases, add some tests for these.
       // case "REGISTER":
     }
@@ -156,6 +160,8 @@ async function formatAuctionHistory(name, txs) {
             newtx.value = o.value;
           }
 
+          //XXX Add owner information to this.
+          //See if this is called on a transfer as well.
           if (cov.isRegister()) {
             //Link to the data on a new page.
             newtx.action = "Register";
@@ -165,6 +171,7 @@ async function formatAuctionHistory(name, txs) {
             //Redeem non winning bids?
             //Possibly also connect these to reveals and bids.
             newtx.action = "Redeem";
+            newtx.value = o.value;
           }
 
           if (cov.isUpdate()) {
@@ -208,10 +215,57 @@ async function namesRegistered() {
   return namesClosed;
 }
 
+function formatName(name) {
+  //See: https://github.com/handshake-org/hsd/issues/74
+  //XXX Submit P.R. To fix this.
+  if (name.info && name.info.value === 0) {
+    name.info.value = name.info.highest;
+  }
+
+  name.nextState = formatNameNextState(name);
+
+  return name;
+}
+
+function formatNameNextState(name) {
+  let nextState = {};
+
+  if (name.info) {
+    switch (name.info.state) {
+      case "OPENING":
+        nextState.state = "BIDDING";
+        nextState.blocksUntil = name.info.stats.blocksUntilBidding;
+        break;
+
+      case "BIDDING":
+        nextState.state = "REVEAL";
+        nextState.blocksUntil = name.info.stats.blocksUntilReveal;
+        break;
+
+      case "REVEAL":
+        nextState.state = "CLOSED";
+        nextState.blocksUntil = name.info.stats.blocksUntilClose;
+        break;
+
+      case "CLOSED":
+        nextState.state = "RENEWAL";
+        nextState.blocksUntil = name.info.stats.blocksUntilExpire;
+        break;
+    }
+  } else {
+    //Check if name is released or not. If it is, then change it's state.
+    nextState.state = "AVAILABLE";
+  }
+
+  return nextState;
+}
+
 module.exports = {
   getBlockTotalFees: getBlockTotalFees,
   currentBlockReward: currentBlockReward,
   formatTransactions: formatTransactions,
   formatAuctionHistory: formatAuctionHistory,
-  namesRegistered: namesRegistered
+  namesRegistered: namesRegistered,
+  formatNameNextState: formatNameNextState,
+  formatName: formatName
 };
