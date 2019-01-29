@@ -174,6 +174,8 @@ async function _getNameDaemon(name) {
 
   let data = await client.execute("getnameinfo", [name]);
 
+  data.name = name;
+
   //Format Next State Data.
   let nameData = formatName(data);
 

@@ -230,11 +230,21 @@ function formatName(name) {
 function formatNameNextState(name) {
   let nextState = {};
 
-  if (name.info.stats) {
+  if (name.info) {
     switch (name.info.state) {
       case "OPENING":
         nextState.state = "BIDDING";
         nextState.blocksUntil = name.info.stats.blocksUntilBidding;
+        break;
+
+      case "BIDDING":
+        nextState.state = "REVEAL";
+        nextState.blocksUntil = name.info.stats.blocksUntilReveal;
+        break;
+
+      case "REVEAL":
+        nextState.state = "CLOSED";
+        nextState.blocksUntil = name.info.stats.blocksUntilClose;
         break;
 
       case "CLOSED":
@@ -242,6 +252,9 @@ function formatNameNextState(name) {
         nextState.blocksUntil = name.info.stats.blocksUntilExpire;
         break;
     }
+  } else {
+    //Check if name is released or not. If it is, then change it's state.
+    nextState.state = "AVAILABLE";
   }
 
   return nextState;

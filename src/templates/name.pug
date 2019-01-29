@@ -2,79 +2,78 @@ extends layouts/layout
 
 block content
   .contentContainer
+    .card
+      header.card-header
+        p.card-header-title Name Summary
+      .card-content
+        .columns
+          .column
+            .blockFullLabel Name
+            .blockFullDetail= name.name
+          .column
+            .blockFullLabel Release Block
+            .blockFullDetail= name.start.start
+          .column
+            .blockFullLabel Reserved
+            .blockFullDetail= name.start.reserved
+        if (name.info)
+          .columns
+            .column
+              .blockFullLabel State
+              .blockFullDetail= name.info.state
+            .column
+              .blockFullLabel Blocks Until Next State
+              .blockFullDetail=name.nextState.blocksUntil + " " + "( ~" + humanizeDuration(name.nextState.blocksUntil * 600000, {largest: 1}) + " )"
+            .column
+              .blockFullLabel Next State
+              .blockFullDetail=name.nextState.state
     if (name.info)
-        .card
-          header.card-header
-            p.card-header-title Name Summary
-          .card-content
-            .columns
-              .column
-                .blockFullLabel Name
-                .blockFullDetail= name.info.name
-              .column
-                .blockFullLabel State
-                .blockFullDetail= name.info.state
-              .column
-                .blockFullLabel Claimed
-                .blockFullDetail= name.info.claimed
-            .columns
-              .column
-                .blockFullLabel Next State
-                .blockFullDetail=name.nextState.state
-              .column
-                .blockFullLabel Blocks Until Next State
-                .blockFullDetail= name.nextState.blocksUntil
-              .column
-                .blockFullLabel Claimed
-                .blockFullDetail= name.info.claimed
-
-        .card
-          header.card-header
-            p.card-header-title Advanced
-          .card-content
-            .columns
-              .column.is-half
-                .tableContainer
-                  table.table.is-fullwidth
-                    tbody
-                      tr
-                        td.stacked
-                          span.stackedLabel Name Hash:
-                          span.stackedElement= name.info.nameHash
-                      tr
-                        td.stacked
-                          span.stackedLabel Height:
-                          span.stackedElement=name.info.height
-                      tr
-                        td.stacked
-                          span.stackedLabel Renewal:
-                          span.stackedElement=name.info.renewal
-                      tr
-                        td.stacked
-                          span.stackedLabel Value:
-                          span.stackedElement=prettyPrintHNS(name.info.value)
-              .column.is-half
-                .tableContainer
-                  table.table.is-fullwidth
-                    tbody
-                      tr
-                        td.stacked
-                          span.stackedLabel Highest:
-                          span.stackedElement=prettyPrintHNS(name.info.highest)
-                      tr
-                        td.stacked
-                          span.stackedLabel Weak:
-                          span.stackedElement= name.info.weak
-                      tr
-                        td.stacked
-                          span.stackedLabel Transfer:
-                          span.stackedElement= name.info.transfer
-                      tr
-                        td.stacked
-                          span.stackedLabel Revoked:
-                          span.stackedElement= name.info.revoked
-
-        if (name.records)
+      .card
+        header.card-header
+          p.card-header-title Advanced
+        .card-content
+          .columns
+            .column.is-half
+              .tableContainer
+                table.table.is-fullwidth
+                  tbody
+                    tr
+                      td.stacked
+                        span.stackedLabel Name Hash:
+                        span.stackedElement= name.info.nameHash
+                    tr
+                      td.stacked
+                        span.stackedLabel Height:
+                        span.stackedElement=name.info.height
+                    tr
+                      td.stacked
+                        span.stackedLabel Renewal:
+                        span.stackedElement=name.info.renewal
+                    tr
+                      td.stacked
+                        span.stackedLabel Value:
+                        span.stackedElement=prettyPrintHNS(name.info.value)
+          .column.is-half
+            .tableContainer
+              table.table.is-fullwidth
+                tbody
+                  tr
+                    td.stacked
+                      span.stackedLabel Highest:
+                      span.stackedElement=prettyPrintHNS(name.info.highest)
+                  tr
+                    td.stacked
+                      span.stackedLabel Weak:
+                      span.stackedElement= name.info.weak
+                  tr
+                    td.stacked
+                      span.stackedLabel Transfer:
+                      span.stackedElement= name.info.transfer
+                  tr
+                    td.stacked
+                      span.stackedLabel Revoked:
+                      span.stackedElement= name.info.revoked
+    if (name.records)
           .card
             header.card-header
               p.card-header-title Records
@@ -89,39 +88,26 @@ block content
                   tr
                     td=key
                     td=value
-    // else
-    //     .card
-    //       header.card-header
-    //         p.card-header-title Name Summary
-    //       .card-content
-    //         .columns
-    //           .column
-    //             .blockFullLabel Name
-    //             .blockFullDetail= auction.name
-    //           .column
-    //             .blockFullLabel State
-    //             .blockFullDetail AUCTION
-    //           .column
     .card
-      header.card-header
-        p.card-header-title History
-      .card-content
-        table.table.is-fullwidth
-          thead
-            tr
-              td Action
-              td Time
-              td Block Height
-              td Value
-          tbody
-          each tx in history
-            tr
-              td=tx.action
-              td=timeAgo(tx.time)
-              td
-                a(href=`/block/${tx.height}`)=tx.height
-              if tx.value
-                td=prettyPrintHNS(tx.value)
-              else
+        header.card-header
+          p.card-header-title History
+        .card-content
+          table.table.is-fullwidth
+            thead
+              tr
+                td Action
+                td Time
+                td Block Height
+                td Value
+            tbody
+            each tx in history
+              tr
+                td=tx.action
+                td=timeAgo(tx.time)
                 td
+                  a(href=`/block/${tx.height}`)=tx.height
+                if tx.value
+                  td=prettyPrintHNS(tx.value)
+                else
+                  td
 
