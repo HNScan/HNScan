@@ -115,6 +115,13 @@ async function _getAddressBalanceDaemon(addressHash) {
   return balance;
 }
 
+/**
+ * getBlocks
+ *
+ * @param from - block height to start from (Inclusive).
+ * @param to - block height to go to (Inclusive).
+ * @returns {undefined}
+ */
 async function getBlocks(from, to) {
   assert(from < to);
   assert(from >= -1);

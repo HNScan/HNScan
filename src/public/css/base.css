@@ -30,6 +30,7 @@ body {
 .cardItemContainer {
   width: 80%;
   max-width: 300px;
+  text-align: center;
 
   @media (max-width: $mobile) {
     text-align: center;
