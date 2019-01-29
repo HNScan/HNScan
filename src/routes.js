@@ -170,7 +170,8 @@ var routes = [
           confirm: Joi.bool()
         },
         payload: {
-          addr: Joi.string()
+          addr: Joi.string(),
+          proof: Joi.string()
         }
       }
     }

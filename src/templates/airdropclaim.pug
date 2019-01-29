@@ -4,7 +4,7 @@ block content
   .contentContainer
     .card
       header.card-header
-        p.card-header-title Claim Your Airdrop
+        h1.card-header-title Header Claim Your Airdrop
       .card-content
         .columns
           .column.is-half
@@ -23,32 +23,100 @@ block content
               // br
               // label.radio
               //   input(name="claim" type="radio")
-              //   | Investor Claim
+              //   | Sponsor/Investor
           .column.is-half
-            h1 Claim Your Faucet Handshake
-            span This will submit your claim for the airdrop, and deposit the HNS into the private key that was provided to you in the faucet. We do not have access to your HNS, we are simply processing the claim for you.
-            form(onsubmit="submitClaim(event)")
-              input(placeholder="Provided HNS Address")
-              input(value="Confirm Claim" type="submit")
+            .airdropClaimContainer
+              h1.airdropTitle Claim Your Faucet HNS
+              span.airdropDescription This will first generate your proof for the airdrop. You can either submit that proof yourself, or submit through HNScan. Once your proof has been submitted and mined, the HNS is deposited into the address associated with the private key provided to you in the faucet. We do not have access to your HNS, we are simply processing the claim for you.
+              p.error#airdropError
+              form(onsubmit="submitClaim(event)")#airdropSubmitForm
+                .control#airdropAddressControl
+                input(placeholder="Provided HNS Address" class="input")#airdropAddress
+                input(value="Confirm Claim" type="submit" class="button is-rounded").airdropButton
+              form(onsubmit="confirmClaim(event)")#airdropConfirmForm
+                textarea.textarea#proof(disabled)
+                input(value="Send Claim" type="submit").button.is-rounded.airdropButton
+              .successMessage#successMessage
+                svg.checkmark#svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width="70")
+                  circle.checkmarkCircle(cx="26" cy="26" r="23" fill="none")
+                  path.checkmarkCheck(fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8")
+                span Your airdrop claim has been submitted!
 
   script.
     function submitClaim(e) {
+      let submitForm = document.getElementById("airdropSubmitForm");
+      let confirmForm = document.getElementById("airdropConfirmForm");
+      let error = document.getElementById("airdropError");
+      let addressInputControl = document.getElementById("airdropAddressControl");
+
       e.preventDefault();
       const xhr = new XMLHttpRequest();
+
+      let address = document.getElementById("airdropAddress").value;
+
+      //Check for bad address values
+      if (address === "") {
+        error.innerHTML = "Please enter an address";
+        return;
+      }
+
+      //Build form data.
       var data = new FormData();
-      data.append("addr", "hs1qvgffevanjay84nymtm2xs6s8nts4eagulwfdhu");
+      data.append("addr", address);
+
+
 
       xhr.onreadystatechange = () => {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          console.log(xhr.responseText);
-        } else {
-          console.log("Error" + xhr.responseText);
+        if (xhr.readyState == 2 || xhr.readyState == 3) {
+          addressInputControl.classList.add("is-loading");
+        } else if (xhr.readyState == 4 && xhr.status == 200) {
+          addressInputControl.classList.remove("is-loading");
+          let data = JSON.parse(xhr.responseText)
+          let proofstring = data.proof;
+          //Hide Submit Form
+          submitForm.style.display = "none";
+          confirmForm.style.display = "block";
+          document.getElementById('proof').value = proofstring;
+
+        } else if (xhr.readyState == 4 && xhr.status >= 400){
+          addressInputControl.classList.remove("is-loading");
+          error.innerHTML = xhr.responseText;
         }
       };
       xhr.open("POST", "/submitclaim");
       xhr.send(data);
 
     }
+
+    function confirmClaim(e) {
+      e.preventDefault();
+      let confirmForm = document.getElementById("airdropConfirmForm");
+      let proofstring = document.getElementById("proof").value;
+      let successMessage = document.getElementById("successMessage");
+      let svg = document.getElementById("svg");
+
+      console.log(proofstring);
+
+      const xhr = new XMLHttpRequest();
+
+      var data = new FormData();
+      data.append("proof", proofstring);
+
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          confirmForm.style.display = "none";
+          successMessage.style.display = "block";
+          svg.classList.add("active");
+        } else if (xhr.readyState == 4 && xhr.status >= 400) {
+          error.innerHTML = xhr.responseText;
+        }
+      };
+
+      xhr.open("POST", "/submitclaim?confirm=true");
+      xhr.send(data);
+    }
+
+
 
 
 

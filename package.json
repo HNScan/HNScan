@@ -25,6 +25,7 @@
     "boom": "^7.2.2",
     "browser-sync": "^2.26.3",
     "bsert": "0.0.8",
+    "bstring": "^0.3.5",
     "config": "^2.0.1",
     "cssnano": "^4.1.7",
     "decimal.js": "^10.0.1",

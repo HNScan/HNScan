@@ -19,9 +19,5 @@
 .hugeBlock {
   width: auto;
   height: 85px;
-  opacity: .7;
-}
-
-path {
-  fill: blue;
+  opacity: 0.7;
 }
