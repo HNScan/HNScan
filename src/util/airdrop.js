@@ -80,7 +80,6 @@ async function readFile(...path) {
   if (!(await fs.exists(file))) {
     const url = `${GITHUB_URL}/${path.join("/")}`;
 
-    console.log("Downloading: %s...", url);
 
     const req = await request({
       url,
@@ -116,8 +115,6 @@ async function createProof(key, priv, bare = false) {
 
     if (index === -1) throw new Error("Could not find leaf.");
 
-    console.log("Creating proof from leaf...");
-
     const proof = merkle.createBranch(blake2b, index, leaves);
     const p = new AirdropProof();
 
@@ -132,20 +129,14 @@ async function createProof(key, priv, bare = false) {
 
   assert(priv);
 
-  console.log("Decrypting nonce...");
-
   const nonce = await findNonce(key, priv);
 
   if (bare) key.applyNonce(nonce);
   else key.applyTweak(nonce);
 
-  console.log("Finding merkle leaf...");
-
   const [index, subindex] = findLeaf(leaves, key.hash());
 
   if (index === -1) throw new Error("Could not find leaf.");
-
-  console.log("Creating proof from leaf...");
 
   const subtree = leaves[index];
   const subproof = merkle.createBranch(blake2b, subindex, subtree);
