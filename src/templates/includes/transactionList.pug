@@ -35,9 +35,10 @@
                 each output in tx.outputs
                   .outputTX
                     if (output.action === "NONE")
-                      span #{prettyPrintHNS(output.value)} to
-                      //- a(href=`/address/${output.address}`)=output.address
-                      span=output.address
+                      span
+                      | #{prettyPrintHNS(output.value)} to #{" "}
+                      a(href=`/address/${output.address}`)=output.address
+                      // span=output.address
                     else if (output.action === "BID")
                       span
                         | #{output.action} for #{" "}
