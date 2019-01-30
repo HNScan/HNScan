@@ -200,7 +200,10 @@ async function _getNameHistoryUrkel(name) {}
 async function _getNameHistoryDaemon(name) {
   const nomenclate = getNomenclate();
 
-  data = await nomenclate.getNameHistory(name);
+  //XXX Janky way to skip pagination for right now where we make the limit extremely high.
+  //We won't bump up against issues here until the histories become extremely large, but
+  //This will fix our truncation issues on auction history until we implement pagination.
+  data = await nomenclate.getNameHistory(name, 1, 10000);
 
   history = await formatAuctionHistory(name, data.result);
 
