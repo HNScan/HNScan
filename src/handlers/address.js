@@ -8,7 +8,7 @@ async function addressHandler(request, h) {
 
   let limit = request.query.limit;
   let page = request.query.p;
-  let offset = page === 1 ? 0 : (page - 1) * limit;
+  let offset = (page - 1) * limit;
 
   try {
     address = await getAddress(hash, limit, offset);
@@ -16,12 +16,7 @@ async function addressHandler(request, h) {
     console.error(e);
   }
 
-  let pagination = paginate(
-    address.total_txs,
-    limit,
-    offset,
-    "address/" + hash
-  );
+  let pagination = paginate(address.total_txs, limit, page, "address/" + hash);
 
   return h.view("address.pug", {
     address,

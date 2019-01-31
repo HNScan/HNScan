@@ -23,7 +23,7 @@ async function getAddress(hash, limit = 10, offset = 0) {
   }
 }
 
-async function getAddressUrkel(hash, limit = 10, offseet = 0) {
+async function getAddressUrkel(hash, limit = 10, offset = 0) {
   return null;
 }
 
@@ -61,7 +61,7 @@ async function _getAddressHistory(hash, limit = 10, offset = 0) {
   //Declare functionwide vars
   let txs = [];
 
-  let data = await nomenclate.getAddressHistory(hash, 1);
+  let data = await nomenclate.getAddressHistory(hash, limit, offset);
 
   for (let tx of data.result) {
     let newtx = await client.getTX(tx.tx_hash);

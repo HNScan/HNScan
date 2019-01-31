@@ -269,15 +269,7 @@ function checkUrkel() {
   }
 }
 
-function paginate(total, limit, offset, url) {
-  let page;
-
-  if (offset === 0) {
-    page = 1;
-  } else {
-    page = Math.ceil(offset / limit);
-  }
-
+function paginate(total, limit, page, url) {
   return (pagination = {
     url: url,
     page: page,
