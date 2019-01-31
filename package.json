@@ -51,6 +51,7 @@
     "postcss-import": "^12.0.1",
     "precss": "^3.1.2",
     "pug": "^2.0.3",
+    "urkel-js": "^0.4.0",
     "vision": "^5.4.3"
   },
   "babel": {

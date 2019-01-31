@@ -1,6 +1,7 @@
 const config = require("config");
 const assert = require("bsert");
-const { getClient, getNomenclate } = require("./clients.js");
+const { getClient, getNomenclate, getUrkel } = require("./clients.js");
+const Urkel = require("urkel-js");
 
 const {
   formatTransactions,
@@ -20,7 +21,7 @@ async function getAddressHistory(addressHash, page) {
   assert(page);
 
   //Check if Urkel is enabled in the config.
-  if (config.has("urkel-url")) {
+  if (config.has("urkel-enabled") && config.has("urkel-api-key")) {
     return _getAddressHistoryUrkel(addressHash, page);
   } else {
     return _getAddressHistoryDaemon(addressHash, page);
@@ -77,7 +78,7 @@ async function getAddressBalance(addressHash) {
   assert(addressHash);
 
   //Check if Urkel is enabled in the config.
-  if (config.has("urkel-url")) {
+  if (config.has("urkel-enabled")) {
     return _getAddressBalanceUrkel(addressHash);
   } else {
     return _getAddressBalanceDaemon(addressHash);
@@ -130,16 +131,25 @@ async function getBlocks(from, to) {
 
   //Flip so that blocks return in the correct order
   for (let i = to; i > from; i--) {
-    let block = await getBlock(i);
+    let block;
+    try {
+      block = getBlock(i);
+    } catch (e) {
+      console.log(e);
+    }
 
     blocks.push(block);
   }
 
-  return blocks;
+  let newblocks = await Promise.all(blocks);
+
+  console.log(newblocks);
+
+  return newblocks;
 }
 
 async function getBlock(height) {
-  if (config.has("urkel-url")) {
+  if (config.has("urkel-enabled") && config.has("urkel-api-key")) {
     return _getBlockUrkel(height);
   } else {
     return _getBlockDaemon(height);
@@ -155,10 +165,20 @@ async function _getBlockDaemon(height) {
   return block;
 }
 
-async function _getBlockUrkel(height) {}
+async function _getBlockUrkel(height) {
+  // let urkel = getUrkel();
+  let client = getClient();
+  let urkel = new Urkel("hns", "eyJhbGciOiJIUzasdflNiIsInR5cCI6IkpXVCJ9");
+
+  let block = await urkel.block(height);
+  block.tx = block.txs;
+  block.coinbaseTx = await client.getTX(block.tx[0].hash);
+
+  return block;
+}
 
 async function getName(name) {
-  if (config.has("urkel-url")) {
+  if (config.has("urkel-enabled")) {
     return _getNameUrkel(name);
   } else {
     return _getNameDaemon(name);
@@ -188,7 +208,7 @@ async function _getNameDaemon(name) {
 }
 
 async function getNameHistory(name) {
-  if (config.has("urkel-url")) {
+  if (config.has("urkel-enabled")) {
     return _getNameHistoryUrkel(name);
   } else {
     return _getNameHistoryDaemon(name);
@@ -211,7 +231,7 @@ async function _getNameHistoryDaemon(name) {
 }
 
 async function getTX(hash) {
-  if (config.has("urkel-url")) {
+  if (config.has("urkel-enabled")) {
     return _getTXUrkel(hash);
   } else {
     return _getTXDaemon(hash);

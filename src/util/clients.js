@@ -1,6 +1,7 @@
 const config = require("config");
 const { WalletClient, NodeClient } = require("hs-client");
 const NomenclateClient = require("nomenclate-js");
+const Urkel = require("urkel-js");
 
 const { Network } = require("hsd");
 const network = Network.get(config.get("node-network"));
@@ -28,6 +29,7 @@ let _walletClient;
 let _client;
 let _wallet;
 let _nomenclate;
+let _urkel;
 
 //Can't figure out error handling on here... Doesn't respect Try/Catch blocks.
 //XXX
@@ -36,6 +38,10 @@ async function initWalletAndClient() {
   _wallet = await _walletClient.wallet(config.get("wallet-id"));
   _client = new NodeClient(clientOptions);
   _nomenclate = new NomenclateClient(nomenclateOptions);
+  if (config.has("urkel-enabled")) {
+    console.log(config.get("urkel-api-key"));
+    _urkel = new Urkel("hns", config.get("urkel-api-key"));
+  }
   await _client.open();
   await _walletClient.open();
   await _wallet.open();
@@ -58,9 +64,14 @@ function getWalletClient() {
   return _walletClient;
 }
 
+function getUrkel() {
+  return _urkel;
+}
+
 module.exports.getWallet = getWallet;
 module.exports.getClient = getClient;
 module.exports.getNomenclate = getNomenclate;
+module.exports.getUrkel = getUrkel;
 module.exports.getWalletClient = getWalletClient;
 module.exports.initWalletAndClient = initWalletAndClient;
 module.exports.network = network;
