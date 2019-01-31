@@ -1,11 +1,10 @@
 extends layouts/layout
-//- txData = nomenclate transaction history for addresses
 
 block content
   .contentContainer
     .addressContainer
       .addressTitle Address
-      .addressHash #{addressHash}
+      .addressHash #{address.hash}
     .card
       header.card-header
         p.card-header-title Address Summary
@@ -13,37 +12,14 @@ block content
         .columns
           .column
             .blockFullLabel Received
-            .blockFullDetail=prettyPrintHNS(balance.received)
+            .blockFullDetail=prettyPrintHNS(address.balance.received)
           .column
             .blockFullLabel Spent
             //- XXX This value is not accurate for real txs
-            .blockFullDetail=prettyPrintHNS(balance.spent)
+            .blockFullDetail=prettyPrintHNS(address.balance.spent)
           .column
             .blockFullLabel Balance
-            .blockFullDetail=prettyPrintHNS(balance.confirmed)
-    if (txs)
+            .blockFullDetail=prettyPrintHNS(address.balance.confirmed)
+    if (address.txs.length > 0)
+      - let txs = address.txs;
       include includes/transactionList.pug
-
-    ////- Build out the transaction history
-    //.card
-    //  header.card-header
-    //    p.card-header-title=`${txData.length} Transactions`
-    //  .card-content
-    //    if (txData)
-    //      each tx, index in txData
-    //        .txsContainer
-    //          .txHashWrapper=`TX ${index + 1}:`
-    //            | &nbsp;
-    //            a(href=`/tx/${tx.tx_hash}`).is-hidden-touch #{tx.tx_hash}
-    //            a(href=`/tx/${tx.tx_hash}`).is-hidden-desktop #{truncateHash(tx.tx_hash, 7)}
-    //          .columns
-    //            .column.is-half
-    //              .txsPutsContainer
-    //                span.txsTitle 1 Input
-    //                .inputContainer
-    //                  span 0 HNS from N/A
-    //            .column.is-half
-    //              .txsPutsContainer
-    //                span.txsTitle 1 Output
-    //                .outputContainer
-    //                  span 0 for N/A to N/A

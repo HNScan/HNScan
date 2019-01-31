@@ -1,32 +1,31 @@
 const { getAddress } = require("../api");
 
+const { paginate } = require("../util/util.js");
+
 async function addressHandler(request, h) {
-  const addressHash = request.params.addressHash;
-  let page;
+  const hash = request.params.hash;
   let address;
 
-  //XXX Wrap pagination variables into one function.
-  if (request.query.p) {
-    page = parseInt(request.query.p);
-  } else {
-    page = 1;
-  }
+  let limit = request.query.limit;
+  let page = request.query.p;
+  let offset = page === 1 ? 0 : (page - 1) * limit;
 
   try {
-    address = await getAddress(addressHash, 10, page);
+    address = await getAddress(hash, limit, offset);
   } catch (e) {
     console.error(e);
   }
 
-  let totalPages = Math.ceil(address.total_txs / 10);
+  let pagination = paginate(
+    address.total_txs,
+    limit,
+    offset,
+    "address/" + hash
+  );
 
   return h.view("address.pug", {
     address,
-    pagination: {
-      url: `address/${addressHash}`,
-      page,
-      totalPages
-    }
+    pagination
   });
 }
 

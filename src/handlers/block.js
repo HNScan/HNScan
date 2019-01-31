@@ -1,5 +1,7 @@
 const { getClient } = require("../util/clients.js");
 
+const { getBlock } = require("../util/api.js");
+
 //Handshake Helpers Functions
 const {
   getBlockTotalFees,
@@ -29,33 +31,34 @@ async function blockHandler(request, h) {
 
   let offset = (page - 1) * amount;
 
-  let block;
-  let txs;
-  try {
-    block = await client.execute("getblockbyheight", [blockNumber, true, true]);
-    block.coinbaseTx = await client.getTX(block.tx[0].txid);
-    txsBlock = await client.getBlock(blockNumber);
+  let block = await getBlock(blockNumber);
+  console.log(block);
+  let txs = block.tx;
+  //try {
+  //  block = await client.execute("getblockbyheight", [blockNumber, true, true]);
+  //  block.coinbaseTx = await client.getTX(block.tx[0].txid);
+  //  txsBlock = await client.getBlock(blockNumber);
 
-    //Temporary Hack XXX
-    txsBlock.txs[0].height = block.height;
+  //  //Temporary Hack XXX
+  //  txsBlock.txs[0].height = block.height;
 
-    totalPages = Math.ceil(txsBlock.txs.length / amount);
+  //  totalPages = Math.ceil(txsBlock.txs.length / amount);
 
-    if (offset > txsBlock.txs.length) {
-      return h.response().code(404);
-    }
+  //  if (offset > txsBlock.txs.length) {
+  //    return h.response().code(404);
+  //  }
 
-    txs = await formatTransactions(
-      txsBlock.txs.slice(offset, offset + (amount - 1))
-    );
+  //  txs = await formatTransactions(
+  //    txsBlock.txs.slice(offset, offset + (amount - 1))
+  //  );
 
-    block.totalFees = getBlockTotalFees(block.coinbaseTx, block.height);
-    block.reward = currentBlockReward(block.height);
-    //Cleanup
-    delete block.tx;
-  } catch (e) {
-    console.log(e);
-  }
+  //  block.totalFees = getBlockTotalFees(block.coinbaseTx, block.height);
+  //  block.reward = currentBlockReward(block.height);
+  //  //Cleanup
+  //  delete block.tx;
+  //} catch (e) {
+  //  console.log(e);
+  //}
 
   return h.view("block.pug", {
     block,

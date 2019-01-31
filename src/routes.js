@@ -34,6 +34,24 @@ var routes = [
   },
   {
     method: "GET",
+    path: "/address/{hash}",
+    handler: addressHandler,
+    options: {
+      validate: {
+        params: {
+          hash: Joi.string()
+        },
+        query: {
+          limit: Joi.number()
+            .max(50)
+            .default(10),
+          p: Joi.number().default(1)
+        }
+      }
+    }
+  },
+  {
+    method: "GET",
     path: "/about",
     handler: function(request, h) {
       return h.view("about.pug", {});
@@ -92,21 +110,6 @@ var routes = [
           end: Joi.string(),
           p: Joi.string(),
           amt: Joi.string()
-        }
-      }
-    }
-  },
-  {
-    method: "GET",
-    path: "/address/{addressHash}",
-    handler: addressHandler,
-    options: {
-      validate: {
-        params: {
-          addressHash: Joi.string()
-        },
-        query: {
-          p: Joi.string()
         }
       }
     }
