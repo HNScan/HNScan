@@ -17,6 +17,8 @@ After cloning this repository:
 
  Running a local version of HNScan requires a handshake client in order to operate correctly. If you do not have a handshake    client currently running on your machine, refer to the handshake docs to get one started - [Handshake Docs](https://handshake-org.github.io/api-docs/?shell--cli#introduction)
 
+ HNScan also requires a nomenclate instance to be running. We suggest running nomenclate as a plugin to HSD which you can find instructions for doing so here: https://github.com/HandshakeAlliance/nomenclate
+
  ```
 # Install the dependencies
  > npm install
