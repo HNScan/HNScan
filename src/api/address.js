@@ -23,8 +23,12 @@ async function getAddress(hash, limit = 10, offset = 0) {
   }
 }
 
-async function getAddressUrkel(hash, limit = 10, offset = 0) {
-  return null;
+async function _getAddressUrkel(hash, limit = 10, offset = 0) {
+  const urkel = getUrkel();
+
+  let address = await urkel.address(hash, limit, offset);
+
+  return address;
 }
 
 async function _getAddressDaemon(hash, limit = 10, offset = 0) {

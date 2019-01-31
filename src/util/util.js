@@ -45,6 +45,7 @@ async function _formatInputs(inputs, height) {
   let newInputs = [];
   let client = getClient();
 
+  //XXX Does not work for airdrops right now.
   for (let input of inputs) {
     if (!input.coin) {
       input.reward = currentBlockReward(height);
