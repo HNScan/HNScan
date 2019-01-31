@@ -1,10 +1,9 @@
-const { getAddressHistory, getAddressBalance } = require("../util/api.js");
+const { getAddress } = require("../api");
 
 async function addressHandler(request, h) {
   const addressHash = request.params.addressHash;
-  let data;
-  let balance;
   let page;
+  let address;
 
   //XXX Wrap pagination variables into one function.
   if (request.query.p) {
@@ -14,18 +13,15 @@ async function addressHandler(request, h) {
   }
 
   try {
-    data = await getAddressHistory(addressHash, page);
-    balance = await getAddressBalance(addressHash);
+    address = await getAddress(addressHash, 10, page);
   } catch (e) {
     console.error(e);
   }
 
-  let totalPages = Math.ceil(data.total / data.limit);
+  let totalPages = Math.ceil(address.total_txs / 10);
 
   return h.view("address.pug", {
-    addressHash,
-    txs: data.result,
-    balance,
+    address,
     pagination: {
       url: `address/${addressHash}`,
       page,

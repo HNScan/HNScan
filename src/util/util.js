@@ -1,6 +1,7 @@
 const { getClient } = require("./clients.js");
 const Covenant = require("hsd/lib/primitives/covenant");
 const rules = require("hsd/lib/covenants/rules");
+const config = require("config");
 
 function currentBlockReward(blockHeight) {
   //Block Reward starts at 1000, and halves every 340000 blocks
@@ -260,6 +261,14 @@ function formatNameNextState(name) {
   return nextState;
 }
 
+function checkUrkel() {
+  if (config.has("urkel-enabled") && config.has("urkel-api-key")) {
+    return true;
+  } else {
+    return null;
+  }
+}
+
 module.exports = {
   getBlockTotalFees: getBlockTotalFees,
   currentBlockReward: currentBlockReward,
@@ -267,5 +276,6 @@ module.exports = {
   formatAuctionHistory: formatAuctionHistory,
   namesRegistered: namesRegistered,
   formatNameNextState: formatNameNextState,
-  formatName: formatName
+  formatName: formatName,
+  checkUrkel: checkUrkel
 };
