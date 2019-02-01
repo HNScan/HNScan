@@ -61,7 +61,7 @@ async function blockHandler(request, h) {
     block,
     txs,
     pagination: {
-      url: "block",
+      url: `block/${blockNumber}`,
       page,
       totalPages
     }
