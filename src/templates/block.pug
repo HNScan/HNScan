@@ -14,7 +14,7 @@ block content
             .blockFullLabel Total Transactions
             .blockFullDetail
               //- a(href=`/txs?block=${block.height}`)=txs.length
-              span=txs.length
+              span=totalTransactions
           .column
             .blockFullLabel Total Fees
             .blockFullDetail #{prettyPrintHNS(block.totalFees)}

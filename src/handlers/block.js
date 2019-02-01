@@ -31,6 +31,7 @@ async function blockHandler(request, h) {
 
   let block;
   let txs;
+  let totalTransactions;
   try {
     block = await client.execute("getblockbyheight", [blockNumber, true, true]);
     block.coinbaseTx = await client.getTX(block.tx[0].txid);
@@ -38,7 +39,7 @@ async function blockHandler(request, h) {
 
     //Temporary Hack XXX
     txsBlock.txs[0].height = block.height;
-
+    totalTransactions = txsBlock.txs.length;
     totalPages = Math.ceil(txsBlock.txs.length / amount);
 
     if (offset > txsBlock.txs.length) {
@@ -60,6 +61,7 @@ async function blockHandler(request, h) {
   return h.view("block.pug", {
     block,
     txs,
+    totalTransactions,
     pagination: {
       url: `block/${blockNumber}`,
       page,
