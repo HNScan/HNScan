@@ -27,7 +27,7 @@ async function namesHandler(request, h) {
   }
 
   //Double check this works with all edgecases
-  if (offset > names.length) {
+  if (offset >= names.length) {
     h.response().status(404);
   }
 
