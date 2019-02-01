@@ -27,7 +27,7 @@ async function namesHandler(request, h) {
   }
 
   //Double check this works with all edgecases
-  if (offset > names.length) {
+  if (offset >= names.length) {
     h.response().status(404);
   }
 
@@ -44,7 +44,7 @@ async function namesHandler(request, h) {
   });
 
   let returnNames = names.slice(offset, offset + amount);
-  let totalPages = Math.ceil((names.length + 1) / amount);
+  let totalPages = Math.ceil(names.length / amount);
 
   return h.view("names.pug", {
     names: returnNames,
