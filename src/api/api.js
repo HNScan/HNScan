@@ -42,34 +42,7 @@ async function getBlocks(from, to) {
   return newblocks;
 }
 
-async function getBlock(height) {
-  if (config.has("urkel-enabled") && config.has("urkel-api-key")) {
-    return _getBlockUrkel(height);
-  } else {
-    return _getBlockDaemon(height);
-  }
-}
 
-async function _getBlockDaemon(height) {
-  const client = getClient();
-
-  let block = await client.execute("getblockbyheight", [height, true, true]);
-  block.coinbaseTx = await client.getTX(block.tx[0].txid);
-
-  return block;
-}
-
-async function _getBlockUrkel(height) {
-  // let urkel = getUrkel();
-  let client = getClient();
-  let urkel = new Urkel("hns", "eyJhbGciOiJIUzasdflNiIsInR5cCI6IkpXVCJ9");
-
-  let block = await urkel.block(height);
-  block.tx = block.txs;
-  block.coinbaseTx = await client.getTX(block.tx[0].hash);
-
-  return block;
-}
 
 async function getName(name) {
   if (config.has("urkel-enabled")) {
