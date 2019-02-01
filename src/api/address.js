@@ -10,7 +10,7 @@ const { checkUrkel, formatTransactions } = require("../util/util.js");
 /**
  * getAddress
  *
- * @param addressHash
+ * @param hash - Address hash
  * @param limit - # of Transactions to show in history
  * @param offset - # of Txs to Skip. E.g. offset = 50 for page 2 if limit = 50.
  * @returns {undefined}
@@ -23,6 +23,14 @@ async function getAddress(hash, limit = 10, offset = 0) {
   }
 }
 
+/**
+ * _getAddressUrkel - Get Address using Urkel APIs
+ *
+ * @param hash
+ * @param limit=10
+ * @param offset=0
+ * @returns {Promise<Address>}
+ */
 async function _getAddressUrkel(hash, limit = 10, offset = 0) {
   const urkel = getUrkel();
 
@@ -31,6 +39,14 @@ async function _getAddressUrkel(hash, limit = 10, offset = 0) {
   return address;
 }
 
+/**
+ * _getAddressDaemon - Get Address using a local hsd daemon
+ *
+ * @param hash
+ * @param limit=10
+ * @param offset=0
+ * @returns {Promise<Address>}
+ */
 async function _getAddressDaemon(hash, limit = 10, offset = 0) {
   let address = {
     hash: hash
@@ -49,12 +65,12 @@ async function _getAddressDaemon(hash, limit = 10, offset = 0) {
 }
 
 /**
- * _getAddressHistory
+ * _getAddressHistory - Returns history for a specific address using nomenclate.
  *
- * @param hash
- * @param limit
- * @param offset
- * @returns {Promise}
+ * @param hash - Address Hash
+ * @param limit - Number of Records to return
+ * @param offset - Record # to start at.
+ * @returns {Promise<History>}
  */
 async function _getAddressHistory(hash, limit = 10, offset = 0) {
   assert(hash);
@@ -81,10 +97,10 @@ async function _getAddressHistory(hash, limit = 10, offset = 0) {
 }
 
 /**
- * _getAddressBalance
+ * _getAddressBalance - Returns the current balance for an address using nomenclate.
  *
- * @param hash
- * @returns {balance}
+ * @param hash - Address Hash
+ * @returns {Promise<Balance>}
  */
 async function _getAddressBalance(hash) {
   const nomenclate = getNomenclate();
