@@ -46,7 +46,7 @@ async function blockHandler(request, h) {
     }
 
     txs = await formatTransactions(
-      txsBlock.txs.slice(offset, offset + (amount - 1))
+      txsBlock.txs.slice(offset, offset + amount)
     );
 
     block.totalFees = getBlockTotalFees(block.coinbaseTx, block.height);
