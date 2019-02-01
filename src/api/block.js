@@ -1,13 +1,14 @@
-const { getClient, getUrkel } = require("./clients.js");
+const { getClient, getUrkel } = require("../util/clients.js");
 
 const {
   getBlockTotalFees,
   currentBlockReward,
-  formatTransactions
+  formatTransactions,
+  checkUrkel
 } = require("../util/util.js");
 
 async function getBlock(height) {
-  if (config.has("urkel-enabled") && config.has("urkel-api-key")) {
+  if (checkUrkel()) {
     return _getBlockUrkel(height);
   } else {
     return _getBlockDaemon(height);
@@ -42,7 +43,6 @@ async function _getBlockDaemon(height) {
 
 async function _getBlockUrkel(height) {
   let urkel = getUrkel();
-  let client = getClient();
 
   let block = await urkel.block(height);
 

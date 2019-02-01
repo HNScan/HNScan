@@ -9,41 +9,6 @@ const {
   formatAuctionHistory
 } = require("../util/util.js");
 
-
-/**
- * getBlocks
- *
- * @param from - block height to start from (Inclusive).
- * @param to - block height to go to (Inclusive).
- * @returns {undefined}
- */
-async function getBlocks(from, to) {
-  assert(from < to);
-  assert(from >= -1);
-
-  let blocks = [];
-
-  //Flip so that blocks return in the correct order
-  for (let i = to; i > from; i--) {
-    let block;
-    try {
-      block = getBlock(i);
-    } catch (e) {
-      console.log(e);
-    }
-
-    blocks.push(block);
-  }
-
-  let newblocks = await Promise.all(blocks);
-
-  console.log(newblocks);
-
-  return newblocks;
-}
-
-
-
 async function getName(name) {
   if (config.has("urkel-enabled")) {
     return _getNameUrkel(name);
