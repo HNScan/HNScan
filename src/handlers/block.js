@@ -3,7 +3,7 @@ const { getBlock } = require("../api");
 const { paginate } = require("../util/util.js");
 
 async function blockHandler(request, h) {
-  const blockNumber = request.params.blockNumber;
+  const height = request.params.height;
   let block;
 
   let limit = request.query.limit;
@@ -11,7 +11,7 @@ async function blockHandler(request, h) {
   let offset = (page - 1) * limit;
 
   try {
-    block = await getBlock(blockNumber);
+    block = await getBlock(height);
   } catch (e) {
     console.log(e);
   }

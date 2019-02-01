@@ -1,4 +1,4 @@
-const { getClient, getNomenclate, getUrkel } = require("./clients.js");
+const { getClient, getUrkel } = require("./clients.js");
 
 const {
   getBlockTotalFees,

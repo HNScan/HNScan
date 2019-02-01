@@ -52,6 +52,24 @@ var routes = [
   },
   {
     method: "GET",
+    path: "/block/{height}",
+    handler: blockHandler,
+    options: {
+      validate: {
+        params: {
+          height: Joi.number()
+        },
+        query: {
+          limit: Joi.number()
+            .max(50)
+            .default(10),
+          p: Joi.number().default(1)
+        }
+      }
+    }
+  },
+  {
+    method: "GET",
     path: "/about",
     handler: function(request, h) {
       return h.view("about.pug", {});
