@@ -96,6 +96,6 @@ block content
                     td.stacked
                       span.stackedLabel Chainwork:
                       span.stackedElement=block.chainwork
-    if (block.tx)
-      - let txs = block.tx
+    if (block.txs)
+      - let txs = block.txs
       include includes/transactionList.pug
