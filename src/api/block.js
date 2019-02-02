@@ -1,46 +1,57 @@
 const { getClient, getUrkel } = require("../util/clients.js");
 
-const {
-  getBlockTotalFees,
-  currentBlockReward,
-  formatTransactions,
-  checkUrkel
-} = require("../util/util.js");
+const { formatBlock, checkUrkel } = require("../util/util.js");
 
-async function getBlock(height) {
+const { getTXs } = require("./index.js");
+
+/**
+ * getBlock - General Wrapper function around get block.
+ *
+ * @param height - Block Height
+ * @param limit=10 - Amount of transactions to return
+ * @param offset=0 - Transaction # to start at
+ * @returns {Promise<Block>}
+ */
+async function getBlock(height, limit = 10, offset = 0) {
+  let block;
+
   if (checkUrkel()) {
-    return _getBlockUrkel(height);
+    block = _getBlockUrkel(height);
   } else {
-    return _getBlockDaemon(height);
-  }
-}
-
-async function _getBlockDaemon(height) {
-  const client = getClient();
-
-  let block = await client.execute("getblockbyheight", [height, true, true]);
-  block.coinbaseTx = await client.getTX(block.tx[0].txid);
-  txsBlock = await client.getBlock(blockNumber);
-
-  //Temporary Hack XXX
-  txsBlock.txs[0].height = block.height;
-
-  if (offset > txsBlock.txs.length) {
-    throw Error("Invalid Transaction Array");
+    block = _getBlockDaemon(height, limit, offset);
   }
 
-  txs = await formatTransactions(
-    txsBlock.txs.slice(offset, offset + (amount - 1))
-  );
+  let txList = block.tx.slice(offset, offset + (limit - 1));
 
-  block.totalFees = getBlockTotalFees(block.coinbaseTx, block.height);
-  block.reward = currentBlockReward(block.height);
-  //Cleanup
+  block.txs = await getTXs(txList);
+
   delete block.tx;
 
   return block;
 }
 
+/**
+ * _getBlockDaemon - Returns a block from the Daemon.
+ *
+ * @param height - Block Height
+ * @returns {Promise<Block>}
+ */
+async function _getBlockDaemon(height) {
+  const client = getClient();
+
+  let block = await client.execute("getblockbyheight", [height, true, true]);
+
+  block = await formatBlock(block);
+
+  return block;
+}
+
+/**
+ * _getBlockUrkel - Returns a block from the Urkel API.
+ *
+ * @param height - Block Height
+ * @returns {Promise<Block>}
+ */
 async function _getBlockUrkel(height) {
   let urkel = getUrkel();
 

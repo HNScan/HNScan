@@ -1,6 +1,6 @@
-const { getClient } = require("../util/clients.js");
-
 const { getBlocks } = require("../util/api.js");
+
+const { paginate } = require("../util/util.js");
 
 async function blocksHandler(request, h) {
   let limit = request.query.limit;

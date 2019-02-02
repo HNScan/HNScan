@@ -130,6 +130,15 @@ async function formatTransactions(txs) {
   return txs;
 }
 
+async function formatTransaction(tx) {
+  //XXX I feel like these don't need to be awaits...
+  tx.outputs = await _formatOutputs(tx.outputs);
+
+  tx.inputs = await _formatInputs(tx.inputs, tx.height);
+
+  return tx;
+}
+
 async function formatAuctionHistory(name, txs) {
   let client = getClient();
 
@@ -278,6 +287,16 @@ function paginate(total, limit, page, url) {
   });
 }
 
+async function formatBlock(block) {
+  let client = getClient();
+
+  let coinbaseTx = await client.getTX(block.tx[0].txid);
+  block.mined_by = coinbaseTx.outputs[0].address;
+  block.total_txs = block.tx.length;
+  block.fees = getBlockTotalFees(coinbaseTx, block.height);
+  block.reward = getBlockReward(block.height);
+}
+
 module.exports = {
   getBlockTotalFees: getBlockTotalFees,
   currentBlockReward: currentBlockReward,
@@ -287,5 +306,7 @@ module.exports = {
   formatNameNextState: formatNameNextState,
   formatName: formatName,
   checkUrkel: checkUrkel,
-  paginate: paginate
+  paginate: paginate,
+  formatBlock: formatBlock,
+  formatTransaction: formatTransaction
 };

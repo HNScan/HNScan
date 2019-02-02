@@ -11,17 +11,12 @@ async function blockHandler(request, h) {
   let offset = (page - 1) * limit;
 
   try {
-    block = await getBlock(height);
+    block = await getBlock(height, limit, offset);
   } catch (e) {
     console.log(e);
   }
 
-  let pagination = paginate(
-    block.total_txs,
-    limit,
-    page,
-    "block/" + blockNumber
-  );
+  let pagination = paginate(block.total_txs, limit, page, "block/" + height);
 
   return h.view("block.pug", {
     block,

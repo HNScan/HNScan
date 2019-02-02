@@ -4,23 +4,16 @@ const { checkUrkel } = require("../util/util.js");
 
 const { getBlock } = require("./index.js");
 
+/**
+ * getBlocks
+ *
+ * @param limit=25 - Amount of Blocks to return
+ * @param offset=0 - Height of blocks start start off the tip of the chain.
+ * @returns {undefined}
+ */
 async function getBlocks(limit = 25, offset = 0) {
-  if (checkUrkel()) {
-    return _getBlocksUrkel(limit, offset);
-  } else {
-    return _getBlocksDaemon(limit, offset);
-  }
-}
-
-async function _getBlocksUrkel(limit = 25, offset = 0) {
-  const urkel = getUrkel();
-
-  let blocks = await urkel.blocks(limit, offset);
-
-  return blocks;
-}
-
-async function _getBlocksDaemon(limit = 25, offset = 0) {
+  //XXX Eventually move to the point where the client is not needed locally.
+  //So the getInfo call should be abstracted away to Urkel as well.
   const client = getClient();
 
   let info = await client.getInfo();
@@ -33,24 +26,48 @@ async function _getBlocksDaemon(limit = 25, offset = 0) {
 
   end = start - limit;
 
-  if (end < -1) {
-    end = -1;
+  let blocklist = [];
+
+  for (let i = start; i >= end; i++) {
+    blocklist.push(i);
   }
 
-  let blocks = [];
+  if (checkUrkel()) {
+    return _getBlocksUrkel(blocklist);
+  } else {
+    return _getBlocksDaemon(blocklist);
+  }
+}
 
-  for (let i = to; i > from; i--) {
-    let block;
-    try {
-      block = getBlock(i);
-    } catch (e) {
-      console.log(e);
-    }
+/**
+ * _getBlocksUrkel
+ *
+ * @param blocklist - array of block heights
+ * @returns {Promise<Block[]>}
+ */
+async function _getBlocksUrkel(blocklist) {
+  const urkel = getUrkel();
 
-    blocks.push(block);
+  let blocks = await urkel.blocks(blocklist);
+
+  return blocks;
+}
+
+/**
+ * _getBlocksDaemon
+ *
+ * @param blocklist - array of block heights
+ * @returns {Promise<Block[]>}
+ */
+async function _getBlocksDaemon(blocklist) {
+  let blockcalls = [];
+
+  for (height of blocklist) {
+    block = getBlock(height);
+    blockcalls.push(block);
   }
 
-  let newblocks = await Promise.all(blocks);
+  let blocks = await Promise.all(blockcalls);
 
-  return newblocks;
+  return blocks;
 }
