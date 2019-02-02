@@ -13,14 +13,12 @@ const { checkUrkel, formatTransactions } = require("../util/util.js");
  * @param hash - Address hash
  * @param limit - # of Transactions to show in history
  * @param offset - # of Txs to Skip. E.g. offset = 50 for page 2 if limit = 50.
- * @returns {undefined}
+ * @returns {Promise<Address>}
  */
 async function getAddress(hash, limit = 10, offset = 0) {
-  if (checkUrkel()) {
-    return _getAddressUrkel(hash, limit, offset);
-  } else {
-    return _getAddressDaemon(hash, limit, offset);
-  }
+  return checkUrkel()
+    ? _getAddressUrkel(hash, limit, offset)
+    : _getAddressDaemon(hash, limit, offset);
 }
 
 /**
