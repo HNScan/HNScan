@@ -1,4 +1,4 @@
-const { getBlocks } = require("../util/api.js");
+const { getBlocks } = require("../api");
 
 const { paginate } = require("../util/util.js");
 
@@ -10,7 +10,7 @@ async function blocksHandler(request, h) {
   let blocks;
 
   try {
-    blocks = await getBlocks(endBlock, currentBlock);
+    blocks = await getBlocks(limit, offset);
   } catch (e) {
     h.response().code(404);
   }
