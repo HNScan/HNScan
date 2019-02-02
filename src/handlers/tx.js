@@ -1,4 +1,4 @@
-const { getTX } = require("../util/api.js");
+const { getTX } = require("../api");
 
 async function txHandler(request, h) {
   const hash = request.params.hash;
