@@ -2,7 +2,7 @@ const { getClient, getUrkel } = require("../util/clients.js");
 
 const { formatBlock, checkUrkel } = require("../util/util.js");
 
-const { getTXs } = require("./index.js");
+const getTXs = require("./txs.js");
 
 /**
  * getBlock - General Wrapper function around get block.
@@ -13,17 +13,19 @@ const { getTXs } = require("./index.js");
  * @returns {Promise<Block>}
  */
 async function getBlock(height, limit = 10, offset = 0) {
-  let block;
+  let block = checkUrkel()
+    ? await _getBlockUrkel(height)
+    : await _getBlockDaemon(height);
 
-  if (checkUrkel()) {
-    block = _getBlockUrkel(height);
-  } else {
-    block = _getBlockDaemon(height, limit, offset);
+  let txs = block.tx.slice(offset, offset + (limit - 1));
+
+  let txlist = [];
+
+  for (let tx of txs) {
+    txlist.push(tx.txid);
   }
 
-  let txList = block.tx.slice(offset, offset + (limit - 1));
-
-  block.txs = await getTXs(txList);
+  block.txs = await getTXs(txlist);
 
   delete block.tx;
 

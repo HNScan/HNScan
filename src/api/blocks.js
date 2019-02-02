@@ -2,7 +2,7 @@ const { getUrkel, getClient } = require("../util/clients.js");
 
 const { checkUrkel } = require("../util/util.js");
 
-const { getBlock } = require("./index.js");
+const getBlock = require("./block.js");
 
 /**
  * getBlocks
@@ -28,15 +28,13 @@ async function getBlocks(limit = 25, offset = 0) {
 
   let blocklist = [];
 
-  for (let i = start; i >= end; i++) {
+  for (let i = start; i >= end; i--) {
     blocklist.push(i);
   }
 
-  if (checkUrkel()) {
-    return _getBlocksUrkel(blocklist);
-  } else {
-    return _getBlocksDaemon(blocklist);
-  }
+  return checkUrkel()
+    ? _getBlocksUrkel(blocklist)
+    : _getBlocksDaemon(blocklist);
 }
 
 /**
@@ -45,10 +43,23 @@ async function getBlocks(limit = 25, offset = 0) {
  * @param blocklist - array of block heights
  * @returns {Promise<Block[]>}
  */
-async function _getBlocksUrkel(blocklist) {
-  const urkel = getUrkel();
+// async function _getBlocksUrkel(blocklist) {
+//   const urkel = getUrkel();
 
-  let blocks = await urkel.blocks(blocklist);
+//   let blocks = await urkel.blocks(blocklist);
+
+//   return blocks;
+// }
+async function _getBlocksUrkel(blocklist) {
+  // We are keeping these separate as we will be building a batch API for this for Urkel.
+  let blockcalls = [];
+
+  for (let height of blocklist) {
+    let block = getBlock(height);
+    blockcalls.push(block);
+  }
+
+  let blocks = await Promise.all(blockcalls);
 
   return blocks;
 }
@@ -62,8 +73,8 @@ async function _getBlocksUrkel(blocklist) {
 async function _getBlocksDaemon(blocklist) {
   let blockcalls = [];
 
-  for (height of blocklist) {
-    block = getBlock(height);
+  for (let height of blocklist) {
+    let block = getBlock(height);
     blockcalls.push(block);
   }
 
@@ -71,3 +82,5 @@ async function _getBlocksDaemon(blocklist) {
 
   return blocks;
 }
+
+module.exports = getBlocks;
