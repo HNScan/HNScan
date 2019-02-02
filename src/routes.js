@@ -77,7 +77,7 @@ var routes = [
         query: {
           limit: Joi.number()
             .max(50)
-            .default(10),
+            .default(25),
           p: Joi.number().default(1)
         }
       }
