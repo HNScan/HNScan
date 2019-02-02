@@ -9,11 +9,7 @@ const { getClient, getUrkel } = require("../util/clients.js");
  * @returns {Promise<TX>}
  */
 async function getTX(hash) {
-  if (checkUrkel()) {
-    return _getTXUrkel(hash);
-  } else {
-    return _getTXDaemon(hash);
-  }
+  return checkUrkel() ? _getTXUrkel(hash) : _getTXDaemon(hash);
 }
 
 /**
@@ -25,9 +21,9 @@ async function getTX(hash) {
 async function _getTXUrkel(hash) {
   const urkel = getUrkel();
 
-  let tx = await urkel.getTX(hash);
+  let tx = await urkel.tx(hash);
 
-  tx = formatTransaction(tx);
+  tx = await formatTransaction(tx);
 
   return tx;
 }
@@ -43,7 +39,9 @@ async function _getTXDaemon(hash) {
 
   let tx = await client.getTX(hash);
 
-  tx = formatTransaction(tx);
+  tx = await formatTransaction(tx);
 
   return tx;
 }
+
+module.exports = getTX;
