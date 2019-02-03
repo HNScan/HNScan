@@ -1,52 +1,69 @@
-async function getName(name) {
-  if (config.has("urkel-enabled")) {
-    return _getNameUrkel(name);
-  } else {
-    return _getNameDaemon(name);
-  }
+const { getClient, getUrkel, getNomenclate } = require("../util/clients.js");
+
+const {
+  checkUrkel,
+  formatName,
+  formatAuctionHistory
+} = require("../util/util.js");
+
+/**
+ * getName
+ *
+ * @param name - String formatted name
+ * @returns {Promise<Name>}
+ */
+async function getName(name, limit = 20, offset = 0) {
+  return checkUrkel()
+    ? _getNameUrkel(name, limit, offset)
+    : _getNameDaemon(name, limit, offset);
 }
 
-async function _getNameUrkel(name) {
+/**
+ * _getNameUrkel
+ *
+ * @param name - String formatted name
+ * @returns {Promise<Name>}
+ */
+async function _getNameUrkel(name, limit = 20, offset = 0) {
   return null;
 }
 
-async function _getNameDaemon(name) {
+/**
+ * _getNameDaemon
+ *
+ * @param name - String formatted name
+ * @returns {Promise<Name>}
+ */
+async function _getNameDaemon(namestring, limit = 20, offset = 0) {
   const client = getClient();
 
-  let data = await client.execute("getnameinfo", [name]);
+  let name = await client.execute("getnameinfo", [namestring]);
 
-  data.name = name;
+  name.name = namestring;
 
   //Format Next State Data.
-  let nameData = formatName(data);
+  name = formatName(name);
 
   //Not sure this covers all states, but this works for now.
-  if ((nameData.state = "CLOSED")) {
-    nameData.records = await client.execute("getnameresource", [name]);
+  if ((name.state = "CLOSED")) {
+    name.records = await client.execute("getnameresource", [namestring]);
   }
 
-  return nameData;
+  name = await getNameHistory(name, limit, offset);
+
+  return name;
 }
 
-async function getNameHistory(name) {
-  if (config.has("urkel-enabled")) {
-    return _getNameHistoryUrkel(name);
-  } else {
-    return _getNameHistoryDaemon(name);
-  }
-}
-
-async function _getNameHistoryUrkel(name) {}
-
-async function _getNameHistoryDaemon(name) {
+async function getNameHistory(name, limit = 20, offset = 0) {
   const nomenclate = getNomenclate();
 
-  //XXX Janky way to skip pagination for right now where we make the limit extremely high.
-  //We won't bump up against issues here until the histories become extremely large, but
-  //This will fix our truncation issues on auction history until we implement pagination.
-  data = await nomenclate.getNameHistory(name, 1, 10000);
+  let data = await nomenclate.getNameHistory(name.name, limit, offset);
 
-  history = await formatAuctionHistory(name, data.result);
+  name.history = await formatAuctionHistory(name.name, data.result);
 
-  return history;
+  name.total_txs = data.total;
+
+  return name;
 }
+
+module.exports = getName;
