@@ -85,6 +85,24 @@ var routes = [
   },
   {
     method: "GET",
+    path: "/name/{namestring}",
+    handler: nameHandler,
+    options: {
+      validate: {
+        params: {
+          namestring: Joi.string()
+        },
+        query: {
+          limit: Joi.number()
+            .max(50)
+            .default(20),
+          p: Joi.number().default(1)
+        }
+      }
+    }
+  },
+  {
+    method: "GET",
     path: "/about",
     handler: function(request, h) {
       return h.view("about.pug", {});
@@ -113,18 +131,6 @@ var routes = [
       validate: {
         query: {
           block: Joi.string()
-        }
-      }
-    }
-  },
-  {
-    method: "GET",
-    path: "/name/{name}",
-    handler: nameHandler,
-    options: {
-      validate: {
-        params: {
-          name: Joi.string()
         }
       }
     }
