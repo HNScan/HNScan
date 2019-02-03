@@ -4,6 +4,8 @@ const { checkUrkel } = require("../util/util.js");
 
 const getBlock = require("./block.js");
 
+const getInfo = require("./info.js");
+
 /**
  * getBlocks
  *
@@ -12,11 +14,7 @@ const getBlock = require("./block.js");
  * @returns {undefined}
  */
 async function getBlocks(limit = 25, offset = 0) {
-  //XXX Eventually move to the point where the client is not needed locally.
-  //So the getInfo call should be abstracted away to Urkel as well.
-  const client = getClient();
-
-  let info = await client.getInfo();
+  let info = await getInfo();
 
   let start = info.chain.height - offset;
 
