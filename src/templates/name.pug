@@ -100,7 +100,7 @@ block content
                 td Block Height
                 td Value
             tbody
-            each tx in history
+            each tx in name.history
               tr
                 td=tx.action
                 td=timeAgo(tx.time)
@@ -110,4 +110,4 @@ block content
                   td=prettyPrintHNS(tx.value)
                 else
                   td
-
+    include includes/pagination.pug
