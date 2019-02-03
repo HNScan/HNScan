@@ -294,7 +294,9 @@ async function formatBlock(block) {
   block.mined_by = coinbaseTx.outputs[0].address;
   block.total_txs = block.tx.length;
   block.fees = getBlockTotalFees(coinbaseTx, block.height);
-  block.reward = getBlockReward(block.height);
+  block.reward = currentBlockReward(block.height);
+
+  return block;
 }
 
 module.exports = {
