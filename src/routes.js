@@ -103,6 +103,21 @@ var routes = [
   },
   {
     method: "GET",
+    path: "/names",
+    handler: namesHandler,
+    options: {
+      validate: {
+        query: {
+          limit: Joi.number()
+            .max(50)
+            .default(25),
+          p: Joi.number().default(1)
+        }
+      }
+    }
+  },
+  {
+    method: "GET",
     path: "/about",
     handler: function(request, h) {
       return h.view("about.pug", {});
@@ -134,11 +149,6 @@ var routes = [
         }
       }
     }
-  },
-  {
-    method: "GET",
-    path: "/names",
-    handler: namesHandler
   },
   {
     method: "GET",
