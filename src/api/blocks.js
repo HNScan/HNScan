@@ -26,9 +26,13 @@ async function getBlocks(limit = 25, offset = 0) {
 
   end = start - limit;
 
+  if (end < -1) {
+    end = -1;
+  }
+
   let blocklist = [];
 
-  for (let i = start; i >= end; i--) {
+  for (let i = start; i > end; i--) {
     blocklist.push(i);
   }
 
