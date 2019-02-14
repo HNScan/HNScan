@@ -46,7 +46,6 @@ const initServer = async () => {
 
     server.views({
       engines: {
-        html: require("handlebars"),
         pug: require("pug")
       },
       relativeTo: __dirname,
