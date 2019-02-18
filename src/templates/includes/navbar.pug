@@ -37,11 +37,10 @@ nav.navbar.is-white(role="navigation" aria-label="main navigation")
       div.navbar-end
         div.navbar-item
           div.field
-            div.control.has-icons-left
+            form.control.has-icons-left(onsubmit="search()")
               input.input.is-rounded.searchbar(
                 type="text"
                 placeholder="Search the HNS Blockchain"
-                maxlength="64"
-                onkeypress="catchEnter(event)")
+                maxlength="63")
               span.icon.is-small.is-left
                 i.fas.fa-search
