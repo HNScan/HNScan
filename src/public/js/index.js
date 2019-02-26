@@ -1,5 +1,5 @@
-// Searchbar on Enter Keypress
-function catchEnter(e) {
+function search() {
+  event.preventDefault();
   const searchbar = document.querySelector(".searchbar");
   const xhr = new XMLHttpRequest();
   let search = searchbar.value.trim(),
@@ -10,11 +10,12 @@ function catchEnter(e) {
     name;
 
   //AJAX request to handle search results
-  if (search !== "" && e.keyCode === 13) {
+  if (search !== "") {
     xhr.onreadystatechange = () => {
       if (xhr.readyState == 4 && xhr.status == 200) {
         window.location.href = xhr.responseText;
-      } else {
+      }
+      else if (xhr.readyState == 4 && xhr.status !== 200) {
         console.log("Error" + xhr.responseText);
       }
     };
