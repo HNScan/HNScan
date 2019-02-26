@@ -26,15 +26,14 @@
 }
 
 .hiddenSearchSubmit {
-    position: absolute;
-    border: 1px solid #000;
-    cursor: pointer;
-    top: 4px;
-    left: 10px;
-    height: 30px;
-    opacity: 0;
-    width: 40px;
-    z-index: 10;
+  position: absolute;
+  cursor: pointer;
+  top: 4px;
+  left: 10px;
+  height: 30px;
+  opacity: 0;
+  width: 40px;
+  z-index: 10;
 }
 
 .searchbar {
