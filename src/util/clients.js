@@ -25,6 +25,18 @@ const nomenclateOptions = {
   port: 8080
 };
 
+const urkelOptions = {
+  slug: "hns"
+};
+
+if (config.has("urkel-api-key")) {
+  urkelOptions.apikey = config.get("urkel-api-key");
+}
+
+if (config.has("urkel-api-url")) {
+  urkelOptions.url = config.get("urkel-api-url");
+}
+
 let _walletClient;
 let _client;
 let _wallet;
@@ -38,10 +50,7 @@ async function initWalletAndClient() {
   _wallet = await _walletClient.wallet(config.get("wallet-id"));
   _client = new NodeClient(clientOptions);
   _nomenclate = new NomenclateClient(nomenclateOptions);
-  if (config.has("urkel-enabled")) {
-    console.log(config.get("urkel-api-key"));
-    _urkel = new Urkel("hns", config.get("urkel-api-key"));
-  }
+  _urkel = new Urkel(urkelOptions);
   await _client.open();
   await _walletClient.open();
   await _wallet.open();

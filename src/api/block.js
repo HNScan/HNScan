@@ -13,7 +13,7 @@ const getTXs = require("./txs.js");
  * @returns {Promise<Block>}
  */
 async function getBlock(height, limit = 10, offset = 0) {
-  let block = checkUrkel()
+  let block = checkUrkel("block")
     ? await _getBlockUrkel(height)
     : await _getBlockDaemon(height);
 
@@ -22,7 +22,11 @@ async function getBlock(height, limit = 10, offset = 0) {
   let txlist = [];
 
   for (let tx of txs) {
-    txlist.push(tx.txid);
+    if (typeof tx == "string") {
+      txlist.push(tx);
+    } else {
+      txlist.push(tx.txid);
+    }
   }
 
   block.txs = await getTXs(txlist);
@@ -58,6 +62,8 @@ async function _getBlockUrkel(height) {
   let urkel = getUrkel();
 
   let block = await urkel.block(height);
+
+  block.difficulty = 0;
 
   return block;
 }

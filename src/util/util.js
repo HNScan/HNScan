@@ -271,9 +271,12 @@ function formatNameNextState(name) {
   return nextState;
 }
 
-function checkUrkel() {
-  if (config.has("urkel-enabled") && config.has("urkel-api-key")) {
-    return true;
+function checkUrkel(feature) {
+  if (config.has("urkel-features")) {
+    if (config.get("urkel-features").includes(feature)) {
+      return true;
+    }
+    return null;
   } else {
     return null;
   }
