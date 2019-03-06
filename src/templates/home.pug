@@ -2,52 +2,53 @@ extends layouts/layout
 
 block content
   .contentContainer
-    .card
-      header.card-header
-        p.card-header-title Network Summary
-      .card-content
-        .columns
-          .column.is-one-third.columnCentered
-            .cardItemContainer
-              .cardItemLabel Hashrate
-              - let hashrateData = formatLargeNumber(hashrate, 3)
-              .cardItemDetail
-                span=hashrateData[0]
-                span=hashrateData[1].abbreviation + "H/s"
-          .column.is-one-third.columnCentered
-            .cardItemContainer
-              .cardItemLabel Unconfirmed
-              .cardItemDetail
-                - let unconfirmed = formatLargeNumber(txsSizeB, 2)
-                if (txsSizeB === 0)
-                  span="-"
-                else
-                  span=unconfirmedTxs + " tx "
-                  span (#{unconfirmed[0]} #{unconfirmed[1].abbreviation}B)
-          .column.is-one-third.columnCentered
-            .cardItemContainer
-              .cardItemLabel Network
-              .cardItemDetail=network
-        .columns
-          .column.is-one-third.columnCentered
-            .cardItemContainer
-              .cardItemLabel Names Registered
-              .cardItemDetail=registeredNames
-          .column.is-one-third.columnCentered
-            .cardItemContainer
-              .cardItemLabel Difficulty
-              .cardItemDetail
-                +sciNotation(difficulty, 3)
-          .column.is-one-third.columnCentered
-            .cardItemContainer
-              .cardItemLabel Chainwork
-              .cardItemDetail
-                +sciNotation(chainwork, 2)
+    .networkSummaryContainer
+      .card
+        header.card-header
+          p.card-header-title Network Summary
+        .card-content
+          .columns
+            .column.is-one-third.columnCentered
+              .cardItemContainer
+                .cardItemLabel Hashrate
+                - let hashrateData = formatLargeNumber(hashrate, 3)
+                .cardItemDetail
+                  span=hashrateData[0]
+                  span=hashrateData[1].abbreviation + "H/s"
+            .column.is-one-third.columnCentered
+              .cardItemContainer
+                .cardItemLabel Unconfirmed
+                .cardItemDetail
+                  - let unconfirmed = formatLargeNumber(txsSizeB, 2)
+                  if (txsSizeB === 0)
+                    span="-"
+                  else
+                    span=unconfirmedTxs + " tx "
+                    span (#{unconfirmed[0]} #{unconfirmed[1].abbreviation}B)
+            .column.is-one-third.columnCentered
+              .cardItemContainer
+                .cardItemLabel Network
+                .cardItemDetail=network
+          .columns
+            .column.is-one-third.columnCentered
+              .cardItemContainer
+                .cardItemLabel Names Registered
+                .cardItemDetail=registeredNames
+            .column.is-one-third.columnCentered
+              .cardItemContainer
+                .cardItemLabel Difficulty
+                .cardItemDetail
+                  +sciNotation(difficulty, 3)
+            .column.is-one-third.columnCentered
+              .cardItemContainer
+                .cardItemLabel Chainwork
+                .cardItemDetail
+                  +sciNotation(chainwork, 2)
 
     //- include includes/toolCard
 
     .homeCardContainer
-      .columns.override
+      .columns.override.is-marginless
         .column
           include includes/txCard
         .column
