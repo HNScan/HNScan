@@ -10,17 +10,15 @@
       .summaryCardItem
         .summaryCardBlock
           .lineContainer
-            img.summaryCardImage(src="/img/right-arrow.svg", alt="arrow")
+            img.is-hidden-mobile.summaryCardImage(src="/img/right-arrow.svg", alt="arrow")
             span="TX #: "
               a(href="/tx/" + tx.hash)=truncateHash(tx.hash, 6)
           if tx.inputs[0].coin
-            //- +tooltip("/address/" + tx.inputs[0].coin.address, tx.inputs[0].coin.address, true)
             span.detailsText=`From: ${truncateHash(tx.inputs[0].coin.address, 7)}`
           else
             span.detailsText Miner Reward
           span.detailsText="Amount: " + prettyPrintHNS(tx.outputs[0].value)
-        .summaryCardBlock.align-right
-          span=timeAgo(tx.time)
+        .summaryCardBlock.align-right-tablet-only
           span.detailsText To: &nbsp;
-            //- +tooltip("/address/" + tx.outputs[0].address, tx.outputs[0].address, true)
             a(href="/address/" + tx.outputs[0].address)=truncateHash(tx.outputs[0].address, 7)
+          span.is-size-7.has-text-grey-light.is-italic=timeAgo(tx.time)

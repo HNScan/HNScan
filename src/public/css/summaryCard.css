@@ -19,6 +19,10 @@
   border-bottom: 1px solid #dfdfdf;
   display: flex;
   flex-direction: row;
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+  }
 }
 
 .summaryCardItem:last-child {
@@ -32,8 +36,10 @@
   flex-grow: 1;
 }
 
-.align-right {
-  text-align: right;
+.align-right-tablet-only {
+  @media (min-width: $mobile) {
+    text-align: right;
+  }
 }
 
 .detailsText {
