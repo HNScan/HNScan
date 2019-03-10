@@ -5,6 +5,14 @@ body {
   background-color: var(--background);
 }
 
+a {
+  color: var(--text-color-link);
+
+  &:hover {
+    color: var(--text-color-link--hover);
+  }
+}
+
 .card-header-title {
   color: var(--text-color-normal);
 }

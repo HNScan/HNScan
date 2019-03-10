@@ -1,0 +1,38 @@
+html {
+  --text-color-normal: #4a4a4a;
+  --text-color-light: #696969;
+  --text-color-link: #3273dc;
+  --text-color-link--hover: #363636;
+  --text-color-link--visited: #551A8B;
+  --background: #fefefe;
+  --background-hover: #fafafa;
+  --card-border: #dbdbdb;
+  --card-box-shadow: 0 2px 3px rgba(10,10,10,.1);
+  --input-error-color: #f00;
+  --urkel-color: #ee8c3a;
+  --ha-color: #532ad1;
+}
+
+html[data-theme='dark'] {
+  --text-color-normal: #afafaf;
+  --text-color-light: #cfcfcf;
+  --text-color-link: #3273dc;
+  --text-color-link--hover: #cfcfcf;
+  --text-color-link--visited: #551A8B;
+  --background: #323232;
+  --background-hover: #454545;
+  --card-background: #454545;
+  --card-border: #dbdbdb;
+  --card-box-shadow: 0 2px 3px rgba(10,10,10,.1);
+  --input-error-color: #f00;
+  --urkel-color: #ee8c3a;
+  --ha-color: #532ad1;
+}
+
+html.color-theme-in-transition,
+html.color-theme-in-transition *,
+html.color-theme-in-transition *:before,
+html.color-theme-in-transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0 !important;
+}
