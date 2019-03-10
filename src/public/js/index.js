@@ -37,15 +37,19 @@ function toggleMobileNav(e) {
 
 function toggleTheme(e) {
   e.preventDefault();
-  let themeCheckbox = document.querySelector('#theme');
+  document.documentElement.classList.add('color-theme-in-transition');
+
   if (localStorage.getItem('theme') === 'light') {
     localStorage.setItem('theme', 'dark');
-    themeCheckbox.checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
   }
   else {
     localStorage.setItem('theme', 'light');
-    themeCheckbox.checked = false;
+    document.documentElement.removeAttribute('data-theme', 'dark');
   }
+  setTimeout(() => {
+    document.documentElement.classList.remove('color-theme-in-transition')
+  }, 1000)
 }
 
 function setupTheme() {
@@ -56,8 +60,7 @@ function setupTheme() {
   }
 
   if (currentTheme === 'dark') {
-    let themeCheckbox = document.querySelector('#theme').checked = true;
-    console.log(themeCheckbox);
+    document.documentElement.setAttribute('data-theme', 'dark')
   }
   console.log('current theme:', currentTheme)
 }

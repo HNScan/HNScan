@@ -1,11 +1,24 @@
 .navbar {
-  width: 100%;
-  height: $navbar-height;
+  align-items: center;
+  background: var(--background);
   border-bottom: 1px solid rgb(222, 222, 222);
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: row;
+  height: $navbar-height;
+  justify-content: center;
+  width: 100%;
+}
+
+.navbar-item, .navbar-link {
+  color: var(--text-color-normal);
+}
+
+a.navbar-item:hover, a.navbar-link:hover, .navbar-item.has-dropdown:hover .navbar-link {
+  background-color: var(--background-hover);
+}
+
+.navbar-dropdown {
+  background-color: var(--background);
 }
 
 .navbarContainer {
