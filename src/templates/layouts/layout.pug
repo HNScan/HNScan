@@ -11,10 +11,11 @@ html(lang="en")
     link(rel='stylesheet', type='text/css', href='/css/main.css')
 
   body
+    include ../includes/theme.pug
     include ../includes/navbar
     block content
     // Footer
-    include ../includes/footer.pug
+    include ../includes/footer
 
     script(type='text/javascript', src='/js/main.min.js', async)
 

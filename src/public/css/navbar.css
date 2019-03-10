@@ -18,8 +18,6 @@ a.navbar-item:hover, a.navbar-link:hover, .navbar-item.has-dropdown:hover .navba
   background-color: var(--background-hover);
 }
 
-/* media screen and (min-width: 1088px) .navbar-dropdown a.navbar-item:hover */
-
 .navbar-dropdown {
   background-color: var(--background);
 }

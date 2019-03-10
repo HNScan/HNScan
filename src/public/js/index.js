@@ -75,5 +75,5 @@ function navDropdownListeners() {
     });
   }
 }
+// setupTheme();
 navDropdownListeners();
-setupTheme();
