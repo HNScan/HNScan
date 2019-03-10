@@ -130,3 +130,12 @@
   align-items: center;
   justify-content: center;
 }
+
+.themeSwitch {
+  color: #676767;
+  text-decoration: underline;
+}
+
+.lightThemeSwitch {
+  /* TODO */
+}
