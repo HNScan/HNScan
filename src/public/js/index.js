@@ -52,19 +52,6 @@ function toggleTheme(e) {
   }, 1000)
 }
 
-function setupTheme() {
-  let currentTheme = localStorage.getItem('theme');
-  if (!currentTheme) {
-    localStorage.setItem('theme', 'light');
-    currentTheme = 'light';
-  }
-
-  if (currentTheme === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark')
-  }
-  console.log('current theme:', currentTheme)
-}
-
 function navDropdownListeners() {
   let dropdowns = document.querySelectorAll(".navbarMore");
   for (dropdown of dropdowns) {
