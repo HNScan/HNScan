@@ -1,3 +1,11 @@
+/** The base theme is this top `html` block, aka the "light theme".
+  *
+  * Future themes can be added below and will require a repeat of the variables listed.
+  * There's a chance additional variables may be needed, as default colors may not have been
+  * have needed to change when upgraded to dark theme.
+  *
+  * update `theme.pug` as well to add more themes. */
+
 html {
   --text-color-normal: #4a4a4a;
   --text-color-light: #696969;
