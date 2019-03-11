@@ -12,7 +12,8 @@
       .summaryCardItem
         .summaryCardBlock
           .lineContainer
-            img.is-hidden-mobile.summaryCardImage(src="/img/3d.svg" alt="Cube")
+            .is-hidden-mobile.summaryCardImage
+              include ../../public/img/3d.svg
             span="Block #: "
               a(href="/block/" + block.height)=block.height
           .lineContainer.detailsText Mined By:&nbsp;

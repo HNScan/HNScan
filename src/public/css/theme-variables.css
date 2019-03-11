@@ -6,8 +6,10 @@ html {
   --text-color-link--visited: #551A8B;
   --background: #fefefe;
   --background-hover: #fafafa;
+  --border-color:#dfdfdf;
   --card-border: #dbdbdb;
   --card-box-shadow: 0 2px 3px rgba(10,10,10,.1);
+  --logo-fill: #000;
   --input-error-color: #f00;
   --urkel-color: #ee8c3a;
   --ha-color: #532ad1;
@@ -21,9 +23,11 @@ html[data-theme='dark'] {
   --text-color-link--visited: #551A8B;
   --background: #323232;
   --background-hover: #454545;
-  --card-background: #454545;
+  --border-color:#575757;
+  --card-background: #373737;
   --card-border: #dbdbdb;
   --card-box-shadow: 0 2px 3px rgba(10,10,10,.1);
+  --logo-fill: #cfcfcf;
   --input-error-color: #f00;
   --urkel-color: #ee8c3a;
   --ha-color: #532ad1;

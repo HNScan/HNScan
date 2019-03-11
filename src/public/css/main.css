@@ -17,6 +17,10 @@ span, div, section, h1, h2, h3, h4, h5, h6 {
   color: var(--text-color-normal);
 }
 
+.iconFill {
+  fill: var(--logo-fill);
+}
+
 /* ----- TRANSACTION SUMMARY ----- */
 .txSection {
   height: auto;

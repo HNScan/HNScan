@@ -1,7 +1,7 @@
 .navbar {
   align-items: center;
   background: var(--background);
-  border-bottom: 1px solid rgb(222, 222, 222);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   flex-direction: row;
   height: $navbar-height;
@@ -14,16 +14,28 @@
   color: var(--text-color-normal);
 }
 
-a.navbar-item:hover, a.navbar-link:hover, .navbar-item.has-dropdown:hover .navbar-link {
+a.navbar-item:hover,
+a.navbar-link:hover,
+a.navbar-burger:hover,
+.navbar-item.has-dropdown:hover .navbar-link {
   background-color: var(--background-hover);
+}
+
+.navbar-menu {
+  background-color: var(--background);
 }
 
 .navbar-dropdown {
   background-color: var(--background);
+  border-top: 1px solid var(--border-color);
 }
 .navbar-dropdown a.navbar-item:hover{
   color: var(--text-color-link--hover);
   background-color: var(--background-hover);
+}
+
+.navbar-divider {
+  background-color: var(--border-color);
 }
 
 .navbarContainer {
