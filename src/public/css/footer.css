@@ -92,7 +92,7 @@
 }
 
 .columnTitle {
-  color: var(--text-color-light);
+  color: var(--text-color-normal);
   font-size: 10pt;
   letter-spacing: 0.5px;
   font-weight: bold;
@@ -132,6 +132,6 @@
 }
 
 .themeSwitch {
-  color: var(--text-color-light);
+  color: var(--text-color-normal);
   text-decoration: underline;
 }
