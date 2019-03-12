@@ -1,9 +1,9 @@
-nav.navbar.is-white(role="navigation" aria-label="main navigation")
+nav.navbar(role="navigation" aria-label="main navigation")
   div.navbarContainer
 
     div.navbar-brand
       a.navbar-item(href="/")
-        img(src="/img/logo.svg" alt="HNScan")
+        include ../../public/img/logo.svg
       a.navbar-burger.burger(
         role="button"
         onclick="toggleMobileNav(event)"

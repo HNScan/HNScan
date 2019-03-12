@@ -16,7 +16,7 @@
   padding: 10px 0;
   display: flex;
   flex-direction: column;
-  border-bottom: 1.5px solid $border-color;
+  border-bottom: 2px solid var(--border-color);
 
   &:first-child {
     padding: 0;
@@ -29,7 +29,7 @@
 }
 
 .txHashWrapper {
-  border-bottom: 1.5px solid #f1f1f1;
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   padding: 10px 0 10px 0;
 }

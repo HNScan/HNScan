@@ -1,7 +1,7 @@
 section.footer
   .footerContent
     .hnscan
-      img(src="/img/logo.svg" alt="HNScan" height="125" width="125")
+      include ../../public/img/logo.svg
       .logoMessage
         .logoText Your trusted source for on chain Handshake information.
       .columnTitle.contactColumn CONTACT
@@ -49,6 +49,7 @@ section.footer
             .columnItem
               a(class="columnLink" href="https://twitter.com/HNSalliance" target="_blank" rel="noopener noreferrer") Twitter
   .legalContent
+    a.themeSwitch(onClick="toggleTheme(event)") Change Theme
     span.source
       | Current Version: v#{currentVersion() + " "}
       a(href="https://github.com/HandshakeAlliance/HNScan" target="_blank" rel="noopener noreferrer") Source

@@ -1,12 +1,15 @@
 .navbar {
-  width: 100%;
-  height: $navbar-height;
-  border-bottom: 1px solid rgb(222, 222, 222);
-  display: flex;
   align-items: center;
-  justify-content: center;
+  background: var(--background);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
   flex-direction: row;
+  height: $navbar-height;
+  justify-content: center;
+  width: 100%;
 }
+
+
 
 .navbarContainer {
   width: 90%;
@@ -70,5 +73,46 @@
     height: auto;
     margin-left: 12px;
     transition: height 1s ease;
+  }
+}
+
+/* Theme overrides */
+.navbar-item, .navbar-link {
+  background-color: var(--background);
+  color: var(--text-color-normal);
+}
+
+a.navbar-item:hover,
+a.navbar-link:hover,
+a.navbar-burger:hover,
+.navbar-item.has-dropdown:hover .navbar-link {
+  background-color: var(--background-hover);
+}
+
+.navbar-menu {
+  background-color: var(--background);
+}
+
+.navbar-dropdown {
+  background-color: var(--background);
+  border-top: 1px solid var(--border-color);
+}
+.navbar-dropdown a.navbar-item:hover{
+  color: var(--text-color-link--hover);
+  background-color: var(--background-hover);
+}
+
+.navbar-divider {
+  background-color: var(--border-color);
+}
+
+.searchbar {
+  background: var(--searchbar-background-color);
+  border: 1px solid var(--searchbar-border-color);
+  color: var(--text-color-normal);
+
+  &::placeholder {
+    color: var(--text-color-light);
+    /* color: #000; */
   }
 }

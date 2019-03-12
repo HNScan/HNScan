@@ -10,7 +10,9 @@
       .summaryCardItem
         .summaryCardBlock
           .lineContainer
-            img.is-hidden-mobile.summaryCardImage(src="/img/right-arrow.svg", alt="arrow")
+            .is-hidden-mobile.summaryCardImage
+              include ../../public/img/right-arrow.svg
+              //- img(src="/img/right-arrow.svg", alt="arrow")
             span="TX #: "
               a(href="/tx/" + tx.hash)=truncateHash(tx.hash, 6)
           if tx.inputs[0].coin

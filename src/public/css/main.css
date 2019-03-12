@@ -1,41 +1,25 @@
-/* ---- Variables ---- */
+/* ---- Imports ---- */
 @import "variables.css";
-
-/* ----- Config ----- */
 @import "base.css";
-
-/* ----- Navbar ----- */
 @import "navbar.css";
-
-/* ----- Home ----- */
 @import "home.css";
-
-/* ----- About ----- */
 @import "about.css";
-
-/* ----- Block ----- */
 @import "block.css";
-
-/* ----- Footer ----- */
 @import "footer.css";
-
-/* ----- Block Card ----- */
 @import "summaryCard.css";
-
-/* ----- Peers Map ----- */
 @import "peers.css";
-
-/* ----- Any Error Pages ----- */
 @import "errors.css";
-
-/* ----- Address ----- */
 @import "address.css";
-
-/* ----- Airdrop ----- */
 @import "airdrop.css";
-
-/* ----- Airdrop Claim ----- */
 @import "airdropclaim.css";
+
+span, div, section, h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color-normal);
+}
+
+.iconFill {
+  fill: var(--logo-fill);
+}
 
 /* ----- TRANSACTION SUMMARY ----- */
 .txSection {

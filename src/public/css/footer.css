@@ -3,7 +3,7 @@
   height: auto;
   margin: 0;
   padding: 0 80px 5px 80px;
-  background-color: #fefefe;
+  background-color: var(--background);
   @media (max-width: $tablet) { padding: 0 30px 5px 30px; }
   @media (max-width: $mobile) { padding: 0 15px 5px 15px; }
 }
@@ -45,7 +45,7 @@
 
 .footerColumn .logoMessage {
   margin: 5px 0;
-  color: #717171;
+  color: var(--text-color-normal);
   @media (max-width: $mobile) { margin-top: 15px; }
 }
 
@@ -87,12 +87,12 @@
 
 .contactColumn .contactItem {
   margin-top: 2px;
-  color: #717171;
+  color: var(--text-color-normal);
   &:hover { color: #000; }
 }
 
 .columnTitle {
-  color: #000;
+  color: var(--text-color-normal);
   font-size: 10pt;
   letter-spacing: 0.5px;
   font-weight: bold;
@@ -104,13 +104,13 @@
 
 .columnItem {
   font-weight: normal;
-  color: #717171;
+  color: var(--text-color-normal);
   margin: 5px 0;
   @media (max-width: $mobile) { margin: 5px 0; }
 }
 
 .columnLink {
-  color: #717171;
+  color: var(--text-color-normal);
   &:hover { color: #000; }
 }
 
@@ -129,4 +129,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.themeSwitch {
+  color: var(--text-color-normal);
+  text-decoration: underline;
 }
