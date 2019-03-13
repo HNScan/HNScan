@@ -1,11 +1,13 @@
 script.
   let currentTheme = localStorage.getItem('theme');
+  let isChecked = localStorage.getItem('checked');
+
   if (!currentTheme) {
     localStorage.setItem('theme', 'light');
+    localStorage.setItem('checked', 'false');
     currentTheme = 'light';
+    ischecked = 'false';
   }
-
-  if (currentTheme === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark')
+  if (currentTheme === 'dark' && isChecked === 'true') {
+    document.documentElement.setAttribute('data-theme', 'dark');
   }
-  console.log('current theme:', currentTheme)
