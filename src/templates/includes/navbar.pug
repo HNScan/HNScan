@@ -22,16 +22,16 @@ nav.navbar(role="navigation" aria-label="main navigation")
         a.navbar-item.navOption(href="/names") Names
         div.navbar-item.has-dropdown.is-hoverable.navDropdown
           a.navbarMore.navbar-link.navOption Tools
-          div.navbar-dropdown
+          div.navbar-dropdown.is-hidden-touch
             a.navbar-item(href="/status") Node Status
             a.navbar-item(href="/peers") Peers
             a.navbar-item(href="/airdropclaim") Claim Your Airdrop
             // a.navbar-item(href="/airdrop") Airdrop Stats
         div.navbar-item.has-dropdown.is-hoverable.navDropdown
           a.navbarMore.navbar-link.navOption More
-          div.navbar-dropdown
+          div.navbar-dropdown.is-hidden-touch
             a.navbar-item(href="/about") About
-            hr.navbar-divider
+            //- hr.navbar-divider
             a.navbar-item(href="https://github.com/HandshakeAlliance/HNScan/issues", target="_blank" rel="noopener noreferrer") Report an issue
 
       div.navbar-end

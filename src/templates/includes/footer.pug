@@ -49,7 +49,9 @@ section.footer
             .columnItem
               a(class="columnLink" href="https://twitter.com/HNSalliance" target="_blank" rel="noopener noreferrer") Twitter
   .legalContent
-    a.themeSwitch(onClick="toggleTheme(event)") Toggle Dark Mode
+    div.field
+      input(id="themeSwitch" type="checkbox" class="switch is-rounded is-outlined" onclick="toggleTheme(event)" autocomplete="off")
+      label(for="themeSwitch")
     span.source
       | Current Version: v#{currentVersion() + " "}
       a(href="https://github.com/HandshakeAlliance/HNScan" target="_blank" rel="noopener noreferrer") Source
