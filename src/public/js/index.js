@@ -11,16 +11,17 @@ function search() {
 
   //AJAX request to handle search results
   if (search !== "") {
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        window.location.href = xhr.responseText;
-      }
-      else if (xhr.readyState == 4 && xhr.status !== 200) {
-        console.log("Error" + xhr.responseText);
-      }
-    };
-    xhr.open("POST", `/search?q=${search}`);
-    xhr.send();
+    window.location.href = `/search?q=${search}`;
+    // xhr.onreadystatechange = () => {
+    //   if (xhr.readyState == 4 && xhr.status == 200) {
+    //     window.location.href = xhr.responseText;
+    //   }
+    //   else if (xhr.readyState == 4 && xhr.status !== 200) {
+    //     console.log("Error" + xhr.responseText);
+    //   }
+    // };
+    // xhr.open("POST", `/search?q=${search}`);
+    // xhr.send();
   }
 }
 
@@ -37,19 +38,18 @@ function toggleMobileNav(e) {
 
 function toggleTheme(e) {
   e.preventDefault();
-  document.documentElement.classList.add('color-theme-in-transition');
+  document.documentElement.classList.add("color-theme-in-transition");
 
-  if (localStorage.getItem('theme') === 'light') {
-    localStorage.setItem('theme', 'dark');
-    document.documentElement.setAttribute('data-theme', 'dark');
-  }
-  else {
-    localStorage.setItem('theme', 'light');
-    document.documentElement.removeAttribute('data-theme', 'dark');
+  if (localStorage.getItem("theme") === "light") {
+    localStorage.setItem("theme", "dark");
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+    document.documentElement.removeAttribute("data-theme", "dark");
   }
   setTimeout(() => {
-    document.documentElement.classList.remove('color-theme-in-transition')
-  }, 1000)
+    document.documentElement.classList.remove("color-theme-in-transition");
+  }, 1000);
 }
 
 function navDropdownListeners() {
