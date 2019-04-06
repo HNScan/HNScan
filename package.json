@@ -40,7 +40,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-terser": "^1.1.5",
     "hapi": "^17.5.3",
-    "hs-airdrop": "0.0.3",
+    "hs-airdrop": "0.1.0",
     "hs-client": "0.0.3",
     "hsd": "handshake-org/hsd",
     "humanize-duration": "^3.15.3",

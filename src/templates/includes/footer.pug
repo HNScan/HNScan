@@ -35,9 +35,11 @@ section.footer
             .columnItem
               a(class="columnLink" href="https://handshakeacademy.org" target="_blank" rel="noopener noreferrer") Academy
             .columnItem
-              a(class="columnLink" href="https://urkel.io" target="_blank" rel="noopener noreferrer") Urkel
+              a(class="columnLink" href="https://handshake.community" target="_blank" rel="noopener noreferrer") Community
             .columnItem
-              a(class="columnLink" href="https://faucet.handshakealliance.org" target="_blank" rel="noopener noreferrer") Faucet
+              a(class="columnLink" href="https://urkel.io" target="_blank" rel="noopener noreferrer") Urkel
+            //- .columnItem
+            //- a(class="columnLink" href="https://faucet.handshakealliance.org" target="_blank" rel="noopener noreferrer") Faucet
             .columnItem
               a(class="columnLink" href="https://handshake.org/files/handshake.txt" target="_blank" rel="noopener noreferrer") Paper
         .footerColumn
@@ -49,7 +51,9 @@ section.footer
             .columnItem
               a(class="columnLink" href="https://twitter.com/HNSalliance" target="_blank" rel="noopener noreferrer") Twitter
   .legalContent
-    a.themeSwitch(onClick="toggleTheme(event)") Toggle Dark Mode
+    div.field
+      input(id="themeSwitch" type="checkbox" class="switch is-rounded is-outlined" onclick="toggleTheme(event)" autocomplete="off")
+      label(for="themeSwitch")
     span.source
       | Current Version: v#{currentVersion() + " "}
       a(href="https://github.com/HandshakeAlliance/HNScan" target="_blank" rel="noopener noreferrer") Source

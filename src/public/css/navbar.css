@@ -25,6 +25,7 @@
 }
 
 .fa-search {
+  color: var(--search-icon);
   padding-left: 20px !important;
 }
 
@@ -64,15 +65,7 @@
   }
 
   .navbar-dropdown {
-    height: 0;
-    overflow: hidden;
-    transition: height 1s ease;
-  }
-
-  .navbar-dropdown-visible {
-    height: auto;
     margin-left: 12px;
-    transition: height 1s ease;
   }
 }
 
@@ -113,6 +106,5 @@ a.navbar-burger:hover,
 
   &::placeholder {
     color: var(--text-color-light);
-    /* color: #000; */
   }
 }

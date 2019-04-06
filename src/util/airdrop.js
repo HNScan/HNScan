@@ -27,7 +27,7 @@ const {
 const { checksum: FAUCET_CHECKSUM, leaves: FAUCET_LEAVES } = faucet;
 
 const PROOF_CHECKSUM =
-  "515884a61a5f4e06b6a580d2bbc7c12b526ee1c5616009c4ca21056af6b0d62c";
+  "ad4ee07f46d43b892350e700cdec62f6f398e90fa9b2bdd039627c18dd456792";
 const GITHUB_URL = "https://github.com/handshake-org/hs-tree-data/raw/master";
 const BUILD_DIR =
   process.env.BUILD_DIR || Path.resolve(os.homedir(), ".hs-tree-data");
