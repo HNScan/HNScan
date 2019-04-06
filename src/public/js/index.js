@@ -66,7 +66,7 @@ function search() {
   const xhr = new XMLHttpRequest();
 
   //AJAX request to handle search results
-  if (search !== "") {
+  if (searchValue !== "") {
     window.location.href = `/search?q=${searchValue}`;
   }
 }
