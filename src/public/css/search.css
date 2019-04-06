@@ -1,0 +1,19 @@
+.searchResearch {
+  margin-top: 50px;
+}
+
+.searchHeader {
+  margin-top: 50px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+
+  @media (min-width: $tablet) {
+    font-size: 32px;
+  }
+}
+
+.searchResults {
+  margin-top: 25px;
+  font-size: 20px;
+}

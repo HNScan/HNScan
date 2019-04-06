@@ -1,0 +1,24 @@
+extends layouts/layout
+
+block content
+  .contentContainer
+    if results.length === 0
+      h1.searchHeader We couldn't find what you are looking for.
+      p.searchText Please try searching again.
+      form.control.has-icons-left.searchResearch(onsubmit="search()")
+        button.hiddenSearchSubmit(type="submit")
+        input.input.is-rounded.searchbar(
+          type="text"
+          placeholder="Search the HNS Blockchain"
+          maxlength="63")
+    else
+      h1.searchHeader We found multiple resources matching your search
+      table.table.searchResults
+        tbody
+          each result in results
+            tr
+              td=result.type + ":"
+              td
+                a(href=result.url)=result.url
+
+
