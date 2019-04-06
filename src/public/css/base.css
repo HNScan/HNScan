@@ -25,7 +25,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: calc(100% - $footer-height - $navbar-height);
+  min-height: calc(100vh - $footer-height - $navbar-height);
 
   @media (max-width: $tablet) {
     width: 95%;
@@ -84,16 +84,21 @@ a {
   background-color: var(--card-background);
 }
 
-.table th, .table td {
+.table th,
+.table td {
   border-bottom: 1px solid var(--border-color);
 }
 
-.table thead th, .table td {
+.table thead th,
+.table td {
   color: var(--text-color-normal);
 }
 
-.pagination-link, .pagination-link:hover,
-.pagination-previous, .pagination-previous:hover,
-.pagination-next, .pagination-next:hover {
+.pagination-link,
+.pagination-link:hover,
+.pagination-previous,
+.pagination-previous:hover,
+.pagination-next,
+.pagination-next:hover {
   color: var(--text-color-normal);
 }
