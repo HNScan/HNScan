@@ -33,6 +33,7 @@ server.ext("onPreResponse", (request, reply) => {
         statusCode: statusCode,
         errName: errName
       })
+      .code(statusCode);
   }
   return reply.continue;
 });
