@@ -44,8 +44,9 @@ async function searchHandler(request, h) {
     }
   }
 
-  if (rules.verifyString(search)) {
-    let result = { type: "Name", url: `/name/${search}` };
+  let name = search.toLowerCase();
+  if (rules.verifyString(name)) {
+    let result = { type: "Name", url: `/name/${name}` };
     results.push(result);
   }
 
