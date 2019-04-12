@@ -22,7 +22,8 @@ const clientOptions = {
 
 const nomenclateOptions = {
   host: config.get("node-host"),
-  port: 8080
+  port: 8080,
+  apiKey: config.get("node-api-key")
 };
 
 const urkelOptions = {
