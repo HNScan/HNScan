@@ -63,8 +63,6 @@ async function _getBlockUrkel(height) {
 
   let block = await urkel.block(height);
 
-  block.difficulty = 0;
-
   return block;
 }
 
