@@ -22,7 +22,7 @@ block content
         .columns
           .column
             .blockFullLabel Mined By
-            - let address = block.mined_by
+            - let address = block.minedBy
             .blockFullDetail.hash
               a(href=`/address/${address}`)=address
           .column
@@ -65,7 +65,7 @@ block content
                   tr
                     td.stacked
                       span.stackedLabel Average Fee
-                      span.stackedElement #{prettyPrintHNS((block.fees / block.total_txs))}
+                      span.stackedElement #{prettyPrintHNS((block.fees / block.totalTxs))}
           .column.is-half
             .tableContainer
               table.table.is-fullwidth
