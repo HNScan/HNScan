@@ -294,8 +294,8 @@ async function formatBlock(block) {
   let client = getClient();
 
   let coinbaseTx = await client.getTX(block.tx[0].txid);
-  block.mined_by = coinbaseTx.outputs[0].address;
-  block.total_txs = block.tx.length;
+  block.minedBy = coinbaseTx.outputs[0].address;
+  block.totalTxs = block.tx.length;
   block.fees = getBlockTotalFees(coinbaseTx, block.height);
   block.reward = currentBlockReward(block.height);
 
