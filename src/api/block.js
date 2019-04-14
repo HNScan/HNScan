@@ -13,9 +13,25 @@ const getTXs = require("./txs.js");
  * @returns {Promise<Block>}
  */
 async function getBlock(height, limit = 10, offset = 0) {
-  let block = checkUrkel("block")
-    ? await _getBlockUrkel(height)
-    : await _getBlockDaemon(height);
+  return checkUrkel("block")
+    ? await _getBlockUrkel(height, limit, offset)
+    : await _getBlockDaemon(height, limit, offset);
+}
+
+/**
+ * _getBlockDaemon - Returns a block from the Daemon.
+ *
+ * @param height - Block Height
+ * @param limit - Limit of Transactions to be included
+ * @param offset - Offset for transactions to be included
+ * @returns {Promise<Block>}
+ */
+async function _getBlockDaemon(height, limit, offset) {
+  const client = getClient();
+
+  let block = await client.execute("getblockbyheight", [height, true, true]);
+
+  block = await formatBlock(block);
 
   let txs = block.tx.slice(offset, offset + (limit - 1));
 
@@ -37,31 +53,17 @@ async function getBlock(height, limit = 10, offset = 0) {
 }
 
 /**
- * _getBlockDaemon - Returns a block from the Daemon.
- *
- * @param height - Block Height
- * @returns {Promise<Block>}
- */
-async function _getBlockDaemon(height) {
-  const client = getClient();
-
-  let block = await client.execute("getblockbyheight", [height, true, true]);
-
-  block = await formatBlock(block);
-
-  return block;
-}
-
-/**
  * _getBlockUrkel - Returns a block from the Urkel API.
  *
  * @param height - Block Height
+ * @param limit - Limit of Transactions to be included
+ * @param offset - Offset for transactions to be included
  * @returns {Promise<Block>}
  */
-async function _getBlockUrkel(height) {
+async function _getBlockUrkel(height, limit = 10, offset = 0) {
   let urkel = getUrkel();
 
-  let block = await urkel.block(height);
+  let block = await urkel.block(height, limit, offset);
 
   return block;
 }
