@@ -4,7 +4,7 @@ block content
   .contentContainer
     .card
       header.card-header
-        p.card-header-title Name Summary
+        h1.card-header-title Name Summary
       .card-content
         .columns
           .column
@@ -30,7 +30,7 @@ block content
     if (name.info)
       .card
         header.card-header
-          p.card-header-title Advanced
+          h2.card-header-title Advanced
         .card-content
           .columns
             .column.is-half
@@ -90,15 +90,15 @@ block content
                     td=value
     .card
         header.card-header
-          p.card-header-title History
+          h2.card-header-title History
         .card-content
           table.table.is-fullwidth
             thead
               tr
-                td Action
-                td Time
-                td Block Height
-                td Value
+                th Action
+                th Time
+                th Block Height
+                th Value
             tbody
             each tx in name.history
               tr

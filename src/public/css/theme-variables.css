@@ -1,0 +1,57 @@
+/** The base theme is this top `html` block, aka the "light theme".
+  *
+  * Future themes can be added below and will require a repeat of the variables listed.
+  * There's a chance additional variables may be needed, as default colors may not have been
+  * have needed to change when upgraded to dark theme.
+  *
+  * update `theme.pug` as well to add more themes. */
+
+html {
+  --text-color-normal: #4a4a4a;
+  --text-color-light: #dbdbdb;
+  --text-color-link: #3273dc;
+  --text-color-link--hover: #363636;
+  --text-color-link--visited: #551A8B;
+  --background: #fefefe;
+  --background-hover: #fafafa;
+  --border-color:#dfdfdf;
+  --card-border: #dbdbdb;
+  --card-box-shadow: 0 2px 3px rgba(10,10,10,.1);
+  --logo-fill: #000;
+  --input-error-color: #f00;
+  --searchbar-background-color: #fff;
+  --searchbar-border-color: #dbdbdb;
+  --searchbar-text-color: #dbdbdb;
+  --urkel-color: #ee8c3a;
+  --ha-color: #532ad1;
+}
+
+html[data-theme='dark'] {
+  --text-color-normal: #afafaf;
+  --text-color-light: #969696;
+  --text-color-link: #3273dc;
+  --text-color-link--hover: #cfcfcf;
+  --text-color-link--visited: #551A8B;
+  --background: #323232;
+  --background-hover: #454545;
+  --border-color: #454545;
+  --card-background: #373737;
+  --card-border: #dbdbdb;
+  --card-box-shadow: 0 2px 3px rgba(10,10,10,.1);
+  --logo-fill: #cfcfcf;
+  --input-error-color: #f00;
+  --searchbar-background-color: #575757;
+  --searchbar-border-color: #575757;
+  --searchbar-text-color: #dbdbdb;
+  --urkel-color: #ee8c3a;
+  --ha-color: #532ad1;
+  --search-icon: #969696;
+}
+
+html.color-theme-in-transition,
+html.color-theme-in-transition *,
+html.color-theme-in-transition *:before,
+html.color-theme-in-transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0 !important;
+}

@@ -1,6 +1,6 @@
 .card.summaryCard
   header.card-header
-    p.card-header-title Blocks
+    h2.card-header-title Blocks
     a.card-header-icon(href="/blocks") View All
   if blocks.length <= 0
     .emptyStateContainer
@@ -12,11 +12,11 @@
       .summaryCardItem
         .summaryCardBlock
           .lineContainer
-            img.summaryCardImage(src="/img/3d.svg" alt="Cube")
+            .is-hidden-mobile.summaryCardImage
+              include ../../public/img/3d.svg
             span="Block #: "
               a(href="/block/" + block.height)=block.height
           .lineContainer.detailsText Mined By:&nbsp;
-            //- +tooltip("/address/" + miningAddress, miningAddress)
             .is-hidden-mobile
               a(href="/address/" + miningAddress)=miningAddress
             .is-hidden-tablet

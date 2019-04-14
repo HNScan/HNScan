@@ -1,10 +1,20 @@
+@import './theme-variables';
+
+/* Responsive thresholds */
 $tablet: 1087px;
 $mobile: 48em;
 
+/* Sizes */
 $navbar-height: 60px;
 $footer-height: 400px;
 
-$footer-background-color: #f5f5f5;
+/* Typography */
+$font-weight-bold: 800;
+$font-weight-semi-bold: 600;
+$font-weight-normal: 400;
+$font-weight-light: 200;
+
+/* Misc Colors */
 $border-color: #dbdbdb;
 $urkel-color: #ee8c3a;
 $dark-gray-color: #696969;

@@ -5,26 +5,28 @@ const rules = require("hsd/lib/covenants/rules");
 async function searchHandler(request, h) {
   const client = getClient();
   let info = await client.getInfo();
-
   let txHash = RegExp("^[a-fA-F0-9]{64}$");
-
   let search = request.query.q;
 
+  let results = [];
+
   if (!isNaN(search)) {
+    //Converts search string to int
     let height = +search;
 
     let tip = info.chain.height;
 
     //If it's a feasible block height, redirect to block page.
-    if (height <= tip) {
-      return h.response(`/block/${height}`).code(200);
-    }
+    if (height <= tip && height >= 0) {
+      let result = { type: "Block", url: `/block/${height}` };
 
-    return h.response().code(404);
+      results.push(result);
+    }
   }
 
   if (txHash.test(search)) {
-    return h.response(`/tx/${search}`).code(200);
+    let result = { type: "Transaction", url: `/tx/${search}` };
+    results.push(result);
   }
 
   let address;
@@ -37,15 +39,23 @@ async function searchHandler(request, h) {
 
   if (address) {
     if (address.isValid()) {
-      return h.response(`/address/${search}`).code(200);
+      let result = { type: "Address", url: `/address/${search}` };
+      results.push(result);
     }
   }
 
-  if (rules.verifyString(search)) {
-    return h.response(`/name/${search}`).code(200);
+  let name = search.toLowerCase();
+  if (rules.verifyString(name)) {
+    let result = { type: "Name", url: `/name/${name}` };
+    results.push(result);
   }
 
-  return h.response().code(404);
+  if (results.length === 1) {
+    //return the url
+    return h.redirect(results[0].url);
+  }
+
+  return h.view("search.pug", { results });
 }
 
 module.exports = searchHandler;

@@ -101,6 +101,22 @@ function css() {
     .pipe(gulp.dest(paths.styles.dest));
 }
 
+function cssProd() {
+  var plugins = [
+    postcssImport(),
+    precss(),
+    autoprefixer({
+      path: ["src/public/css"]
+    }),
+    cssnano()
+  ];
+
+  return gulp
+    .src(paths.styles.src)
+    .pipe(postcss(plugins))
+    .pipe(gulp.dest(paths.styles.dest));
+}
+
 function img() {
   return gulp.src(paths.images.src).pipe(gulp.dest(paths.images.dest));
 }
@@ -151,7 +167,7 @@ function watch(done) {
 ////Build function
 const build = gulp.series(
   clean,
-  gulp.parallel(templates, css, scripts, img, misc)
+  gulp.parallel(templates, cssProd, scripts, img, misc)
 );
 
 ////Deploy Function

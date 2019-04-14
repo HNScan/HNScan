@@ -171,7 +171,7 @@ var routes = [
     handler: airdropclaimHandler
   },
   {
-    method: "POST",
+    method: "GET",
     path: "/search",
     handler: searchHandler,
     options: {

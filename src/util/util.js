@@ -10,7 +10,7 @@ function currentBlockReward(blockHeight) {
   //Block halvening is 5000 blocks on Regtest
   let exponent = Math.floor(blockHeight / 340000);
 
-  let blockReward = 1000 / Math.pow(2, exponent);
+  let blockReward = 2000 / Math.pow(2, exponent);
 
   //Need to convert back to HNS
   return blockReward * 1000000;

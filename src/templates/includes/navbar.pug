@@ -1,9 +1,9 @@
-nav.navbar.is-white(role="navigation" aria-label="main navigation")
+nav.navbar(role="navigation" aria-label="main navigation")
   div.navbarContainer
 
     div.navbar-brand
       a.navbar-item(href="/")
-        img(src="/img/logo.svg")
+        include ../../public/img/logo.svg
       a.navbar-burger.burger(
         role="button"
         onclick="toggleMobileNav(event)"
@@ -22,26 +22,26 @@ nav.navbar.is-white(role="navigation" aria-label="main navigation")
         a.navbar-item.navOption(href="/names") Names
         div.navbar-item.has-dropdown.is-hoverable.navDropdown
           a.navbarMore.navbar-link.navOption Tools
-          div.navbar-dropdown
+          div.navbar-dropdown.is-hidden-touch
             a.navbar-item(href="/status") Node Status
             a.navbar-item(href="/peers") Peers
             a.navbar-item(href="/airdropclaim") Claim Your Airdrop
             // a.navbar-item(href="/airdrop") Airdrop Stats
         div.navbar-item.has-dropdown.is-hoverable.navDropdown
           a.navbarMore.navbar-link.navOption More
-          div.navbar-dropdown
+          div.navbar-dropdown.is-hidden-touch
             a.navbar-item(href="/about") About
-            hr.navbar-divider
+            //- hr.navbar-divider
             a.navbar-item(href="https://github.com/HandshakeAlliance/HNScan/issues", target="_blank" rel="noopener noreferrer") Report an issue
 
       div.navbar-end
         div.navbar-item
           div.field
-            div.control.has-icons-left
+            form.control.has-icons-left(onsubmit="search()")
+              button.hiddenSearchSubmit(type="submit")
               input.input.is-rounded.searchbar(
-                type="text"
+                type="search"
                 placeholder="Search the HNS Blockchain"
-                maxlength="64"
-                onkeypress="catchEnter(event)")
+                maxlength="63")
               span.icon.is-small.is-left
                 i.fas.fa-search

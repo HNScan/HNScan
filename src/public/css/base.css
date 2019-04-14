@@ -2,7 +2,19 @@ body {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  background-color: #fefefe;
+  background-color: var(--background);
+}
+
+a {
+  color: var(--text-color-link);
+
+  &:hover {
+    color: var(--text-color-link--hover);
+  }
+}
+
+.card-header-title {
+  color: var(--text-color-normal);
 }
 
 /* Shared Classes */
@@ -13,7 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: calc(100% - $footer-height - $navbar-height);
+  min-height: calc(100vh - $footer-height - $navbar-height);
 
   @media (max-width: $tablet) {
     width: 95%;
@@ -49,6 +61,7 @@ body {
 
 /* Adjust Bulma cards to have border-radaius of 10px */
 .card {
+  background: var(--card-background);
   overflow: hidden;
   border-radius: 10px;
   width: 100%;
@@ -65,4 +78,27 @@ body {
   @media (max-width: 808px) {
     flex-direction: column !important;
   }
+}
+
+.table {
+  background-color: var(--card-background);
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table thead th,
+.table td {
+  color: var(--text-color-normal);
+}
+
+.pagination-link,
+.pagination-link:hover,
+.pagination-previous,
+.pagination-previous:hover,
+.pagination-next,
+.pagination-next:hover {
+  color: var(--text-color-normal);
 }

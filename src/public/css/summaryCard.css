@@ -16,9 +16,13 @@
 /* One element of txs or blocks */
 .summaryCardItem {
   padding: 12px 18px;
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   flex-direction: row;
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+  }
 }
 
 .summaryCardItem:last-child {
@@ -32,8 +36,10 @@
   flex-grow: 1;
 }
 
-.align-right {
-  text-align: right;
+.align-right-tablet-only {
+  @media (min-width: $mobile) {
+    text-align: right;
+  }
 }
 
 .detailsText {
