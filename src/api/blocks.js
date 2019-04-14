@@ -11,9 +11,40 @@ const getInfo = require("./info.js");
  *
  * @param limit=25 - Amount of Blocks to return
  * @param offset=0 - Height of blocks start start off the tip of the chain.
- * @returns {undefined}
- */
+ * @returns {undefined} */
 async function getBlocks(limit = 25, offset = 0) {
+  return checkUrkel("blocks")
+    ? _getBlocksUrkel(limit, offset)
+    : _getBlocksDaemon(limit, offset);
+}
+
+/**
+ * _getBlocksUrkel
+ *
+ * @param blocklist - array of block heights
+ * @returns {Promise<Block[]>}
+ */
+async function _getBlocksUrkel(limit, offset) {
+  const urkel = getUrkel();
+
+  let blocks;
+
+  try {
+    blocks = await urkel.blocks(limit, offset);
+  } catch (e) {
+    console.log(e);
+  }
+
+  return blocks;
+}
+
+/**
+ * _getBlocksDaemon
+ *
+ * @param blocklist - array of block heights
+ * @returns {Promise<Block[]>}
+ */
+async function _getBlocksDaemon(limit, offset) {
   let info = await getInfo();
 
   let start = info.chain.height - offset;
@@ -34,45 +65,6 @@ async function getBlocks(limit = 25, offset = 0) {
     blocklist.push(i);
   }
 
-  return checkUrkel()
-    ? _getBlocksUrkel(blocklist)
-    : _getBlocksDaemon(blocklist);
-}
-
-/**
- * _getBlocksUrkel
- *
- * @param blocklist - array of block heights
- * @returns {Promise<Block[]>}
- */
-// async function _getBlocksUrkel(blocklist) {
-//   const urkel = getUrkel();
-
-//   let blocks = await urkel.blocks(blocklist);
-
-//   return blocks;
-// }
-async function _getBlocksUrkel(blocklist) {
-  // We are keeping these separate as we will be building a batch API for this for Urkel.
-  let blockcalls = [];
-
-  for (let height of blocklist) {
-    let block = getBlock(height);
-    blockcalls.push(block);
-  }
-
-  let blocks = await Promise.all(blockcalls);
-
-  return blocks;
-}
-
-/**
- * _getBlocksDaemon
- *
- * @param blocklist - array of block heights
- * @returns {Promise<Block[]>}
- */
-async function _getBlocksDaemon(blocklist) {
   let blockcalls = [];
 
   for (let height of blocklist) {

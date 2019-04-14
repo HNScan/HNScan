@@ -23,10 +23,10 @@ block content
                     div.is-hidden-tablet Size: #{block.size}
                   td.is-hidden-mobile= timeAgo(block.time)
                   td
-                    a.is-hidden-tablet.minerLinks(href="/address/" + block.mined_by)= truncateHash(block.mined_by, 7)
-                    a.is-hidden-mobile.minerLinks(href="/address/" + block.mined_by)=block.mined_by
+                    a.is-hidden-tablet.minerLinks(href="/address/" + block.mined_by)= truncateHash(block.minedBy, 7)
+                    a.is-hidden-mobile.minerLinks(href="/address/" + block.mined_by)=block.minedBy
                     div.is-hidden-tablet= timeAgo(block.time)
                   td.is-hidden-mobile= block.size
                   td
-                    a.minerLinks(href="/txs?block=" + block.height)= block.total_txs
+                    a.minerLinks(href="/txs?block=" + block.height)= block.totalTxs
     include includes/pagination.pug
