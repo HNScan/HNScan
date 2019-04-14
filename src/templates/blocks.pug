@@ -23,8 +23,8 @@ block content
                     div.is-hidden-tablet Size: #{block.size}
                   td.is-hidden-mobile= timeAgo(block.time)
                   td
-                    a.is-hidden-tablet.minerLinks(href="/address/" + block.mined_by)= truncateHash(block.minedBy, 7)
-                    a.is-hidden-mobile.minerLinks(href="/address/" + block.mined_by)=block.minedBy
+                    a.is-hidden-tablet.minerLinks(href="/address/" + block.minedBy)= truncateHash(block.minedBy, 7)
+                    a.is-hidden-mobile.minerLinks(href="/address/" + block.minedBy)=block.minedBy
                     div.is-hidden-tablet= timeAgo(block.time)
                   td.is-hidden-mobile= block.size
                   td
