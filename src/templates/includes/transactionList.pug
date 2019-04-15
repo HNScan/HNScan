@@ -31,8 +31,7 @@
                     else
                       span #{prettyPrintHNS(input.coin.value)} from #{" "}
                       span
-                        //- a(href=`/address/${input.coin.address}`)=input.coin.address
-                        span=input.coin.address
+                        a(href=`/address/${input.coin.address}`)=input.coin.address
           .column.is-half
             .txsPutsContainer
               if (tx.outputs.length === 1)
