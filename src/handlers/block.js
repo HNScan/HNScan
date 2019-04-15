@@ -16,7 +16,7 @@ async function blockHandler(request, h) {
     console.log(e);
   }
 
-  let pagination = paginate(block.total_txs, limit, page, "block/" + height);
+  let pagination = paginate(block.totalTxs, limit, page, "block/" + height);
 
   return h.view("block.pug", {
     block,
