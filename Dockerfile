@@ -6,6 +6,7 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY package*.json ./
 
+RUN apt-get update && apt-get install -y libgmp3-dev
 RUN npm install
 
 COPY . .
