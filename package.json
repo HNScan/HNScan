@@ -1,7 +1,7 @@
 {
-  "name": "Block-Explorer-Backend",
+  "name": "HNScan",
   "version": "0.1.0",
-  "description": "A developer focus block explorer for Handshake.",
+  "description": "A developer focused block explorer for Handshake.",
   "main": "app.js",
   "scripts": {
     "start": "node src/app.js",
@@ -12,13 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ProjectKnucks/blockBackend.git"
+    "url": "git+https://github.com/HandshakeAlliance/HNScan.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ProjectKnucks/backend/issues"
+    "url": "https://github.com/HandshakeAlliance/HNScan/issues"
   },
-  "homepage": "https://github.com/ProjectKnucks/backend#readme",
+  "homepage": "https://github.com/HandshakeAlliance/HNScan#readme",
   "dependencies": {
     "autoprefixer": "^9.3.1",
     "axios": "^0.18.0",
@@ -46,10 +46,11 @@
     "humanize-duration": "^3.15.3",
     "inert": "^5.1.2",
     "leaflet": "^1.3.4",
-    "nomenclate-js": "^0.3.0",
+    "nomenclate-js": "^0.5.0",
     "postcss-import": "^12.0.1",
     "precss": "^3.1.2",
     "pug": "^2.0.3",
+    "urkel-js": "^0.9.1",
     "vision": "^5.4.3"
   },
   "babel": {

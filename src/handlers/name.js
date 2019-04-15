@@ -1,16 +1,21 @@
-const { formatAuctionHistory } = require("../util/util.js");
+const { getName } = require("../api");
 
-const { getName, getNameHistory } = require("../util/api.js");
+const { paginate } = require("../util/util.js");
 
 async function blockHandler(request, h) {
-  const name = request.params.name;
+  const namestring = request.params.namestring;
 
-  let nameData = await getName(name);
-  let history = await getNameHistory(name);
+  let limit = request.query.limit;
+  let page = request.query.p;
+  let offset = (page - 1) * limit;
+
+  let name = await getName(namestring, limit, offset);
+
+  let pagination = paginate(name.total_txs, limit, page, "name/" + name.name);
 
   return h.view("name.pug", {
-    name: nameData,
-    history
+    name,
+    pagination
   });
 }
 

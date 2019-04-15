@@ -1,6 +1,7 @@
 const { getClient } = require("./clients.js");
 const Covenant = require("hsd/lib/primitives/covenant");
 const rules = require("hsd/lib/covenants/rules");
+const config = require("config");
 
 function currentBlockReward(blockHeight) {
   //Block Reward starts at 1000, and halves every 340000 blocks
@@ -44,6 +45,7 @@ async function _formatInputs(inputs, height) {
   let newInputs = [];
   let client = getClient();
 
+  //XXX Does not work for airdrops right now.
   for (let input of inputs) {
     if (!input.coin) {
       input.reward = currentBlockReward(height);
@@ -126,6 +128,15 @@ async function formatTransactions(txs) {
   }
 
   return txs;
+}
+
+async function formatTransaction(tx) {
+  //XXX I feel like these don't need to be awaits...
+  tx.outputs = await _formatOutputs(tx.outputs);
+
+  tx.inputs = await _formatInputs(tx.inputs, tx.height);
+
+  return tx;
 }
 
 async function formatAuctionHistory(name, txs) {
@@ -260,6 +271,37 @@ function formatNameNextState(name) {
   return nextState;
 }
 
+function checkUrkel(feature) {
+  if (config.has("urkel-features")) {
+    if (config.get("urkel-features").includes(feature)) {
+      return true;
+    }
+    return null;
+  } else {
+    return null;
+  }
+}
+
+function paginate(total, limit, page, url) {
+  return (pagination = {
+    url: url,
+    page: page,
+    totalPages: Math.ceil(total / limit)
+  });
+}
+
+async function formatBlock(block) {
+  let client = getClient();
+
+  let coinbaseTx = await client.getTX(block.tx[0].txid);
+  block.minedBy = coinbaseTx.outputs[0].address;
+  block.totalTxs = block.tx.length;
+  block.fees = getBlockTotalFees(coinbaseTx, block.height);
+  block.reward = currentBlockReward(block.height);
+
+  return block;
+}
+
 module.exports = {
   getBlockTotalFees: getBlockTotalFees,
   currentBlockReward: currentBlockReward,
@@ -267,5 +309,9 @@ module.exports = {
   formatAuctionHistory: formatAuctionHistory,
   namesRegistered: namesRegistered,
   formatNameNextState: formatNameNextState,
-  formatName: formatName
+  formatName: formatName,
+  checkUrkel: checkUrkel,
+  paginate: paginate,
+  formatBlock: formatBlock,
+  formatTransaction: formatTransaction
 };

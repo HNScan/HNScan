@@ -14,15 +14,15 @@ block content
             .blockFullLabel Total Transactions
             .blockFullDetail
               //- a(href=`/txs?block=${block.height}`)=txs.length
-              span=totalTransactions
+              span=block.txs.length
           .column
             .blockFullLabel Total Fees
-            .blockFullDetail #{prettyPrintHNS(block.totalFees)}
+            .blockFullDetail #{prettyPrintHNS(block.fees)}
             // .blockFullDetail=block.totalFees
         .columns
           .column
             .blockFullLabel Mined By
-            - let address = block.coinbaseTx.outputs[0].address
+            - let address = block.minedBy
             .blockFullDetail.hash
               a(href=`/address/${address}`)=address
           .column
@@ -65,7 +65,7 @@ block content
                   tr
                     td.stacked
                       span.stackedLabel Average Fee
-                      span.stackedElement #{prettyPrintHNS((block.totalFees / txs.length))}
+                      span.stackedElement #{prettyPrintHNS((block.fees / block.totalTxs))}
           .column.is-half
             .tableContainer
               table.table.is-fullwidth
@@ -96,5 +96,6 @@ block content
                     td.stacked
                       span.stackedLabel Chainwork:
                       span.stackedElement=block.chainwork
-    if (txs)
+    if (block.txs)
+      - let txs = block.txs
       include includes/transactionList.pug

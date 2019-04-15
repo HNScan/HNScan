@@ -16,6 +16,17 @@ block content
                 th.is-hidden-mobile Size
                 th TXs
             tbody
-              include includes/listBlocks
-
-    include includes/pagination
+              each block in blocks
+                tr
+                  td
+                    a.minerLinks(href="/block/" + block.height)=block.height
+                    div.is-hidden-tablet Size: #{block.size}
+                  td.is-hidden-mobile= timeAgo(block.time)
+                  td
+                    a.is-hidden-tablet.minerLinks(href="/address/" + block.minedBy)= truncateHash(block.minedBy, 7)
+                    a.is-hidden-mobile.minerLinks(href="/address/" + block.minedBy)=block.minedBy
+                    div.is-hidden-tablet= timeAgo(block.time)
+                  td.is-hidden-mobile= block.size
+                  td
+                    a.minerLinks(href="/txs?block=" + block.height)= block.totalTxs
+    include includes/pagination.pug

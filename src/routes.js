@@ -34,6 +34,90 @@ var routes = [
   },
   {
     method: "GET",
+    path: "/address/{hash}",
+    handler: addressHandler,
+    options: {
+      validate: {
+        params: {
+          hash: Joi.string()
+        },
+        query: {
+          limit: Joi.number()
+            .max(50)
+            .default(10),
+          p: Joi.number().default(1)
+        }
+      }
+    }
+  },
+  {
+    method: "GET",
+    path: "/block/{height}",
+    handler: blockHandler,
+    options: {
+      validate: {
+        params: {
+          height: Joi.number()
+        },
+        query: {
+          limit: Joi.number()
+            .max(50)
+            .default(10),
+          p: Joi.number().default(1)
+        }
+      }
+    }
+  },
+  {
+    method: "GET",
+    path: "/blocks",
+    handler: blocksHandler,
+    options: {
+      validate: {
+        query: {
+          limit: Joi.number()
+            .max(50)
+            .default(25),
+          p: Joi.number().default(1)
+        }
+      }
+    }
+  },
+  {
+    method: "GET",
+    path: "/name/{namestring}",
+    handler: nameHandler,
+    options: {
+      validate: {
+        params: {
+          namestring: Joi.string()
+        },
+        query: {
+          limit: Joi.number()
+            .max(50)
+            .default(20),
+          p: Joi.number().default(1)
+        }
+      }
+    }
+  },
+  {
+    method: "GET",
+    path: "/names",
+    handler: namesHandler,
+    options: {
+      validate: {
+        query: {
+          limit: Joi.number()
+            .max(50)
+            .default(25),
+          p: Joi.number().default(1)
+        }
+      }
+    }
+  },
+  {
+    method: "GET",
     path: "/about",
     handler: function(request, h) {
       return h.view("about.pug", {});
@@ -65,68 +149,6 @@ var routes = [
         }
       }
     }
-  },
-  {
-    method: "GET",
-    path: "/block/{blockNumber}",
-    handler: blockHandler,
-    options: {
-      validate: {
-        params: {
-          blockNumber: Joi.string()
-        },
-        query: {
-          p: Joi.string()
-        }
-      }
-    }
-  },
-  {
-    method: "GET",
-    path: "/blocks",
-    handler: blocksHandler,
-    options: {
-      validate: {
-        query: {
-          start: Joi.string(),
-          end: Joi.string(),
-          p: Joi.string(),
-          amt: Joi.string()
-        }
-      }
-    }
-  },
-  {
-    method: "GET",
-    path: "/address/{addressHash}",
-    handler: addressHandler,
-    options: {
-      validate: {
-        params: {
-          addressHash: Joi.string()
-        },
-        query: {
-          p: Joi.string()
-        }
-      }
-    }
-  },
-  {
-    method: "GET",
-    path: "/name/{name}",
-    handler: nameHandler,
-    options: {
-      validate: {
-        params: {
-          name: Joi.string()
-        }
-      }
-    }
-  },
-  {
-    method: "GET",
-    path: "/names",
-    handler: namesHandler
   },
   {
     method: "GET",
