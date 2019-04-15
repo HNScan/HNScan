@@ -45,9 +45,7 @@ async function _getBlockDaemon(height, limit, offset) {
     }
   }
 
-  block.txs = await getTXs(txlist);
-
-  delete block.tx;
+  block.tx = await getTXs(txlist);
 
   return block;
 }
