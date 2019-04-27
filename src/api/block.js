@@ -1,6 +1,10 @@
 const { getClient, getUrkel } = require("../util/clients.js");
 
-const { formatBlock, checkUrkel } = require("../util/util.js");
+const {
+  formatBlock,
+  formatTransaction,
+  checkUrkel
+} = require("../util/util.js");
 
 const getTXs = require("./txs.js");
 
@@ -61,7 +65,16 @@ async function _getBlockDaemon(height, limit, offset) {
 async function _getBlockUrkel(height, limit = 10, offset = 0) {
   let urkel = getUrkel();
 
-  let block = await urkel.block(height, limit, offset);
+  let block = await urkel.block(height, true, limit, offset);
+
+  console.log(block.tx);
+
+  for (let i = 0; i < block.tx.length; i++) {
+    //TODO this probably doesn't have to be await, let's fix this.
+    block.tx[i] = await formatTransaction(block.tx[i]);
+  }
+
+  console.log(block.tx);
 
   return block;
 }

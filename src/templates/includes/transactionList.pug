@@ -26,12 +26,12 @@
               .inputContainer
                 each input in tx.inputs
                   .inputTX
-                    if (!input.coin)
-                      span #{prettyPrintHNS(input.reward)} from Block Reward
+                    if (!input.address)
+                      span #{prettyPrintHNS(input.value)} from Block Reward
                     else
-                      span #{prettyPrintHNS(input.coin.value)} from #{" "}
+                      span #{prettyPrintHNS(input.value)} from #{" "}
                       span
-                        a(href=`/address/${input.coin.address}`)=input.coin.address
+                        a(href=`/address/${input.address}`)=input.address
           .column.is-half
             .txsPutsContainer
               if (tx.outputs.length === 1)
@@ -45,7 +45,6 @@
                       span
                       | #{prettyPrintHNS(output.value)} to #{" "}
                       a(href=`/address/${output.address}`)=output.address
-                      // span=output.address
                     else if (output.action === "BID")
                       span
                         | #{output.action} for #{" "}

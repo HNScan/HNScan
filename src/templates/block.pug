@@ -13,12 +13,10 @@ block content
           .column
             .blockFullLabel Total Transactions
             .blockFullDetail
-              //- a(href=`/txs?block=${block.height}`)=txs.length
               span=block.totalTxs
           .column
             .blockFullLabel Total Fees
             .blockFullDetail #{prettyPrintHNS(block.fees)}
-            // .blockFullDetail=block.totalFees
         .columns
           .column
             .blockFullLabel Mined By
