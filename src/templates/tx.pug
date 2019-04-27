@@ -46,10 +46,14 @@ block content
                         .stackedElement Pending
                       else
                         a(href=`/block/${tx.height}`).stackedElement=tx.height
+                  // tr
+                  //   td.stacked
+                  //     span.stackedLabel Hex
+                  //     span.stackedElement=tx.hex
                   tr
                     td.stacked
-                      span.stackedLabel Hex
-                      span.stackedElement=tx.hex
+                      span.stackedLabel Locktime
+                      span.stackedElement=tx.locktime
           .column.is-half
             .tableContainer
               table.table.is-fullwidth
@@ -66,10 +70,6 @@ block content
                     td.stacked
                       span.stackedLabel Index
                       span.stackedElement=tx.index
-                  tr
-                    td.stacked
-                      span.stackedLabel Locktime
-                      span.stackedElement=tx.locktime
 
     //- XXX one more card should be included for inputs/outputs
     //- .card

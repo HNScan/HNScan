@@ -67,14 +67,10 @@ async function _getBlockUrkel(height, limit = 10, offset = 0) {
 
   let block = await urkel.block(height, true, limit, offset);
 
-  console.log(block.tx);
-
   for (let i = 0; i < block.tx.length; i++) {
     //TODO this probably doesn't have to be await, let's fix this.
     block.tx[i] = await formatTransaction(block.tx[i]);
   }
-
-  console.log(block.tx);
 
   return block;
 }

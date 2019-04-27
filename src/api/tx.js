@@ -9,7 +9,7 @@ const { getClient, getUrkel } = require("../util/clients.js");
  * @returns {Promise<TX>}
  */
 async function getTX(hash) {
-  return checkUrkel() ? _getTXUrkel(hash) : _getTXDaemon(hash);
+  return checkUrkel("tx") ? _getTXUrkel(hash) : _getTXDaemon(hash);
 }
 
 /**
