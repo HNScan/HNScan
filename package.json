@@ -1,6 +1,6 @@
 {
   "name": "HNScan",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "A developer focused block explorer for Handshake.",
   "main": "app.js",
   "scripts": {

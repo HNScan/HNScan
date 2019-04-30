@@ -1,29 +1,21 @@
 const { getClient } = require("../util/clients.js");
 const { namesRegistered } = require("../util/util.js");
 
+const { getBlocks } = require("../api");
+
 async function homeHandler(request, h) {
   const client = getClient();
   const info = await client.getInfo();
 
   // blockSummary
   let blockHeight = info.chain.height;
-  let blocks = [];
-  var block;
+  let blocks;
 
-  for (var i = 0; i < Math.min(5, blockHeight); i++) {
-    try {
-      block = await client.execute("getblockbyheight", [
-        blockHeight - i,
-        true,
-        true
-      ]);
-      block.coinbaseTx = await client.getTX(block.tx[0].txid);
-      blocks.push(block);
-    } catch (e) {
-      console.log(e);
-    }
+  try {
+    blocks = await getBlocks(5, 0);
+  } catch (e) {
+    console.log(e);
   }
-  // end blockSummary
 
   //txSummary
   //Iterate through the lastest blocks, grab every transaction until you hit 4

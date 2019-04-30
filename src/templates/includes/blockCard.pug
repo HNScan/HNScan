@@ -8,7 +8,6 @@
       .emptyStateSubheader The chain needs to be built
   else
     each block in blocks
-      - let miningAddress = block.coinbaseTx.outputs[0].address
       .summaryCardItem
         .summaryCardBlock
           .lineContainer
@@ -18,7 +17,7 @@
               a(href="/block/" + block.height)=block.height
           .lineContainer.detailsText Mined By:&nbsp;
             .is-hidden-mobile
-              a(href="/address/" + miningAddress)=miningAddress
+              a(href="/address/" + miningAddress)=block.minedBy
             .is-hidden-tablet
-              a(href="/address/" + miningAddress)=truncateHash(miningAddress, 7)
-          .summaryCardLine.detailsText="Block Reward: " + prettyPrintHNS(block.coinbaseTx.outputs[0].value)
+              a(href="/address/" + miningAddress)=truncateHash(block.minedBy, 7)
+          .summaryCardLine.detailsText="Block Reward: " + prettyPrintHNS(block.reward)
