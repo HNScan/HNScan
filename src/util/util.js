@@ -48,7 +48,7 @@ async function _formatInputs(inputs, height) {
   //XXX Does not work for airdrops right now.
   for (let input of inputs) {
     if (!input.coin) {
-      input.reward = currentBlockReward(height);
+      input.value = currentBlockReward(height);
     }
 
     newInputs.push(input);
