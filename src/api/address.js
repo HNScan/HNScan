@@ -16,7 +16,7 @@ const { checkUrkel, formatTransactions } = require("../util/util.js");
  * @returns {Promise<Address>}
  */
 async function getAddress(hash, limit = 10, offset = 0) {
-  return checkUrkel()
+  return checkUrkel("address")
     ? _getAddressUrkel(hash, limit, offset)
     : _getAddressDaemon(hash, limit, offset);
 }
@@ -32,7 +32,13 @@ async function getAddress(hash, limit = 10, offset = 0) {
 async function _getAddressUrkel(hash, limit = 10, offset = 0) {
   const urkel = getUrkel();
 
-  let address = await urkel.address(hash, limit, offset);
+  let address = await urkel.address(hash, true, limit, offset);
+
+  // for (let i = 0; i < address.txs.length; i++) {
+  //   address.txs[i] = await formatTransaction(address.txs[i]);
+  // }
+
+  address.txs = await formatTransactions(address.txs);
 
   return address;
 }
@@ -53,11 +59,15 @@ async function _getAddressDaemon(hash, limit = 10, offset = 0) {
   //Get history
   let history = await _getAddressHistory(hash, limit, offset);
 
-  address.total_txs = history.total;
+  address.totalTxs = history.total;
   address.txs = history.result;
 
   //Get Balance
-  address.balance = await _getAddressBalance(hash);
+  let balance = await _getAddressBalance(hash);
+
+  address.totalReceived = balance.received;
+  address.totalSent = balance.spent;
+  address.balance = balance.confirmed;
 
   return address;
 }
