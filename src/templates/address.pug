@@ -12,14 +12,14 @@ block content
         .columns
           .column
             .blockFullLabel Received
-            .blockFullDetail=prettyPrintHNS(address.balance.received)
+            .blockFullDetail=prettyPrintHNS(address.totalReceived)
           .column
             .blockFullLabel Spent
             //- XXX This value is not accurate for real txs
-            .blockFullDetail=prettyPrintHNS(address.balance.spent)
+            .blockFullDetail=prettyPrintHNS(address.totalSent)
           .column
             .blockFullLabel Balance
-            .blockFullDetail=prettyPrintHNS(address.balance.confirmed)
+            .blockFullDetail=prettyPrintHNS(address.balance)
     if (address.txs.length > 0)
       - let txs = address.txs;
       include includes/transactionList.pug

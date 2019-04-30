@@ -16,7 +16,7 @@ async function addressHandler(request, h) {
     console.error(e);
   }
 
-  let pagination = paginate(address.total_txs, limit, page, "address/" + hash);
+  let pagination = paginate(address.totalTxs, limit, page, "address/" + hash);
 
   return h.view("address.pug", {
     address,
