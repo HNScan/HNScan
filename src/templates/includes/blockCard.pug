@@ -17,7 +17,7 @@
               a(href="/block/" + block.height)=block.height
           .lineContainer.detailsText Mined By:&nbsp;
             .is-hidden-mobile
-              a(href="/address/" + miningAddress)=block.minedBy
+              a(href="/address/" + block.minedBy)=block.minedBy
             .is-hidden-tablet
-              a(href="/address/" + miningAddress)=truncateHash(block.minedBy, 7)
+              a(href="/address/" + block.minedBy)=truncateHash(block.minedBy, 7)
           .summaryCardLine.detailsText="Block Reward: " + prettyPrintHNS(block.reward)
