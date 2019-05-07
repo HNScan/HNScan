@@ -49,6 +49,8 @@ async function _formatInputs(inputs, height) {
   for (let input of inputs) {
     if (!input.coin) {
       input.value = currentBlockReward(height);
+    } else {
+      input.value = input.coin.value;
     }
 
     newInputs.push(input);
