@@ -51,6 +51,7 @@ async function _formatInputs(inputs, height) {
       input.value = currentBlockReward(height);
     } else {
       input.value = input.coin.value;
+      input.address = input.coin.address;
     }
 
     newInputs.push(input);
