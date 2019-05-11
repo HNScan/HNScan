@@ -1,8 +1,12 @@
-body {
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
+html {
   background-color: var(--background);
+}
+
+body {
+  font-family: 'Anonymous Pro','Courier', 'monospace';
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
 }
 
 a {

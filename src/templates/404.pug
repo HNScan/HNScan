@@ -2,12 +2,13 @@ extends layouts/layout
 
 block content
   .contentContainer.errorSection
-    .errorHeader 
-      span Oh no! 
+    .errorHeader
+      span Oh no!
       span Where'd it go?
     .errorSubtext #{"It's cold out here in the void...let's bring you back to "}
       a(href="/" rel="noopener noreferrer") safety
     .container404
       span 4
-      img.hugeBlock(src="/img/3d.svg")
+      .hugeBlock
+        include ../public/img/3d.svg
       span 4
