@@ -70,6 +70,16 @@ span, div, section, h1, h2, h3, h4, h5, h6 {
   width: 95%;
 }
 
+.namesListItem {
+  @media (max-width: $mobile) {
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
 /* ----- BLOCKS SUMMARY ----- */
 .blocksSection {
   height: auto;

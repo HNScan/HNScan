@@ -23,7 +23,7 @@
     "autoprefixer": "^9.3.1",
     "axios": "^0.18.0",
     "boom": "^7.2.2",
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.26.5",
     "bsert": "0.0.8",
     "bstring": "^0.3.5",
     "config": "^2.0.1",
