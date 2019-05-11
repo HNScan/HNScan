@@ -13,11 +13,13 @@
 }
 
 .container404 {
+  display: flex;
   font-size: 108px;
 }
 
 .hugeBlock {
-  width: auto;
-  height: 85px;
+  width: 80px;
+  height: auto;
   opacity: 0.7;
+  margin-right: 4px;
 }
