@@ -24,6 +24,9 @@ async function searchHandler(request, h) {
     }
   }
 
+  console.log(txHash.test(search))
+  console.log(search)
+  console.log(search.length)
   if (txHash.test(search)) {
     let result = { type: "Transaction", url: `/tx/${search}` };
     results.push(result);
