@@ -72,6 +72,14 @@ a {
   margin: 10px 0;
 }
 
+.navbar-menu {
+  padding: 0;
+}
+
+.navbar-dropdown {
+  padding: 0;
+}
+
 /* Have pagination automatically go full width of the page */
 .paginationNav {
   width: 100%;

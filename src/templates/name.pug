@@ -93,21 +93,24 @@ block content
           h2.card-header-title History
         .card-content
           table.table.is-fullwidth
-            thead
-              tr
-                th Action
-                th Time
-                th Block Height
-                th Value
-            tbody
-            each tx in name.history
-              tr
-                td=tx.action
-                td=timeAgo(tx.time)
-                td
-                  a(href=`/block/${tx.height}`)=tx.height
-                if tx.value
-                  td=prettyPrintHNS(tx.value)
-                else
+            if name.history.length
+              thead
+                tr
+                  th Action
+                  th Time
+                  th Block Height
+                  th Value
+              tbody
+              each tx in name.history
+                tr
+                  td=tx.action
+                  td=timeAgo(tx.time)
                   td
+                    a(href=`/block/${tx.height}`)=tx.height
+                  if tx.value
+                    td=prettyPrintHNS(tx.value)
+                  else
+                    td
+            else
+              p There is no history for this name
     include includes/pagination.pug
