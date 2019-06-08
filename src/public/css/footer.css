@@ -112,7 +112,7 @@
 .columnLink {
   color: var(--text-color-normal);
   white-space: nowrap;
-  &:hover { color: #000; }
+  &:hover { color: var(--text-color-link--hover); }
 }
 
 .logoText {

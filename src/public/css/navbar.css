@@ -16,8 +16,7 @@
 }
 
 .navOption {
-  margin: 0 10px;
-  padding: 10px 15px;
+  padding: 10px 25px;
   justify-content: center;
 }
 
@@ -65,6 +64,10 @@
   .navbar-dropdown {
     margin-left: 12px;
   }
+}
+
+.navbar-dropdown .navbar-item {
+  padding: 0.5rem 1rem;
 }
 
 /* Theme overrides */
