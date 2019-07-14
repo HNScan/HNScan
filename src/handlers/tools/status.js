@@ -20,6 +20,7 @@ async function statusHandler(request, h) {
   let status = {
     host: info.pool.host,
     port: info.pool.port,
+    key: info.pool.identitykey,
     chain: info.network,
     progress: info.chain.progress,
     version: info.version,
