@@ -1,6 +1,8 @@
 const { getClient } = require("./clients.js");
 const Covenant = require("hsd/lib/primitives/covenant");
 const rules = require("hsd/lib/covenants/rules");
+const {OwnershipProof} = require("hsd/lib/covenants/ownership");
+const AirdropProof = require("hsd/lib/primitives/airdropproof");
 const config = require("config");
 
 function currentBlockReward(blockHeight) {
@@ -24,14 +26,26 @@ function getBlockTotalFees(coinbaseTx, blockHeight) {
 
   var blockReward = currentBlockReward(blockHeight);
 
-  let totalOutput = 0;
+  const inputs = coinbaseTx.inputs;
+  const outputs = coinbaseTx.outputs;
 
-  for (let output of coinbaseTx.outputs) {
-    totalOutput += output.value;
+  // Start with the required coinbase output
+  let minerOutput = outputs[0].value;
+
+  for (let i = 1; i < outputs.length; i++) {
+    // Miner added extra subsidy payout outputs
+    if (!inputs[i]) {
+      minerOutput += outputs[i].value;
+    } else {
+      // let proof;
+      // try {
+      //   proof = AirdropProof.decode(Buffer.from(inputs[i].witness[0], "hex"));
+      // } catch (e) {
+      //   proof = OwnershipProof.decode(Buffer.from(inputs[i].witness[0], "hex"));
+    }
   }
 
-  let totalFees = totalOutput - blockReward;
-  return totalFees;
+  return minerOutput - blockReward;
 }
 
 function _formatName(nameHex) {
