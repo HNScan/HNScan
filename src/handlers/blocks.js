@@ -1,13 +1,11 @@
 const { getBlocks } = require("../api");
-
 const { paginate } = require("../util/util.js");
 
 async function blocksHandler(request, h) {
+  let blocks;
   let limit = request.query.limit;
   let page = request.query.p;
   let offset = (page - 1) * limit;
-
-  let blocks;
 
   try {
     blocks = await getBlocks(limit, offset);

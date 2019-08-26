@@ -153,7 +153,17 @@ var routes = [
   {
     method: "GET",
     path: "/peers",
-    handler: peersHandler
+    handler: peersHandler,
+    options: {
+      validate: {
+        query: {
+          limit: Joi.number()
+            .max(25)
+            .default(10),
+          p: Joi.number().default(1)
+        }
+      }
+    }
   },
   {
     method: "GET",

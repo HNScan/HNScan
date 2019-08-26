@@ -18,8 +18,8 @@ block content
           h2.card-header-title Peers
         if peers.length <= 0
           .emptyStateContainer
-            .emtpyStateHeader No Peers
-            .emptyStateSubheader There are no peers connected to this network
+            .emptyStateHeader Oops...That's Awkward
+            .emptyStateSubheader there aren't enough peers for this page yet
         else
           each peer in peers
             .summaryCardItem(id=peer.addr.split(':')[0])
@@ -58,6 +58,7 @@ block content
                           =timeAgo(peer.lastsend) + " / " + timeAgo(peer.lastrecv)
                       else
                         .stackedElement N/A
+      include includes/pagination.pug
   //- Could be added to its own file
   script(
     src='https://unpkg.com/leaflet@1.3.4/dist/leaflet.js',
