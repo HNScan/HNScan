@@ -2,15 +2,14 @@ const { getClient } = require("../../util/clients.js");
 const { paginate } = require("../../util/util.js");
 
 async function peersHandler(request, h) {
-  let client;
   let peersInfo;
   let peers = [];
-  let limit = 10;
+  let limit = request.query.limit;
   let page = request.query.p;
   let offset = (page - 1) * limit;
 
   try {
-    client = getClient();
+    let client = getClient();
     peersInfo = await client.execute("getpeerinfo");
   } catch (e) {
     h.response().code(404);
@@ -22,11 +21,7 @@ async function peersHandler(request, h) {
     }
   }
 
-  //TODO: The pagination is broken at the moment
   let pagination = paginate(peersInfo.length, limit, page, "peers");
-
-  console.log(peers);
-  console.log(pagination);
 
   return h.view("peers.pug", {
     peers,
