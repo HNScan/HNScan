@@ -5,8 +5,7 @@ async function peersHandler(request, h) {
   let client;
   let peersInfo;
   let peers = [];
-  //TODO: this needs to change to 10/page when it is working
-  let limit = 3;
+  let limit = 10;
   let page = request.query.p;
   let offset = (page - 1) * limit;
 
@@ -24,9 +23,15 @@ async function peersHandler(request, h) {
   }
 
   //TODO: The pagination is broken at the moment
-  let pagination = paginate(peers[0] + offset, limit, page, "peers");
+  let pagination = paginate(peersInfo.length, limit, page, "peers");
 
-  return h.view("peers.pug", { peers });
+  console.log(peers);
+  console.log(pagination);
+
+  return h.view("peers.pug", {
+    peers,
+    pagination
+  });
 }
 
 module.exports = peersHandler;
