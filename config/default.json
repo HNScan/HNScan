@@ -1,9 +1,0 @@
-{
-  "server-host": "localhost",
-  "server-port": 4000,
-  "browsersync-port": 7000,
-  "wallet-id": "primary",
-  "node-api-key": "api-key",
-  "node-network": "testnet",
-  "node-host": "localhost"
-}
