@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Navbar.scss';
-import Logo from '../../img/hnscan.svg';
+import Logo from '../logos/hnscan';
+import * as Navbar from './styled-components';
 
 export default class NavbarComponent extends Component {
   // hide/show the mobile nav
@@ -21,7 +22,9 @@ export default class NavbarComponent extends Component {
           {/* ----- Navigation Menu ----- */}
           <div className="navbar-brand">
             <a href="/" className="navbar-item">
-              <img src={Logo} alt="HNScan Logo" />
+              <Navbar.LogoWrapper>
+                <Logo />
+              </Navbar.LogoWrapper>
             </a>
 
             {/* Mobile Nav Menu */}
@@ -39,8 +42,8 @@ export default class NavbarComponent extends Component {
           {/* Standard Nav Menu */}
           <div id="navbarBasicExample" className="navbar-menu">
             {/* // TODO: Remove this inline styling */}
-            <div className="navbar-start" style={{width: '100%', border: '1px solid red'}}>
-              <a href="/blocks" id="blocks" className="navbar-item">Blocks</a>
+            <div className="navbar-start" style={{width: '100%'}}>
+              <a href="/blocks" id="blocks" className="navbar-item navOption">Blocks</a>
               <a href="/names" className="navbar-item navOption">Names</a>
               <div className="navbar-item has-dropdown is-hoverable navDropdown">
                 <button className="navbarMore navbar-link navOption">Tools</button>
