@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
 import './Navbar.scss';
+import Logo from '../../img/hnscan.svg';
 
 export default class NavbarComponent extends Component {
+  // hide/show the mobile nav
   toggleMobileNav() {
-    console.log('toggling!')
+    console.log('toggling!');
   }
 
+  // handle all search results
   search() {
-    console.log('searching!')
+    console.log('searching!');
   }
 
   render() {
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbarContainer">
+
+          {/* ----- Navigation Menu ----- */}
           <div className="navbar-brand">
             <a href="/" className="navbar-item">
-              {/* TODO include logo.svg here!!! */}
+              <img src={Logo} alt="HNScan Logo" />
             </a>
-            <a className="navbar-burger burger"
-              role="button"
+
+            {/* Mobile Nav Menu */}
+            <button className="navbar-burger burger"
               onClick={this.toggleMobileNav}
               aria-label="menu"
               aria-expanded="false"
@@ -27,15 +33,17 @@ export default class NavbarComponent extends Component {
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
-            </a>
+            </button>
           </div>
 
+          {/* Standard Nav Menu */}
           <div id="navbarBasicExample" className="navbar-menu">
-            <div className="navbar-start" style={{width: '100%'}}>
+            {/* // TODO: Remove this inline styling */}
+            <div className="navbar-start" style={{width: '100%', border: '1px solid red'}}>
               <a href="/blocks" id="blocks" className="navbar-item">Blocks</a>
               <a href="/names" className="navbar-item navOption">Names</a>
               <div className="navbar-item has-dropdown is-hoverable navDropdown">
-                <a className="navbarMore navbar-link navOption">Tools</a>
+                <button className="navbarMore navbar-link navOption">Tools</button>
                 <div className="navbar-dropdown is-hidden-touch">
                   <a href="/status" className="navbar-item">Node Status</a>
                   <a href="/peers" className="navbar-item">Peers</a>
@@ -44,7 +52,7 @@ export default class NavbarComponent extends Component {
                 </div>
               </div>
               <div className="navbar-item has-dropdown is-hoverable navDropdown">
-                <a className="navbarMore navbar-link navOption">More</a>
+                <button className="navbarMore navbar-link navOption">More</button>
                 <div className="navbar-dropdown is-hidden-touch">
                   <a href="/about" className="navbar-item">About</a>
                   {/* <hr className="navbar-divider" /> */}
