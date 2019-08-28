@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Navbar.scss';
-import Logo from '../logos/hnscan';
+import Logo from '../Logos/hnscan';
 import * as Navbar from './styled-components';
 
 export default class NavbarComponent extends Component {
