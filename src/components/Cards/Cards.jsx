@@ -5,8 +5,7 @@ export const Card = styled.div`
   overflow: hidden;
   border-radius: 10px;
   width: 100%;
-  height: auto;
-  margin: 10px 0;
+  height: 100%;
   background-color: #fff;
   color: #4a4a4a;
   box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
@@ -36,7 +35,7 @@ export const HeaderLink = styled.a`
 `;
 
 export const Content = styled.div`
-  padding: 1.5rem;
+  padding: .75rem;
   display: flex;
   flex-direction: column;
   height: 100%;

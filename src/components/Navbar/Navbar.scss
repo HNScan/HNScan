@@ -80,6 +80,7 @@ a.navbar-burger:hover,
   background-color: var(--background);
   border-top: 1px solid var(--border-color);
   padding: 0 !important;
+  margin-top: 0.5px;
 }
 .navbar-dropdown a.navbar-item:hover {
   color: var(--text-color-link) !important;

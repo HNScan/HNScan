@@ -1,4 +1,4 @@
-// These are custom components for the home screen
+// These are custom container components for the home screen
 import styled from 'styled-components';
 
 export const ContentContainer = styled.div`
@@ -32,6 +32,11 @@ export const VerticalContainer = styled.div`
 `;
 
 export const IndividualCardContainer = styled.div`
-  padding: 12px;
   width: 100%;
+  height: 500px;
+  padding: 12px;
+
+  @media (min-width: 1024px) {
+    padding: 24px 12px;
+  }
 `;
