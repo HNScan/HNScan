@@ -5,7 +5,7 @@ export const Card = styled.div`
   overflow: hidden;
   border-radius: 10px;
   width: 100%;
-  height: 250px;
+  height: auto;
   margin: 10px 0;
   background-color: #fff;
   color: #4a4a4a;
@@ -33,4 +33,46 @@ export const HeaderLink = styled.a`
   display: flex;
   justify-content: center;
   padding: .75rem;
+`;
+
+export const Content = styled.div`
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+export const HorizontalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  @media (min-width: 769px) {
+    flex-direction: row;
+  }
+`;
+
+export const Column = styled.div`
+  width: 100%;
+  padding: 12px;
+
+  @media (min-width: 769px) {
+    width: 33.3333%;
+  }
+`;
+
+export const ItemContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+`;
+
+export const ItemLabel= styled.div`
+  font-weight: 800;
+`;
+
+export const ItemDetail = styled.div`
+  font-size: 24px;
 `;
