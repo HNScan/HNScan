@@ -33,7 +33,7 @@ export const VerticalContainer = styled.div`
 
 export const IndividualCardContainer = styled.div`
   width: 100%;
-  height: 500px;
+  height: 100%;
   padding: 12px;
 
   @media (min-width: 1024px) {
