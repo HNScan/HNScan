@@ -51,20 +51,6 @@ export const SummaryContainer = styled.div`
   height: auto;
 `;
 
-// Used on the home screen for recent TX's and Blocks
-export const SummaryItem = styled.div`
-  display: flex;
-  width: 100%;
-  /* TODO: this needs to change to auto to take height of content */
-  height: 95px;
-  padding: 0.75rem;
-  border-bottom: 1px solid #dfdfdf;
-
-  &:last-child {
-    border: none;
-  }
-`;
-
 // Individual item containers for all cards
 export const ItemContainer = styled.div`
   display: flex;
@@ -104,4 +90,66 @@ export const ItemLabel= styled.div`
 
 export const ItemDetail = styled.div`
   font-size: 24px;
+`;
+
+
+// ----- TX'S AND BLOCKS SPECIFIC -----
+// Used on the home screen for recent TX's and Blocks
+export const SummaryItemContainer = styled.div`
+  display: flex;
+  width: 100%;
+  /* TODO: this needs to change to auto to take height of content */
+  height: auto;
+  padding: 0.75rem;
+  border-bottom: 1px solid #dfdfdf;
+
+  &:last-child {
+    border: none;
+  }
+`;
+
+export const SummaryItem = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  @media (min-width: 769px) {
+    flex-direction: row;
+  }
+`;
+
+export const SummaryItemContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`;
+
+export const LeftItemDetail = styled.div`
+  font-size: 12px;
+  margin: 2px 0;
+
+  &:first-child {
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+  }
+`;
+
+export const RightItemDetail = styled.div`
+  display: flex;
+  font-size: 12px;
+  margin: 2px 0;
+
+  @media (min-width: 769px) {
+    justify-content: flex-end;
+  }
+`;
+
+export const ItemLogo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  margin: 1px 5px 0 0;
 `;

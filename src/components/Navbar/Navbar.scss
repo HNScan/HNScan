@@ -15,9 +15,13 @@
 .navbar-start { width: 100%; }
 
 .navbarContainer {
-  width: 90%;
+  width: 95%;
   display: flex;
   align-items: center;
+
+  @media (min-width: 1024px) {
+    width: 90%;
+  }
 }
 
 .navOption {

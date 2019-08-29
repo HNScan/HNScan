@@ -11,7 +11,7 @@ export const ContentContainer = styled.div`
   min-height: calc(100vh - 460px);
 
   @media (min-width: 1024px) {
-    width: 80%;
+    width: 90%;
   }
 `;
 
