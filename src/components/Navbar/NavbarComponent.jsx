@@ -18,35 +18,33 @@ export default class NavbarComponent extends Component {
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbarContainer">
-
-          {/* ----- Navigation Menu ----- */}
+        {/* ---- Left Side of Navbar (entire navbar on mobile/tablet) ----- */}
           <div className="navbar-brand">
             <a href="/" className="navbar-item">
               <Navbar.LogoWrapper>
                 <Logo />
               </Navbar.LogoWrapper>
             </a>
-
-            {/* Mobile Nav Menu */}
-            <button className="navbar-burger burger"
-              onClick={this.toggleMobileNav}
-              aria-label="menu"
-              aria-expanded="false"
-              data-target="navbarBasicExample">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </button>
+            {/* ----- Mobile/Tablet Nav Burger Menu ------ */}
+            <Navbar.TouchMenuWrapper>
+              <div className="navbar-burger burger"
+                onClick={this.toggleMobileNav}
+                aria-label="menu"
+                aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </div>
+            </Navbar.TouchMenuWrapper>
           </div>
-
-          {/* Standard Nav Menu */}
+          {/* ----- Middle of Navbar (desktop and greater screen sizes) ----- */}
           <div id="navbarBasicExample" className="navbar-menu">
-            {/* // TODO: Remove this inline styling */}
-            <div className="navbar-start" style={{width: '100%'}}>
+            <div className="navbar-start">
               <a href="/blocks" id="blocks" className="navbar-item navOption">Blocks</a>
               <a href="/names" className="navbar-item navOption">Names</a>
               <div className="navbar-item has-dropdown is-hoverable navDropdown">
-                <button className="navbarMore navbar-link navOption">Tools</button>
+                <Navbar.NavDropdown className="navbarMore navbar-link navOption">Tools</Navbar.NavDropdown>
                 <div className="navbar-dropdown is-hidden-touch">
                   <a href="/status" className="navbar-item">Node Status</a>
                   <a href="/peers" className="navbar-item">Peers</a>
@@ -55,10 +53,9 @@ export default class NavbarComponent extends Component {
                 </div>
               </div>
               <div className="navbar-item has-dropdown is-hoverable navDropdown">
-                <button className="navbarMore navbar-link navOption">More</button>
+                <Navbar.NavDropdown text className="navbarMore navbar-link navOption">More</Navbar.NavDropdown>
                 <div className="navbar-dropdown is-hidden-touch">
                   <a href="/about" className="navbar-item">About</a>
-                  {/* <hr className="navbar-divider" /> */}
                   <a href="https://github.com/HandshakeAlliance/HNScan/issues"
                     className="navbar-item"
                     target="_blank"
@@ -68,6 +65,7 @@ export default class NavbarComponent extends Component {
                 </div>
               </div>
             </div>
+            {/* ----- Right side of Navbar (desktop and greater screen sizes) ----- */}
             <div className="navbar-end">
               <div className="navbar-item">
                 <div className="field">

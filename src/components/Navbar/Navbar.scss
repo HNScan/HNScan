@@ -1,17 +1,18 @@
 @import 'src/variables';
 @import 'src/theme-variables';
 
-
 .navbar {
-  align-items: center;
   background: var(--background);
-  border-bottom: 1px solid var(--border-color);
+  // border-bottom: 1px solid var(--border-color);
+  box-shadow: 0px 1px 12px -1px rgba(0,0,0,0.30);
   display: flex;
-  flex-direction: row;
   height: $navbar-height;
   justify-content: center;
-  width: 100%;
 }
+
+.navbar-item { height: 58px !important; }
+
+.navbar-start { width: 100%; }
 
 .navbarContainer {
   width: 90%;
@@ -20,7 +21,7 @@
 }
 
 .navOption {
-  padding: 10px 25px;
+  padding: 0 25px !important;
   justify-content: center;
 }
 
@@ -41,40 +42,27 @@
 }
 
 .searchbar {
-  width: 350px;
+  min-width: 300px;
   border-width: 1.25px;
   padding-left: 55px !important;
-  -webkit-appearance: none;
+  // Bulma Style Overrides
+  background: var(--searchbar-background-color);
+  border: 1px solid var(--searchbar-border-color);
+  color: var(--text-color-normal);
+  &:focus { box-shadow: none !important; }
+  &::placeholder { color: var(--text-color-light); }
 }
 
-.searchbar:focus,
-.searchbar:hover {
-  outline: none;
-  box-shadow: none;
-}
-
-@media only screen and (max-width: $tablet) {
+@media only screen and (max-width: 1023px) {
   .navbar-brand {
     width: 100%;
-  }
-
-  .navbar-menu {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-  }
-
-  .navbar-dropdown {
-    margin-left: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center !important;
   }
 }
 
-.navbar-dropdown .navbar-item {
-  padding: 0.5rem 1rem;
-}
-
-/* Theme overrides */
+/* ----- THEME OVERRIDES ----- */
 .navbar-item,
 .navbar-link {
   background-color: var(--background);
@@ -84,33 +72,18 @@
 a.navbar-item:hover,
 a.navbar-link:hover,
 a.navbar-burger:hover,
-.navbar-item.has-dropdown:hover .navbar-link {
-  background-color: var(--background-hover);
-}
+.navbar-item.has-dropdown:hover .navbar-link { background-color: var(--background-hover); }
 
-.navbar-menu {
-  background-color: var(--background);
-}
+.navbar-menu { background-color: var(--background); }
 
 .navbar-dropdown {
   background-color: var(--background);
   border-top: 1px solid var(--border-color);
+  padding: 0 !important;
 }
 .navbar-dropdown a.navbar-item:hover {
-  color: var(--text-color-link--hover);
+  color: var(--text-color-link) !important;
   background-color: var(--background-hover);
 }
 
-.navbar-divider {
-  background-color: var(--border-color);
-}
-
-.searchbar {
-  background: var(--searchbar-background-color);
-  border: 1px solid var(--searchbar-border-color);
-  color: var(--text-color-normal);
-
-  &::placeholder {
-    color: var(--text-color-light);
-  }
-}
+.navbar-divider { background-color: var(--border-color); }
