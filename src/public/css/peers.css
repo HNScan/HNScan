@@ -21,3 +21,21 @@
   margin-top: 48px;
   width: 100%;
 }
+
+.mapPopup{
+  background:rgba(255,255,255,0.9);
+  padding:10px;
+}
+.mapPopup .resp{
+  word-wrap:break-word;
+}
+.mapPopup textarea{
+  outline:none;
+  background:rgba(0,0,0,0.02);
+  box-shadow:none;
+  border: 1px solid #ccc;
+  padding: 3px;
+  width:auto;
+  min-height:77px;
+  height:auto;
+}
