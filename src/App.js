@@ -6,6 +6,7 @@ import NamesScreen from './screens/Names/NamesScreen';
 import './App.scss';
 
 import NavbarComponent from './components/Navbar/NavbarComponent';
+import FooterComponent from './components/Footer/FooterComponent';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/names" exact component={ NamesScreen }/>
         {/* <Route path="*" component={NotFoundScreen}/> */}
       </Router>
+      <FooterComponent />
     </div>
   );
 }

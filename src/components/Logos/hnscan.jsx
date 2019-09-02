@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Logo extends Component {
   render() {
     return (
-      <svg width="103px" height="28px" viewBox="0 0 184 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+      <svg width="103px" height="28" viewBox="0 0 184 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
           <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
               <g id="Artboard" transform="translate(-125.000000, -145.000000)" fill="#000000">
                   <g id="Group" transform="translate(125.000000, 145.000000)">
