@@ -55,9 +55,19 @@ export const Header = styled.div`
   width: 100%;
 `;
 
+export const ContactItem = styled.div`
+  font-size: 10pt;
+  margin: 5px 0;
+`;
+
 export const Item = styled.a`
   font-size: 10pt;
   margin: 5px 0;
+  color: #4A4A4A;
+
+  &:hover {
+    color: #3273DC;
+  }
 `;
 
 export const RightContent = styled.div`
