@@ -1,11 +1,50 @@
 import React, { Component } from 'react';
-// import * as Names from './styled-components';
+import { Table } from 'reactbulma';
+import * as Home from '../Home/styled-components';
+import * as Cards from '../../components/Cards/Cards';
+import * as Blocks from '../Blocks/styled-components';
+import NameRow from './NameRow';
+
+function insertNameRows() {
+  let num = 25;
+  let names = [];
+
+  for (let i = 0; i < num; i++) {
+    names.push(<NameRow key={i} />);
+  }
+
+  return names;
+}
 
 export default class NamesScreen extends Component {
-
+  // 25 blocks per page
   render() {
     return (
-      <h1>Hello World! This is the 'Names Screen'</h1>
+      <Home.ContentContainer>
+        <Cards.Card>
+          <Cards.Header>
+            <Cards.HeaderTitle>TLD Names</Cards.HeaderTitle>
+          </Cards.Header>
+          <Cards.Content>
+
+            <Blocks.TableContainer>
+              <Blocks.BlocksTable>
+                <Table.Head>
+                  <Table.Tr>
+                    <Table.Th><Blocks.Abbr title="Top Level Domain Name">Name</Blocks.Abbr></Table.Th>
+                    <Table.Th><Blocks.Abbr title="Name Auction State">State</Blocks.Abbr></Table.Th>
+                    <Table.Th><Blocks.Abbr title="Block Height">Height</Blocks.Abbr></Table.Th>
+                  </Table.Tr>
+                </Table.Head>
+                <Table.Body>
+                  {insertNameRows()}
+                </Table.Body>
+              </Blocks.BlocksTable>
+            </Blocks.TableContainer>
+
+          </Cards.Content>
+        </Cards.Card>
+      </Home.ContentContainer>
     )
   }
 }

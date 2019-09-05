@@ -13,13 +13,10 @@ export default class HomeScreen extends Component {
         <Home.HorizontalContainer>
           <NetworkSummary />
         </Home.HorizontalContainer>
-
-        {/* TODO: Build out these two sections --> Vertical card container */}
         <Home.VerticalContainer>
           <RecentTransactions />
           <RecentBlocks />
         </Home.VerticalContainer>
-
       </Home.ContentContainer>
     )
   }

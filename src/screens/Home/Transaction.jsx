@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import * as Cards from '../../components/Cards/Cards';
 import Arrow from '../../components/Logos/rightArrow';
 
+// TODO: API call to backend for the 5 most recent transactions
+// TODO: Iterate through the data and build out the txs
+// TODO: Somehow pass an array of the built txs to 'RecentTransactions'
+
 export default class Transaction extends Component {
   render() {
     return (

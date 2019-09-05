@@ -8,6 +8,17 @@ export const RecentBlocksContainer = styled.div`
   width: 100%;
 `;
 
+function insertBlocks() {
+  let num = 5;
+  let blocks = [];
+
+  for (let i = 0; i < num; i++) {
+    blocks.push(<Block key={i} />);
+  }
+
+  return blocks;
+}
+
 export default class RecentTransactions extends Component {
   render() {
     return (
@@ -23,12 +34,8 @@ export default class RecentTransactions extends Component {
             <Cards.Content>
               <Cards.SummaryContainer>
 
-                {/* ----- Need Fx'n to build out 5 times w/ data ----- */}
-                <Block />
-                <Block />
-                <Block />
-                <Block />
-                <Block />
+                {/* This Fxn will return x number of blocks */}
+                {insertBlocks()}
 
               </Cards.SummaryContainer>
             </Cards.Content>

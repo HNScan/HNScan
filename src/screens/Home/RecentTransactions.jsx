@@ -8,9 +8,18 @@ export const RecentTXSContainer = styled.div`
   width: 100%;
 `;
 
+function insertTransactions() {
+  let num = 5;
+  let txs = [];
+
+  for (let i = 0; i < num; i++) {
+    txs.push(<Transaction key={i} />);
+  }
+
+  return txs;
+}
+
 export default class RecentTransactions extends Component {
-  // TODO: This should be a function that builds out the 5
-  // Most recent transactions using one item as the template
   render() {
     return (
       <RecentTXSContainer>
@@ -24,12 +33,8 @@ export default class RecentTransactions extends Component {
             <Cards.Content>
               <Cards.SummaryContainer>
 
-                {/* ----- Need Fx'n to build out 5 times w/ data ----- */}
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
+                {/* This Fxn will return x number of transactions */}
+                {insertTransactions()}
 
               </Cards.SummaryContainer>
             </Cards.Content>
