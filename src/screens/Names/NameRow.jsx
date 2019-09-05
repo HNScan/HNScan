@@ -9,7 +9,7 @@ export default class NameRow extends Component {
         <Table.Td>
           <a href="/name/testName">testName</a>
         </Table.Td>
-        <Table.Td>10 Minutes Ago</Table.Td>
+        <Table.Td>OPENING</Table.Td>
         <Table.Td>
           <a href="/block/1001">1001</a>
         </Table.Td>
