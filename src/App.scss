@@ -1,1 +1,13 @@
+@import './variables';
+@import './theme-variables';
 
+// Bulma Toggle Switch Styles - NPM Package
+@import 'bulma';
+@import '~bulma-switch';
+
+body {
+  margin: 0;
+  font-family: 'Anonymous Pro', 'Inconsolata', monospace !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

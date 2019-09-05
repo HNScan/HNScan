@@ -21,13 +21,8 @@ export const ContentContainer = styled.div`
   @media (min-width: 1024px) {
     flex-direction: row;
     width: 90%;
+    max-width: 1216px;
   }
-`;
-
-export const ToggleThemeContainer = styled.div`
-  width: 90%;
-  border: 1px solid green;
-  height: 75px;
 `;
 
 export const LeftContent = styled.div`
@@ -62,11 +57,14 @@ export const ContactItem = styled.div`
 
 export const Item = styled.a`
   font-size: 10pt;
-  margin: 5px 0;
+  margin: 8px 0;
+  width: 55%;
   color: #4A4A4A;
 
-  &:hover {
-    color: #3273DC;
+  &:hover { color: #3273DC; }
+
+  @media (min-width: 445px) {
+    margin: 5px 0;
   }
 `;
 
@@ -83,6 +81,27 @@ export const RightContent = styled.div`
   }
 `;
 
+export const LeftLinksContainer = styled.div`
+  height: auto;
+  display: flex;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-direction: row;
+
+  @media (min-width: 445px) {
+    margin-bottom: 0;
+  }
+`;
+
+export const RightLinksContainer = styled.div`
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-direction: row;
+`;
+
 export const LinksContainer = styled.div`
   height: auto;
   min-width: 100px;
@@ -91,4 +110,14 @@ export const LinksContainer = styled.div`
   flex-grow: 1;
   flex-direction: column;
   text-align: center;
+  align-items: center;
+`;
+
+// ----- Toggle Switch and Copyright -----
+export const ToggleThemeContainer = styled.div`
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

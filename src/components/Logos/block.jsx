@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Block extends Component {
+export default class BlockLogo extends Component {
   render() {
     return (
       <svg width="100%" height="100%" viewBox="0 0 44 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
