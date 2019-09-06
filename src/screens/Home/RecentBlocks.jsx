@@ -2,24 +2,38 @@ import React, { Component } from 'react';
 import * as Home from './styled-components';
 import * as Cards from '../../components/Cards/Cards';
 import Block from './Block';
+import * as Api from '../../api/api';
 import styled from 'styled-components';
 
 export const RecentBlocksContainer = styled.div`
   width: 100%;
 `;
 
-function insertBlocks() {
-  let num = 5;
-  let blocks = [];
+function insertBlocks(blocks) {
+  let arr = [];
 
-  for (let i = 0; i < num; i++) {
-    blocks.push(<Block key={i} />);
+  for (let i = 0; i < blocks.length; i++) {
+    arr.push(<Block key={i} block={blocks[i]}/>);
   }
-
-  return blocks;
+  console.log(arr);
+  return arr;
 }
 
 export default class RecentTransactions extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true
+    };
+  }
+
+  async componentDidMount() {
+    await this.setState({
+      blocks: await Api.getRecentBlocks()
+    });
+    this.setState({loading: false})
+  }
+
   render() {
     return (
       <RecentBlocksContainer>
@@ -35,7 +49,7 @@ export default class RecentTransactions extends Component {
               <Cards.SummaryContainer>
 
                 {/* This Fxn will return x number of blocks */}
-                {insertBlocks()}
+                {this.state.loading ? "loading" : insertBlocks(this.state.blocks)}
 
               </Cards.SummaryContainer>
             </Cards.Content>

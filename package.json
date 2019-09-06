@@ -5,6 +5,8 @@
   "dependencies": {
     "bulma-extensions": "^6.2.7",
     "bulma-switch": "^2.0.0",
+    "decimal.js": "^10.2.0",
+    "hs-client": "handshake-org/hs-client",
     "node-sass": "^4.12.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",

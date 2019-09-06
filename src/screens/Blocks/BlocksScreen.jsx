@@ -4,6 +4,7 @@ import * as Home from '../Home/styled-components';
 import * as Cards from '../../components/Cards/Cards';
 import * as Blocks from './styled-components';
 import BlockRow from './BlockRow';
+import * as Api from '../../api/api';
 
 function insertBlockRows() {
   let num = 25;
@@ -18,6 +19,11 @@ function insertBlockRows() {
 
 export default class BlocksScreen extends Component {
   // 25 blocks per page
+
+  async componentDidMount() {
+    await Api.getBlocks();
+  }
+
   render() {
     return (
       <Home.ContentContainer>

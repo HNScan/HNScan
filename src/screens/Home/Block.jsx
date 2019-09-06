@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import * as Cards from '../../components/Cards/Cards';
+import * as Util from '../../helper/util';
 import BlockLogo from '../../components/Logos/block';
+
 
 export default class Block extends Component {
   render() {
@@ -14,12 +16,18 @@ export default class Block extends Component {
               <Cards.ItemLogo>
                 <BlockLogo />
               </Cards.ItemLogo>
-              Block #:&nbsp;<a href="/">19912</a>
+              Block #:&nbsp;<a href={"/block/" + this.props.block.height}>
+                {this.props.block.height}
+              </a>
             </Cards.LeftItemDetail>
             <Cards.LeftItemDetail>
-              Mined By: <a href="/">ts1qg2schj9h0e3xr83jk0evy3h8m4wr0uk9qtdtzc</a>
+              Mined By: <a href={"/address/" + this.props.block.txs[0].outputs[0].address}>
+                {this.props.block.txs[0].outputs[0].address}
+              </a>
             </Cards.LeftItemDetail>
-            <Cards.LeftItemDetail>Block Reward: 2,000 HNS</Cards.LeftItemDetail>
+            <Cards.LeftItemDetail>
+              Block Reward: {Util.hnsValues(this.props.block.txs[0].outputs[0].value)}
+            </Cards.LeftItemDetail>
           </Cards.SummaryItemContent>
         </Cards.SummaryItem>
       </Cards.SummaryItemContainer>
