@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import * as Cards from '../../components/Cards/Cards';
+import * as Util from '../../util/util';
 import Arrow from '../../components/Logos/rightArrow';
-
-// TODO: API call to backend for the 5 most recent transactions
-// TODO: Iterate through the data and build out the txs
-// TODO: Somehow pass an array of the built txs to 'RecentTransactions'
 
 export default class Transaction extends Component {
   render() {
@@ -18,15 +15,14 @@ export default class Transaction extends Component {
               <Cards.ItemLogo>
                 <Arrow />
               </Cards.ItemLogo>
-              TX #:&nbsp;<a href="/">7145c5....001225</a>
+              TX #:&nbsp;<a href={"/tx/" + this.props.txs.hash}>{Util.truncateHash(this.props.txs.hash)}</a>
             </Cards.LeftItemDetail>
-            <Cards.LeftItemDetail>Miner Reward</Cards.LeftItemDetail>
-            <Cards.LeftItemDetail>Amount: 2,000 HNS</Cards.LeftItemDetail>
+            <Cards.LeftItemDetail>Amount: {Util.hnsValues(Util.sumTxOutputs(this.props.txs.outputs))}</Cards.LeftItemDetail>
+            <Cards.LeftItemDetail>Fee: {Util.hnsValues(this.props.txs.fee)}</Cards.LeftItemDetail>
           </Cards.SummaryItemContent>
           {/* ----- Right Side / Bottom Side ----- */}
           <Cards.SummaryItemContent>
-            <Cards.RightItemDetail>To:&nbsp;<a href="/">ts1qg2s....9qtdtzc</a></Cards.RightItemDetail>
-            <Cards.RightItemDetail><i>10 minutes ago</i></Cards.RightItemDetail>
+            <Cards.RightItemDetail><i>{Util.timeAgo(this.props.txs.time)}</i></Cards.RightItemDetail>
           </Cards.SummaryItemContent>
         </Cards.SummaryItem>
       </Cards.SummaryItemContainer>

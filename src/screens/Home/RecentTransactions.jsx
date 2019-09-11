@@ -8,18 +8,16 @@ export const RecentTXSContainer = styled.div`
   width: 100%;
 `;
 
-function insertTransactions() {
-  let num = 5;
+function insertTransactions(txData) {
   let txs = [];
-
-  for (let i = 0; i < num; i++) {
-    txs.push(<Transaction key={i} />);
+  for (let i = 0; i < txData.length; i++) {
+    txs.push(<Transaction key={i} txs={txData[i]}/>);
   }
-
   return txs;
 }
 
 export default class RecentTransactions extends Component {
+
   render() {
     return (
       <RecentTXSContainer>
@@ -34,7 +32,8 @@ export default class RecentTransactions extends Component {
               <Cards.SummaryContainer>
 
                 {/* This Fxn will return x number of transactions */}
-                {insertTransactions()}
+                {/* TODO: We will need a better skeleton loading components */}
+                {this.props.loading ? "loading" : insertTransactions(this.props.txs)}
 
               </Cards.SummaryContainer>
             </Cards.Content>

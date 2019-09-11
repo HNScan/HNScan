@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as Cards from '../../components/Cards/Cards';
-import * as Util from '../../helper/util';
 import BlockLogo from '../../components/Logos/block';
 
 
@@ -26,7 +25,7 @@ export default class Block extends Component {
               </a>
             </Cards.LeftItemDetail>
             <Cards.LeftItemDetail>
-              Block Reward: {Util.hnsValues(this.props.block.txs[0].outputs[0].value)}
+              Transactions: {this.props.block.txs.length}
             </Cards.LeftItemDetail>
           </Cards.SummaryItemContent>
         </Cards.SummaryItem>

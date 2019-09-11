@@ -7,6 +7,7 @@
     "bulma-switch": "^2.0.0",
     "decimal.js": "^10.2.0",
     "hs-client": "handshake-org/hs-client",
+    "humanize-duration": "^3.20.1",
     "node-sass": "^4.12.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",

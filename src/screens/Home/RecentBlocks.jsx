@@ -2,38 +2,22 @@ import React, { Component } from 'react';
 import * as Home from './styled-components';
 import * as Cards from '../../components/Cards/Cards';
 import Block from './Block';
-import * as Api from '../../api/api';
+
 import styled from 'styled-components';
 
 export const RecentBlocksContainer = styled.div`
   width: 100%;
 `;
 
-function insertBlocks(blocks) {
-  let arr = [];
-
-  for (let i = 0; i < blocks.length; i++) {
-    arr.push(<Block key={i} block={blocks[i]}/>);
+function insertBlocks(blockData) {
+  let blocks = [];
+  for (let i = 0; i < blockData.length; i++) {
+    blocks.push(<Block key={i} block={blockData[i]}/>);
   }
-  console.log(arr);
-  return arr;
+  return blocks;
 }
 
-export default class RecentTransactions extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true
-    };
-  }
-
-  async componentDidMount() {
-    await this.setState({
-      blocks: await Api.getRecentBlocks()
-    });
-    this.setState({loading: false})
-  }
-
+export default class RecentBlocks extends Component {
   render() {
     return (
       <RecentBlocksContainer>
@@ -49,7 +33,8 @@ export default class RecentTransactions extends Component {
               <Cards.SummaryContainer>
 
                 {/* This Fxn will return x number of blocks */}
-                {this.state.loading ? "loading" : insertBlocks(this.state.blocks)}
+                {/* TODO: We will need a better skeleton loading components */}
+                {this.props.loading ? "loading" : insertBlocks(this.props.blocks)}
 
               </Cards.SummaryContainer>
             </Cards.Content>
