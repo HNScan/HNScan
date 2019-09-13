@@ -37,7 +37,7 @@ export default class HomeScreen extends Component {
 
   async componentDidMount() {
     this.setState({
-      blocks: await Api.getRecentBlocks(),
+      blocks: await Api.getBlocks(5),
       info: await Api.getInfo()
      });
     this.setState({

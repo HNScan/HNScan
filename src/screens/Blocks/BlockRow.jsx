@@ -5,23 +5,29 @@ import * as Util from '../../util/util';
 
 export default class BlockRow extends Component {
   render() {
+
+    let height = this.props.block.height;
+    let time = Util.timeAgo(this.props.block.time);
+    let miner = this.props.block.txs[0].outputs[0].address;
+    let numTxs = this.props.block.txs.length;
+
     return (
       <Table.Tr>
         <Table.Td>
-          <a href="/block/1001">1001</a>
+          <a href={`/block/${height}`}>{height}</a>
           <Blocks.MobileSize>Size: 355</Blocks.MobileSize>
         </Table.Td>
-        <Blocks.AgeRow>10 Minutes Ago</Blocks.AgeRow>
+        <Blocks.AgeRow>{time}</Blocks.AgeRow>
         <Table.Td>
-          <Blocks.MinerAddress href="/address/ts1qg2schj9h0e3xr83jk0evy3h8m4wr0uk9qtdtzc">ts1qg2schj9h0e3xr83jk0evy3h8m4wr0uk9qtdtzc</Blocks.MinerAddress>
-          <Blocks.TruncatedMiner href="/address/ts1qg2schj9h0e3xr83jk0evy3h8m4wr0uk9qtdtzc">
-            {Util.truncateHash("ts1qg2schj9h0e3xr83jk0evy3h8m4wr0uk9qtdtzc")}
+          <Blocks.MinerAddress href={`/address/${miner}`}>{miner}</Blocks.MinerAddress>
+          <Blocks.TruncatedMiner href={`/address/${miner}`}>
+            {Util.truncateHash(miner)}
           </Blocks.TruncatedMiner>
-          <Blocks.MobileAge>10 Minutes Ago</Blocks.MobileAge>
+          <Blocks.MobileAge>{time}</Blocks.MobileAge>
         </Table.Td>
         <Blocks.SizeRow>355</Blocks.SizeRow>
         <Table.Td>
-          <a href="/txs?block=1001">1</a>
+          <a href={`/txs?block=${height}`}>{numTxs}</a>
         </Table.Td>
       </Table.Tr>
     )

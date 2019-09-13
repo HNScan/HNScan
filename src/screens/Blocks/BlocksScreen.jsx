@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
-import { Table } from 'reactbulma';
 import * as Home from '../Home/styled-components';
 import * as Cards from '../../components/Cards/Cards';
-import * as Blocks from './styled-components';
-import BlockRow from './BlockRow';
 import * as Api from '../../api/api';
-
-function insertBlockRows() {
-  let num = 25;
-  let rows = [];
-
-  for (let i = 0; i < num; i++) {
-    rows.push(<BlockRow key={i} />);
-  }
-
-  return rows;
-}
+import BlocksTable from './BlockTable';
 
 export default class BlocksScreen extends Component {
-  // 25 blocks per page
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      blocks: []
+    };
+  }
 
   async componentDidMount() {
-    await Api.getBlocks();
+    this.setState({
+      blocks: await Api.getBlocks(25),
+      loading: false
+    });
+
+    console.log(this.state.blocks);
   }
 
   render() {
@@ -32,24 +30,7 @@ export default class BlocksScreen extends Component {
             <Cards.HeaderTitle>HNS Blocks</Cards.HeaderTitle>
           </Cards.Header>
           <Cards.Content>
-
-            <Blocks.TableContainer>
-              <Blocks.BlocksTable>
-                <Table.Head>
-                  <Table.Tr>
-                    <Table.Th><Blocks.Abbr title="Block Height">Height</Blocks.Abbr></Table.Th>
-                    <Blocks.AgeHead><Blocks.Abbr title="Block Age">Age</Blocks.Abbr></Blocks.AgeHead>
-                    <Table.Th><Blocks.Abbr title="Miner Address">Miner</Blocks.Abbr></Table.Th>
-                    <Blocks.SizeHead><Blocks.Abbr title="Block Size">Size</Blocks.Abbr></Blocks.SizeHead>
-                    <Table.Th><Blocks.Abbr title="Number of Transactions">TXs</Blocks.Abbr></Table.Th>
-                  </Table.Tr>
-                </Table.Head>
-                <Table.Body>
-                  {insertBlockRows()}
-                </Table.Body>
-              </Blocks.BlocksTable>
-            </Blocks.TableContainer>
-
+            <BlocksTable blocks={this.state.blocks} loading={this.state.loading} />
           </Cards.Content>
         </Cards.Card>
       </Home.ContentContainer>
