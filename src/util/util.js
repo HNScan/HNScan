@@ -106,3 +106,41 @@ export function timeAgo(timestamp) {
     }) + " ago"
   );
 }
+
+export function sciNotation(num, places) {
+  let arr = toSciNotation(num);
+  let number = arr[0].toFixed(places);
+  let exponent = arr[1];
+
+  return [number, exponent];
+}
+
+// Takes in a number and returns an array
+// return: [decimal, exponent]
+function toSciNotation(num) {
+  if (typeof num !== "number") {
+    return;
+  }
+
+  if (!num) {
+    return [0, 0];
+  }
+
+  let sign = Math.sign(num);
+  let coefficient = Math.abs(num);
+  let isLarge = Math.floor(coefficient);
+  let exponent = 0;
+
+  if (isLarge) {
+    while (Math.floor(coefficient / 10) > 0) {
+      coefficient /= 10;
+      exponent++;
+    }
+  } else {
+    while (Math.floor(coefficient) < 1) {
+      coefficient *= 10;
+      exponent--;
+    }
+  }
+  return [sign * coefficient, exponent];
+}

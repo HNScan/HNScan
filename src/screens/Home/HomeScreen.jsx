@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import * as Home from './styled-components';
+import * as Api from '../../api/api';
 import NetworkSummary from './NetworkSummary';
 import RecentTransactions from './RecentTransactions';
 import RecentBlocks from './RecentBlocks';
-import * as Api from '../../api/api';
+
 
 function getTxs(blockData) {
   let txs = [];

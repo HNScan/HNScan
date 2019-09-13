@@ -16,9 +16,12 @@ export default class NetworkSummary extends Component {
         <div>loading...</div>
       )
     } else {
+
       let hashrate = Util.formatLargeNumber(this.props.info.mining.networkhashps, 3);
       let unconfirmed = Util.formatLargeNumber(this.props.info.mempool.tx);
       let network = this.props.info.network;
+      let difficulty = Util.sciNotation(this.props.info.chain.difficulty, 3);
+      let chainwork = Util.sciNotation(parseInt("0x" + this.props.info.chain.chainWork), 2);
 
       return (
         <NetworkSummaryContainer>
@@ -27,10 +30,8 @@ export default class NetworkSummary extends Component {
               <Cards.HeaderTitle>Network Summary</Cards.HeaderTitle>
             </Cards.Header>
             <Cards.Content>
-
             {/* ----- Network Summary - Top Row ----- */}
               <Cards.HorizontalContainer>
-                {/* ----- Column 1 ----- */}
                 <Cards.Column>
                   <Cards.ItemContainer>
                     <Cards.ItemLabel>Hashrate</Cards.ItemLabel>
@@ -40,7 +41,6 @@ export default class NetworkSummary extends Component {
                     </Cards.ItemDetail>
                   </Cards.ItemContainer>
                 </Cards.Column>
-                {/* ----- Column 2 ----- */}
                 <Cards.Column>
                   <Cards.ItemContainer>
                     <Cards.ItemLabel>Unconfirmed</Cards.ItemLabel>
@@ -49,7 +49,6 @@ export default class NetworkSummary extends Component {
                     </Cards.ItemDetail>
                   </Cards.ItemContainer>
                 </Cards.Column>
-                {/* ----- Column 3 ----- */}
                 <Cards.Column>
                   <Cards.ItemContainer>
                     <Cards.ItemLabel>Network</Cards.ItemLabel>
@@ -59,10 +58,8 @@ export default class NetworkSummary extends Component {
                   </Cards.ItemContainer>
                 </Cards.Column>
               </Cards.HorizontalContainer>
-
             {/* ----- Network Summary - Bottom Row ----- */}
               <Cards.HorizontalContainer>
-                {/* ----- Column 1 ----- */}
                 <Cards.Column>
                   <Cards.ItemContainer>
                     <Cards.ItemLabel>Names Registered</Cards.ItemLabel>
@@ -71,28 +68,23 @@ export default class NetworkSummary extends Component {
                     </Cards.ItemDetail>
                   </Cards.ItemContainer>
                 </Cards.Column>
-                {/* ----- Column 2 ----- */}
                 <Cards.Column>
                   <Cards.ItemContainer>
                     <Cards.ItemLabel>Difficulty</Cards.ItemLabel>
                     <Cards.ItemDetail>
-                      3.295 x 10
-                      <sup>-2</sup>
+                      {difficulty[0]} x 10<sup>{difficulty[1]}</sup>
                     </Cards.ItemDetail>
                   </Cards.ItemContainer>
                 </Cards.Column>
-                {/* ----- Column 3 ----- */}
                 <Cards.Column>
                   <Cards.ItemContainer>
                     <Cards.ItemLabel>Chainwork</Cards.ItemLabel>
                     <Cards.ItemDetail>
-                      3.62 x 10
-                      <sup>13</sup>
+                      {chainwork[0]} x 10<sup>{chainwork[1]}</sup>
                     </Cards.ItemDetail>
                   </Cards.ItemContainer>
                 </Cards.Column>
               </Cards.HorizontalContainer>
-
             </Cards.Content>
           </Cards.Card>
         </NetworkSummaryContainer>

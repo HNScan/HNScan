@@ -9,7 +9,6 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: calc(100vh - 460px);
-
   @media (min-width: 1024px) {
     width: 90%;
     max-width: 1216px;
@@ -25,19 +24,22 @@ export const VerticalContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-
-  /* TODO: Need to find a better unit than px's for media queries */
-  @media (min-width: 1024px) {
-    flex-direction: row;
-  }
+  @media (min-width: 1024px) { flex-direction: row; }
 `;
 
 export const IndividualCardContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 12px;
+  @media (min-width: 1024px) { padding: 24px 12px; }
+`;
 
-  @media (min-width: 1024px) {
-    padding: 24px 12px;
-  }
+export const Miner = styled.div`
+  display: none;
+  @media (min-width: 425px) { display: flex; }
+`;
+
+export const MobileMiner = styled.div`
+  display: flex;
+  @media (min-width: 425px) { display: none; }
 `;

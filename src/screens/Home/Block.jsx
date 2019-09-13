@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import * as Home from './styled-components';
 import * as Cards from '../../components/Cards/Cards';
+import * as Util from '../../util/util';
 import BlockLogo from '../../components/Logos/block';
 
 
@@ -15,14 +17,21 @@ export default class Block extends Component {
               <Cards.ItemLogo>
                 <BlockLogo />
               </Cards.ItemLogo>
-              Block #:&nbsp;<a href={"/block/" + this.props.block.height}>
-                {this.props.block.height}
-              </a>
+                Block #:&nbsp;<a href={"/block/" + this.props.block.height}>
+                  {this.props.block.height}
+                </a>
             </Cards.LeftItemDetail>
             <Cards.LeftItemDetail>
-              Mined By: <a href={"/address/" + this.props.block.txs[0].outputs[0].address}>
-                {this.props.block.txs[0].outputs[0].address}
-              </a>
+              <Home.Miner>
+                Mined By: <a href={"/address/" + this.props.block.txs[0].outputs[0].address}>
+                  {this.props.block.txs[0].outputs[0].address}
+                </a>
+              </Home.Miner>
+              <Home.MobileMiner>
+                Mined By: <a href={"/address/" + this.props.block.txs[0].outputs[0].address}>
+                  {Util.truncateHash(this.props.block.txs[0].outputs[0].address)}
+                </a>
+              </Home.MobileMiner>
             </Cards.LeftItemDetail>
             <Cards.LeftItemDetail>
               Transactions: {this.props.block.txs.length}
