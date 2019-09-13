@@ -32,6 +32,7 @@ export const AgeRow = styled(Table.Td)`
 
 export const MobileAge = styled.div`
   display: block;
+  font-size: 14px;
   @media (min-width: 680px) { display: none; }
 `;
 
@@ -59,5 +60,6 @@ export const SizeRow = styled(Table.Td)`
 
 export const MobileSize = styled.div`
   display: block;
+  font-size: 14px;
   @media (min-width: 680px) { display: none; }
 `;
