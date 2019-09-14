@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
+import { ThemeToggleContext } from '../../contexts/ThemeContext';
 import './Footer.scss';
 import Logo from '../Logos/hnscan';
 import * as Footer from './styled-components';
 
-export default class FooterComponent extends Component {
-
-  toggleTheme() {
-    console.log("clicked");
-  }
+class FooterComponent extends Component {
 
   render() {
     return (
@@ -97,10 +94,15 @@ export default class FooterComponent extends Component {
           </Footer.RightContent>
         </Footer.ContentContainer>
 
-        {/* Theme toggle switch and version */}
+        {this.context.isDark}
         <Footer.ToggleThemeContainer>
           <div className="field">
-            <input id="switchRoundedOutlinedDefault" type="checkbox" name="switchRoundedOutlinedDefault" className="switch is-rounded is-outlined" onClick={this.toggleTheme} />
+            <input id="switchRoundedOutlinedDefault"
+              className="switch is-rounded is-outlined"
+              defaultChecked={this.context.isDark}
+              name="switchRoundedOutlinedDefault"
+              type="checkbox"
+              onChange={this.context.toggleTheme} />
             <label htmlFor="switchRoundedOutlinedDefault"></label>
           </div>
           <div className="version">Current Version: v0.0.1 <a href="www.google.com">Source</a></div>
@@ -110,3 +112,6 @@ export default class FooterComponent extends Component {
     )
   }
 }
+
+FooterComponent.contextType = ThemeToggleContext;
+export default FooterComponent;

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const ContentContainer = styled.div`
   width: 95%;
   margin: 50px auto 60px;
+  background: ${props => props.theme["--background"]};
   border-radius: 10px;
   display: flex;
   flex-direction: column;

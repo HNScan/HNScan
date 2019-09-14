@@ -4,6 +4,10 @@ import Logo from '../Logos/hnscan';
 import * as Navbar from './styled-components';
 
 export default class NavbarComponent extends Component {
+  componentWillReceiveProps(props) {
+    console.log(props);
+  }
+
   // hide/show the mobile nav
   toggleMobileNav() {
     console.log('toggling!');
