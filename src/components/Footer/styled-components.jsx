@@ -43,6 +43,7 @@ export const Tagline = styled.div`
 `;
 
 export const Header = styled.div`
+  color: ${props => props.theme["--text-color-normal"]};
   text-transform: uppercase;
   font-size: 10pt;
   letter-spacing: 1px;
@@ -59,9 +60,9 @@ export const Item = styled.a`
   font-size: 10pt;
   margin: 8px 0;
   width: 55%;
-  color: #4A4A4A;
+  color: ${props => props.theme["--text-color-normal"]};
 
-  &:hover { color: #3273DC; }
+  &:hover { color: ${props => props.theme["--text-color-link--hover"]}; }
 
   @media (min-width: 445px) {
     margin: 5px 0;

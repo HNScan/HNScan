@@ -23,7 +23,6 @@ function getTxs(blockData) {
   return txs;
 }
 
-
 export default class HomeScreen extends Component {
   constructor(props) {
     super(props);

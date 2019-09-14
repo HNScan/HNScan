@@ -5,9 +5,28 @@
 @import 'bulma';
 @import '~bulma-switch';
 
+html {
+  // Bulma override
+  background-color: var(--background) !important;
+}
+
 body {
   margin: 0;
   font-family: 'Anonymous Pro', 'Inconsolata', monospace !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+div, h1, h2, h3, h4, h5, h6, span {
+  color: var(--text-color-normal);
+}
+
+table {
+  // Bulma override - assumes our tables are _always_ in a card
+  background-color: var(--card-background) !important;
+}
+
+table td, table th {
+  // Bulma override
+  border-bottom: 1px solid var(--border-color) !important;
 }

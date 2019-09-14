@@ -7,8 +7,8 @@ export const Card = styled.div`
   border-radius: 10px;
   width: 100%;
   height: 100%;
-  background-color: #fff;
-  color: #4a4a4a;
+  background-color: ${props => props.theme["--card-background"]};
+  color: ${props => props.theme["--text-color-normal"]};
   box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
 `;
 
@@ -21,7 +21,7 @@ export const Header = styled.div`
 
 // The header title on every card
 export const HeaderTitle = styled.div`
-  color: #4a4a4a;
+  color: ${props => props.theme["--text-color-normal"]};
   align-items: center;
   display: flex;
   flex-grow: 1;
