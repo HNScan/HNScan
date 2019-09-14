@@ -18,7 +18,7 @@
   width: 95%;
   display: flex;
   align-items: center;
-  
+
   @media (min-width: 1024px) {
     width: 90%;
     max-width: 1216px;
@@ -65,6 +65,13 @@
     justify-content: space-between;
     align-items: center !important;
   }
+
+  .navbar-menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+  }
 }
 
 /* ----- THEME OVERRIDES ----- */
@@ -79,7 +86,9 @@ a.navbar-link:hover,
 a.navbar-burger:hover,
 .navbar-item.has-dropdown:hover .navbar-link { background-color: var(--background-hover); }
 
-.navbar-menu { background-color: var(--background); }
+.navbar-menu {
+  background-color: var(--background);
+}
 
 .navbar-dropdown {
   background-color: var(--background);

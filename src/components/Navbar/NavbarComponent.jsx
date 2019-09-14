@@ -10,7 +10,14 @@ export default class NavbarComponent extends Component {
 
   // hide/show the mobile nav
   toggleMobileNav() {
-    console.log('toggling!');
+    const navbarBurger = document.querySelector(".navbar-burger");
+    const navbarMenu = document.querySelector(".navbar-menu");
+    const moreElement = document.querySelector(".navbarMore");
+
+    if (navbarBurger && navbarMenu && moreElement) {
+      navbarBurger.classList.toggle("is-active");
+      navbarMenu.classList.toggle("is-active");
+    }
   }
 
   // handle all search results
@@ -43,7 +50,7 @@ export default class NavbarComponent extends Component {
             </Navbar.TouchMenuWrapper>
           </div>
           {/* ----- Middle of Navbar (desktop and greater screen sizes) ----- */}
-          <div id="navbarBasicExample" className="navbar-menu">
+          <div className="navbar-menu" id="navbarBasicExample">
             <div className="navbar-start">
               <a href="/blocks" id="blocks" className="navbar-item navOption">Blocks</a>
               <a href="/names" className="navbar-item navOption">Names</a>
