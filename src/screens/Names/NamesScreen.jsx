@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table } from 'reactbulma';
+import { Table } from 'reactbulma/lib/components/Table/Table.js';
 import * as Home from '../Home/styled-components';
 import * as Cards from '../../components/Cards/Cards';
 import * as Blocks from '../Blocks/styled-components';
