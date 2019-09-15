@@ -105,7 +105,7 @@ class FooterComponent extends Component {
               onChange={this.context.toggleTheme} />
             <label htmlFor="switchRoundedOutlinedDefault"></label>
           </div>
-          <div className="version">Current Version: v0.0.1 <a className="hnscan-link" href="https://github.com/HandshakeAlliance/HNScan" target="_blank">Source</a></div>
+          <div className="version">Current Version: v0.0.1 <a className="hnscan-link" href="https://github.com/HandshakeAlliance/HNScan" target="_blank" rel="noopener noreferrer">Source</a></div>
           <div className="copyright">&#9400; Handshake Alliance. All Rights Reserved.</div>
         </Footer.ToggleThemeContainer>
       </Footer.FooterContainer>
