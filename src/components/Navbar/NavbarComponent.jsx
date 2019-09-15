@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 import './Navbar.scss';
 import Logo from '../Logos/hnscan';
 import * as Navbar from './styled-components';
+import { Redirect } from 'react-router-dom';
 
 export default class NavbarComponent extends Component {
-  componentWillReceiveProps(props) {
-    console.log(props);
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: '',
+      toSearch: false
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.search = this.search.bind(this);
   }
 
   // hide/show the mobile nav
@@ -21,11 +28,22 @@ export default class NavbarComponent extends Component {
   }
 
   // handle all search results
-  search() {
-    console.log('searching!');
+  search(e) {
+    e.preventDefault();
+    this.setState({
+      toSearch: true
+    })
+  }
+
+  handleChange(e) {
+    this.setState({ query: e.target.value.toLowerCase() })
   }
 
   render() {
+    if (this.state.toSearch) {
+      return <Redirect to={'/search?=' + this.state.query} />
+    }
+
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbarContainer">
@@ -86,7 +104,9 @@ export default class NavbarComponent extends Component {
                     <input type="search"
                       className="input is-rounded searchbar"
                       placeholder="Search the HNS Blockchain"
-                      maxLength="64" />
+                      maxLength="64"
+                      value={this.state.query}
+                      onChange={this.handleChange}/>
                     <span className="icon is-small is-left">
                       <i className="fas fa-search"></i>
                     </span>

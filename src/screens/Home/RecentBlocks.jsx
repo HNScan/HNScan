@@ -26,7 +26,7 @@ export default class RecentBlocks extends Component {
             {/* ----- Blocks Header ----- */}
             <Cards.Header>
               <Cards.HeaderTitle>Blocks</Cards.HeaderTitle>
-              <Cards.HeaderLink href="/blocks">View All</Cards.HeaderLink>
+              <Cards.HeaderLink className="hnscan-link" href="/blocks">View All</Cards.HeaderLink>
             </Cards.Header>
             {/* ----- Blocks Content ----- */}
             <Cards.Content>

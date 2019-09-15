@@ -21,6 +21,7 @@ div, h1, h2, h3, h4, h5, h6, span {
   color: var(--text-color-normal);
 }
 
+
 table {
   // Bulma override - assumes our tables are _always_ in a card
   background-color: var(--card-background) !important;
@@ -29,4 +30,12 @@ table {
 table td, table th {
   // Bulma override
   border-bottom: 1px solid var(--border-color) !important;
+}
+
+// Bulma override
+.hnscan-link {
+  color: var(--text-color-link) !important;
+
+  // &:visited { color: var(--text-color-link--visited) !important }
+  &:hover { color: var(--text-color-link--hover) !important; }
 }

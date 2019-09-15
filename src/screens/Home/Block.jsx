@@ -17,18 +17,18 @@ export default class Block extends Component {
               <Cards.ItemLogo>
                 <BlockLogo />
               </Cards.ItemLogo>
-                Block #:&nbsp;<a href={"/block/" + this.props.block.height}>
+                Block #:&nbsp;<a className="hnscan-link" href={"/block/" + this.props.block.height}>
                   {this.props.block.height}
                 </a>
             </Cards.LeftItemDetail>
             <Cards.LeftItemDetail>
               <Home.Miner>
-                Mined By: <a href={"/address/" + this.props.block.txs[0].outputs[0].address}>
+                Mined By: <a className="hnscan-link" href={"/address/" + this.props.block.txs[0].outputs[0].address}>
                   {this.props.block.txs[0].outputs[0].address}
                 </a>
               </Home.Miner>
               <Home.MobileMiner>
-                Mined By: <a href={"/address/" + this.props.block.txs[0].outputs[0].address}>
+                Mined By: <a className="hnscan-link" href={"/address/" + this.props.block.txs[0].outputs[0].address}>
                   {Util.truncateHash(this.props.block.txs[0].outputs[0].address)}
                 </a>
               </Home.MobileMiner>

@@ -7,11 +7,11 @@ export default class NameRow extends Component {
     return (
       <Table.Tr>
         <Table.Td>
-          <a href="/name/testName">testName</a>
+          <a className="hnscan-link" href="/name/testName">testName</a>
         </Table.Td>
         <Table.Td>OPENING</Table.Td>
         <Table.Td>
-          <a href="/block/1001">1001</a>
+          <a className="hnscan-link" href="/block/1001">1001</a>
         </Table.Td>
       </Table.Tr>
     )

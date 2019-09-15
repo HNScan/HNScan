@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import HomeScreen from './screens/Home/HomeScreen';
 import AirdropClaimScreen from './screens/AirdropClaim/AirdropClaimScreen';
@@ -8,6 +8,7 @@ import NamesScreen from './screens/Names/NamesScreen';
 import NodeStatusScreen from './screens/NodeStatus/NodeStatusScreen';
 import NotFoundScreen from './screens/Errors/NotFoundScreen';
 import PeersScreen from './screens/Peers/PeersScreen';
+import SearchResultsScreen from './screens/SearchResults/SearchResultsScreen';
 
 import ThemeContext from './contexts/ThemeContext';
 
@@ -21,15 +22,18 @@ function App() {
   return (
     <ThemeContext>
       <div>
-        <NavbarComponent />
         <Router>
-          <Route path="/" exact component={ HomeScreen } />
-          <Route path="/airdropclaim" exact component={ AirdropClaimScreen }/>
-          <Route path="/blocks" exact component={ BlocksScreen }/>
-          <Route path="/names" exact component={ NamesScreen }/>
-          <Route path="/peers" exact component={ PeersScreen }/>
-          <Route path="/status" exact component={ NodeStatusScreen }/>
-          <Route path="*" component={NotFoundScreen}/>
+          <NavbarComponent />
+          <Switch>
+            <Route path="/" exact component={ HomeScreen } />
+            <Route path="/airdropclaim" exact component={ AirdropClaimScreen }/>
+            <Route path="/blocks" exact component={ BlocksScreen }/>
+            <Route path="/names" exact component={ NamesScreen }/>
+            <Route path="/peers" exact component={ PeersScreen }/>
+            <Route path="/search" exact component={ SearchResultsScreen }/>
+            <Route path="/status" exact component={ NodeStatusScreen }/>
+            <Route path="*" component={ NotFoundScreen }/>
+          </Switch>
         </Router>
         <FooterComponent />
       </div>
