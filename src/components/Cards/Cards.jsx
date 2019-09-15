@@ -10,6 +10,10 @@ export const Card = styled.div`
   background-color: ${props => props.theme["--card-background"]};
   color: ${props => props.theme["--text-color-normal"]};
   box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+
+  & a:hover {
+    color: ${props => props.theme["--text-color-normal"]};
+  }
 `;
 
 // The header of every card
@@ -101,7 +105,7 @@ export const SummaryItemContainer = styled.div`
   /* TODO: this needs to change to auto to take height of content */
   height: auto;
   padding: 0.75rem;
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid var(--border-color);
 
   &:last-child {
     border: none;
