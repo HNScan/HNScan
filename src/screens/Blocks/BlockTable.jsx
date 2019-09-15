@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table } from 'reactbulma/lib/components/Table/Table.js';
+import Table from 'reactbulma/lib/components/Table/Table.js';
 import * as Blocks from './styled-components';
 import BlockRow from './BlockRow';
 // import * as Util from '../../util/util';

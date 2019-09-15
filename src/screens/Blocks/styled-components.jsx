@@ -1,4 +1,4 @@
-import { Table } from 'reactbulma/lib/components/Table/Table.js';
+import Table from 'reactbulma/lib/components/Table/Table.js';
 import styled from 'styled-components';
 
 export const TableContainer = styled.div`
