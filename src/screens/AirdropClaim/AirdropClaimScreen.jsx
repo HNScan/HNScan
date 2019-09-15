@@ -73,6 +73,7 @@ export default class AirdropClaimScreen extends Component {
 
 
   render() {
+    // TODO: This template needs refining
     return (
       <span className="contentContainer">
         <span className="card">

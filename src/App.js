@@ -6,6 +6,7 @@ import AirdropClaimScreen from './screens/AirdropClaim/AirdropClaimScreen';
 import BlocksScreen from './screens/Blocks/BlocksScreen';
 import NamesScreen from './screens/Names/NamesScreen';
 import NodeStatusScreen from './screens/NodeStatus/NodeStatusScreen';
+import NotFoundScreen from './screens/Errors/NotFoundScreen';
 import PeersScreen from './screens/Peers/PeersScreen';
 
 import ThemeContext from './contexts/ThemeContext';
@@ -28,7 +29,7 @@ function App() {
           <Route path="/names" exact component={ NamesScreen }/>
           <Route path="/peers" exact component={ PeersScreen }/>
           <Route path="/status" exact component={ NodeStatusScreen }/>
-          {/* <Route path="*" component={NotFoundScreen}/> */}
+          <Route path="*" component={NotFoundScreen}/>
         </Router>
         <FooterComponent />
       </div>
