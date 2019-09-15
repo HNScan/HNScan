@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Table } from 'reactbulma';
 
 import * as Cards from '../../components/Cards/Cards';
 import StackedComponent from '../../components/Stacked/StackedComponent';
