@@ -27,12 +27,10 @@ export default class NavbarComponent extends Component {
   }
 
   toggleMore() {
-    console.log(this.state.moreActive)
     this.setState({ moreActive: !this.state.moreActive });
   }
 
   toggleTools() {
-    console.log(this.state.toolsActive)
     this.setState({ toolsActive: !this.state.toolsActive })
   }
 
