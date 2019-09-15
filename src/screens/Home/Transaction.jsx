@@ -15,7 +15,7 @@ export default class Transaction extends Component {
               <Cards.ItemLogo>
                 <Arrow />
               </Cards.ItemLogo>
-              TX #:&nbsp;<a href={"/tx/" + this.props.txs.hash}>{Util.truncateHash(this.props.txs.hash)}</a>
+              TX #:&nbsp;<a className="hnscan-link" href={"/tx/" + this.props.txs.hash}>{Util.truncateHash(this.props.txs.hash)}</a>
             </Cards.LeftItemDetail>
             <Cards.LeftItemDetail>Amount: {Util.hnsValues(Util.sumTxOutputs(this.props.txs.outputs))}</Cards.LeftItemDetail>
             <Cards.LeftItemDetail>Fee: {Util.hnsValues(this.props.txs.fee)}</Cards.LeftItemDetail>

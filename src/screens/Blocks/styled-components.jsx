@@ -16,21 +16,25 @@ export const BlocksTable = styled(Table)`
 `;
 
 export const Abbr = styled.abbr`
+  color: ${props => props.theme['--text-color-normal']};
   text-decoration: none;
 `;
 
 // ----- Age Row Components -----
 export const AgeHead = styled(Table.Th)`
+  color: ${props => props.theme['--text-color-normal']};
   display: none;
   @media (min-width: 680px) { display: table-cell; }
 `;
 
 export const AgeRow = styled(Table.Td)`
+  color: ${props => props.theme['--text-color-normal']};
   display: none;
   @media (min-width: 680px) { display: table-cell; }
 `;
 
 export const MobileAge = styled.div`
+  color: ${props => props.theme['--text-color-normal']};
   display: block;
   font-size: 14px;
   @media (min-width: 680px) { display: none; }
@@ -49,17 +53,24 @@ export const TruncatedMiner = styled.a`
 
 // ----- Size Row Components -----
 export const SizeHead = styled(Table.Th)`
+  color: ${props => props.theme['--text-color-normal']};
   display: none;
   @media (min-width: 680px) { display: table-cell; }
 `;
 
 export const SizeRow = styled(Table.Td)`
+  color: ${props => props.theme['--text-color-normal']};
   display: none;
   @media (min-width: 680px) { display: table-cell; }
 `;
 
 export const MobileSize = styled.div`
+  color: ${props => props.theme['--text-color-normal']};
   display: block;
   font-size: 14px;
   @media (min-width: 680px) { display: none; }
+`;
+
+export const Td = styled(Table.Td)`
+  color: ${props => props.theme['--text-color-normal']};
 `;

@@ -15,19 +15,19 @@ export default class BlockRow extends Component {
     return (
       <Table.Tr>
         <Table.Td>
-          <a href={`/block/${height}`}>{height}</a>
+          <a className="hnscan-link" href={`/block/${height}`}>{height}</a>
           <Blocks.MobileSize>Size: {size}</Blocks.MobileSize>
         </Table.Td>
         <Blocks.AgeRow>{time}</Blocks.AgeRow>
         <Table.Td>
-          <Blocks.MinerAddress href={`/address/${miner}`}>{miner}</Blocks.MinerAddress>
-          <Blocks.TruncatedMiner href={`/address/${miner}`}>
+          <Blocks.MinerAddress className="hnscan-link" href={`/address/${miner}`}>{miner}</Blocks.MinerAddress>
+          <Blocks.TruncatedMiner className="hnscan-link" href={`/address/${miner}`}>
             {Util.truncateHash(miner)}
           </Blocks.TruncatedMiner>
           <Blocks.MobileAge>{time}</Blocks.MobileAge>
         </Table.Td>
         <Blocks.SizeRow>{size}</Blocks.SizeRow>
-        <Table.Td>{numTxs}</Table.Td>
+        <Blocks.Td>{numTxs}</Blocks.Td>
       </Table.Tr>
     )
   }
