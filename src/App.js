@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import HomeScreen from './screens/Home/HomeScreen';
+import AddressDetailScreen from './screens/AddressDetail/AddressDetailScreen';
 import AirdropClaimScreen from './screens/AirdropClaim/AirdropClaimScreen';
 import BlockDetailScreen from './screens/BlockDetail/BlockDetailScreen';
 import BlocksScreen from './screens/Blocks/BlocksScreen';
@@ -28,6 +29,7 @@ function App() {
           <NavbarComponent />
           <Switch>
             <Route path="/" exact component={ HomeScreen } />
+            <Route path="/address/:hash" exact component={ AddressDetailScreen }/>
             <Route path="/airdropclaim" exact component={ AirdropClaimScreen }/>
             <Route path="/blocks" exact component={ BlocksScreen }/>
             <Route path="/block/:height" exact component={ BlockDetailScreen }/>
