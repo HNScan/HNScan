@@ -88,6 +88,15 @@ a.navbar-link:hover,
 a.navbar-burger:hover,
 .navbar-item.has-dropdown:hover .navbar-link { background-color: var(--background-hover); }
 
+a.navbar-item:focus,
+a.navbar-link:focus,
+a.navbar-burger:focus,
+.navbar-item.has-dropdown:focus .navbar-link {
+  background: var(--background-hover) !important;
+  color: var(--text-color-link--hover) !important;
+  outline: none;
+}
+
 .navbar-menu {
   background-color: var(--background);
 }
