@@ -23,7 +23,7 @@ export default class Block extends Component {
             </Cards.LeftItemDetail>
             <Cards.LeftItemDetail>
               <Home.Miner>
-                Mined By: <a className="hnscan-link" href={"/address/" + this.props.block.txs[0].outputs[0].address}>
+                Mined By:&nbsp;<a className="hnscan-link" href={"/address/" + this.props.block.txs[0].outputs[0].address}>
                   {this.props.block.txs[0].outputs[0].address}
                 </a>
               </Home.Miner>

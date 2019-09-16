@@ -9,6 +9,7 @@ export const TableContainer = styled.div`
 `;
 
 export const BlocksTable = styled(Table)`
+  color: ${props => props.theme["--text-color-normal"]} !important;
   width: 90%;
   height: auto;
   margin: 10px auto;

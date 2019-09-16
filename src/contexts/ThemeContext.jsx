@@ -23,6 +23,11 @@ function toggleTheme() {
 class ThemeContext extends Component {
   constructor(props) {
     super(props);
+
+    if (!localStorage.getItem("theme")) {
+      localStorage.setItem("theme", "light");
+    }
+
     this.toggleTheme = () => {
       let theme = toggleTheme();
       this.setState(state => ({
