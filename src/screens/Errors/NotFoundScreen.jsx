@@ -48,7 +48,7 @@ export default class NotFoundScreen extends Component {
         </Header>
         <Subtext>
           It's cold out here in the void...let's bring you back to
-          <a href="/" rel="noopener noreferrer"> safety</a>
+          <a className="hnscan-link" href="/" rel="noopener noreferrer"> safety</a>
         </Subtext>
         <Container404>
           <span>4</span>

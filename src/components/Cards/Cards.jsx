@@ -14,6 +14,10 @@ export const Card = styled.div`
   & a:hover {
     color: ${props => props.theme["--text-color-normal"]};
   }
+
+  &:not(:first-child){
+    margin-top: 20px;
+  }
 `;
 
 // The header of every card

@@ -3,7 +3,7 @@ import * as Cards from '../../components/Cards/Cards';
 import * as Util from '../../util/util';
 import styled from 'styled-components';
 
-export const NetworkSummaryContainer = styled.div`
+const NetworkSummaryContainer = styled.div`
   width: 100%;
 `;
 

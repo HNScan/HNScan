@@ -9,6 +9,7 @@ import NodeStatusScreen from './screens/NodeStatus/NodeStatusScreen';
 import NotFoundScreen from './screens/Errors/NotFoundScreen';
 import PeersScreen from './screens/Peers/PeersScreen';
 import SearchResultsScreen from './screens/SearchResults/SearchResultsScreen';
+import TxDetailScreen from './screens/TxDetail/TxDetailScreen';
 
 import ThemeContext from './contexts/ThemeContext';
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/peers" exact component={ PeersScreen }/>
             <Route path="/search" exact component={ SearchResultsScreen }/>
             <Route path="/status" exact component={ NodeStatusScreen }/>
+            <Route path="/tx/:hash" exact component={ TxDetailScreen }/>
             <Route path="*" component={ NotFoundScreen }/>
           </Switch>
         </Router>
