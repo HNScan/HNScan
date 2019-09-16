@@ -39,7 +39,7 @@ export default class HomeScreen extends Component {
     this.setState({
       blocks: await Api.getBlocks(5),
       info: await Api.getInfo(),
-      names: await Api.getNames('close')
+      names: await Api.getNames('close', false)
      });
     this.setState({
       txs: getTxs(this.state.blocks),
@@ -47,7 +47,8 @@ export default class HomeScreen extends Component {
     });
 
     // console.log(this.state.info);
-    console.log(this.state.names);
+    // console.log(this.state.names);
+    // console.log(this.state.blocks);
   }
 
   render() {
@@ -55,7 +56,7 @@ export default class HomeScreen extends Component {
       // Cards Container
       <Home.ContentContainer>
         <Home.HorizontalContainer>
-          <NetworkSummary info={this.state.info} loading={this.state.loading} />
+          <NetworkSummary info={this.state.info} loading={this.state.loading} names={this.state.names} />
         </Home.HorizontalContainer>
         <Home.VerticalContainer>
           <RecentTransactions txs={this.state.txs} loading={this.state.loading} />

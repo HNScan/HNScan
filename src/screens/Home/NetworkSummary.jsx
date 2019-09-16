@@ -29,6 +29,7 @@ export default class NetworkSummary extends Component {
       let network = this.props.info.network;
       let difficulty = Util.sciNotation(this.props.info.chain.difficulty, 3);
       let chainwork = Util.sciNotation(parseInt("0x" + this.props.info.chain.chainWork), 2);
+      let regNames = this.props.names.length;
 
       return (
         <NetworkSummaryContainer>
@@ -71,7 +72,7 @@ export default class NetworkSummary extends Component {
                   <Cards.ItemContainer>
                     <Cards.ItemLabel>Names Registered</Cards.ItemLabel>
                     <Cards.ItemDetail>
-                      <span>550</span>
+                      <span>{regNames}</span>
                     </Cards.ItemDetail>
                   </Cards.ItemContainer>
                 </Cards.Column>

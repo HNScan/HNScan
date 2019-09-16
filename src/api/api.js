@@ -16,7 +16,7 @@ export async function getBlocks(numBlocks) {
 }
 
 // ----- NAMES REQUEST -----
-export async function getNames(type) {
+export async function getNames(type, limit) {
   const close = '?close=true';
   const open = '?open=true';
   const bid = '?bid=true';
@@ -24,21 +24,23 @@ export async function getNames(type) {
   const all = '?all=true';
   let endpoint = 'http://localhost:13037/names';
 
+  limit = `&limit=${limit}`;
+
   switch (type) {
     case "close":
-      endpoint += close;
+      endpoint += close + limit;
       break;
     case "open":
-      endpoint += open;
+      endpoint += open + limit;
       break;
     case "bid":
-      endpoint += bid;
+      endpoint += bid + limit;
       break;
     case "reveal":
-      endpoint += reveal;
+      endpoint += reveal + limit;
       break;
     default:
-      endpoint += all;
+      endpoint += all + limit;
   }
 
   let results = await fetch(endpoint);
