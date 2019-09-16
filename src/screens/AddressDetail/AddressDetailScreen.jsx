@@ -2,12 +2,32 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import * as Cards from '../../components/Cards/Cards';
 import StackedComponent from '../../components/Stacked/StackedComponent';
+import * as Detail from './styled-components';
 
 const Wrapper = styled.div`
   margin: 50px 24px 60px;
 `;
 
 export default class AddressDetailScreen extends Component {
+
+  renderTransactions() {
+    return <>
+        <Detail.Header>TX XXX: <a className="hnscan-link" href="#">very343434longhashkjfd34</a></Detail.Header>
+        <Detail.BorderedContainer>
+          <Detail.FullColumn>
+            <Detail.ColumnHeader>XXX Inputs</Detail.ColumnHeader>
+            <div>Something blah</div>
+            <a className="hnscan-link" href="#">tslksjfkjlkjdsj234jlkdjfjifgheh</a>
+          </Detail.FullColumn>
+          <Detail.FullColumn>
+            <Detail.ColumnHeader>XXX Outputs</Detail.ColumnHeader>
+            <div>Something blah</div>
+            <a className="hnscan-link" href="#">tslksjfkjlkjdsj234jlkdjfjifgheh</a>
+          </Detail.FullColumn>
+        </Detail.BorderedContainer>
+    </>
+  }
+
   render() {
     return (
       <Wrapper>
@@ -51,30 +71,14 @@ export default class AddressDetailScreen extends Component {
           <Cards.Header>
             <Cards.HeaderTitle>XXXX Transactions</Cards.HeaderTitle>
           </Cards.Header>
-          <div className="card-content">
-            <div className="columns">
-              <div className="column is-half">
-                <table className="table is-fullwidth">
-                  <tbody>
-                    {/* TODO: Get Node Status */}
-                    <tr><StackedComponent label="Hash" value="4" /></tr>
-                    <tr><StackedComponent label="Block Height" value="4" /></tr>
-                    <tr><StackedComponent label="Locktime" value="4" /></tr>
-                  </tbody>
-                </table>
-              </div>
-              <div className="column is-half">
-                <table className="table is-fullwidth">
-                  <tbody>
-                    {/* TODO: Get Node Status */}
-                    <tr><StackedComponent label="Witness Hash" value="4" /></tr>
-                    <tr><StackedComponent label="Version" value="4" /></tr>
-                    <tr><StackedComponent label="Index" value="4" /></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+          <Cards.Content>
+
+            <Detail.Wrapper>
+            {this.renderTransactions()}
+            {this.renderTransactions()}
+           </Detail.Wrapper>
+
+          </Cards.Content>
         </Cards.Card>
       </Wrapper>
     );
