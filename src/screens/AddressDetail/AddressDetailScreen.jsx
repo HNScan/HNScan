@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import * as Cards from '../../components/Cards/Cards';
-import StackedComponent from '../../components/Stacked/StackedComponent';
 import * as Detail from './styled-components';
 
 const Wrapper = styled.div`

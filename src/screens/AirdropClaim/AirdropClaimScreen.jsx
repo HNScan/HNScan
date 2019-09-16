@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import * as Cards from '../../components/Cards/Cards';
+import styled from 'styled-components';
+import './AirdropClaim.scss';
+
+const Wrapper = styled.div`
+  margin: 50px 24px 60px;
+`;
 
 export default class AirdropClaimScreen extends Component {
 
   // TODO: verify that these two functions work correctly
-  confirmClaim() {
+  confirmClaim(e) {
+    e.preventDefault();
     let confirmForm = document.getElementById("airdropConfirmForm");
     let proofstring = document.getElementById("proof").value;
     let successMessage = document.getElementById("successMessage");
@@ -30,7 +38,8 @@ export default class AirdropClaimScreen extends Component {
     xhr.send(data);
   }
 
-  submitClaim() {
+  submitClaim(e) {
+    e.preventDefault();
     let submitForm = document.getElementById("airdropSubmitForm");
     let confirmForm = document.getElementById("airdropConfirmForm");
     let error = document.getElementById("airdropError");
@@ -75,17 +84,17 @@ export default class AirdropClaimScreen extends Component {
   render() {
     // TODO: This template needs refining
     return (
-      <span className="contentContainer">
-        <span className="card">
-          <header className="card-header">
-            <h1 className="header-title">Claim Your Airdrop</h1>
-          </header>
-          <span className="card-content">
-            <span className="columns">
+      <Wrapper>
+        <Cards.Card>
+          <Cards.Header>
+            <Cards.HeaderTitle>Claim Your Airdrop</Cards.HeaderTitle>
+          </Cards.Header>
+          <Cards.Content>
+            <Cards.HorizontalContainer>
               <span className="column is-half">
                 <span className="control">
                   <label htmlFor="claim" className="radio">
-                    <input type="radio" name="claim" checked/>
+                    <input type="radio" name="claim" checked />
                     Faucet
                   </label>
                   {/* br
@@ -108,27 +117,27 @@ export default class AirdropClaimScreen extends Component {
                   <span className="airdropDescription">This will first generate your proof for the airdrop. You can either submit that proof yourself, or submit through HNScan. Once your proof has been submitted and mined, the HNS is deposited into the address associated with the private key provided to you in the faucet. We do not have access to your HNS, we are simply processing the claim for you.</span>
                   <p className="error" id="airdropError"></p>
                   <form onSubmit={this.submitClaim} id="airdropSubmitForm">
-                    <span className="control" id="airdropAddressContr"></span>
-                    <input placeholder="Provided HNS Address" class="input" id="airdropAddress" />
-                    <input value="Confirm Claim" type="submit" class="button is-rounded airdropButton" />
+                    <span className="control" id="airdropAddressControl"></span>
+                    <input placeholder="Provided HNS Address" className="input" id="airdropAddress" />
+                    <input value="Confirm Claim" type="submit" className="button is-rounded airdropButton" />
                   </form>
-                  <form onsubmit={this.confirmClaim} id="airdropConfirmForm">
+                  <form onSubmit={this.confirmClaim} id="airdropConfirmForm">
                     <textarea className="textarea" id="proof" disabled />
                     <input value="Send Claim" type="submit" className="button is-rounded airdropButton" />
                   </form>
-                  <span className="successMessage" id="successMessage"></span>
-                  <svg className="checkmark" id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width="70">
-                    <circle className="checkmarkCircle" cx="26" cy="26" r="23" fill="none" />
-                    <path className="checkmarkCheck" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-                  </svg>
-                  <span>Your airdrop claim has been submitted!</span>
+                  <span className="successMessage" id="successMessage">
+                    <svg className="checkmark" id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width="70">
+                      <circle className="checkmarkCircle" cx="26" cy="26" r="23" fill="none" />
+                      <path className="checkmarkCheck" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                    </svg>
+                    <span>Your airdrop claim has been submitted!</span>
+                  </span>
                 </span>
               </span>
-            </span>
-          </span>
-        </span>
-      </span>
-
+            </Cards.HorizontalContainer>
+          </Cards.Content>
+        </Cards.Card>
+      </Wrapper>
     );
   }
 }
