@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import HomeScreen from './screens/Home/HomeScreen';
 import AirdropClaimScreen from './screens/AirdropClaim/AirdropClaimScreen';
+import BlockDetailScreen from './screens/BlockDetail/BlockDetailScreen';
 import BlocksScreen from './screens/Blocks/BlocksScreen';
 import NamesScreen from './screens/Names/NamesScreen';
 import NodeStatusScreen from './screens/NodeStatus/NodeStatusScreen';
@@ -29,6 +30,7 @@ function App() {
             <Route path="/" exact component={ HomeScreen } />
             <Route path="/airdropclaim" exact component={ AirdropClaimScreen }/>
             <Route path="/blocks" exact component={ BlocksScreen }/>
+            <Route path="/block/:height" exact component={ BlockDetailScreen }/>
             <Route path="/names" exact component={ NamesScreen }/>
             <Route path="/peers" exact component={ PeersScreen }/>
             <Route path="/search" exact component={ SearchResultsScreen }/>
