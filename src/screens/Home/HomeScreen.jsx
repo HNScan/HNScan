@@ -30,21 +30,24 @@ export default class HomeScreen extends Component {
       info: {},
       loading: true,
       blocks: [],
-      txs: []
+      txs: [],
+      names: []
     };
   }
 
   async componentDidMount() {
     this.setState({
       blocks: await Api.getBlocks(5),
-      info: await Api.getInfo()
+      info: await Api.getInfo(),
+      names: await Api.getNames('close')
      });
     this.setState({
       txs: getTxs(this.state.blocks),
       loading: false
     });
 
-    console.log(this.state.info);
+    // console.log(this.state.info);
+    console.log(this.state.names);
   }
 
   render() {

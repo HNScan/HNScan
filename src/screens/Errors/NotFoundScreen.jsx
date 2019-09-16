@@ -44,7 +44,7 @@ export default class NotFoundScreen extends Component {
       <Wrapper>
         <Header>
           <span>Oh no!</span>
-          <span>Where'd it go?</span>
+          <span> Where'd it go?</span>
         </Header>
         <Subtext>
           It's cold out here in the void...let's bring you back to
