@@ -4,6 +4,7 @@ import * as Home from '../Home/styled-components';
 import * as Cards from '../../components/Cards/Cards';
 import * as Blocks from '../Blocks/styled-components';
 import NameRow from './NameRow';
+import PaginationComponent from '../../components/Pagination/PaginationComponent';
 
 function insertNameRows() {
   let num = 25;
@@ -41,7 +42,7 @@ export default class NamesScreen extends Component {
                 </Table.Body>
               </Blocks.BlocksTable>
             </Blocks.TableContainer>
-
+            <PaginationComponent totalPages={100} page={10} url="/names" />
           </Cards.Content>
         </Cards.Card>
       </Home.ContentContainer>

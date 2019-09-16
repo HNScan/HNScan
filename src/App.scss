@@ -39,3 +39,9 @@ table td, table th {
   // &:visited { color: var(--text-color-link--visited) !important }
   &:hover { color: var(--text-color-link--hover) !important; }
 }
+
+.pagination-link,
+.pagination-previous,
+.pagination-next {
+  color: var(--text-color-normal);
+}
