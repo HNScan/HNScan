@@ -13,7 +13,14 @@ export default class NetworkSummary extends Component {
     if (this.props.loading) {
       return (
         //TODO: Need a Skeleton Here
-        <div>loading...</div>
+        <NetworkSummaryContainer>
+          <Cards.Card>
+            <Cards.Header>
+              <Cards.HeaderTitle>Network Summary</Cards.HeaderTitle>
+            </Cards.Header>
+            <div>loading...</div>
+          </Cards.Card>
+        </NetworkSummaryContainer>
       )
     } else {
 
