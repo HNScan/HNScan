@@ -11,19 +11,19 @@ export default class AddressDetailScreen extends Component {
 
   renderTransactions() {
     return <>
-        <Detail.Header>TX XXX: <a className="hnscan-link" href="#">very343434longhashkjfd34</a></Detail.Header>
-        <Detail.BorderedContainer>
-          <Detail.FullColumn>
-            <Detail.ColumnHeader>XXX Inputs</Detail.ColumnHeader>
-            <div>Something blah</div>
-            <a className="hnscan-link" href="#">tslksjfkjlkjdsj234jlkdjfjifgheh</a>
-          </Detail.FullColumn>
-          <Detail.FullColumn>
-            <Detail.ColumnHeader>XXX Outputs</Detail.ColumnHeader>
-            <div>Something blah</div>
-            <a className="hnscan-link" href="#">tslksjfkjlkjdsj234jlkdjfjifgheh</a>
-          </Detail.FullColumn>
-        </Detail.BorderedContainer>
+      <Detail.Header>TX XXX: <a className="hnscan-link" href="www.google.com">very343434longhashkjfd34</a></Detail.Header>
+      <Detail.BorderedContainer>
+        <Detail.FullColumn>
+          <Detail.ColumnHeader>XXX Inputs</Detail.ColumnHeader>
+          <div>Something blah</div>
+          <a className="hnscan-link" href="www.google.com">tslksjfkjlkjdsj234jlkdjfjifgheh</a>
+        </Detail.FullColumn>
+        <Detail.FullColumn>
+          <Detail.ColumnHeader>XXX Outputs</Detail.ColumnHeader>
+          <div>Something blah</div>
+          <a className="hnscan-link" href="www.google.com">tslksjfkjlkjdsj234jlkdjfjifgheh</a>
+        </Detail.FullColumn>
+      </Detail.BorderedContainer>
     </>
   }
 

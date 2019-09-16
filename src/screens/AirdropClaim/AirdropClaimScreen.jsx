@@ -94,7 +94,7 @@ export default class AirdropClaimScreen extends Component {
               <span className="column is-half">
                 <span className="control">
                   <label htmlFor="claim" className="radio">
-                    <input type="radio" name="claim" checked />
+                    <input readOnly type="radio" name="claim" checked />
                     Faucet
                   </label>
                   {/* br
