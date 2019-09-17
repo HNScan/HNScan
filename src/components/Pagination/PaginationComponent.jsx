@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  padding: 24px;
+  padding: 10px;
+  margin-top: 30px;
 `;
 
 export default class PaginationComponent extends Component {

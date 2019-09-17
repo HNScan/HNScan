@@ -16,31 +16,25 @@ export async function getBlocks(numBlocks) {
 }
 
 // ----- NAMES REQUEST -----
-export async function getNames(type, limit) {
-  const close = '?close=true';
-  const open = '?open=true';
-  const bid = '?bid=true';
-  const reveal = '?reveal=true';
-  const all = '?all=true';
-  let endpoint = 'http://localhost:13037/names';
-
-  limit = `&limit=${limit}`;
+export async function getNames(type, num) {
+  let endpoint = 'http://localhost:13037/names?type=';
+  num = `&num=${num}`;
 
   switch (type) {
     case "close":
-      endpoint += close + limit;
+      endpoint += "close" + num;
       break;
     case "open":
-      endpoint += open + limit;
+      endpoint += "open" + num;
       break;
     case "bid":
-      endpoint += bid + limit;
+      endpoint += "bid" + num;
       break;
     case "reveal":
-      endpoint += reveal + limit;
+      endpoint += "reveal" + num;
       break;
     default:
-      endpoint += all + limit;
+      endpoint += "all" + num;
   }
 
   let results = await fetch(endpoint);

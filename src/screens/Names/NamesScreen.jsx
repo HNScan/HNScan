@@ -3,6 +3,7 @@ import Table from 'reactbulma/lib/components/Table/Table.js';
 import * as Home from '../Home/styled-components';
 import * as Cards from '../../components/Cards/Cards';
 import * as Blocks from '../Blocks/styled-components';
+import * as Api from '../../api/api';
 import NameRow from './NameRow';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
 
@@ -18,6 +19,25 @@ function insertNameRows() {
 }
 
 export default class NamesScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      names: []
+    };
+  }
+
+  async componentDidMount() {
+    this.setState({
+      names: await Api.getNames('close', 25)
+     });
+    this.setState({
+      loading: false
+    });
+
+    console.log(this.state.names);
+  }
+
   // 25 blocks per page
   render() {
     return (
@@ -42,9 +62,9 @@ export default class NamesScreen extends Component {
                 </Table.Body>
               </Blocks.BlocksTable>
             </Blocks.TableContainer>
-            <PaginationComponent totalPages={100} page={10} url="/names" />
           </Cards.Content>
         </Cards.Card>
+        <PaginationComponent totalPages={100} page={10} url="/names" />
       </Home.ContentContainer>
     )
   }

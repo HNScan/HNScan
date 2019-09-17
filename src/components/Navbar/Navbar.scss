@@ -10,12 +10,16 @@
   justify-content: center;
 }
 
-.navbar-start { width: 100%; }
+.navbar-start {
+  width: 100%;
+  height: 100%;
+}
 
 .navbarContainer {
   width: 95%;
   display: flex;
   align-items: center;
+  height: 100%;
 
   @media (min-width: 1024px) {
     width: 90%;
@@ -64,13 +68,6 @@
     align-items: center !important;
   }
 
-  .navbar-menu {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-  }
-
   .navbar-dropdown {
     margin-left: 12px;
   }
@@ -99,13 +96,20 @@ a.navbar-burger:focus,
 
 .navbar-menu {
   background-color: var(--background);
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  @media (min-width: 1024px) {
+    position: static;
+    height: 100%;
+  }
 }
 
 .navbar-dropdown {
   background-color: var(--background);
   border-top: 1px solid var(--border-color);
   padding: 0 !important;
-  margin-top: 0.5px;
 }
 .navbar-dropdown a.navbar-item:hover {
   color: var(--text-color-link) !important;

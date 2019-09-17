@@ -39,7 +39,7 @@ export default class HomeScreen extends Component {
     this.setState({
       blocks: await Api.getBlocks(5),
       info: await Api.getInfo(),
-      names: await Api.getNames('close', false)
+      names: await Api.getNames('close', null)
      });
     this.setState({
       txs: getTxs(this.state.blocks),
