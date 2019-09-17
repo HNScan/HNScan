@@ -29,7 +29,7 @@ export default class NamesScreen extends Component {
 
   async componentDidMount() {
     this.setState({
-      names: await Api.getNames('close', 25)
+      names: await Api.getNames('all', 25)
      });
     this.setState({
       loading: false
