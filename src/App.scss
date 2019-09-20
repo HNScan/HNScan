@@ -44,5 +44,16 @@ table td, table th {
 .pagination-previous,
 .pagination-next {
   color: var(--text-color-normal);
+  background-color: var(--background);
   margin: 0 10px;
+  &:hover {
+    color: var(--text-color-normal);
+    cursor: pointer;
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+  &:focus {
+    border-color: var(--border-color);
+  }
 }

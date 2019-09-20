@@ -9,6 +9,7 @@
     "hs-client": "handshake-org/hs-client",
     "humanize-duration": "^3.20.1",
     "node-sass": "^4.12.0",
+    "query-string": "^6.8.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",

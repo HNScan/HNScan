@@ -8,35 +8,35 @@ export async function getInfo() {
 
 
 // ----- BLOCKS REQUEST -----
-// Get most recent 25 blocks
-export async function getBlocks(numBlocks) {
-  //TODO: this needs to be dynamic eventually
-  let results = await fetch(`http://localhost:13037/blocks?num=${numBlocks}`);
+export async function getBlocks(limit, offset) {
+  let endpoint = `http://localhost:13037/blocks?limit=${limit}&offset=${offset}`
+  let results = await fetch(endpoint);
   return results.json();
 }
 
 // ----- NAMES REQUEST -----
-export async function getNames(type, num) {
+export async function getNames(type, limit, offset) {
   let endpoint = 'http://localhost:13037/names?type=';
-  num = `&num=${num}`;
+  limit = `&limit=${limit}`;
+  offset = `&offset=${offset}`;
 
   switch (type) {
     case "close":
-      endpoint += "close" + num;
+      endpoint += "close" + limit + offset;
       break;
     case "open":
-      endpoint += "open" + num;
+      endpoint += "open" + limit + offset;
       break;
     case "bid":
-      endpoint += "bid" + num;
+      endpoint += "bid" + limit + offset;
       break;
     case "reveal":
-      endpoint += "reveal" + num;
+      endpoint += "reveal" + limit + offset;
       break;
     default:
-      endpoint += "all" + num;
+      endpoint += "all" + limit + offset;
   }
-
+  
   let results = await fetch(endpoint);
   return results.json();
 }

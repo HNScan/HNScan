@@ -6,6 +6,7 @@ import AddressDetailScreen from './screens/AddressDetail/AddressDetailScreen';
 import AirdropClaimScreen from './screens/AirdropClaim/AirdropClaimScreen';
 import BlockDetailScreen from './screens/BlockDetail/BlockDetailScreen';
 import BlocksScreen from './screens/Blocks/BlocksScreen';
+import NameDetailScreen from './screens/NameDetail/NameDetailScreen';
 import NamesScreen from './screens/Names/NamesScreen';
 import NodeStatusScreen from './screens/NodeStatus/NodeStatusScreen';
 import NotFoundScreen from './screens/Errors/NotFoundScreen';
@@ -34,6 +35,7 @@ function App() {
             <Route path="/blocks" exact component={ BlocksScreen }/>
             <Route path="/block/:height" exact component={ BlockDetailScreen }/>
             <Route path="/names" exact component={ NamesScreen }/>
+            <Route path="/name/:name" exact component={ NameDetailScreen }/>
             <Route path="/peers" exact component={ PeersScreen }/>
             <Route path="/search" exact component={ SearchResultsScreen }/>
             <Route path="/status" exact component={ NodeStatusScreen }/>

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin: 50px;
-  width: 100%;
-`;
+// export const Wrapper = styled.div`
+//   align-items: center;
+//   display: flex;
+//   flex-direction: column;
+//   margin: 50px;
+//   width: 100%;
+// `;
 
 // --------- Map styles ---------- //
 export const MapHeader = styled.h1`

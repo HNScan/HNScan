@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-
+import * as Home from '../Home/styled-components';
 import * as Cards from '../../components/Cards/Cards';
 import StackedComponent from '../../components/Stacked/StackedComponent';
-
-import * as NodeStatus from './styled-components.jsx';
 
 export default class NodeStatusScreen extends Component {
   render() {
     return (
-      <NodeStatus.Wrapper>
+      <Home.ContentContainer>
         <Cards.Card>
           <Cards.Header>
             <Cards.HeaderTitle>Node Status</Cards.HeaderTitle>
@@ -31,7 +29,7 @@ export default class NodeStatusScreen extends Component {
             </table>
           </div>
         </Cards.Card>
-      </NodeStatus.Wrapper>
+      </Home.ContentContainer>
     );
   }
 }

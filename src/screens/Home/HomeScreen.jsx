@@ -36,15 +36,14 @@ export default class HomeScreen extends Component {
   }
 
   async componentDidMount() {
+    let names = await Api.getNames('close', 0, 0);
     this.setState({
-      blocks: await Api.getBlocks(5),
+      blocks: await Api.getBlocks(5, 0, 0),
       info: await Api.getInfo(),
-      names: await Api.getNames('close', null)
-     });
-    this.setState({
-      txs: getTxs(this.state.blocks),
+      names: names.total,
       loading: false
-    });
+     });
+    this.setState({ txs: getTxs(this.state.blocks.result) });
 
     // console.log(this.state.info);
     // console.log(this.state.names);
@@ -60,7 +59,7 @@ export default class HomeScreen extends Component {
         </Home.HorizontalContainer>
         <Home.VerticalContainer>
           <RecentTransactions txs={this.state.txs} loading={this.state.loading} />
-          <RecentBlocks blocks={this.state.blocks} loading={this.state.loading} />
+          <RecentBlocks blocks={this.state.blocks.result} loading={this.state.loading} />
         </Home.VerticalContainer>
       </Home.ContentContainer>
     )

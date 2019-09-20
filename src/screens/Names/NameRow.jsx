@@ -8,14 +8,19 @@ const StateCell = styled(Table.Td)`
 
 export default class NameRow extends Component {
   render() {
+
+    let name = this.props.name.name;
+    let state = this.props.name.state;
+    let height = this.props.name.height;
+
     return (
       <Table.Tr>
         <Table.Td>
-          <a className="hnscan-link" href="/name/testName">testName</a>
+          <a className="hnscan-link" href={`/name/${name}`}>{name}</a>
         </Table.Td>
-        <StateCell>OPENING</StateCell>
+        <StateCell>{state}</StateCell>
         <Table.Td>
-          <a className="hnscan-link" href="/block/1001">1001</a>
+          <a className="hnscan-link" href={`/block/${height}`}>{height}</a>
         </Table.Td>
       </Table.Tr>
     )

@@ -11,57 +11,69 @@ export default class PaginationComponent extends Component {
     super(props);
     if (!this.props.url) throw Error('no url provided for PaginationComponent');
 
-    this.state = {
-      page: this.props.page || 1,
-      totalPages: this.props.totalPages || 1,
-      url: this.props.url,
-    };
+    // this.props = {
+    //   page: this.props.page || 1,
+    //   totalPages: this.props.totalPages || 1,
+    //   url: this.props.url,
+    // };
   }
 
   // computed values
   get firstPage() { return 1 }
-  get lastPage() { return this.state.totalPages }
-  get nextPage() { return (this.state.page + 1 === this.state.totalPages)? undefined : this.state.page + 1 }
-  get previousPage() { return (this.state.page - 1  === 0) ? undefined : this.state.page + 1 }
+  get lastPage() { return this.props.totalPages }
+  get nextPage() { return (this.props.page + 1 === this.props.totalPages) ? undefined : this.props.page + 1 }
+  get previousPage() { return (this.props.page - 1  === 0) ? undefined : this.props.page - 1 }
+
+
+  handleClick(e, page) {
+    e.preventDefault();
+    this.props.pageChanger(page);
+  }
 
   // rendered components
   previousButton() {
-    return <a
-      href={`${this.state.url}?p=${this.state.page - 1}`}
+    let prevPage = this.props.page - 1;
+
+    return <button
       className="pagination-previous"
-      disabled={this.state.page === this.firstPage}>
+      onClick={(e) => {this.handleClick(e, prevPage)}}
+      disabled={this.props.page === this.firstPage}>
       Previous
-    </a>;
+    </button>;
   }
 
   nextButton() {
-    return <a
-      href={`${this.state.url}?p=${this.state.page + 1}`}
+    let nextPage = this.props.page + 1;
+
+    return <button
       className="pagination-next"
-      disabled={this.state.page === this.lastPage }>
+      onClick={(e) => {this.handleClick(e, nextPage)}}
+      disabled={this.props.page === this.lastPage }>
       Next
-      </a>;
+      </button>;
   }
 
   currentPageButton() {
     return <div
       className="pagination-link is-current"
       aria-current="page">
-      {this.state.page}
+      {this.props.page}
       </div>;
   }
 
   previousPageButton() {
-    if (this.state.page === this.firstPage) return;
-    return <a
-      href={`${this.state.url}?p=${this.state.page - 1}`}
+    let page = this.props.page - 1;
+
+    if (this.props.page === this.firstPage) return;
+    return <button
+      onClick={(e) => {this.handleClick(e, page)}}
       className="pagination-link">
-      {this.state.page - 1}
-      </a>;
+      {this.props.page - 1}
+      </button>;
   }
 
   previousEllipse() {
-    if (this.state.page <= this.firstPage + 2 ) return;
+    if (this.props.page <= this.firstPage + 2 ) return;
     return <span
       className="pagination-ellipse">
       &hellip;
@@ -69,16 +81,18 @@ export default class PaginationComponent extends Component {
   }
 
   nextPageButton() {
-    if (this.state.page === this.lastPage) return;
-    return <a
-      href={`${this.state.url}?p=${this.state.page + 1}`}
+    let page = this.props.page + 1;
+
+    if (this.props.page === this.lastPage) return;
+    return <button
+      onClick={(e) => {this.handleClick(e, page)}}
       className="pagination-link">
-      {this.state.page + 1}
-      </a>;
+      {this.props.page + 1}
+      </button>;
   }
 
   nextEllipse() {
-    if (this.state.page >= this.lastPage - 2) return;
+    if (this.props.page >= this.lastPage - 2) return;
     return <span
       className="pagination-ellipse">
       &hellip;
@@ -86,21 +100,21 @@ export default class PaginationComponent extends Component {
   }
 
   firstPageButton() {
-    if (this.state.page <= this.firstPage + 1) return;
-    return <a
-      href={`${this.state.url}?p=${this.firstPage}`}
+    if (this.props.page <= this.firstPage + 1) return;
+    return <button
+      onClick={(e) => {this.handleClick(e, this.firstPage)}}
       className="pagination-link">
       {this.firstPage}
-      </a>;
+      </button>;
   }
 
   lastPageButton() {
-    if (this.state.page >= this.lastPage - 1) return;
-    return <a
-      href={`${this.state.url}?p=${this.lastPage}`}
+    if (this.props.page >= this.lastPage - 1) return;
+    return <button
+      onClick={(e) => {this.handleClick(e, this.lastPage)}}
       className="pagination-link">
       {this.lastPage}
-      </a>
+      </button>
   }
 
   render() {

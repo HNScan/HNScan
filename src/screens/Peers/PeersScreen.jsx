@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-
+import * as Home from '../Home/styled-components';
 import PeersMapComponent from './PeersMapComponent';
 import PeersInfoComponent from './PeersInfoComponent';
-
-import * as Peers from './styled-components';
 
 export default class PeersScreen extends Component {
   render() {
     return (
-      <Peers.Wrapper>
+      <Home.ContentContainer>
         <PeersMapComponent />
         <PeersInfoComponent />
-      </Peers.Wrapper>
+      </Home.ContentContainer>
     );
   }
 }

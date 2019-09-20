@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import * as Cards from '../../components/Cards/Cards';
+import * as Home from '../Home/styled-components';
 import StackedComponent from '../../components/Stacked/StackedComponent';
-
-const Wrapper = styled.div`
-  margin: 50px 24px 60px;
-`;
 
 export default class BlockDetailScreen extends Component {
   render() {
     return (
-      <Wrapper>
+      <Home.ContentContainer>
         {/* ------- Top Card ------ */}
         <Cards.Card>
           <Cards.Header>
@@ -72,7 +69,7 @@ export default class BlockDetailScreen extends Component {
           </Cards.Content>
         </Cards.Card>
 
-        {/* Bottom Card */}
+        {/* ------- Bottom Card ------ */}
         <Cards.Card>
           <Cards.Header>
             <Cards.HeaderTitle>Advanced</Cards.HeaderTitle>
@@ -107,7 +104,7 @@ export default class BlockDetailScreen extends Component {
             </div>
           </div>
         </Cards.Card>
-      </Wrapper>
+      </Home.ContentContainer>
     );
   }
 }

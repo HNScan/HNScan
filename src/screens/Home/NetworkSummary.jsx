@@ -7,6 +7,14 @@ const NetworkSummaryContainer = styled.div`
   width: 100%;
 `;
 
+function handleUnconfirmed(data, size) {
+  if (data === 0) {
+    return "-";
+  } else {
+    return `${data} txs (${size[0]} ${size[1].abbreviation}B)`;
+  }
+}
+
 
 export default class NetworkSummary extends Component {
   render() {
@@ -25,11 +33,12 @@ export default class NetworkSummary extends Component {
     } else {
 
       let hashrate = Util.formatLargeNumber(this.props.info.mining.networkhashps, 3);
-      let unconfirmed = Util.formatLargeNumber(this.props.info.mempool.tx);
+      let unconfirmed = this.props.info.mempool.tx;
+      let memSize = Util.formatLargeNumber(this.props.info.mempool.size, 2);
       let network = this.props.info.network;
       let difficulty = Util.sciNotation(this.props.info.chain.difficulty, 3);
       let chainwork = Util.sciNotation(parseInt("0x" + this.props.info.chain.chainWork), 2);
-      let regNames = this.props.names.length;
+      let regNames = this.props.names;
 
       return (
         <NetworkSummaryContainer>
@@ -53,7 +62,7 @@ export default class NetworkSummary extends Component {
                   <Cards.ItemContainer>
                     <Cards.ItemLabel>Unconfirmed</Cards.ItemLabel>
                     <Cards.ItemDetail>
-                      <span>{unconfirmed[0].toString()}</span>
+                      <span>{handleUnconfirmed(unconfirmed, memSize)}</span>
                     </Cards.ItemDetail>
                   </Cards.ItemContainer>
                 </Cards.Column>
