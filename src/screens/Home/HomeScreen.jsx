@@ -1,10 +1,5 @@
-import React, { Component } from 'react';
-import * as Home from './styled-components';
-import * as Api from '../../api/api';
-import NetworkSummary from './NetworkSummary';
-import RecentTransactions from './RecentTransactions';
-import RecentBlocks from './RecentBlocks';
-
+import React, { Suspense } from 'react';
+import Home from './Home';
 
 function getTxs(blockData) {
   let txs = [];
@@ -23,45 +18,39 @@ function getTxs(blockData) {
   return txs;
 }
 
-export default class HomeScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      info: {},
-      loading: true,
-      blocks: [],
-      txs: [],
-      names: []
-    };
-  }
+export default function HomeScreen() {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     info: {},
+  //     loading: true,
+  //     blocks: [],
+  //     txs: [],
+  //     names: []
+  //   };
+  // }
 
-  async componentDidMount() {
-    let names = await Api.getNames('close', 0, 0);
-    this.setState({
-      blocks: await Api.getBlocks(5, 0, 0),
-      info: await Api.getInfo(),
-      names: names.total,
-      loading: false
-     });
-    this.setState({ txs: getTxs(this.state.blocks.result) });
+  // async componentDidMount() {
+  //   let names = await Api.getNames('close', 0, 0);
+  //   this.setState({
+  //     blocks: await Api.getBlocks(5, 0, 0),
+  //     info: await Api.getInfo(),
+  //     names: names.total,
+  //     loading: false
+  //    });
+  //   this.setState({ txs: getTxs(this.state.blocks.result) });
+  //
+  //   // console.log(this.state.info);
+  //   // console.log(this.state.names);
+  //   // console.log(this.state.blocks);
+  // }
 
-    // console.log(this.state.info);
-    // console.log(this.state.names);
-    // console.log(this.state.blocks);
-  }
 
-  render() {
-    return (
-      // Cards Container
-      <Home.ContentContainer>
-        <Home.HorizontalContainer>
-          <NetworkSummary info={this.state.info} loading={this.state.loading} names={this.state.names} />
-        </Home.HorizontalContainer>
-        <Home.VerticalContainer>
-          <RecentTransactions txs={this.state.txs} loading={this.state.loading} />
-          <RecentBlocks blocks={this.state.blocks.result} loading={this.state.loading} />
-        </Home.VerticalContainer>
-      </Home.ContentContainer>
-    )
-  }
+  return (
+    <>
+      <Suspense fallback={<div>...Loading</div>}>
+        <Home />
+      </Suspense>
+    </>
+  )
 }

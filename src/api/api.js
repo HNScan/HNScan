@@ -1,8 +1,8 @@
 // ----- HOME SCREEN REQUESTS -----
 // Get blockchain info
 export async function getInfo() {
-  //TODO: this needs to be dynamic eventually
-  let results = await fetch("http://localhost:13037/verbose");
+  // Home Page Info
+  let results = await fetch("http://localhost:8080/info");
   return results.json();
 }
 
@@ -36,7 +36,7 @@ export async function getNames(type, limit, offset) {
     default:
       endpoint += "all" + limit + offset;
   }
-  
+
   let results = await fetch(endpoint);
   return results.json();
 }
