@@ -2,7 +2,7 @@ import { Resource } from "rest-hooks";
 
 export default class NameResource extends Resource {
   name = "";
-  start = null; //@todo not sure best type here.
+  start = ""; //@todo not sure best type here.
   reserved = false;
   state = "";
   nextState = "";
