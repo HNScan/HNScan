@@ -17,17 +17,14 @@ function handleUnconfirmed(data, size) {
 
 export default class NetworkSummary extends Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     let hashrate = Util.formatLargeNumber(this.props.info.hashrate, 3);
     let unconfirmed = this.props.info.unconfirmed;
     let memSize = Util.formatLargeNumber(this.props.info.unconfirmedSize, 2);
     let network = this.props.info.network;
     let difficulty = Util.sciNotation(this.props.info.difficulty, 3);
-    let chainwork = Util.sciNotation(
-      parseInt("0x" + this.props.info.chainWork),
-      2
-    );
-    // let regNames = this.props.names;
+    let chainwork = Util.sciNotation(parseInt("0x" + this.props.info.chainWork), 2);
+    let registeredNames = this.props.info.registeredNames.length;
 
     return (
       <NetworkSummaryContainer>
@@ -70,7 +67,7 @@ export default class NetworkSummary extends Component {
                 <Cards.ItemContainer>
                   <Cards.ItemLabel>Names Registered</Cards.ItemLabel>
                   <Cards.ItemDetail>
-                    <span>TODO</span>
+                    <span>{registeredNames}</span>
                   </Cards.ItemDetail>
                 </Cards.ItemContainer>
               </Cards.Column>

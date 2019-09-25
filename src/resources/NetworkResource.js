@@ -7,7 +7,7 @@ export default class NetworkResource extends Resource {
   hashrate = null;
   unconfirmed = null;
   unconfirmedSize = null;
-  // TODO: totalNames
+  registeredNames = null;
 
   pk() {
     return "the_only_one";

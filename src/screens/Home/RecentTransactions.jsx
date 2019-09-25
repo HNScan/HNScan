@@ -19,7 +19,7 @@ export default class RecentTransactions extends Component {
       if (this.props.loading || txData.length === 0) {
         txs.push(<TxLoading key={i} />);
       } else {
-        txs.push(<Transaction key={i} txs={txData[i]} />);
+        txs.push(<Transaction key={i} tx={txData[i]} />);
       }
     }
     return txs;
@@ -50,8 +50,7 @@ export default class RecentTransactions extends Component {
 
 // Property Types
 RecentTransactions.propTypes = {
-  txs: PropTypes.array,
-  loading: PropTypes.bool.isRequired
+  txs: PropTypes.array
 };
 
 const TxLoading = () => (

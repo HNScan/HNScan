@@ -5,6 +5,11 @@ import Arrow from '../../components/Logos/rightArrow';
 
 export default class Transaction extends Component {
   render() {
+    const txHash = this.props.tx.hash;
+    const outputs = this.props.tx.outputs;
+    const fee = this.props.tx.fee;
+    const time = this.props.tx.time;
+
     return (
       // ----- TX Details -----
       <Cards.SummaryItemContainer>
@@ -15,14 +20,14 @@ export default class Transaction extends Component {
               <Cards.ItemLogo>
                 <Arrow />
               </Cards.ItemLogo>
-              TX #:&nbsp;<a className="hnscan-link" href={"/tx/" + this.props.txs.hash}>{Util.truncateHash(this.props.txs.hash)}</a>
+              TX #:&nbsp;<a className="hnscan-link" href={"/tx/" + txHash}>{Util.truncateHash(txHash)}</a>
             </Cards.LeftItemDetail>
-            <Cards.LeftItemDetail>Amount: {Util.hnsValues(Util.sumTxOutputs(this.props.txs.outputs))}</Cards.LeftItemDetail>
-            <Cards.LeftItemDetail>Fee: {Util.hnsValues(this.props.txs.fee)}</Cards.LeftItemDetail>
+            <Cards.LeftItemDetail>Amount: {Util.hnsValues(Util.sumTxOutputs(outputs))}</Cards.LeftItemDetail>
+            <Cards.LeftItemDetail>Fee: {Util.hnsValues(fee)}</Cards.LeftItemDetail>
           </Cards.SummaryItemContent>
           {/* ----- Right Side / Bottom Side ----- */}
           <Cards.SummaryItemContent>
-            <Cards.RightItemDetail><i>{Util.timeAgo(this.props.txs.time)}</i></Cards.RightItemDetail>
+            <Cards.RightItemDetail><i>{Util.timeAgo(time)}</i></Cards.RightItemDetail>
           </Cards.SummaryItemContent>
         </Cards.SummaryItem>
       </Cards.SummaryItemContainer>
