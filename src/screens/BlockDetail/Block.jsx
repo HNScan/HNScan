@@ -2,16 +2,17 @@ import React from "react";
 // import styled from 'styled-components';
 import * as Cards from "../../components/Cards/Cards";
 import * as Home from "../Home/styled-components";
-import StackedComponent from "../../components/Stacked/StackedComponent";
+import StackedData from "../../components/Stacked/StackedComponent";
 import { useResource } from "rest-hooks";
 import BlockResource from "../../resources/BlockResource";
+import TransactionList from "../../components/TransactionList";
 
-// export default class BlockDetailScreen extends Component {
 export default function BlockDetail({ height }) {
   const block = useResource(BlockResource.detailShape(), {
     height
   });
   return (
+    // @todo should not come from home here
     <Home.ContentContainer>
       {/* ------- Top Card ------ */}
       <Cards.Card>
@@ -29,7 +30,7 @@ export default function BlockDetail({ height }) {
             <Cards.Column>
               <Cards.ItemContainer>
                 <Cards.ItemLabel>Total Transactions</Cards.ItemLabel>
-                <Cards.ItemDetail>{block.txs.length}</Cards.ItemDetail>
+                <Cards.ItemDetail>{block.txs}</Cards.ItemDetail>
               </Cards.ItemContainer>
             </Cards.Column>
             <Cards.Column>
@@ -67,37 +68,37 @@ export default function BlockDetail({ height }) {
         <Cards.Header>
           <Cards.HeaderTitle>Advanced</Cards.HeaderTitle>
         </Cards.Header>
+        {/* @todo remove all these class names. */}
+        {/* @todo need links in here */}
+        {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
         <div className="card-content">
           <div className="columns">
             <div className="column is-half">
               <table className="table is-fullwidth">
                 <tbody>
+                  {block.prevBlock && (
+                    <tr>
+                      <StackedData
+                        label="Previous Block"
+                        value={block.prevBlock}
+                        link={"/block/" + (block.height - 1)}
+                      />
+                    </tr>
+                  )}
                   <tr>
-                    <StackedComponent
-                      label="Previous Block"
-                      value={block.prevBlock}
-                    />
+                    <StackedData label="Difficulty" value={block.difficulty} />
                   </tr>
                   <tr>
-                    <StackedComponent
-                      label="Difficulty"
-                      value={block.difficulty}
-                    />
+                    <StackedData label="Version" value={block.version} />
                   </tr>
                   <tr>
-                    <StackedComponent label="Version" value={block.version} />
+                    <StackedData label="Bits" value={block.bits} />
                   </tr>
                   <tr>
-                    <StackedComponent label="Bits" value={block.bits} />
+                    <StackedData label="Size" value={block.size} />
                   </tr>
                   <tr>
-                    <StackedComponent label="Size" value={block.size} />
-                  </tr>
-                  <tr>
-                    <StackedComponent
-                      label="Average Fee"
-                      value={block.averageFee}
-                    />
+                    <StackedData label="Average Fee" value={block.averageFee} />
                   </tr>
                 </tbody>
               </table>
@@ -105,33 +106,32 @@ export default function BlockDetail({ height }) {
             <div className="column is-half">
               <table className="table is-fullwidth">
                 <tbody>
-                  {/* TODO: Get Node Status */}
+                  {block.nextHash && (
+                    <tr>
+                      <StackedData
+                        label="Next Block"
+                        value={block.nextHash}
+                        link={"/block/" + (block.height + 1)}
+                      />
+                    </tr>
+                  )}
                   <tr>
-                    <StackedComponent label="Hash" value={block.hash} />
+                    <StackedData label="Hash" value={block.hash} />
                   </tr>
                   <tr>
-                    <StackedComponent
-                      label="Merkle Root"
-                      value={block.merkleRoot}
-                    />
+                    <StackedData label="Merkle Root" value={block.merkleRoot} />
                   </tr>
                   <tr>
-                    <StackedComponent
-                      label="Tree Root"
-                      value={block.treeRoot}
-                    />
+                    <StackedData label="Tree Root" value={block.treeRoot} />
                   </tr>
                   <tr>
-                    <StackedComponent
+                    <StackedData
                       label="Reserved Root"
                       value={block.reservedRoot}
                     />
                   </tr>
                   <tr>
-                    <StackedComponent
-                      label="Chainwork"
-                      value={block.chainwork}
-                    />
+                    <StackedData label="Chainwork" value={block.chainwork} />
                   </tr>
                 </tbody>
               </table>
@@ -139,6 +139,7 @@ export default function BlockDetail({ height }) {
           </div>
         </div>
       </Cards.Card>
+      <TransactionList txs={block.tx} />
     </Home.ContentContainer>
   );
 }

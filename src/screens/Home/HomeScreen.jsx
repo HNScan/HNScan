@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import * as Home from './styled-components';
-import * as Api from '../../api/api';
-import NetworkSummary from './NetworkSummary';
-import RecentTransactions from './RecentTransactions';
-import RecentBlocks from './RecentBlocks';
-
+import React, { Component } from "react";
+import * as Home from "./styled-components";
+import * as Api from "../../api/api";
+import NetworkSummary from "./NetworkSummary";
+import RecentTransactions from "./RecentTransactions";
+import RecentBlocks from "./RecentBlocks";
 
 function getTxs(blockData) {
   let txs = [];
@@ -36,13 +35,13 @@ export default class HomeScreen extends Component {
   }
 
   async componentDidMount() {
-    let names = await Api.getNames('close', 0, 0);
+    let names = await Api.getNames("close", 0, 0);
     this.setState({
       blocks: await Api.getBlocks(5, 0, 0),
       info: await Api.getInfo(),
       names: names.total,
       loading: false
-     });
+    });
     this.setState({ txs: getTxs(this.state.blocks.result) });
 
     // console.log(this.state.info);
@@ -55,13 +54,23 @@ export default class HomeScreen extends Component {
       // Cards Container
       <Home.ContentContainer>
         <Home.HorizontalContainer>
-          <NetworkSummary info={this.state.info} loading={this.state.loading} names={this.state.names} />
+          <NetworkSummary
+            info={this.state.info}
+            loading={this.state.loading}
+            names={this.state.names}
+          />
         </Home.HorizontalContainer>
         <Home.VerticalContainer>
-          <RecentTransactions txs={this.state.txs} loading={this.state.loading} />
-          <RecentBlocks blocks={this.state.blocks.result} loading={this.state.loading} />
+          <RecentTransactions
+            txs={this.state.txs}
+            loading={this.state.loading}
+          />
+          <RecentBlocks
+            blocks={this.state.blocks.result}
+            loading={this.state.loading}
+          />
         </Home.VerticalContainer>
       </Home.ContentContainer>
-    )
+    );
   }
 }

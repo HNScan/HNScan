@@ -1,9 +1,9 @@
+@import 'bulma';
+// Bulma Toggle Switch Styles - NPM Package
+@import '~bulma-switch';
+
 @import './variables';
 @import './theme-variables';
-
-// Bulma Toggle Switch Styles - NPM Package
-@import 'bulma';
-@import '~bulma-switch';
 
 html {
   // Bulma override

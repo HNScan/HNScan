@@ -6,17 +6,16 @@ export async function getInfo() {
   return results.json();
 }
 
-
 // ----- BLOCKS REQUEST -----
 export async function getBlocks(limit, offset) {
-  let endpoint = `http://localhost:13037/blocks?limit=${limit}&offset=${offset}`
+  let endpoint = `http://localhost:8080/blocks?limit=${limit}&offset=${offset}`;
   let results = await fetch(endpoint);
   return results.json();
 }
 
 // ----- NAMES REQUEST -----
 export async function getNames(type, limit, offset) {
-  let endpoint = 'http://localhost:13037/names?type=';
+  let endpoint = "http://localhost:13037/names?type=";
   limit = `&limit=${limit}`;
   offset = `&offset=${offset}`;
 
@@ -36,7 +35,7 @@ export async function getNames(type, limit, offset) {
     default:
       endpoint += "all" + limit + offset;
   }
-  
+
   let results = await fetch(endpoint);
   return results.json();
 }

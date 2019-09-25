@@ -8,7 +8,7 @@ import HomeScreen from "./screens/Home/HomeScreen";
 import AddressDetailScreen from "./screens/AddressDetail/AddressDetailScreen";
 import AirdropClaimScreen from "./screens/AirdropClaim/AirdropClaimScreen";
 import BlockDetailScreen from "./screens/BlockDetail/BlockDetail";
-import BlocksScreen from "./screens/Blocks/BlocksScreen";
+import Blocks from "./screens/Blocks";
 import NameDetailScreen from "./screens/NameDetail/NameDetailScreen";
 import NamesScreen from "./screens/Names/NamesScreen";
 import NodeStatusScreen from "./screens/NodeStatus/NodeStatusScreen";
@@ -41,7 +41,7 @@ function App() {
                 exact
                 component={AirdropClaimScreen}
               />
-              <Route path="/blocks" exact component={BlocksScreen} />
+              <Route path="/blocks" exact component={Blocks} />
               <Route
                 path="/block/:height"
                 exact
