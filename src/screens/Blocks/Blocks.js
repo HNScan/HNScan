@@ -2,6 +2,9 @@ import React, { Suspense, useState } from "react";
 import queryString from "query-string";
 import BlocksContainer from "./BlocksContainer";
 
+//@todo make this a single file.
+//XXX XXX XXX XXX XXX XXX
+//Inside of here have Blocks (this one), BlocksContainer (the api call one), and then just UI components.
 export default function Blocks(props) {
   let query = queryString.parse(props.location.search);
   let currentPage = 1;

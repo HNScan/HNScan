@@ -13,10 +13,10 @@ export default function BlocksContainer(props) {
   return (
     <BlocksView
       blocks={blocks}
-      totalPages={pages}
+      pages={pages}
       page={props.page}
       url="/blocks"
-      pageChanger={props.changePage}
+      changePage={props.changePage}
     />
   );
 }
