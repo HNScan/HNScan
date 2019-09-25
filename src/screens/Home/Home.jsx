@@ -1,17 +1,16 @@
-import React from 'react';
-import { useResource } from 'rest-hooks';
-import NetworkResource from '../../resources/NetworkResource';
+import React from "react";
+import { useResource } from "rest-hooks";
+import NetworkResource from "../../resources/NetworkResource";
 
-import * as HomeComponents from './styled-components';
+import * as HomeComponents from "./styled-components";
 
-import NetworkSummary from './NetworkSummary';
+import NetworkSummary from "./NetworkSummary";
 // import RecentTransactions from './RecentTransactions';
 // import RecentBlocks from './RecentBlocks';
 
-
 export default function Home() {
   //API Calls
-  const summary = useResource(NetworkResource.detailShape(), null);
+  const summary = useResource(NetworkResource.detailShape(), {});
   console.log(summary);
 
   return (
@@ -24,5 +23,5 @@ export default function Home() {
         {/* <RecentBlocks blocks={this.state.blocks.result} loading={this.state.loading} /> */}
       </HomeComponents.VerticalContainer>
     </HomeComponents.ContentContainer>
-  )
+  );
 }

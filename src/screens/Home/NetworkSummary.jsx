@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import * as Cards from '../../components/Cards/Cards';
-import * as Util from '../../util/util';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import * as Cards from "../../components/Cards/Cards";
+import * as Util from "../../util/util";
+import styled from "styled-components";
 
 const NetworkSummaryContainer = styled.div`
   width: 100%;
@@ -15,16 +15,18 @@ function handleUnconfirmed(data, size) {
   }
 }
 
-
 export default class NetworkSummary extends Component {
   render() {
     console.log(this.props);
-    let hashrate = Util.formatLargeNumber(this.props.info.networkhashps, 3);
+    let hashrate = Util.formatLargeNumber(this.props.info.hashrate, 3);
     let unconfirmed = this.props.info.unconfirmed;
     let memSize = Util.formatLargeNumber(this.props.info.unconfirmedSize, 2);
     let network = this.props.info.network;
     let difficulty = Util.sciNotation(this.props.info.difficulty, 3);
-    let chainwork = Util.sciNotation(parseInt("0x" + this.props.info.chainWork), 2);
+    let chainwork = Util.sciNotation(
+      parseInt("0x" + this.props.info.chainWork),
+      2
+    );
     // let regNames = this.props.names;
 
     return (
@@ -34,7 +36,7 @@ export default class NetworkSummary extends Component {
             <Cards.HeaderTitle>Network Summary</Cards.HeaderTitle>
           </Cards.Header>
           <Cards.Content>
-          {/* ----- Network Summary - Top Row ----- */}
+            {/* ----- Network Summary - Top Row ----- */}
             <Cards.HorizontalContainer>
               <Cards.Column>
                 <Cards.ItemContainer>
@@ -62,7 +64,7 @@ export default class NetworkSummary extends Component {
                 </Cards.ItemContainer>
               </Cards.Column>
             </Cards.HorizontalContainer>
-          {/* ----- Network Summary - Bottom Row ----- */}
+            {/* ----- Network Summary - Bottom Row ----- */}
             <Cards.HorizontalContainer>
               <Cards.Column>
                 <Cards.ItemContainer>
@@ -92,6 +94,6 @@ export default class NetworkSummary extends Component {
           </Cards.Content>
         </Cards.Card>
       </NetworkSummaryContainer>
-    )
+    );
   }
 }
