@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 //@todo fix this
 import * as Cards from "../Cards/Cards";
-import { Column, Columns } from "../Columns";
 import { InputList, OutputList } from "./PutsList";
 import { title } from "./util";
 
@@ -37,14 +36,14 @@ const TransactionList = props => {
       <HashWrapper>
         Tx {index + 1}:&nbsp;<Link to={"/tx/" + tx.hash}>{tx.hash}</Link>
       </HashWrapper>
-      <Columns>
-        <Column half>
+      <div className="columns">
+        <div className="column is-half">
           <InputList inputs={tx.inputs} />
-        </Column>
-        <Column half>
+        </div>
+        <div className="column is-half">
           <OutputList outputs={tx.outputs} />
-        </Column>
-      </Columns>
+        </div>
+      </div>
     </Container>
   ));
   return (

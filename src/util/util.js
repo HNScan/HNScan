@@ -1,5 +1,5 @@
-import HumanizeDuration from 'humanize-duration';
-import Decimal from 'decimal.js';
+import HumanizeDuration from "humanize-duration";
+import Decimal from "decimal.js";
 
 const exponentScales = [
   {
@@ -57,7 +57,6 @@ export function formatLargeNumber(n, decimalPlaces) {
   return [new Decimal(n).toDecimalPlaces(decimalPlaces), {}];
 }
 
-
 //We need to use Bignum across the board in this app. Make that a v2 task XXX
 export function hnsValues(amount) {
   let realAmount = amount / 1000000;
@@ -90,7 +89,7 @@ export function sumTxOutputs(outputs) {
   let sum = 0;
 
   for (let i = 0; i < outputs.length; i++) {
-    sum =+ outputs[i].value;
+    sum = +outputs[i].value;
   }
 
   return sum;
@@ -143,4 +142,11 @@ function toSciNotation(num) {
     }
   }
   return [sign * coefficient, exponent];
+}
+
+//@todo
+export function checkPool(minerAddress) {
+  //Check if a pool exists with this address, otherwise just return.
+
+  return minerAddress;
 }

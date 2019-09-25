@@ -1,16 +1,23 @@
-import React from "react";
+import React, { Suspense } from "react";
+import { Link } from "react-router-dom";
 // import styled from 'styled-components';
-import * as Cards from "../../components/Cards/Cards";
-import * as Home from "../Home/styled-components";
-import StackedData from "../../components/Stacked/StackedComponent";
+import * as Cards from "../components/Cards/Cards";
+import * as Home from "./Home/styled-components";
+import StackedData from "../components/Stacked/StackedComponent";
 import { useResource } from "rest-hooks";
-import BlockResource from "../../resources/BlockResource";
-import TransactionList from "../../components/TransactionList";
+import BlockResource from "../resources/BlockResource";
+import TransactionList from "../components/TransactionList";
 
-export default function BlockDetail({ height }) {
+import { timeAgo, sciNotation, hnsValues, checkPool } from "../util/util";
+
+//@todo move most of this into a component, not in here.
+function Block({ height }) {
   const block = useResource(BlockResource.detailShape(), {
     height
   });
+
+  let [difficulty, exponent] = sciNotation(block.difficulty, 5);
+
   return (
     // @todo should not come from home here
     <Home.ContentContainer>
@@ -24,7 +31,7 @@ export default function BlockDetail({ height }) {
             <Cards.Column>
               <Cards.ItemContainer>
                 <Cards.ItemLabel>Received</Cards.ItemLabel>
-                <Cards.ItemDetail>{block.time}</Cards.ItemDetail>
+                <Cards.ItemDetail>{timeAgo(block.time)}</Cards.ItemDetail>
               </Cards.ItemContainer>
             </Cards.Column>
             <Cards.Column>
@@ -36,7 +43,7 @@ export default function BlockDetail({ height }) {
             <Cards.Column>
               <Cards.ItemContainer>
                 <Cards.ItemLabel>Total Fees</Cards.ItemLabel>
-                <Cards.ItemDetail>{block.fees}</Cards.ItemDetail>
+                <Cards.ItemDetail>{hnsValues(block.fees)}</Cards.ItemDetail>
               </Cards.ItemContainer>
             </Cards.Column>
           </Cards.HorizontalContainer>
@@ -44,13 +51,18 @@ export default function BlockDetail({ height }) {
             <Cards.Column>
               <Cards.ItemContainer>
                 <Cards.ItemLabel>Mined By</Cards.ItemLabel>
-                <Cards.ItemDetail>{block.miner}</Cards.ItemDetail>
+                {/* Check Pool */}
+                <Cards.ItemDetail>
+                  <Link to={"/address/" + block.miner}>
+                    {checkPool(block.miner)}
+                  </Link>
+                </Cards.ItemDetail>
               </Cards.ItemContainer>
             </Cards.Column>
             <Cards.Column>
               <Cards.ItemContainer>
                 <Cards.ItemLabel>Weight</Cards.ItemLabel>
-                <Cards.ItemDetail>{block.weight}</Cards.ItemDetail>
+                <Cards.ItemDetail>{block.weight} wu</Cards.ItemDetail>
               </Cards.ItemContainer>
             </Cards.Column>
             <Cards.Column>
@@ -86,7 +98,14 @@ export default function BlockDetail({ height }) {
                     </tr>
                   )}
                   <tr>
-                    <StackedData label="Difficulty" value={block.difficulty} />
+                    <StackedData
+                      label="Difficulty"
+                      value={
+                        <span>
+                          {difficulty} x 10<sup>{exponent}</sup>
+                        </span>
+                      }
+                    />
                   </tr>
                   <tr>
                     <StackedData label="Version" value={block.version} />
@@ -95,10 +114,13 @@ export default function BlockDetail({ height }) {
                     <StackedData label="Bits" value={block.bits} />
                   </tr>
                   <tr>
-                    <StackedData label="Size" value={block.size} />
+                    <StackedData label="Size" value={block.size + " bytes"} />
                   </tr>
                   <tr>
-                    <StackedData label="Average Fee" value={block.averageFee} />
+                    <StackedData
+                      label="Average Fee"
+                      value={hnsValues(block.averageFee)}
+                    />
                   </tr>
                 </tbody>
               </table>
@@ -141,5 +163,23 @@ export default function BlockDetail({ height }) {
       </Cards.Card>
       <TransactionList txs={block.tx} />
     </Home.ContentContainer>
+  );
+}
+
+//@todo this fallback should render Block skeleton
+//Function that is exported.
+export default function BlockContainer({ match }) {
+  return (
+    <>
+      <Suspense
+        fallback={
+          <div>
+            <p>Hi</p>
+          </div>
+        }
+      >
+        <Block height={match.params.height} />
+      </Suspense>
+    </>
   );
 }
