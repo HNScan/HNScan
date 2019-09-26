@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import * as Home from "../Home/styled-components";
 import * as Cards from "../../components/Cards/Cards";
-import BlocksTable from "./BlockTable";
+// import BlocksTable from "./BlockTable";
 import Pagination from "../../components/Pagination/PaginationComponent";
-import { useResource, useResultCache } from "rest-hooks";
-import BlockResource from "../../resources/BlockResource";
+// import { useResource, useResultCache } from "rest-hooks";
+// import BlockResource from "../../resources/BlockResource";
 import Table from "reactbulma/lib/components/Table/Table.js";
 import * as Blocks from "./styled-components";
 // @todo fix this.

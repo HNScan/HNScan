@@ -17,7 +17,7 @@ function handleUnconfirmed(data, size) {
 
 export default class NetworkSummary extends Component {
   render() {
-    // console.log(this.props);
+    
     let hashrate = Util.formatLargeNumber(this.props.info.hashrate, 3);
     let unconfirmed = this.props.info.unconfirmed;
     let memSize = Util.formatLargeNumber(this.props.info.unconfirmedSize, 2);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import * as Cards from '../../components/Cards/Cards';
 import * as Util from '../../util/util';
 import Arrow from '../../components/Logos/rightArrow';
@@ -20,7 +21,7 @@ export default class Transaction extends Component {
               <Cards.ItemLogo>
                 <Arrow />
               </Cards.ItemLogo>
-              TX #:&nbsp;<a className="hnscan-link" href={"/tx/" + txHash}>{Util.truncateHash(txHash)}</a>
+              TX #:&nbsp;<Link className="hnscan-link" to={"/tx/" + txHash}>{Util.truncateHash(txHash)}</Link>
             </Cards.LeftItemDetail>
             <Cards.LeftItemDetail>Amount: {Util.hnsValues(Util.sumTxOutputs(outputs))}</Cards.LeftItemDetail>
             <Cards.LeftItemDetail>Fee: {Util.hnsValues(fee)}</Cards.LeftItemDetail>

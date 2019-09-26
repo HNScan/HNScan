@@ -1,5 +1,6 @@
 // These are custom components for the home screen
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 // ----- REUSABLE GENERICS -----
 export const Card = styled.div`
@@ -38,7 +39,7 @@ export const HeaderTitle = styled.div`
 `;
 
 // View all links in the header
-export const HeaderLink = styled.a`
+export const HeaderLink = styled(Link)`
   align-items: center;
   cursor: pointer;
   display: flex;
