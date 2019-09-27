@@ -8,6 +8,7 @@ import BlockLogo from '../../components/Logos/block';
 
 export default class Block extends Component {
   render() {
+    console.log(this.props);
     return (
       // ----- Block Details -----
       <Cards.SummaryItemContainer>
@@ -24,13 +25,13 @@ export default class Block extends Component {
             </Cards.LeftItemDetail>
             <Cards.LeftItemDetail>
               <Home.Miner>
-                Mined By:&nbsp;<Link className="hnscan-link" to={"/address/" + this.props.block.tx[0].outputs[0].address}>
-                  {this.props.block.tx[0].outputs[0].address}
+                Mined By:&nbsp;<Link className="hnscan-link" to={"/address/" + this.props.block.miner}>
+                  {this.props.block.miner}
                 </Link>
               </Home.Miner>
               <Home.MobileMiner>
-                Mined By: <Link className="hnscan-link" to={"/address/" + this.props.block.tx[0].outputs[0].address}>
-                  {Util.truncateHash(this.props.block.tx[0].outputs[0].address)}
+                Mined By: <Link className="hnscan-link" to={"/address/" + this.props.block.miner}>
+                  {Util.truncateHash(this.props.block.miner)}
                 </Link>
               </Home.MobileMiner>
             </Cards.LeftItemDetail>
