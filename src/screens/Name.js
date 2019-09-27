@@ -27,7 +27,7 @@ function NameView({ name, page, changePage, url }) {
     <Home.ContentContainer>
       <NameSummary name={nameData} />
       <NameAdvanced name={nameData} />
-      <NameRecords />
+      {name.records && <NameRecords records={name.records} />}
       <NameHistory
         history={history}
         page={page}

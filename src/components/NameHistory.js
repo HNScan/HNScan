@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // Components
 import * as Cards from "./Cards/Cards";
@@ -16,7 +17,9 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
       <td>{name.action}</td>
       <td>{timeAgo(name.time)}</td>
       {/* @todo need to link this */}
-      <td>{name.height}</td>
+      <td>
+        <Link to={"/block/" + name.height}>{name.height}</Link>
+      </td>
       <td>{hnsValues(name.value)}</td>
     </tr>
   ));
