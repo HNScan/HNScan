@@ -30,32 +30,32 @@ class FooterComponent extends Component {
                 <Footer.Header>
                   Explore
                 </Footer.Header>
-                <Footer.Item href="/">
+                <Footer.InternalLink to="/">
                   Home
-                </Footer.Item>
-                <Footer.Item href="/blocks">
+                </Footer.InternalLink>
+                <Footer.InternalLink to="/blocks">
                   Blocks
-                </Footer.Item>
-                <Footer.Item href="/names">
+                </Footer.InternalLink>
+                <Footer.InternalLink to="/names">
                   Names
-                </Footer.Item>
-                <Footer.Item href="/about">
+                </Footer.InternalLink>
+                <Footer.InternalLink to="/about">
                   About
-                </Footer.Item>
+                </Footer.InternalLink>
               </Footer.LinksContainer>
               <Footer.LinksContainer>
                 <Footer.Header>
                   Tools
                 </Footer.Header>
-                <Footer.Item href="/peers">
+                <Footer.InternalLink to="/peers">
                   Peers
-                </Footer.Item>
-                <Footer.Item href="/status">
+                </Footer.InternalLink>
+                <Footer.InternalLink to="/status">
                   Node Status
-                </Footer.Item>
-                <Footer.Item href="/airdropclaim">
+                </Footer.InternalLink>
+                <Footer.InternalLink to="/airdropclaim">
                   Airdrop Claim
-                </Footer.Item>
+                </Footer.InternalLink>
               </Footer.LinksContainer>
             </Footer.LeftLinksContainer>
             <Footer.RightLinksContainer>
@@ -63,32 +63,32 @@ class FooterComponent extends Component {
                 <Footer.Header>
                   Related
                 </Footer.Header>
-                <Footer.Item href="https://handshakeacademy.org" target="_blank" rel="noopener noreferrer">
+                <Footer.ExternalLink href="https://handshakeacademy.org" target="_blank" rel="noopener noreferrer">
                   Academy
-                </Footer.Item>
-                <Footer.Item href="https://handshake.community" target="_blank" rel="noopener noreferrer">
+                </Footer.ExternalLink>
+                <Footer.ExternalLink href="https://handshake.community" target="_blank" rel="noopener noreferrer">
                   Community
-                </Footer.Item>
-                <Footer.Item href="https://urkel.io" target="_blank" rel="noopener noreferrer">
+                </Footer.ExternalLink>
+                <Footer.ExternalLink href="https://urkel.io" target="_blank" rel="noopener noreferrer">
                   Urkel
-                </Footer.Item>
-                <Footer.Item href="https://handshake.org/files/handshake.txt" target="_blank" rel="noopener noreferrer">
+                </Footer.ExternalLink>
+                <Footer.ExternalLink href="https://handshake.org/files/handshake.txt" target="_blank" rel="noopener noreferrer">
                   Paper
-                </Footer.Item>
+                </Footer.ExternalLink>
               </Footer.LinksContainer>
               <Footer.LinksContainer>
                 <Footer.Header>
                   Follow
                 </Footer.Header>
-                <Footer.Item href="https://github.com/handshakealliance" target="_blank" rel="noopener noreferrer">
+                <Footer.ExternalLink href="https://github.com/handshakealliance" target="_blank" rel="noopener noreferrer">
                   Github
-                </Footer.Item>
-                <Footer.Item href="https://medium.com/@handshakealliance" target="_blank" rel="noopener noreferrer">
+                </Footer.ExternalLink>
+                <Footer.ExternalLink href="https://medium.com/@handshakealliance" target="_blank" rel="noopener noreferrer">
                   Medium
-                </Footer.Item>
-                <Footer.Item href="https://twitter.com/hnsalliance" target="_blank" rel="noopener noreferrer">
+                </Footer.ExternalLink>
+                <Footer.ExternalLink href="https://twitter.com/hnsalliance" target="_blank" rel="noopener noreferrer">
                   Twitter
-                </Footer.Item>
+                </Footer.ExternalLink>
               </Footer.LinksContainer>
             </Footer.RightLinksContainer>
           </Footer.RightContent>

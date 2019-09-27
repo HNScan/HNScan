@@ -1,5 +1,6 @@
 // These are components for the footer
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 export const FooterContainer = styled.div`
   display: flex;
@@ -56,7 +57,22 @@ export const ContactItem = styled.div`
   margin: 5px 0;
 `;
 
-export const Item = styled.a`
+// External Links using <a>
+export const ExternalLink = styled.a`
+  font-size: 10pt;
+  margin: 8px 0;
+  width: 55%;
+  color: ${props => props.theme["--text-color-normal"]};
+
+  &:hover { color: ${props => props.theme["--text-color-link--hover"]}; }
+
+  @media (min-width: 445px) {
+    margin: 5px 0;
+  }
+`;
+
+// Internal Links using react router's <Link>
+export const InternalLink = styled(Link)`
   font-size: 10pt;
   margin: 8px 0;
   width: 55%;

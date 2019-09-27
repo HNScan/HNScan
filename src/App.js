@@ -51,8 +51,8 @@ function App() {
               <Route path="/tx/:hash" exact component={TxDetailScreen} />
               <Route path="*" component={NotFoundScreen} />
             </Switch>
+            <FooterComponent />
           </Router>
-          <FooterComponent />
         </div>
       </ThemeContext>
     </NetworkErrorBoundary>
