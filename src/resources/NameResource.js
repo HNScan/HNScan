@@ -2,11 +2,11 @@ import { Resource } from "rest-hooks";
 
 export default class NameResource extends Resource {
   name = "";
-  start = ""; //@todo not sure best type here.
+  release = null; //@todo not sure best type here.
   reserved = false;
   state = "";
   nextState = "";
-  blocksUntilNextState = "";
+  blocksUntil = null;
   nameHash = "";
   height = null;
   renewal = null;
@@ -16,11 +16,18 @@ export default class NameResource extends Resource {
   transfer = null;
   revoked = null;
   records = null; //@todo ideally vet this out further.
-  history = null; //@todo vet this out futher into types. This contains transactions, we can be cached.
+  owner = null; //@todo put this into Name Advanced.
 
   pk() {
     return this.name;
   }
 
-  static urlRoot = "http://localhost/names/";
+  static urlRoot = "http://localhost:8080/names/";
+
+  static listShape() {
+    return {
+      ...super.listShape(),
+      schema: { result: [this.getEntitySchema()] }
+    };
+  }
 }

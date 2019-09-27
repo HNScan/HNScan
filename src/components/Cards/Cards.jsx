@@ -1,5 +1,5 @@
 // These are custom components for the home screen
-import styled from 'styled-components';
+import styled from "styled-components";
 
 // ----- REUSABLE GENERICS -----
 export const Card = styled.div`
@@ -9,13 +9,13 @@ export const Card = styled.div`
   height: 100%;
   background-color: ${props => props.theme["--card-background"]};
   color: ${props => props.theme["--text-color-normal"]};
-  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
 
   & a:hover {
     color: ${props => props.theme["--text-color-normal"]};
   }
 
-  &:not(:first-child){
+  &:not(:first-child) {
     margin-top: 20px;
   }
 `;
@@ -23,7 +23,7 @@ export const Card = styled.div`
 // The header of every card
 export const Header = styled.div`
   align-items: stretch;
-  box-shadow: 0 1px 2px rgba(10,10,10,.1);
+  box-shadow: 0 1px 2px rgba(10, 10, 10, 0.1);
   display: flex;
 `;
 
@@ -34,7 +34,7 @@ export const HeaderTitle = styled.div`
   display: flex;
   flex-grow: 1;
   font-weight: 700;
-  padding: .75rem;
+  padding: 0.75rem;
 `;
 
 // View all links in the header
@@ -43,7 +43,7 @@ export const HeaderLink = styled.a`
   cursor: pointer;
   display: flex;
   justify-content: center;
-  padding: .75rem;
+  padding: 0.75rem;
 `;
 
 // Content container for all cards
@@ -51,6 +51,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   height: auto;
+  padding: 1.5rem;
 `;
 
 export const SummaryContainer = styled.div`
@@ -75,8 +76,12 @@ export const HorizontalContainer = styled.div`
   height: 100%;
   margin: 12px;
 
-  &:first-child { margin-bottom: 0; }
-  &:last-child { margin-top: 0; }
+  &:first-child {
+    margin-bottom: 0;
+  }
+  &:last-child {
+    margin-top: 0;
+  }
 
   @media (min-width: 769px) {
     flex-direction: row;
@@ -92,14 +97,13 @@ export const Column = styled.div`
   }
 `;
 
-export const ItemLabel= styled.div`
+export const ItemLabel = styled.div`
   font-weight: 800;
 `;
 
 export const ItemDetail = styled.div`
   font-size: 24px;
 `;
-
 
 // ----- TX'S AND BLOCKS SPECIFIC -----
 // Used on the home screen for recent TX's and Blocks

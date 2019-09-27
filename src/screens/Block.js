@@ -7,8 +7,18 @@ import StackedData from "../components/Stacked/StackedComponent";
 import { useResource } from "rest-hooks";
 import BlockResource from "../resources/BlockResource";
 import TransactionList from "../components/TransactionList";
+import BlockSummary from "../components/BlockSummary";
 
 import { timeAgo, sciNotation, hnsValues, checkPool } from "../util/util";
+
+function BlockSkeleton() {
+  return (
+    // @todo should not come from home here
+    <Home.ContentContainer>
+      <BlockSummary skeleton />
+    </Home.ContentContainer>
+  );
+}
 
 //@todo move most of this into a component, not in here.
 function Block({ height }) {
@@ -21,59 +31,7 @@ function Block({ height }) {
   return (
     // @todo should not come from home here
     <Home.ContentContainer>
-      {/* ------- Top Card ------ */}
-      <Cards.Card>
-        <Cards.Header>
-          <Cards.HeaderTitle>Block {block.height} Summary</Cards.HeaderTitle>
-        </Cards.Header>
-        <Cards.Content>
-          <Cards.HorizontalContainer>
-            <Cards.Column>
-              <Cards.ItemContainer>
-                <Cards.ItemLabel>Received</Cards.ItemLabel>
-                <Cards.ItemDetail>{timeAgo(block.time)}</Cards.ItemDetail>
-              </Cards.ItemContainer>
-            </Cards.Column>
-            <Cards.Column>
-              <Cards.ItemContainer>
-                <Cards.ItemLabel>Total Transactions</Cards.ItemLabel>
-                <Cards.ItemDetail>{block.txs}</Cards.ItemDetail>
-              </Cards.ItemContainer>
-            </Cards.Column>
-            <Cards.Column>
-              <Cards.ItemContainer>
-                <Cards.ItemLabel>Total Fees</Cards.ItemLabel>
-                <Cards.ItemDetail>{hnsValues(block.fees)}</Cards.ItemDetail>
-              </Cards.ItemContainer>
-            </Cards.Column>
-          </Cards.HorizontalContainer>
-          <Cards.HorizontalContainer>
-            <Cards.Column>
-              <Cards.ItemContainer>
-                <Cards.ItemLabel>Mined By</Cards.ItemLabel>
-                {/* Check Pool */}
-                <Cards.ItemDetail>
-                  <Link to={"/address/" + block.miner}>
-                    {checkPool(block.miner)}
-                  </Link>
-                </Cards.ItemDetail>
-              </Cards.ItemContainer>
-            </Cards.Column>
-            <Cards.Column>
-              <Cards.ItemContainer>
-                <Cards.ItemLabel>Weight</Cards.ItemLabel>
-                <Cards.ItemDetail>{block.weight} wu</Cards.ItemDetail>
-              </Cards.ItemContainer>
-            </Cards.Column>
-            <Cards.Column>
-              <Cards.ItemContainer>
-                <Cards.ItemLabel>Confirmations</Cards.ItemLabel>
-                <Cards.ItemDetail>{block.confirmations}</Cards.ItemDetail>
-              </Cards.ItemContainer>
-            </Cards.Column>
-          </Cards.HorizontalContainer>
-        </Cards.Content>
-      </Cards.Card>
+      <BlockSummary block={block} />
 
       {/* ------- Bottom Card ------ */}
       <Cards.Card>
@@ -122,6 +80,9 @@ function Block({ height }) {
                       value={hnsValues(block.averageFee)}
                     />
                   </tr>
+                  <tr>
+                    <StackedData label="Nonce" value={block.nonce} />
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -145,6 +106,9 @@ function Block({ height }) {
                   </tr>
                   <tr>
                     <StackedData label="Tree Root" value={block.treeRoot} />
+                  </tr>
+                  <tr>
+                    <StackedData label="Filter Root" value={block.filterRoot} />
                   </tr>
                   <tr>
                     <StackedData
@@ -171,13 +135,7 @@ function Block({ height }) {
 export default function BlockContainer({ match }) {
   return (
     <>
-      <Suspense
-        fallback={
-          <div>
-            <p>Hi</p>
-          </div>
-        }
-      >
+      <Suspense fallback={<BlockSkeleton />}>
         <Block height={match.params.height} />
       </Suspense>
     </>
