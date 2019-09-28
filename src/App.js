@@ -4,6 +4,7 @@ import { NetworkErrorBoundary } from "rest-hooks";
 //@todo consider moving this to index, but also we can just use the theme hooks (context hooks).
 import ThemeContext from "./contexts/ThemeContext";
 
+//Screens
 import HomeScreen from "./screens/Home/HomeScreen";
 import AddressDetailScreen from "./screens/AddressDetail/AddressDetailScreen";
 import AirdropClaimScreen from "./screens/AirdropClaim/AirdropClaimScreen";
@@ -16,6 +17,7 @@ import NotFoundScreen from "./screens/Errors/NotFoundScreen";
 import PeersScreen from "./screens/Peers/PeersScreen";
 import SearchResultsScreen from "./screens/SearchResults/SearchResultsScreen";
 import TxDetailScreen from "./screens/TxDetail/TxDetailScreen";
+import Changelog from "./screens/Changelog";
 
 import NavbarComponent from "./components/Navbar/NavbarComponent";
 import FooterComponent from "./components/Footer/FooterComponent";
@@ -49,6 +51,7 @@ function App() {
               <Route path="/search" exact component={SearchResultsScreen} />
               <Route path="/status" exact component={NodeStatusScreen} />
               <Route path="/tx/:hash" exact component={TxDetailScreen} />
+              <Route path="/changelog" exact component={Changelog} />
               <Route path="*" component={NotFoundScreen} />
             </Switch>
             <FooterComponent />

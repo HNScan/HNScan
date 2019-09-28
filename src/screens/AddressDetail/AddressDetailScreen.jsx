@@ -16,6 +16,21 @@ const Wrapper = styled.div`
   margin: 50px 24px 60px;
 `;
 
+const AddressWrapper = styled.div`
+  width: 100%;
+  word-wrap: break-word;
+  margin-bottom: 20px;
+  padding: 10px;
+`;
+
+const AddressHash = styled.div`
+  font-size: 16px;
+`;
+
+const AddressTitle = styled(AddressHash)`
+  font-weight: 700;
+`;
+
 //Need some memorization here... Balance for some of these guys takes awhile.
 function AddressView({ hash, page, changePage, url }) {
   const address = useResource(AddressResource.detailShape(), {
@@ -68,6 +83,10 @@ function AddressView({ hash, page, changePage, url }) {
 
   return (
     <Wrapper>
+      <AddressWrapper>
+        <AddressTitle>Address</AddressTitle>
+        <AddressHash>{address.hash}</AddressHash>
+      </AddressWrapper>
       {/* ------- Top Card ------ */}
       <Cards.Card>
         <Cards.Header>
