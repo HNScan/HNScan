@@ -6,7 +6,7 @@ import Arrow from '../../components/Logos/rightArrow';
 
 export default class Transaction extends Component {
   render() {
-    const txHash = this.props.tx.hash;
+    const txHash = this.props.tx.txid;
     const outputs = this.props.tx.outputs;
     const fee = this.props.tx.fee;
     const time = this.props.tx.time;
@@ -24,7 +24,7 @@ export default class Transaction extends Component {
               TX #:&nbsp;<Link className="hnscan-link" to={"/tx/" + txHash}>{Util.truncateHash(txHash)}</Link>
             </Cards.LeftItemDetail>
             <Cards.LeftItemDetail>Amount: {Util.hnsValues(Util.sumTxOutputs(outputs))}</Cards.LeftItemDetail>
-            <Cards.LeftItemDetail>Fee: {Util.hnsValues(fee)}</Cards.LeftItemDetail>
+            <Cards.LeftItemDetail>Fee: {Util.hnsValues(fee) || "0 HNS"}</Cards.LeftItemDetail>
           </Cards.SummaryItemContent>
           {/* ----- Right Side / Bottom Side ----- */}
           <Cards.SummaryItemContent>

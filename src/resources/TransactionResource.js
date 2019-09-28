@@ -13,6 +13,7 @@ export default class TransactionResource extends Resource {
   confirmations = null;
   time = null;
   blocktime = null;
+  fee = null;
 
   pk() {
     return this.txid;
