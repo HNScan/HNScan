@@ -1,4 +1,4 @@
-import HumanizeDuration from "humanize-duration";
+import humanizeDuration from "humanize-duration";
 import Decimal from "decimal.js";
 
 const exponentScales = [
@@ -100,7 +100,7 @@ export function sumTxOutputs(outputs) {
 export function timeAgo(timestamp) {
   if (timestamp <= 0) return;
   return (
-    HumanizeDuration(Date.now() - timestamp * 1000, {
+    humanizeDuration(Date.now() - timestamp * 1000, {
       largest: 1,
       round: true
     }) + " ago"
