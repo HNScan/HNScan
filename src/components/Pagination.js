@@ -133,14 +133,14 @@ const NextEllipse = ({ page, lastPage }) => {
 // }
 
 // export default class PaginationComponent extends Component {
-export default function Pagination({ totalPages, page, url, changePage }) {
+export default function Pagination({ totalPages, page, url }) {
   return (
     <Wrapper
       className="pagination is-centered"
       role="navigation"
       aria-label="pagination"
     >
-      <Previous page={page - 1} url={url} onClick={changePage} />
+      <Previous page={page - 1} url={url} />
       <Next page={page + 1} lastPage={totalPages} url={url} />
       <List className="pagination-list">
         <FirstPage page={page} url={url} />
