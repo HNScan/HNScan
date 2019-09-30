@@ -3,14 +3,13 @@ import styled from "styled-components";
 import { useParams, useLocation, useHistory } from "react-router-dom";
 import queryString from "query-string";
 import { useResource, useResultCache } from "rest-hooks";
-import AddressResource from "../../resources/AddressResource";
-import TransactionResource from "../../resources/TransactionResource";
-import TransactionList from "../../components/TransactionList";
-import Pagination from "../../components/Pagination";
-import * as Cards from "../../components/Cards/Cards";
-import * as Detail from "./styled-components";
+import AddressResource from "../resources/AddressResource";
+import TransactionResource from "../resources/TransactionResource";
+import TransactionList from "../components/TransactionList";
+import Pagination from "../components/Pagination";
+import * as Cards from "../components/Cards/Cards";
 
-import { hnsValues } from "../../util/util";
+import { hnsValues } from "../util/util";
 
 const Wrapper = styled.div`
   margin: 50px 24px 60px;
@@ -33,6 +32,7 @@ const AddressTitle = styled(AddressHash)`
 
 //Need some memorization here... Balance for some of these guys takes awhile.
 function AddressView({ hash, page, changePage, url }) {
+  //@todo have this return the number of ALL transactions. Then put that into the transactionList component.
   const address = useResource(AddressResource.detailShape(), {
     hash
   });
@@ -51,35 +51,6 @@ function AddressView({ hash, page, changePage, url }) {
     offset
   });
   const pages = Math.ceil(total / limit);
-
-  // renderTransactions() {
-  //   return (
-  //     <>
-  //       <Detail.Header>
-  //         TX XXX:{" "}
-  //         <a className="hnscan-link" href="www.google.com">
-  //           very343434longhashkjfd34
-  //         </a>
-  //       </Detail.Header>
-  //       <Detail.BorderedContainer>
-  //         <Detail.FullColumn>
-  //           <Detail.ColumnHeader>XXX Inputs</Detail.ColumnHeader>
-  //           <div>Something blah</div>
-  //           <a className="hnscan-link" href="www.google.com">
-  //             tslksjfkjlkjdsj234jlkdjfjifgheh
-  //           </a>
-  //         </Detail.FullColumn>
-  //         <Detail.FullColumn>
-  //           <Detail.ColumnHeader>XXX Outputs</Detail.ColumnHeader>
-  //           <div>Something blah</div>
-  //           <a className="hnscan-link" href="www.google.com">
-  //             tslksjfkjlkjdsj234jlkdjfjifgheh
-  //           </a>
-  //         </Detail.FullColumn>
-  //       </Detail.BorderedContainer>
-  //     </>
-  //   );
-  // }
 
   return (
     <Wrapper>

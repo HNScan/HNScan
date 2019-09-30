@@ -5,13 +5,13 @@ import { NetworkErrorBoundary } from "rest-hooks";
 import ThemeContext from "./contexts/ThemeContext";
 
 // Main Pages
-import HomeScreen from "./screens/Home/HomeScreen";
-import AddressDetailScreen from "./screens/AddressDetail/AddressDetailScreen";
-import AirdropClaimScreen from "./screens/AirdropClaim/AirdropClaimScreen";
+import Address from "./screens/Address";
 import Block from "./screens/Block";
 import Blocks from "./screens/Blocks";
 import Name from "./screens/Name";
 import Names from "./screens/Names";
+import HomeScreen from "./screens/Home/HomeScreen";
+import AirdropClaimScreen from "./screens/AirdropClaim/AirdropClaimScreen";
 
 // Tool Pages
 import NodeStatus from "./screens/tools/NodeStatus";
@@ -36,11 +36,7 @@ function App() {
             <NavbarComponent />
             <Switch>
               <Route path="/" exact component={HomeScreen} />
-              <Route
-                path="/address/:hash"
-                exact
-                component={AddressDetailScreen}
-              />
+              <Route path="/address/:hash" exact component={Address} />
               <Route
                 path="/airdropclaim"
                 exact
