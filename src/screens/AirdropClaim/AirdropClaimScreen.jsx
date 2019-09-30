@@ -28,9 +28,9 @@ export default class AirdropClaimScreen extends Component {
       } else if (xhr.readyState === 4 && xhr.status >= 400) {
         // error.innerHTML = xhr.responseText;
       }
-    };
+    }
 
-    xhr.open("POST", "/submitclaim?confirm=true");
+      xhr.open("POST", "/submitclaim?confirm=true");
     xhr.send(data);
   }
 

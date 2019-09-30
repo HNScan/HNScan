@@ -3,6 +3,7 @@ import "./Navbar.scss";
 import Logo from "../Logos/hnscan";
 import * as Navbar from "./styled-components";
 import { Redirect, Link } from "react-router-dom";
+import SearchBar from "../SearchBar";
 
 export default class NavbarComponent extends Component {
   constructor(props) {
@@ -166,27 +167,7 @@ export default class NavbarComponent extends Component {
             <div className="navbar-end">
               <div className="navbar-item">
                 <div className="field">
-                  {/* TODO submit */}
-                  <form
-                    className="control has-icons-left"
-                    onSubmit={this.search}
-                  >
-                    <button
-                      className="hiddenSearchSubmit"
-                      type="submit"
-                    ></button>
-                    <input
-                      type="search"
-                      className="input is-rounded searchbar"
-                      placeholder="Search the HNS Blockchain"
-                      maxLength="64"
-                      value={this.state.query}
-                      onChange={this.handleChange}
-                    />
-                    <span className="icon is-small is-left">
-                      <i className="fas fa-search"></i>
-                    </span>
-                  </form>
+                  <SearchBar />
                 </div>
               </div>
             </div>
