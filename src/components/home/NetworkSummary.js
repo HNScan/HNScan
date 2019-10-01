@@ -30,63 +30,61 @@ export default function NetworkSummary({ info }) {
       <Cards.Header>
         <Cards.HeaderTitle>Network Summary</Cards.HeaderTitle>
       </Cards.Header>
-      <Cards.Content>
-        {/* ----- Network Summary - Top Row ----- */}
-        <Cards.HorizontalContainer>
-          <Cards.Column>
-            <Cards.ItemContainer>
-              <Cards.ItemLabel>Hashrate</Cards.ItemLabel>
-              <Cards.ItemDetail>
-                <span>{hashrate[0].toString()}</span>
-                <span> {hashrate[1].abbreviation}H/s</span>
-              </Cards.ItemDetail>
-            </Cards.ItemContainer>
-          </Cards.Column>
-          <Cards.Column>
-            <Cards.ItemContainer>
-              <Cards.ItemLabel>Unconfirmed</Cards.ItemLabel>
-              <Cards.ItemDetail>
-                <span>{handleUnconfirmed(unconfirmed, memSize)}</span>
-              </Cards.ItemDetail>
-            </Cards.ItemContainer>
-          </Cards.Column>
-          <Cards.Column>
-            <Cards.ItemContainer>
-              <Cards.ItemLabel>Network</Cards.ItemLabel>
-              <Cards.ItemDetail>
-                <span>{network}</span>
-              </Cards.ItemDetail>
-            </Cards.ItemContainer>
-          </Cards.Column>
-        </Cards.HorizontalContainer>
-        {/* ----- Network Summary - Bottom Row ----- */}
-        <Cards.HorizontalContainer>
-          <Cards.Column>
-            <Cards.ItemContainer>
-              <Cards.ItemLabel>Names Registered</Cards.ItemLabel>
-              <Cards.ItemDetail>
-                <span>{registeredNames}</span>
-              </Cards.ItemDetail>
-            </Cards.ItemContainer>
-          </Cards.Column>
-          <Cards.Column>
-            <Cards.ItemContainer>
-              <Cards.ItemLabel>Difficulty</Cards.ItemLabel>
-              <Cards.ItemDetail>
-                {difficulty[0]} x 10<sup>{difficulty[1]}</sup>
-              </Cards.ItemDetail>
-            </Cards.ItemContainer>
-          </Cards.Column>
-          <Cards.Column>
-            <Cards.ItemContainer>
-              <Cards.ItemLabel>Chainwork</Cards.ItemLabel>
-              <Cards.ItemDetail>
-                {chainwork[0]} x 10<sup>{chainwork[1]}</sup>
-              </Cards.ItemDetail>
-            </Cards.ItemContainer>
-          </Cards.Column>
-        </Cards.HorizontalContainer>
-      </Cards.Content>
+      {/* ----- Network Summary - Top Row ----- */}
+      <Cards.HorizontalContainer>
+        <Cards.Column>
+          <Cards.ItemContainer>
+            <Cards.ItemLabel>Hashrate</Cards.ItemLabel>
+            <Cards.ItemDetail>
+              <span>{hashrate[0].toString()}</span>
+              <span> {hashrate[1].abbreviation}H/s</span>
+            </Cards.ItemDetail>
+          </Cards.ItemContainer>
+        </Cards.Column>
+        <Cards.Column>
+          <Cards.ItemContainer>
+            <Cards.ItemLabel>Unconfirmed</Cards.ItemLabel>
+            <Cards.ItemDetail>
+              <span>{handleUnconfirmed(unconfirmed, memSize)}</span>
+            </Cards.ItemDetail>
+          </Cards.ItemContainer>
+        </Cards.Column>
+        <Cards.Column>
+          <Cards.ItemContainer>
+            <Cards.ItemLabel>Network</Cards.ItemLabel>
+            <Cards.ItemDetail>
+              <span>{network}</span>
+            </Cards.ItemDetail>
+          </Cards.ItemContainer>
+        </Cards.Column>
+      </Cards.HorizontalContainer>
+      {/* ----- Network Summary - Bottom Row ----- */}
+      <Cards.HorizontalContainer>
+        <Cards.Column>
+          <Cards.ItemContainer>
+            <Cards.ItemLabel>Names Registered</Cards.ItemLabel>
+            <Cards.ItemDetail>
+              <span>{registeredNames}</span>
+            </Cards.ItemDetail>
+          </Cards.ItemContainer>
+        </Cards.Column>
+        <Cards.Column>
+          <Cards.ItemContainer>
+            <Cards.ItemLabel>Difficulty</Cards.ItemLabel>
+            <Cards.ItemDetail>
+              {difficulty[0]} x 10<sup>{difficulty[1]}</sup>
+            </Cards.ItemDetail>
+          </Cards.ItemContainer>
+        </Cards.Column>
+        <Cards.Column>
+          <Cards.ItemContainer>
+            <Cards.ItemLabel>Chainwork</Cards.ItemLabel>
+            <Cards.ItemDetail>
+              {chainwork[0]} x 10<sup>{chainwork[1]}</sup>
+            </Cards.ItemDetail>
+          </Cards.ItemContainer>
+        </Cards.Column>
+      </Cards.HorizontalContainer>
     </Cards.Card>
   );
 }

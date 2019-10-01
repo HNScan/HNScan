@@ -18,6 +18,7 @@ import AirdropClaimScreen from "./screens/AirdropClaim/AirdropClaimScreen";
 // Tool Pages
 import NodeStatus from "./screens/tools/NodeStatus";
 import Peers from "./screens/tools/Peers";
+import Charts from "./screens/tools/Charts";
 
 import NotFoundScreen from "./screens/Errors/NotFoundScreen";
 import TxDetailScreen from "./screens/TxDetail/TxDetailScreen";
@@ -50,6 +51,7 @@ function App() {
                 {/* Tool Screens */}
                 <Route path="/peers" exact component={Peers} />
                 <Route path="/status" exact component={NodeStatus} />
+                <Route path="/charts" exact component={Charts} />
                 <Route path="/changelog" exact component={Changelog} />
                 <Route
                   path="/airdropclaim"
