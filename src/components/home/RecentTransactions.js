@@ -8,96 +8,54 @@ import { Link } from "react-router-dom";
 import * as Util from "../../util/util";
 import Arrow from "../../components/Logos/rightArrow";
 
-export const RecentTXSContainer = styled.div`
-  width: 100%;
-`;
+const Transaction = ({ tx }) => (
+  // ----- TX Details -----
+  <Cards.SummaryItemContainer>
+    <Cards.SummaryItem>
+      {/* ----- Left Side / Top Side ----- */}
+      <Cards.SummaryItemContent>
+        <Cards.LeftItemDetail>
+          <Cards.ItemLogo>
+            <Arrow />
+          </Cards.ItemLogo>
+          TX #:&nbsp;
+          <Link className="hnscan-link" to={"/tx/" + tx.hash}>
+            {Util.truncateHash(tx.hash)}
+          </Link>
+        </Cards.LeftItemDetail>
+        <Cards.LeftItemDetail>
+          Amount: {Util.hnsValues(Util.sumTxOutputs(tx.outputs))}
+        </Cards.LeftItemDetail>
+        <Cards.LeftItemDetail>
+          Fee: {Util.hnsValues(tx.fee)}
+        </Cards.LeftItemDetail>
+      </Cards.SummaryItemContent>
+      {/* ----- Right Side / Bottom Side ----- */}
+      <Cards.SummaryItemContent>
+        <Cards.RightItemDetail>
+          <i>{Util.timeAgo(tx.time)}</i>
+        </Cards.RightItemDetail>
+      </Cards.SummaryItemContent>
+    </Cards.SummaryItem>
+  </Cards.SummaryItemContainer>
+);
 
-const IndividualCardContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 12px;
-  @media (min-width: 1024px) {
-    padding: 24px 12px;
-  }
-`;
+export default function RecentTransactions({ txs }) {
+  const txRows = txs.map((tx, index) => <Transaction key={index} tx={tx} />);
 
-class Transaction extends Component {
-  render() {
-    const txHash = this.props.tx.txid;
-    const outputs = this.props.tx.outputs;
-    const fee = this.props.tx.fee;
-    const time = this.props.tx.time;
-
-    return (
-      // ----- TX Details -----
-      <Cards.SummaryItemContainer>
-        <Cards.SummaryItem>
-          {/* ----- Left Side / Top Side ----- */}
-          <Cards.SummaryItemContent>
-            <Cards.LeftItemDetail>
-              <Cards.ItemLogo>
-                <Arrow />
-              </Cards.ItemLogo>
-              TX #:&nbsp;
-              <Link className="hnscan-link" to={"/tx/" + txHash}>
-                {Util.truncateHash(txHash)}
-              </Link>
-            </Cards.LeftItemDetail>
-            <Cards.LeftItemDetail>
-              Amount: {Util.hnsValues(Util.sumTxOutputs(outputs))}
-            </Cards.LeftItemDetail>
-            <Cards.LeftItemDetail>
-              Fee: {Util.hnsValues(fee) || "0 HNS"}
-            </Cards.LeftItemDetail>
-          </Cards.SummaryItemContent>
-          {/* ----- Right Side / Bottom Side ----- */}
-          <Cards.SummaryItemContent>
-            <Cards.RightItemDetail>
-              <i>{Util.timeAgo(time)}</i>
-            </Cards.RightItemDetail>
-          </Cards.SummaryItemContent>
-        </Cards.SummaryItem>
-      </Cards.SummaryItemContainer>
-    );
-  }
-}
-
-export default class RecentTransactions extends Component {
-  insertTransactions = txData => {
-    let txs = [];
-    for (let i = 0; i < 5; i++) {
-      //This should be txData == null, but we are passing an empty array right now.
-      //@todo
-      if (this.props.loading || txData.length === 0) {
-        txs.push(<TxLoading key={i} />);
-      } else {
-        txs.push(<Transaction key={i} tx={txData[i]} />);
-      }
-    }
-    return txs;
-  };
-
-  render() {
-    return (
-      <RecentTXSContainer>
-        <IndividualCardContainer>
-          <Cards.Card>
-            {/* ------ TX Header ----- */}
-            <Cards.Header>
-              <Cards.HeaderTitle>Recent Transactions</Cards.HeaderTitle>
-            </Cards.Header>
-            {/* ----- TX Content ----- */}
-            <Cards.Content>
-              <Cards.SummaryContainer>
-                {/* This Fxn will return x number of transactions */}
-                {this.insertTransactions(this.props.txs)}
-              </Cards.SummaryContainer>
-            </Cards.Content>
-          </Cards.Card>
-        </IndividualCardContainer>
-      </RecentTXSContainer>
-    );
-  }
+  return (
+      <Cards.Card>
+        {/* ------ TX Header ----- */}
+        <Cards.Header>
+          <Cards.HeaderTitle>Recent Transactions</Cards.HeaderTitle>
+        </Cards.Header>
+        {/* ----- TX Content ----- */}
+        <Cards.SummaryContainer>
+          {/* This Fxn will return x number of transactions */}
+          {txRows}
+        </Cards.SummaryContainer>
+      </Cards.Card>
+  );
 }
 
 // Property Types

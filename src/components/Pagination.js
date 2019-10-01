@@ -35,7 +35,7 @@ const Next = ({ page, lastPage, url }) => (
   <Link
     to={location => {
       if (page < lastPage) {
-        return { pathname: url, search: "?p=" + page };
+        return { pathname: url, search: "?p=" + (page + 1) };
       } else {
         return location;
       }
@@ -141,7 +141,7 @@ export default function Pagination({ totalPages, page, url }) {
       aria-label="pagination"
     >
       <Previous page={page - 1} url={url} />
-      <Next page={page + 1} lastPage={totalPages} url={url} />
+      <Next page={page} lastPage={totalPages} url={url} />
       <List className="pagination-list">
         <FirstPage page={page} url={url} />
         <PreviousEllipse page={page} />

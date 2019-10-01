@@ -1,12 +1,13 @@
 import React from "react";
-// import * as Home from "./styled-components";
 import { Link } from "react-router-dom";
-// import * as Home from "./styled-components";
+import styled from "styled-components";
+
+// Components
 import * as Cards from "../Cards/Cards";
 import * as Util from "../../util/util";
-import BlockLogo from "../svg/Block";
 
-import styled from "styled-components";
+// Svgs
+import BlockLogo from "../svg/Block";
 
 //@todo put them here for now.
 export const Miner = styled.div`
@@ -21,20 +22,6 @@ export const MobileMiner = styled.div`
   @media (min-width: 425px) {
     display: none;
   }
-`;
-
-export const IndividualCardContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 12px;
-  @media (min-width: 1024px) {
-    padding: 24px 12px;
-  }
-`;
-
-//@todo remove most likely.
-export const RecentBlocksContainer = styled.div`
-  width: 100%;
 `;
 
 const BlockCardItem = ({ block }) => {
@@ -81,20 +68,14 @@ export default function RecentBlocks({ blocks }) {
     <BlockCardItem key={index} block={block} />
   ));
   return (
-    <RecentBlocksContainer>
-      <IndividualCardContainer>
-        <Cards.Card>
-          <Cards.Header>
-            <Cards.HeaderTitle>Blocks</Cards.HeaderTitle>
-            <Cards.HeaderLink className="hnscan-link" to="/blocks">
-              View All
-            </Cards.HeaderLink>
-          </Cards.Header>
-          <Cards.Content>
-            <Cards.SummaryContainer>{blockRows}</Cards.SummaryContainer>
-          </Cards.Content>
-        </Cards.Card>
-      </IndividualCardContainer>
-    </RecentBlocksContainer>
+    <Cards.Card>
+      <Cards.Header>
+        <Cards.HeaderTitle>Blocks</Cards.HeaderTitle>
+        <Cards.HeaderLink className="hnscan-link" to="/blocks">
+          View All
+        </Cards.HeaderLink>
+      </Cards.Header>
+      <Cards.SummaryContainer>{blockRows}</Cards.SummaryContainer>
+    </Cards.Card>
   );
 }

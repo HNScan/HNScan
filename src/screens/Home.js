@@ -28,6 +28,15 @@ export const VerticalContainer = styled.div`
   }
 `;
 
+const IndividualCardContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  @media (min-width: 1024px) {
+    padding: 24px 12px;
+  }
+`;
+
 //@todo skeleton.
 function HomeView() {
   //API Calls
@@ -43,8 +52,12 @@ function HomeView() {
         <NetworkSummary info={summary} />
       </HorizontalContainer>
       <VerticalContainer>
-        <RecentTransactions txs={txs} />
-        <RecentBlocks blocks={blocks} />
+        <IndividualCardContainer>
+          <RecentTransactions txs={txs} />
+        </IndividualCardContainer>
+        <IndividualCardContainer>
+          <RecentBlocks blocks={blocks} />
+        </IndividualCardContainer>
       </VerticalContainer>
     </>
   );

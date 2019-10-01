@@ -1,16 +1,15 @@
-import React, { Suspense } from 'react';
+import React, { Suspense } from "react";
 import { useResource } from "rest-hooks";
 import { useParams } from "react-router-dom";
 import { timeAgo, hnsValues, sumTxOutputs } from "../../util/util";
-import { InputList, OutputList } from "../../components/TransactionList/PutsList";
-import styled from 'styled-components';
-import * as Cards from '../../components/Cards/Cards';
-import StackedComponent from '../../components/Stacked/StackedComponent';
+import {
+  InputList,
+  OutputList
+} from "../../components/TransactionList/PutsList";
+import styled from "styled-components";
+import * as Cards from "../../components/Cards/Cards";
+import StackedComponent from "../../components/Stacked/StackedComponent";
 import TransactionResource from "../../resources/TransactionResource";
-
-const Wrapper = styled.div`
-  margin: 50px 24px 60px;
-`;
 
 const Container = styled.div`
   width: 100%;
@@ -29,17 +28,11 @@ const Container = styled.div`
   }
 `;
 
-const HashWrapper = styled.div`
-  border-bottom: 1px solid var(--border-color);
-  display: flex;
-  padding: 10px 0 10px 0;
-`;
-
-function TxDetailScreen({hash}) {
+function TxDetailScreen({ hash }) {
   const tx = useResource(TransactionResource.detailShape(), { hash });
 
   return (
-    <Wrapper>
+    <>
       {/* ------- Top Card ------ */}
       <Cards.Card>
         <Cards.Header>
@@ -50,9 +43,7 @@ function TxDetailScreen({hash}) {
             <Cards.Column>
               <Cards.ItemContainer>
                 <Cards.ItemLabel>Received</Cards.ItemLabel>
-                <Cards.ItemDetail>
-                  {timeAgo(tx.time)}
-                </Cards.ItemDetail>
+                <Cards.ItemDetail>{timeAgo(tx.time)}</Cards.ItemDetail>
               </Cards.ItemContainer>
             </Cards.Column>
             <Cards.Column>
@@ -66,17 +57,13 @@ function TxDetailScreen({hash}) {
             <Cards.Column>
               <Cards.ItemContainer>
                 <Cards.ItemLabel>Fee</Cards.ItemLabel>
-                <Cards.ItemDetail>
-                  {hnsValues(tx.fee)}
-                </Cards.ItemDetail>
+                <Cards.ItemDetail>{hnsValues(tx.fee)}</Cards.ItemDetail>
               </Cards.ItemContainer>
             </Cards.Column>
             <Cards.Column>
               <Cards.ItemContainer>
                 <Cards.ItemLabel>Confirmations</Cards.ItemLabel>
-                <Cards.ItemDetail>
-                  {tx.confirmations}
-                </Cards.ItemDetail>
+                <Cards.ItemDetail>{tx.confirmations}</Cards.ItemDetail>
               </Cards.ItemContainer>
             </Cards.Column>
           </Cards.HorizontalContainer>
@@ -94,9 +81,19 @@ function TxDetailScreen({hash}) {
               <table className="table is-fullwidth">
                 <tbody>
                   {/* TODO: Get Node Status */}
-                  <tr><StackedComponent label="Hash" value={tx.hash} /></tr>
-                  <tr><StackedComponent label="Block Height" value={tx.height} link={"/block/" + tx.height}/></tr>
-                  <tr><StackedComponent label="Locktime" value={tx.locktime} /></tr>
+                  <tr>
+                    <StackedComponent label="Hash" value={tx.hash} />
+                  </tr>
+                  <tr>
+                    <StackedComponent
+                      label="Block Height"
+                      value={tx.height}
+                      link={"/block/" + tx.height}
+                    />
+                  </tr>
+                  <tr>
+                    <StackedComponent label="Locktime" value={tx.locktime} />
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -104,9 +101,18 @@ function TxDetailScreen({hash}) {
               <table className="table is-fullwidth">
                 <tbody>
                   {/* TODO: Get Node Status */}
-                  <tr><StackedComponent label="Witness Hash" value={tx.witnessHash} /></tr>
-                  <tr><StackedComponent label="Version" value={tx.version} /></tr>
-                  <tr><StackedComponent label="Index" value={tx.index} /></tr>
+                  <tr>
+                    <StackedComponent
+                      label="Witness Hash"
+                      value={tx.witnessHash}
+                    />
+                  </tr>
+                  <tr>
+                    <StackedComponent label="Version" value={tx.version} />
+                  </tr>
+                  <tr>
+                    <StackedComponent label="Index" value={tx.index} />
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -116,9 +122,7 @@ function TxDetailScreen({hash}) {
 
       <Cards.Card>
         <Cards.Header>
-          <Cards.HeaderTitle>
-            TX Activity
-          </Cards.HeaderTitle>
+          <Cards.HeaderTitle>TX Activity</Cards.HeaderTitle>
         </Cards.Header>
         <Cards.Content>
           <Container>
@@ -133,7 +137,7 @@ function TxDetailScreen({hash}) {
           </Container>
         </Cards.Content>
       </Cards.Card>
-    </Wrapper>
+    </>
   );
 }
 
