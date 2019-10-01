@@ -16,7 +16,7 @@ export default class TransactionResource extends Resource {
   fee = null;
 
   pk() {
-    return this.txid;
+    return this.hash;
   }
 
   static urlRoot = "http://localhost:8080/txs/";

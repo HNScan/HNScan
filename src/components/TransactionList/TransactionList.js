@@ -30,6 +30,7 @@ const HashWrapper = styled.div`
 `;
 
 const TransactionList = props => {
+  console.log(props.txs);
   const txs = props.txs;
   const renderTransactions = txs.map((tx, index) => (
     <Container key={index}>
