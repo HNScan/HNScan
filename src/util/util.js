@@ -59,7 +59,8 @@ export function formatLargeNumber(n, decimalPlaces) {
 
 //We need to use Bignum across the board in this app. Make that a v2 task XXX
 export function hnsValues(amount) {
-  if (!amount) return null;
+  if (amount == null) return null;
+
   let realAmount = amount / 1000000;
   let stringAmount = numberWithCommas(realAmount).toString();
   stringAmount += " HNS";

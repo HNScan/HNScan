@@ -32,6 +32,12 @@ table td, table th {
   border-bottom: 1px solid var(--border-color) !important;
 }
 
+// No border on bottom rows
+.table tbody tr:last-child td,
+.table tbody tr:last-child th {
+  border-bottom: none !important;
+}
+
 // Bulma override
 .hnscan-link {
   color: var(--text-color-link) !important;

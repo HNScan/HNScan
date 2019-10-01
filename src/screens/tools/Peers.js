@@ -1,5 +1,5 @@
 import React, { Suspense, useState, useEffect } from "react";
-import { Link, useParams, useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import queryString from "query-string";
 // import PeersMapComponent from "./PeersMapComponent";
 // import PeersInfoComponent from "./PeersInfoComponent";
