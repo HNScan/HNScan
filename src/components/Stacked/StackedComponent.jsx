@@ -21,7 +21,7 @@ const Label = styled.span`
 
 const StackedData = props => {
   return (
-    <Wrapper>
+    <Wrapper className="stacked">
       <Label>{props.label}</Label>
       <Value>
         {props.link ? <Link to={props.link}>{props.value}</Link> : props.value}
