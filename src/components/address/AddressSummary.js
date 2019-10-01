@@ -3,10 +3,10 @@ import styled from "styled-components";
 import Skeleton from "react-loading-skeleton";
 
 // Components
-import * as Cards from "./Cards/Cards";
+import * as Cards from "../Cards/Cards";
 
 // Util
-import { hnsValues } from "../util/util";
+import { hnsValues } from "../../util/util";
 
 const AddressWrapper = styled.div`
   width: 100%;
