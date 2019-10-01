@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // import * as Home from "./styled-components";
 import * as Cards from "../Cards/Cards";
 import * as Util from "../../util/util";
-import BlockLogo from "../../components/Logos/block";
+import BlockLogo from "../svg/Block";
 
 import styled from "styled-components";
 

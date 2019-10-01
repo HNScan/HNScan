@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import Logo from '../../components/Logos/block';
+import React, { Component } from "react";
+import styled from "styled-components";
+import Logo from "../../components/svg/Block";
 
 const Wrapper = styled.div`
   width: 80%;
@@ -18,8 +18,8 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.h1`
-   font-size: 64px;
-   font-weight: 700;
+  font-size: 64px;
+  font-weight: 700;
 `;
 
 const Subtext = styled.div`
@@ -48,14 +48,18 @@ export default class NotFoundScreen extends Component {
         </Header>
         <Subtext>
           It's cold out here in the void...let's bring you back to
-          <a className="hnscan-link" href="/" rel="noopener noreferrer"> safety</a>
+          <a className="hnscan-link" href="/" rel="noopener noreferrer">
+            {" "}
+            safety
+          </a>
         </Subtext>
         <Container404>
           <span>4</span>
-          <HugeBlock><Logo /></HugeBlock>
+          <HugeBlock>
+            <Logo />
+          </HugeBlock>
           <span>4</span>
         </Container404>
-
       </Wrapper>
     );
   }
