@@ -2,14 +2,37 @@ import React, { Suspense } from 'react';
 import { useResource } from "rest-hooks";
 import { useParams } from "react-router-dom";
 import { timeAgo, hnsValues, sumTxOutputs } from "../../util/util";
+import { InputList, OutputList } from "../../components/TransactionList/PutsList";
 import styled from 'styled-components';
 import * as Cards from '../../components/Cards/Cards';
 import StackedComponent from '../../components/Stacked/StackedComponent';
 import TransactionResource from "../../resources/TransactionResource";
-import TransactionList from "../../components/TransactionList";
 
 const Wrapper = styled.div`
   margin: 50px 24px 60px;
+`;
+
+const Container = styled.div`
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid var(--border-color);
+
+  &:first-child {
+    padding: 0;
+  }
+
+  &:last-child {
+    padding: 0;
+    border-bottom: 0;
+  }
+`;
+
+const HashWrapper = styled.div`
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  padding: 10px 0 10px 0;
 `;
 
 function TxDetailScreen({hash}) {
@@ -65,7 +88,7 @@ function TxDetailScreen({hash}) {
         <Cards.Header>
           <Cards.HeaderTitle>Advanced</Cards.HeaderTitle>
         </Cards.Header>
-        <div className="card-content">
+        <Cards.Content>
           <div className="columns">
             <div className="column is-half">
               <table className="table is-fullwidth">
@@ -88,9 +111,28 @@ function TxDetailScreen({hash}) {
               </table>
             </div>
           </div>
-        </div>
+        </Cards.Content>
       </Cards.Card>
-      <TransactionList txs={new Array(tx)} />
+
+      <Cards.Card>
+        <Cards.Header>
+          <Cards.HeaderTitle>
+            TX Activity
+          </Cards.HeaderTitle>
+        </Cards.Header>
+        <Cards.Content>
+          <Container>
+            <div className="columns">
+              <div className="column is-half">
+                <InputList inputs={tx.inputs} />
+              </div>
+              <div className="column is-half">
+                <OutputList outputs={tx.outputs} />
+              </div>
+            </div>
+          </Container>
+        </Cards.Content>
+      </Cards.Card>
     </Wrapper>
   );
 }
