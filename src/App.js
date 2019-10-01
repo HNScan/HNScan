@@ -25,6 +25,7 @@ import Changelog from "./screens/Changelog";
 
 import NavbarComponent from "./components/Navbar/NavbarComponent";
 import FooterComponent from "./components/Footer/FooterComponent";
+import ContentContainer from "./components/ContentContainer";
 
 import "./App.scss";
 
@@ -35,27 +36,29 @@ function App() {
         <div>
           <Router>
             <NavbarComponent />
-            <Switch>
-              <Route path="/" exact component={HomeScreen} />
-              <Route path="/address/:hash" exact component={Address} />
-              <Route path="/blocks" exact component={Blocks} />
-              <Route path="/block/:height" exact component={Block} />
-              <Route path="/names" exact component={Names} />
-              <Route path="/name/:name" exact component={Name} />
-              {/* Ideally let's get a recent transactions page going */}
-              <Route path="/tx/:hash" exact component={TxDetailScreen} />
-              <Route path="/search" exact component={Search} />
-              {/* Tool Screens */}
-              <Route path="/peers" exact component={Peers} />
-              <Route path="/status" exact component={NodeStatus} />
-              <Route path="/changelog" exact component={Changelog} />
-              <Route
-                path="/airdropclaim"
-                exact
-                component={AirdropClaimScreen}
-              />
-              <Route path="*" component={NotFoundScreen} />
-            </Switch>
+            <ContentContainer>
+              <Switch>
+                <Route path="/" exact component={HomeScreen} />
+                <Route path="/address/:hash" exact component={Address} />
+                <Route path="/blocks" exact component={Blocks} />
+                <Route path="/block/:height" exact component={Block} />
+                <Route path="/names" exact component={Names} />
+                <Route path="/name/:name" exact component={Name} />
+                {/* Ideally let's get a recent transactions page going */}
+                <Route path="/tx/:hash" exact component={TxDetailScreen} />
+                <Route path="/search" exact component={Search} />
+                {/* Tool Screens */}
+                <Route path="/peers" exact component={Peers} />
+                <Route path="/status" exact component={NodeStatus} />
+                <Route path="/changelog" exact component={Changelog} />
+                <Route
+                  path="/airdropclaim"
+                  exact
+                  component={AirdropClaimScreen}
+                />
+                <Route path="*" component={NotFoundScreen} />
+              </Switch>
+            </ContentContainer>
             <FooterComponent />
           </Router>
         </div>
