@@ -1,7 +1,6 @@
 import React, { Suspense, useState, useEffect } from "react";
 import { Link, useParams, useLocation, useHistory } from "react-router-dom";
 import queryString from "query-string";
-import * as Home from "../Home/styled-components";
 // import PeersMapComponent from "./PeersMapComponent";
 // import PeersInfoComponent from "./PeersInfoComponent";
 import { useResource, useResultCache } from "rest-hooks";
@@ -19,7 +18,7 @@ const PeersContainer = ({ pages, page, url, changePage }) => {
   });
 
   return (
-    <Home.ContentContainer>
+    <>
       {/* <PeersMapComponent /> */}
       <PeerInfo peers={peers} />
       <Pagination
@@ -28,7 +27,7 @@ const PeersContainer = ({ pages, page, url, changePage }) => {
         url={url}
         changePage={changePage}
       />
-    </Home.ContentContainer>
+    </>
   );
 };
 

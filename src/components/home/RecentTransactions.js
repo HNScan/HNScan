@@ -1,14 +1,66 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import * as Home from "./styled-components";
 import * as Cards from "../../components/Cards/Cards";
-import Transaction from "./Transaction";
 import styled from "styled-components";
 import ContentLoader from "react-content-loader";
+
+import { Link } from "react-router-dom";
+import * as Util from "../../util/util";
+import Arrow from "../../components/Logos/rightArrow";
 
 export const RecentTXSContainer = styled.div`
   width: 100%;
 `;
+
+const IndividualCardContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  @media (min-width: 1024px) {
+    padding: 24px 12px;
+  }
+`;
+
+class Transaction extends Component {
+  render() {
+    const txHash = this.props.tx.txid;
+    const outputs = this.props.tx.outputs;
+    const fee = this.props.tx.fee;
+    const time = this.props.tx.time;
+
+    return (
+      // ----- TX Details -----
+      <Cards.SummaryItemContainer>
+        <Cards.SummaryItem>
+          {/* ----- Left Side / Top Side ----- */}
+          <Cards.SummaryItemContent>
+            <Cards.LeftItemDetail>
+              <Cards.ItemLogo>
+                <Arrow />
+              </Cards.ItemLogo>
+              TX #:&nbsp;
+              <Link className="hnscan-link" to={"/tx/" + txHash}>
+                {Util.truncateHash(txHash)}
+              </Link>
+            </Cards.LeftItemDetail>
+            <Cards.LeftItemDetail>
+              Amount: {Util.hnsValues(Util.sumTxOutputs(outputs))}
+            </Cards.LeftItemDetail>
+            <Cards.LeftItemDetail>
+              Fee: {Util.hnsValues(fee) || "0 HNS"}
+            </Cards.LeftItemDetail>
+          </Cards.SummaryItemContent>
+          {/* ----- Right Side / Bottom Side ----- */}
+          <Cards.SummaryItemContent>
+            <Cards.RightItemDetail>
+              <i>{Util.timeAgo(time)}</i>
+            </Cards.RightItemDetail>
+          </Cards.SummaryItemContent>
+        </Cards.SummaryItem>
+      </Cards.SummaryItemContainer>
+    );
+  }
+}
 
 export default class RecentTransactions extends Component {
   insertTransactions = txData => {
@@ -28,7 +80,7 @@ export default class RecentTransactions extends Component {
   render() {
     return (
       <RecentTXSContainer>
-        <Home.IndividualCardContainer>
+        <IndividualCardContainer>
           <Cards.Card>
             {/* ------ TX Header ----- */}
             <Cards.Header>
@@ -42,7 +94,7 @@ export default class RecentTransactions extends Component {
               </Cards.SummaryContainer>
             </Cards.Content>
           </Cards.Card>
-        </Home.IndividualCardContainer>
+        </IndividualCardContainer>
       </RecentTXSContainer>
     );
   }

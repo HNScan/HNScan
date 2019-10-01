@@ -2,7 +2,6 @@ import React, { Suspense, useState, useEffect } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import Table from "reactbulma/lib/components/Table/Table.js";
 import styled from "styled-components";
-import * as Home from "./Home/styled-components";
 import * as Cards from "../components/Cards/Cards";
 import * as Blocks from "./Blocks/styled-components";
 import Pagination from "../components/Pagination";
@@ -40,7 +39,7 @@ function NamesContainer(props) {
 
   // 25 blocks per page
   return (
-    <Home.ContentContainer>
+    <>
       <Cards.Card>
         <Cards.Header>
           <Cards.HeaderTitle>TLD Names</Cards.HeaderTitle>
@@ -74,7 +73,7 @@ function NamesContainer(props) {
         url="/names"
         changePage={props.changePage}
       />
-    </Home.ContentContainer>
+    </>
   );
 }
 

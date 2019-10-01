@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import * as Home from "../screens/Home/styled-components";
 import * as Cards from "./Cards/Cards";
 import StackedComponent from "./Stacked/StackedComponent";
 import { timeAgo } from "../util/util";
@@ -44,14 +43,14 @@ const PeerInfo = ({ peers, ...props }) => {
     </SummaryCardItem>
   ));
   return (
-    <Home.ContentContainer>
+    <>
       <Cards.Card>
         <Cards.Header>
           <Cards.HeaderTitle>Peers</Cards.HeaderTitle>
         </Cards.Header>
         <Cards.Content>{peerRows}</Cards.Content>
       </Cards.Card>
-    </Home.ContentContainer>
+    </>
   );
 };
 

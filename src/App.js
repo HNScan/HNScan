@@ -8,11 +8,11 @@ import ThemeContext from "./contexts/ThemeContext";
 import Address from "./screens/Address";
 import Block from "./screens/Block";
 import Blocks from "./screens/Blocks";
+import Home from "./screens/Home";
 import Name from "./screens/Name";
 import Names from "./screens/Names";
 import Search from "./screens/Search";
 
-import HomeScreen from "./screens/Home/HomeScreen";
 import AirdropClaimScreen from "./screens/AirdropClaim/AirdropClaimScreen";
 
 // Tool Pages
@@ -38,7 +38,7 @@ function App() {
             <NavbarComponent />
             <ContentContainer>
               <Switch>
-                <Route path="/" exact component={HomeScreen} />
+                <Route path="/" exact component={Home} />
                 <Route path="/address/:hash" exact component={Address} />
                 <Route path="/blocks" exact component={Blocks} />
                 <Route path="/block/:height" exact component={Block} />

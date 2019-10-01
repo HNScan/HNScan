@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import * as Home from "../Home/styled-components";
 import * as Cards from "../../components/Cards/Cards";
 // import BlocksTable from "./BlockTable";
 import Pagination from "../../components/Pagination";
@@ -66,7 +65,7 @@ function BlockList(props) {
 //Main view component
 export default function BlocksView(props) {
   return (
-    <Home.ContentContainer>
+    <>
       <Cards.Card>
         <Cards.Header>
           <Cards.HeaderTitle>HNS Blocks</Cards.HeaderTitle>
@@ -81,6 +80,6 @@ export default function BlocksView(props) {
         url="/blocks"
         pageChanger={props.changePage}
       />
-    </Home.ContentContainer>
+    </>
   );
 }

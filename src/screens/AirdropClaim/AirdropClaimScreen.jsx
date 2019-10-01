@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as Cards from '../../components/Cards/Cards';
-import * as Home from '../Home/styled-components';
 import './AirdropClaim.scss';
 
 export default class AirdropClaimScreen extends Component {
@@ -80,7 +79,7 @@ export default class AirdropClaimScreen extends Component {
   render() {
     // TODO: This template needs refining
     return (
-      <Home.ContentContainer>
+      <>
         <Cards.Card>
           <Cards.Header>
             <Cards.HeaderTitle>Claim Your Airdrop</Cards.HeaderTitle>
@@ -133,7 +132,7 @@ export default class AirdropClaimScreen extends Component {
             </Cards.HorizontalContainer>
           </Cards.Content>
         </Cards.Card>
-      </Home.ContentContainer>
+      </>
     );
   }
 }

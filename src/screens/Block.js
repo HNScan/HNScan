@@ -2,7 +2,6 @@ import React, { Suspense, useState, useEffect } from "react";
 import { Link, useParams, useLocation, useHistory } from "react-router-dom";
 // import styled from 'styled-components';
 import * as Cards from "../components/Cards/Cards";
-import * as Home from "./Home/styled-components";
 import StackedData from "../components/Stacked/StackedComponent";
 import { useResource, useResultCache } from "rest-hooks";
 import BlockResource from "../resources/BlockResource";
@@ -16,9 +15,9 @@ import queryString from "query-string";
 function BlockSkeleton() {
   return (
     // @todo should not come from home here
-    <Home.ContentContainer>
+    <>
       <BlockSummary skeleton />
-    </Home.ContentContainer>
+    </>
   );
 }
 
@@ -40,7 +39,7 @@ function BlockContainer({ height, page, changePage, url }) {
 
   return (
     // @todo should not come from home here
-    <Home.ContentContainer>
+    <>
       <BlockSummary block={block} />
       <BlockAdvanced block={block} />
       <TransactionList txs={txs} />
@@ -50,7 +49,7 @@ function BlockContainer({ height, page, changePage, url }) {
         url={url}
         changePage={changePage}
       />
-    </Home.ContentContainer>
+    </>
   );
 }
 

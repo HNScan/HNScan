@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-import * as Home from "../Home/styled-components";
 import * as Cards from "../../components/Cards/Cards";
 import StackedComponent from "../../components/Stacked/StackedComponent";
 import { useResource } from "rest-hooks";
@@ -15,7 +14,7 @@ const NodeStatusContainer = () => {
   let totalUploaded = formatLargeNumber(status.totalBytesSent, 2);
 
   return (
-    <Home.ContentContainer>
+    <>
       <Cards.Card>
         <Cards.Header>
           <Cards.HeaderTitle>Node Status</Cards.HeaderTitle>
@@ -87,7 +86,7 @@ const NodeStatusContainer = () => {
           </table>
         </div>
       </Cards.Card>
-    </Home.ContentContainer>
+    </>
   );
 };
 export default function NodeStatus() {

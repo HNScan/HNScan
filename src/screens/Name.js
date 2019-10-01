@@ -11,7 +11,6 @@ import NameHistoryResource from "../resources/NameHistoryResource";
 import NameAdvanced from "../components/NameAdvanced";
 import NameHistory from "../components/NameHistory";
 //@todo remove this.
-import * as Home from "./Home/styled-components";
 
 const NameRecords = () => <div>todo</div>;
 
@@ -24,7 +23,7 @@ function NameView({ name, page, changePage, url }) {
   });
   const pages = Math.ceil(total / limit);
   return (
-    <Home.ContentContainer>
+    <>
       <NameSummary name={nameData} />
       <NameAdvanced name={nameData} />
       {name.records && <NameRecords records={name.records} />}
@@ -35,7 +34,7 @@ function NameView({ name, page, changePage, url }) {
         pages={pages}
         url={url}
       />
-    </Home.ContentContainer>
+    </>
   );
 }
 
