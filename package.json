@@ -2,6 +2,7 @@
   "name": "hnscan",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://new.hnscan.com",
   "dependencies": {
     "bulma": "^0.7.5",
     "bulma-extensions": "^6.2.7",
@@ -21,6 +22,8 @@
     "styled-components": "^4.3.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "setup": "yarn",
     "build": "react-scripts build",
@@ -41,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
   }
 }
