@@ -3,11 +3,34 @@ import { Link, useLocation, useHistory } from "react-router-dom";
 import Table from "reactbulma/lib/components/Table/Table.js";
 import styled from "styled-components";
 import * as Cards from "../components/Cards/Cards";
-import * as Blocks from "./Blocks/styled-components";
 import Pagination from "../components/Pagination";
 import queryString from "query-string";
 import { useResource, useResultCache } from "rest-hooks";
 import NameResource from "../resources/NameResource";
+
+export const TableContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  @media (min-width: 680px) {
+    padding: 1.5rem;
+  }
+`;
+
+export const BlocksTable = styled(Table)`
+  color: ${props => props.theme["--text-color-normal"]} !important;
+  width: 90%;
+  height: auto;
+  margin: 10px auto;
+  @media (min-width: 680px) {
+    width: 95%;
+  }
+`;
+
+export const Abbr = styled.abbr`
+  color: ${props => props.theme["--text-color-normal"]};
+  text-decoration: none;
+`;
 
 //@todo needed?
 const StateCell = styled(Table.Td)`
@@ -45,26 +68,24 @@ function NamesContainer(props) {
           <Cards.HeaderTitle>TLD Names</Cards.HeaderTitle>
         </Cards.Header>
         <Cards.Content>
-          <Blocks.TableContainer>
-            <Blocks.BlocksTable>
+          <TableContainer>
+            <BlocksTable>
               <Table.Head>
                 <Table.Tr>
                   <Table.Th>
-                    <Blocks.Abbr title="Top Level Domain Name">
-                      Name
-                    </Blocks.Abbr>
+                    <Abbr title="Top Level Domain Name">Name</Abbr>
                   </Table.Th>
                   <Table.Th>
-                    <Blocks.Abbr title="Name Auction State">State</Blocks.Abbr>
+                    <Abbr title="Name Auction State">State</Abbr>
                   </Table.Th>
                   <Table.Th>
-                    <Blocks.Abbr title="Block Height">Height</Blocks.Abbr>
+                    <Abbr title="Block Height">Height</Abbr>
                   </Table.Th>
                 </Table.Tr>
               </Table.Head>
               <Table.Body>{nameRows}</Table.Body>
-            </Blocks.BlocksTable>
-          </Blocks.TableContainer>
+            </BlocksTable>
+          </TableContainer>
         </Cards.Content>
       </Cards.Card>
       <Pagination
