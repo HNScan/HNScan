@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 // Components
 import * as Cards from "./Cards/Cards";
-import StackedData from "./Stacked/StackedComponent";
 import Pagination from "./Pagination";
 
 // Util

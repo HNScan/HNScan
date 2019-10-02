@@ -152,6 +152,9 @@ export default class NavbarComponent extends Component {
                   <a href="/about" className="navbar-item">
                     Changelog
                   </a>
+                  <a href="/about" className="navbar-item">
+                    API Documenation
+                  </a>
                   <a
                     href="https://github.com/HandshakeAlliance/HNScan/issues"
                     className="navbar-item"
