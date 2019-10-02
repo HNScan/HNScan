@@ -1,15 +1,12 @@
 import React, { Suspense } from "react";
 import { useResource } from "rest-hooks";
 import { useParams } from "react-router-dom";
-import { timeAgo, hnsValues, sumTxOutputs } from "../../util/util";
-import {
-  InputList,
-  OutputList
-} from "../../components/TransactionList/PutsList";
+import { timeAgo, hnsValues, sumTxOutputs } from "../util/util";
+import { InputList, OutputList } from "../components/TransactionList/PutsList";
 import styled from "styled-components";
-import * as Cards from "../../components/Cards/Cards";
-import StackedComponent from "../../components/Stacked/StackedComponent";
-import TransactionResource from "../../resources/TransactionResource";
+import * as Cards from "../components/Cards/Cards";
+import StackedComponent from "../components/Stacked/StackedComponent";
+import TransactionResource from "../resources/TransactionResource";
 
 const Container = styled.div`
   width: 100%;

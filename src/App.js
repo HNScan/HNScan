@@ -12,6 +12,7 @@ import Home from "./screens/Home";
 import Name from "./screens/Name";
 import Names from "./screens/Names";
 import Search from "./screens/Search";
+import Transaction from "./screens/Transaction";
 
 import AirdropClaimScreen from "./screens/AirdropClaim/AirdropClaimScreen";
 
@@ -21,7 +22,6 @@ import Peers from "./screens/tools/Peers";
 import Charts from "./screens/tools/Charts";
 
 import NotFoundScreen from "./screens/Errors/NotFoundScreen";
-import TxDetailScreen from "./screens/TxDetail/TxDetailScreen";
 import Changelog from "./screens/Changelog";
 
 import NavbarComponent from "./components/Navbar/NavbarComponent";
@@ -46,7 +46,7 @@ function App() {
                 <Route path="/names" exact component={Names} />
                 <Route path="/name/:name" exact component={Name} />
                 {/* Ideally let's get a recent transactions page going */}
-                <Route path="/tx/:hash" exact component={TxDetailScreen} />
+                <Route path="/tx/:hash" exact component={Transaction} />
                 <Route path="/search" exact component={Search} />
                 {/* Tool Screens */}
                 <Route path="/peers" exact component={Peers} />
