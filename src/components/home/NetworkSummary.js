@@ -23,7 +23,7 @@ export default function NetworkSummary({ info }) {
   let network = info.network;
   let difficulty = sciNotation(info.difficulty, 3);
   let chainwork = sciNotation(parseInt("0x" + info.chainWork), 2);
-  let registeredNames = info.registeredNames.length;
+  let registeredNames = info.registeredNames;
 
   return (
     <Cards.Card>
@@ -62,7 +62,7 @@ export default function NetworkSummary({ info }) {
       <Cards.HorizontalContainer>
         <Cards.Column>
           <Cards.ItemContainer>
-            <Cards.ItemLabel>Names Registered</Cards.ItemLabel>
+            <Cards.ItemLabel>Opened Names</Cards.ItemLabel>
             <Cards.ItemDetail>
               <span>{registeredNames}</span>
             </Cards.ItemDetail>

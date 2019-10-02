@@ -94,9 +94,9 @@ export default class NavbarComponent extends Component {
               <Link to="/blocks" id="blocks" className="navbar-item navOption">
                 Blocks
               </Link>
-              <a href="/names" className="navbar-item navOption">
+              <Link to="/names" id="names" className="navbar-item navOption">
                 Names
-              </a>
+              </Link>
               <div className="navbar-item has-dropdown is-hoverable navDropdown">
                 <Navbar.NavDropdown
                   onClick={this.toggleTools}
@@ -111,24 +111,24 @@ export default class NavbarComponent extends Component {
                       : "is-hidden-touch"
                   }`}
                 >
-                  <a href="/status" className="navbar-item">
+                  <Link to="/status" className="navbar-item">
                     Node Status
-                  </a>
-                  <a href="/peers" className="navbar-item">
+                  </Link>
+                  <Link to="/peers" className="navbar-item">
                     Peers
-                  </a>
-                  <a href="/airdropclaim" className="navbar-item">
+                  </Link>
+                  <Link to="/airdropclaim" className="navbar-item">
                     Claim Your Airdrop
-                  </a>
-                  <a href="/airdropclaim" className="navbar-item">
-                    Mempool
-                  </a>
-                  <a href="/airdropclaim" className="navbar-item">
-                    Charts
-                  </a>
-                  <a href="/airdropclaim" className="navbar-item">
-                    Logs
-                  </a>
+                  </Link>
+                  <Link to={location => location} className="navbar-item">
+                    <s>Mempool</s>
+                  </Link>
+                  <Link to={location => location} className="navbar-item">
+                    <s>Charts</s>
+                  </Link>
+                  <Link to={location => location} className="navbar-item">
+                    <s>Logs</s>
+                  </Link>
                   {/* <a href="/airairdrop" className="navbar-item">Airdrop Stats</a> */}
                 </div>
               </div>
@@ -146,15 +146,15 @@ export default class NavbarComponent extends Component {
                       : "is-hidden-touch"
                   }`}
                 >
-                  <a href="/about" className="navbar-item">
-                    About
-                  </a>
-                  <a href="/about" className="navbar-item">
-                    Changelog
-                  </a>
-                  <a href="/about" className="navbar-item">
-                    API Documenation
-                  </a>
+                  <Link to={location => location} className="navbar-item">
+                    <s>About</s>
+                  </Link>
+                  <Link to={location => location} className="navbar-item">
+                    <s>Changelog</s>
+                  </Link>
+                  <Link to={location => location} className="navbar-item">
+                    <s>API Documenation</s>
+                  </Link>
                   <a
                     href="https://github.com/HandshakeAlliance/HNScan/issues"
                     className="navbar-item"
