@@ -14,7 +14,7 @@ import Names from "./screens/Names";
 import Search from "./screens/Search";
 import Transaction from "./screens/Transaction";
 
-import AirdropClaimScreen from "./screens/AirdropClaim/AirdropClaimScreen";
+import AirdropClaimScreen from "./screens/tools/AirdropClaim/AirdropClaimScreen";
 
 // Tool Pages
 import NodeStatus from "./screens/tools/NodeStatus";
