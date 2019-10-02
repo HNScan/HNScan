@@ -4,6 +4,11 @@ import { NetworkErrorBoundary } from "rest-hooks";
 //@todo consider moving this to index, but also we can just use the theme hooks (context hooks).
 import ThemeContext from "./contexts/ThemeContext";
 
+// Components
+import NavbarComponent from "./components/Navbar/NavbarComponent";
+import FooterComponent from "./components/Footer/FooterComponent";
+import ContentContainer from "./components/ContentContainer";
+
 // Main Pages
 import Address from "./screens/Address";
 import Block from "./screens/Block";
@@ -20,13 +25,10 @@ import AirdropClaimScreen from "./screens/tools/AirdropClaim/AirdropClaimScreen"
 import NodeStatus from "./screens/tools/NodeStatus";
 import Peers from "./screens/tools/Peers";
 import Charts from "./screens/tools/Charts";
-
-import NotFoundScreen from "./screens/Errors/NotFoundScreen";
 import Changelog from "./screens/Changelog";
 
-import NavbarComponent from "./components/Navbar/NavbarComponent";
-import FooterComponent from "./components/Footer/FooterComponent";
-import ContentContainer from "./components/ContentContainer";
+// Error Pages
+import NotFoundScreen from "./screens/errors/NotFound";
 
 import "./App.scss";
 
