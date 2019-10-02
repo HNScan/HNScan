@@ -11,5 +11,5 @@ export default class AddressResource extends Resource {
     return this.hash;
   }
 
-  static urlRoot = "http://localhost:8080/addresses/";
+  static urlRoot = `${process.env.REACT_APP_API_URL}/addresses/`;
 }

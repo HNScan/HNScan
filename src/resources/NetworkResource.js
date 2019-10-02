@@ -13,7 +13,7 @@ export default class NetworkResource extends Resource {
     return "the_only_one";
   }
 
-  static urlRoot = "http://localhost:8080/summary/";
+  static urlRoot = `${process.env.REACT_APP_API_URL}/summary/`;
 
   /**
    * Get the url for a Resource
@@ -21,7 +21,7 @@ export default class NetworkResource extends Resource {
   static url(
     urlParams?: { articleId: string } & Partial<AbstractInstanceType<T>>
   ) {
-    return "http://localhost:8080/summary";
+    return `${process.env.REACT_APP_API_URL}/summary`;
     // since we're overriding the url() function we must keep the type the
     // same, which means we might not get urlParams
   }

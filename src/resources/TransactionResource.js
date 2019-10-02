@@ -19,7 +19,7 @@ export default class TransactionResource extends Resource {
     return this.hash;
   }
 
-  static urlRoot = "http://localhost:8080/txs/";
+  static urlRoot = `${process.env.REACT_APP_API_URL}/txs/`;
 
   static listShape() {
     return {

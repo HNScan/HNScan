@@ -32,7 +32,7 @@ export default class BlockResource extends Resource {
     return this.height;
   }
 
-  static urlRoot = "http://localhost:8080/blocks/";
+  static urlRoot = `${process.env.REACT_APP_API_URL}/blocks/`;
 
   static listShape() {
     return {

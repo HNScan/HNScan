@@ -23,7 +23,7 @@ export default class NameHistoryResource extends Resource {
       const params = new URLSearchParams(realSearchParams);
       // this is essential for consistent url strings
       params.sort();
-      return `http://localhost:8080/names/${name}/history/?${params.toString()}`;
+      return `${process.env.REACT_APP_API_URL}/names/${name}/history/?${params.toString()}`;
     }
     throw new Error("History requires name to retrieve");
   }

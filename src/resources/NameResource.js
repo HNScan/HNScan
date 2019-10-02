@@ -22,7 +22,7 @@ export default class NameResource extends Resource {
     return this.name;
   }
 
-  static urlRoot = "http://localhost:8080/names/";
+  static urlRoot = `${process.env.REACT_APP_API_URL}/names/`;
 
   static listShape() {
     return {
