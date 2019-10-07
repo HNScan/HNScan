@@ -14,6 +14,7 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
   const names = history.map((name, index) => (
     <tr key={index}>
       <td>{name.action}</td>
+      {/* @fixme Not working */}
       <td>{timeAgo(name.time)}</td>
       {/* @todo need to link this */}
       <td>
@@ -32,17 +33,20 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
         {/* @todo need links in here */}
         {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
         <div className="card-content">
-          <table className="table is-fullwidth">
-            <thead>
-              <tr>
-                <th>Action</th>
-                <th>Time</th>
-                <th>Block Height</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>{names}</tbody>
-          </table>
+          {names.length === 0 && <p>There is no history for this name</p>}
+          {names.length > 0 && (
+            <table className="table is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Action</th>
+                  <th>Time</th>
+                  <th>Block Height</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>{names}</tbody>
+            </table>
+          )}
         </div>
       </Cards.Card>
       <Pagination

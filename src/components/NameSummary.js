@@ -6,9 +6,13 @@ import * as Cards from "./Cards/Cards";
 // Util
 // import { timeAgo } from "../util/util";
 
-// function timeToNextState(blocks) {
-
-// }
+function timeToNextState(blocks) {
+  if (blocks) {
+    return blocks;
+  } else {
+    return "-";
+  }
+}
 
 export default function NameSummary({ name }) {
   return (
@@ -49,7 +53,9 @@ export default function NameSummary({ name }) {
             <Cards.ItemContainer>
               <Cards.ItemLabel>Blocks Until Next State</Cards.ItemLabel>
               {/* @todo need time in here as well. */}
-              <Cards.ItemDetail>{name.blocksUntil}</Cards.ItemDetail>
+              <Cards.ItemDetail>
+                {timeToNextState(name.blocksUntil)}
+              </Cards.ItemDetail>
             </Cards.ItemContainer>
           </Cards.Column>
           <Cards.Column>

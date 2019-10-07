@@ -1,11 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { NetworkErrorBoundary } from "rest-hooks";
-//@todo consider moving this to index, but also we can just use the theme hooks (context hooks).
-import ThemeContext from "./contexts/ThemeContext";
+import { ThemeProvider } from "styled-components";
+
+// Special
+import GlobalStyles from "./components/GlobalStyles";
 
 // Components
-import NavbarComponent from "./components/Navbar/NavbarComponent";
+import Navigation from "./components/Navigation";
 import FooterComponent from "./components/Footer/FooterComponent";
 import ContentContainer from "./components/ContentContainer";
 
@@ -30,15 +32,19 @@ import Changelog from "./screens/Changelog";
 // Error Pages
 import NotFoundScreen from "./screens/errors/NotFound";
 
-import "./App.scss";
+// Hooks
+import useTheme from "./hooks/useTheme";
 
+//have it return a theme object and a toggle function.
 function App() {
+  const [theme] = useTheme();
   return (
     <NetworkErrorBoundary>
-      <ThemeContext>
-        <div>
+      <ThemeProvider theme={theme}>
+        <>
+          <GlobalStyles />
           <Router>
-            <NavbarComponent />
+            <Navigation />
             <ContentContainer>
               <Switch>
                 <Route path="/" exact component={Home} />
@@ -65,8 +71,8 @@ function App() {
             </ContentContainer>
             <FooterComponent />
           </Router>
-        </div>
-      </ThemeContext>
+        </>
+      </ThemeProvider>
     </NetworkErrorBoundary>
   );
 }
