@@ -133,6 +133,8 @@ const Dropdown = styled.div`
   font-size: 0.875rem;
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
+  display: none;
+  border-top: 1px solid ${props => props.theme.nav.borderColor};
   @media (min-width: ${props => props.theme.breakpoints.desktop}) {
     background-color: ${props => props.theme.global.background};
     border-bottom-left-radius: 6px;
@@ -140,7 +142,7 @@ const Dropdown = styled.div`
     //@todo border from navbar. Fix all these later.
     border-top: 1px solid ${props => props.theme.nav.borderColor};
     box-shadow: 0 8px 8px rgba(10, 10, 10, 0.1);
-    display: none;
+    // display: none;
     font-size: 0.875rem;
     left: 0;
     min-width: 100%;
@@ -275,15 +277,7 @@ color: ${props => props.theme.global.textColor};
         top: auto;
       }
     }
-    &.is-active,
-    ${props =>
-      props.hoverable &&
-      `&:hover {
-          ${Dropdown} {
-            display: block;
-          }
-       }
-    `}
+    // &.is-active,
     ${props =>
       props.active &&
       `
@@ -291,6 +285,17 @@ color: ${props => props.theme.global.textColor};
             display: block;
           }
     `}
+    @media (min-width: ${props => props.theme.breakpoints.desktop}) {
+        ${props =>
+          props.hoverable &&
+          `
+          &:hover {
+              ${Dropdown} {
+                display: block;
+              }
+           }
+        `}
+    }
     ${Dropdown} & {
       padding: 0.375rem 1rem;
       white-space: nowrap;
@@ -309,7 +314,6 @@ color: ${props => props.theme.global.textColor};
         // )};
         // color: fromTheme("navbar-dropdown-item-active-color")};
       }
-    }
     }
 `;
 

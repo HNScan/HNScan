@@ -19,7 +19,8 @@ const NavLink = styled(NavBar.Item)`
 export default function Navigation() {
   const [mobileNav, updateMobileNav] = useState(false);
   const [moreDropdownActive, updateMoreDropdownActive] = useState(false);
-  console.log(mobileNav);
+  const [toolsDropdownActive, updateToolsDropdownActive] = useState(false);
+  console.log(moreDropdownActive);
   return (
     <BorderedNav>
       <NavBar.Brand>
@@ -36,7 +37,11 @@ export default function Navigation() {
           <NavLink as={Link} to={"/names"}>
             Names
           </NavLink>
-          <NavBar.Item hoverable>
+          <NavBar.Item
+            hoverable
+            active={toolsDropdownActive}
+            onClick={e => updateToolsDropdownActive(active => !active)}
+          >
             <NavBar.Link>Tools</NavBar.Link>
             <NavBar.Dropdown>
               <NavBar.Item as={Link} to={"/status"}>
@@ -74,6 +79,9 @@ export default function Navigation() {
               </NavBar.Item>
               <NavBar.Item as={Link} to={"/docs"}>
                 API Documenation
+              </NavBar.Item>
+              <NavBar.Item as={Link} to={"/config"}>
+                Config
               </NavBar.Item>
               <NavBar.Item
                 as="a"
