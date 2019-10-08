@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { ThemeToggleContext } from '../../contexts/ThemeContext';
 import './Footer.scss';
 import Logo from '../Logos/hnscan';
 import * as Footer from './styled-components';
@@ -113,5 +112,5 @@ class FooterComponent extends Component {
   }
 }
 
-FooterComponent.contextType = ThemeToggleContext;
+// FooterComponent.contextType = ThemeToggleContext;
 export default FooterComponent;
