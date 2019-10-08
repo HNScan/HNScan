@@ -11,9 +11,45 @@ const BorderedNav = styled(NavBar)`
   // box-shadow: 0px 1px 12px -1px rgba(0,0,0,0.30);
 `;
 
-const NavLink = styled(NavBar.Item)`
-  padding: 10px 25px;
+const NavLinkItem = styled(NavBar.Item)`
   justify-content: center;
+
+  @media (max-width: calc(${props => props.theme.breakpoints.desktop} - 1px)){
+      padding-left: 12px;
+      padding-right: 12px;
+      margin-left: 2.5vw
+
+    ${NavBar.Link} {
+        padding-left: 0;
+
+    }
+  }
+`;
+
+const Burger = styled(NavBar.Burger)`
+  @media (max-width: calc(${props => props.theme.breakpoints.desktop} - 1px)){
+      margin-right: 2.5vw;
+  }
+`;
+
+const LogoWrapper = styled(NavBar.Item)`
+  @media (max-width: calc(${props => props.theme.breakpoints.desktop} - 1px)){
+      margin-left: 2.5vw;
+  }
+`;
+
+const Container = styled.div`
+  min-height: 3.25rem;
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  margin: 0 auto;
+
+  @media (min-width: ${props => props.theme.breakpoints.desktop}) {
+    display: flex;
+    align-items: stretch;
+    width: 90%;
+  }
 `;
 
 export default function Navigation() {
@@ -22,83 +58,87 @@ export default function Navigation() {
   const [toolsDropdownActive, updateToolsDropdownActive] = useState(false);
   return (
     <BorderedNav>
-      <NavBar.Brand>
-        <NavBar.Item as={Link} to={"/"}>
-          <Logo />
-        </NavBar.Item>
-        <NavBar.Burger onClick={e => updateMobileNav(active => !active)} />
-      </NavBar.Brand>
-      <NavBar.Menu active={mobileNav}>
-        <NavBar.Start>
-          <NavLink as={Link} to={"/blocks"}>
-            Blocks
-          </NavLink>
-          <NavLink as={Link} to={"/names"}>
-            Names
-          </NavLink>
-          <NavBar.Item
-            hoverable
-            active={toolsDropdownActive}
-            onClick={e => updateToolsDropdownActive(active => !active)}
-          >
-            <NavBar.Link>Tools</NavBar.Link>
-            <NavBar.Dropdown>
-              <NavBar.Item as={Link} to={"/status"}>
-                Node Status
-              </NavBar.Item>
-              <NavBar.Item as={Link} to={"/peers"}>
-                Peers
-              </NavBar.Item>
-              <NavBar.Item as={Link} to={"/airdropclaim"}>
-                Claim Your Airdrop
-              </NavBar.Item>
-              <NavBar.Item as={Link} to={"/mempool"}>
-                Mempool
-              </NavBar.Item>
-              <NavBar.Item as={Link} to={"/charts"}>
-                Charts
-              </NavBar.Item>
-              <NavBar.Item as={Link} to={"/logs"}>
-                Logs
-              </NavBar.Item>
-            </NavBar.Dropdown>
-          </NavBar.Item>
-          <NavBar.Item
-            hoverable
-            active={moreDropdownActive}
-            onClick={e => updateMoreDropdownActive(active => !active)}
-          >
-            <NavBar.Link>More</NavBar.Link>
-            <NavBar.Dropdown>
-              <NavBar.Item as={Link} to={"/about"}>
-                About
-              </NavBar.Item>
-              <NavBar.Item as={Link} to={"/changelog"}>
-                Changelog
-              </NavBar.Item>
-              <NavBar.Item as={Link} to={"/docs"}>
-                API Documenation
-              </NavBar.Item>
-              <NavBar.Item as={Link} to={"/config"}>
-                Config
-              </NavBar.Item>
-              <NavBar.Item
-                as="a"
-                href="https://github.com/HandshakeAlliance/HNScan/issues"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Report an issue
-              </NavBar.Item>
-            </NavBar.Dropdown>
-          </NavBar.Item>
-        </NavBar.Start>
-        <NavBar.End>
-          <NavBar.Item>
-            <SearchBar />
-          </NavBar.Item>
-        </NavBar.End>
-      </NavBar.Menu>
+      <Container>
+        <NavBar.Brand>
+          <LogoWrapper as={Link} to={"/"}>
+            <Logo />
+          </LogoWrapper>
+          <Burger onClick={e => updateMobileNav(active => !active)} />
+        </NavBar.Brand>
+        <NavBar.Menu active={mobileNav}>
+          <NavBar.Start>
+            <NavLinkItem as={Link} to={"/blocks"}>
+              Blocks
+            </NavLinkItem>
+            <NavLinkItem as={Link} to={"/names"}>
+              Names
+            </NavLinkItem>
+            <NavLinkItem
+              hoverable
+              active={toolsDropdownActive}
+              onClick={e => updateToolsDropdownActive(active => !active)}
+              dropdown
+            >
+              <NavBar.Link>Tools</NavBar.Link>
+              <NavBar.Dropdown>
+                <NavBar.Item as={Link} to={"/status"}>
+                  Node Status
+                </NavBar.Item>
+                <NavBar.Item as={Link} to={"/peers"}>
+                  Peers
+                </NavBar.Item>
+                <NavBar.Item as={Link} to={"/airdropclaim"}>
+                  Claim Your Airdrop
+                </NavBar.Item>
+                <NavBar.Item as={Link} to={"/mempool"}>
+                  Mempool
+                </NavBar.Item>
+                <NavBar.Item as={Link} to={"/charts"}>
+                  Charts
+                </NavBar.Item>
+                <NavBar.Item as={Link} to={"/logs"}>
+                  Logs
+                </NavBar.Item>
+              </NavBar.Dropdown>
+            </NavLinkItem>
+            <NavLinkItem
+              hoverable
+              active={moreDropdownActive}
+              onClick={e => updateMoreDropdownActive(active => !active)}
+              dropdown
+            >
+              <NavBar.Link>More</NavBar.Link>
+              <NavBar.Dropdown>
+                <NavBar.Item as={Link} to={"/about"}>
+                  About
+                </NavBar.Item>
+                <NavBar.Item as={Link} to={"/changelog"}>
+                  Changelog
+                </NavBar.Item>
+                <NavBar.Item as={Link} to={"/docs"}>
+                  API Documenation
+                </NavBar.Item>
+                <NavBar.Item as={Link} to={"/config"}>
+                  Config
+                </NavBar.Item>
+                <NavBar.Item
+                  as="a"
+                  href="https://github.com/HandshakeAlliance/HNScan/issues"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Report an issue
+                </NavBar.Item>
+              </NavBar.Dropdown>
+            </NavLinkItem>
+          </NavBar.Start>
+          <NavBar.End>
+            <NavBar.Item>
+              <SearchBar />
+            </NavBar.Item>
+          </NavBar.End>
+        </NavBar.Menu>
+      </Container>
     </BorderedNav>
   );
 }

@@ -71,7 +71,7 @@ const BurgerBar = styled.span`
 
 `;
 
-const Burger = ({ onClick }) => {
+const Burger = ({ onClick, ...props }) => {
   const [active, changeActive] = useState(false);
   const handleClick = () => {
     onClick();
@@ -83,6 +83,7 @@ const Burger = ({ onClick }) => {
       onClick={handleClick}
       aria-label="menu"
       aria-expanded="false"
+      {...props}
     >
       <BurgerBar aria-hidden="true" active={active} />
       <BurgerBar aria-hidden="true" active={active} />
@@ -217,6 +218,14 @@ const Item = styled.div`
   line-height: 1.5;
   padding: 0.5rem 0.75rem;
   position: relative;
+
+${props =>
+  props.dropdown &&
+  `
+padding: 0px;
+
+`}
+
 color: ${props => props.theme.global.textColor};
 &:hover {
     color: ${props => props.theme.global.linkColor};
