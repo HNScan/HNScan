@@ -20,7 +20,6 @@ export default function Navigation() {
   const [mobileNav, updateMobileNav] = useState(false);
   const [moreDropdownActive, updateMoreDropdownActive] = useState(false);
   const [toolsDropdownActive, updateToolsDropdownActive] = useState(false);
-  console.log(moreDropdownActive);
   return (
     <BorderedNav>
       <NavBar.Brand>

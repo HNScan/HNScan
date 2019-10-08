@@ -2,20 +2,6 @@ import { useState } from "react";
 import { themes } from "../util/themes";
 
 export default function useTheme() {
-  // document.documentElement.classList.add("color-theme-in-transition");
-  // if (localStorage.getItem("theme") === "light") {
-  //   localStorage.setItem("theme", "dark");
-  //   document.documentElement.setAttribute("data-theme", "dark");
-  // } else {
-  //   localStorage.setItem("theme", "light");
-  //   document.documentElement.removeAttribute("data-theme", "dark");
-  // }
-
-  // let theme = localStorage.getItem("theme");
-  // if (!theme) {
-  //   localStorage.setItem("theme", "light");
-  //   theme = "light";
-  // }
 
   //@todo consider just changing this to theme isDark true/false. Easier togglging as well.
   //setTheme(prevState => !prevState);
@@ -42,6 +28,21 @@ export default function useTheme() {
       return [themes["light"], toggleTheme];
   }
 }
+
+  // document.documentElement.classList.add("color-theme-in-transition");
+  // if (localStorage.getItem("theme") === "light") {
+  //   localStorage.setItem("theme", "dark");
+  //   document.documentElement.setAttribute("data-theme", "dark");
+  // } else {
+  //   localStorage.setItem("theme", "light");
+  //   document.documentElement.removeAttribute("data-theme", "dark");
+  // }
+
+  // let theme = localStorage.getItem("theme");
+  // if (!theme) {
+  //   localStorage.setItem("theme", "light");
+  //   theme = "light";
+  // }
 
 // import React, { Component } from 'react';
 // import { ThemeProvider } from 'styled-components';
