@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
 import { Link } from "react-router-dom";
-import SearchBar from "./SearchBar";
-import Logo from "./Logos/hnscan";
+
+// Styles
 import NavBar from "./styles/NavBar";
+
+// Components
+import SearchBar from "./SearchBar";
+
+// SVGs
+import Logo from "./svg/Logo";
 
 const BorderedNav = styled(NavBar)`
   border-bottom: 1px solid ${props => props.theme.nav.borderColor};
@@ -57,7 +62,7 @@ export default function Navigation() {
   const [moreDropdownActive, updateMoreDropdownActive] = useState(false);
   const [toolsDropdownActive, updateToolsDropdownActive] = useState(false);
   return (
-    <BorderedNav>
+    <BorderedNav height={"60px"}>
       <Container>
         <NavBar.Brand>
           <LogoWrapper as={Link} to={"/"}>
