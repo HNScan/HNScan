@@ -10,6 +10,9 @@ export const themes = {
     breakpoints: {
       desktop: "1024px"
     },
+    cards: {
+      borderColor: "#dfdfdf"
+    },
     nav: {
       background: "#fefefe",
       borderColor: "#dfdfdf"
