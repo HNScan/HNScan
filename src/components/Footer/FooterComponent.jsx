@@ -60,7 +60,8 @@ class FooterComponent extends Component {
             <Footer.RightLinksContainer>
               <Footer.LinksContainer>
                 <Footer.Header>
-                  Related
+                  Related&nbsp;
+                  <i class="fas fa-external-link-alt has-text-grey fa-sm"></i>
                 </Footer.Header>
                 <Footer.ExternalLink href="https://handshakeacademy.org" target="_blank" rel="noopener noreferrer">
                   Academy
@@ -77,7 +78,8 @@ class FooterComponent extends Component {
               </Footer.LinksContainer>
               <Footer.LinksContainer>
                 <Footer.Header>
-                  Follow
+                  Follow&nbsp;
+                  <i class="fas fa-external-link-alt has-text-grey fa-sm"></i>
                 </Footer.Header>
                 <Footer.ExternalLink href="https://github.com/handshakealliance" target="_blank" rel="noopener noreferrer">
                   Github
