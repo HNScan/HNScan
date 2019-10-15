@@ -11,9 +11,9 @@ import React from "react";
 //-
 export default function Changelog() {
   return (
-    <aside class="menu">
-      <p class="menu-label">General</p>
-      <ul class="menu-list">
+    <aside className="menu">
+      <p className="menu-label">General</p>
+      <ul className="menu-list">
         <li>
           <a href="/">Dashboard</a>
         </li>
@@ -21,13 +21,13 @@ export default function Changelog() {
           <a href="/">Customers</a>
         </li>
       </ul>
-      <p class="menu-label">Administration</p>
-      <ul class="menu-list">
+      <p className="menu-label">Administration</p>
+      <ul className="menu-list">
         <li>
           <a href="/">Team Settings</a>
         </li>
         <li>
-          <a href="/" class="is-active">Manage Your Team</a>
+          <a href="/" className="is-active">Manage Your Team</a>
           <ul>
             <li>
               <a href="/">Members</a>
@@ -50,8 +50,8 @@ export default function Changelog() {
           <a href="/">Authentication</a>
         </li>
       </ul>
-      <p class="menu-label">Transactions</p>
-      <ul class="menu-list">
+      <p className="menu-label">Transactions</p>
+      <ul className="menu-list">
         <li>
           <a href="/">Payments</a>
         </li>
