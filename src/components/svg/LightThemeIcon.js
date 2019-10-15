@@ -12,12 +12,8 @@ export default function LightThemeIcon(props) {
       {...props}
     >
       <title>Light Theme</title>
-      <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-        <g
-          id="Group"
-          transform="translate(1.000000, 0.000000)"
-          stroke="#000000"
-        >
+      <g strokeWidth="1" fill="none" fillRule="evenodd">
+        <g id="Group" transform="translate(1.000000, 0.000000)">
           <circle id="Oval" cx="11" cy="11.5066895" r="5"></circle>
           <path
             d="M12.4412109,2.97817383 L9.39291538,2.97817383"

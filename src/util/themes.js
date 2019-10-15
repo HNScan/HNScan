@@ -39,11 +39,11 @@ export const themes = {
   },
   dark: {
     global: {
-      background: "#fefefe",
-      textColor: "#4a4a4a",
-      textColorLight: "#dbdbdb",
+      background: "#323232",
+      textColor: "#afafaf",
+      textColorLight: "#969696",
       linkColor: "#3273dc",
-      linkColorHover: "#363636"
+      linkColorHover: "#cfcfcf"
     },
     breakpoints: {
       desktop: "1024px"
@@ -52,7 +52,7 @@ export const themes = {
       borderColor: "#dfdfdf"
     },
     nav: {
-      background: "#fefefe",
+      background: "#323232",
       borderColor: "#dfdfdf"
     },
     search: {

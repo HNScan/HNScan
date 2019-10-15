@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
 // SVGs
 import DarkThemeIcon from "./svg/DarkThemeIcon";
 import LightThemeIcon from "./svg/LightThemeIcon";
+
+const ThemeIcon = styled.svg`
+  cursor: pointer;
+  stroke: ${props => props.theme.global.textColor};
+  color: ${props => props.theme.global.textColor};
+`;
 
 //@todo Need a way to know what theme we are.
 export default function ThemeToggler({ toggleTheme, currentTheme }) {
@@ -18,9 +25,9 @@ export default function ThemeToggler({ toggleTheme, currentTheme }) {
   };
   const themeIcon = () => {
     if (theme === "dark") {
-      return <LightThemeIcon onClick={e => toggle()} />;
+      return <ThemeIcon as={LightThemeIcon} onClick={e => toggle()} />;
     } else {
-      return <DarkThemeIcon onClick={e => toggle()} />;
+      return <ThemeIcon as={DarkThemeIcon} onClick={e => toggle()} />;
     }
   };
   return <> {themeIcon()} </>;
