@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-//Hooks
+// Hooks
 import useLocalStorage from "./useLocalStorage";
 
 // Util
@@ -31,5 +31,6 @@ export default function useTheme() {
     }
   };
 
-  return [themes[theme], toggleTheme];
+  //Theme object, toggle theme function, theme string.
+  return [themes[theme], toggleTheme, theme];
 }
