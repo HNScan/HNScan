@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import './Footer.scss';
-import Logo from '../Logos/hnscan';
-import * as Footer from './styled-components';
+import React, { Component } from "react";
+import "./Footer.scss";
+import Logo from "../Logos/hnscan";
+import * as Footer from "./styled-components";
+
+import ThemeToggler from "../ThemeToggler";
 
 class FooterComponent extends Component {
-
   render() {
     return (
       <Footer.FooterContainer>
@@ -15,40 +16,22 @@ class FooterComponent extends Component {
             <Footer.Tagline>
               Your trusted source for on chain Handshake information
             </Footer.Tagline>
-            <Footer.Header>
-              Contact
-            </Footer.Header>
-            <Footer.ContactItem>
-              engineering@urkel.io
-            </Footer.ContactItem>
+            <Footer.Header>Contact</Footer.Header>
+            <Footer.ContactItem>engineering@urkel.io</Footer.ContactItem>
           </Footer.LeftContent>
           {/* All of the Footer Links */}
           <Footer.RightContent>
             <Footer.LeftLinksContainer>
               <Footer.LinksContainer>
-                <Footer.Header>
-                  Explore
-                </Footer.Header>
-                <Footer.InternalLink to="/">
-                  Home
-                </Footer.InternalLink>
-                <Footer.InternalLink to="/blocks">
-                  Blocks
-                </Footer.InternalLink>
-                <Footer.InternalLink to="/names">
-                  Names
-                </Footer.InternalLink>
-                <Footer.InternalLink to="/about">
-                  About
-                </Footer.InternalLink>
+                <Footer.Header>Explore</Footer.Header>
+                <Footer.InternalLink to="/">Home</Footer.InternalLink>
+                <Footer.InternalLink to="/blocks">Blocks</Footer.InternalLink>
+                <Footer.InternalLink to="/names">Names</Footer.InternalLink>
+                <Footer.InternalLink to="/about">About</Footer.InternalLink>
               </Footer.LinksContainer>
               <Footer.LinksContainer>
-                <Footer.Header>
-                  Tools
-                </Footer.Header>
-                <Footer.InternalLink to="/peers">
-                  Peers
-                </Footer.InternalLink>
+                <Footer.Header>Tools</Footer.Header>
+                <Footer.InternalLink to="/peers">Peers</Footer.InternalLink>
                 <Footer.InternalLink to="/status">
                   Node Status
                 </Footer.InternalLink>
@@ -63,16 +46,32 @@ class FooterComponent extends Component {
                   Related&nbsp;
                   <i className="fas fa-external-link-alt has-text-grey fa-sm"></i>
                 </Footer.Header>
-                <Footer.ExternalLink href="https://handshakeacademy.org" target="_blank" rel="noopener noreferrer">
+                <Footer.ExternalLink
+                  href="https://handshakeacademy.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Academy
                 </Footer.ExternalLink>
-                <Footer.ExternalLink href="https://handshake.community" target="_blank" rel="noopener noreferrer">
+                <Footer.ExternalLink
+                  href="https://handshake.community"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Community
                 </Footer.ExternalLink>
-                <Footer.ExternalLink href="https://urkel.io" target="_blank" rel="noopener noreferrer">
+                <Footer.ExternalLink
+                  href="https://urkel.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Urkel
                 </Footer.ExternalLink>
-                <Footer.ExternalLink href="https://handshake.org/files/handshake.txt" target="_blank" rel="noopener noreferrer">
+                <Footer.ExternalLink
+                  href="https://handshake.org/files/handshake.txt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Paper
                 </Footer.ExternalLink>
               </Footer.LinksContainer>
@@ -81,13 +80,25 @@ class FooterComponent extends Component {
                   Follow&nbsp;
                   <i className="fas fa-external-link-alt has-text-grey fa-sm"></i>
                 </Footer.Header>
-                <Footer.ExternalLink href="https://github.com/handshakealliance" target="_blank" rel="noopener noreferrer">
+                <Footer.ExternalLink
+                  href="https://github.com/handshakealliance"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Github
                 </Footer.ExternalLink>
-                <Footer.ExternalLink href="https://medium.com/@handshakealliance" target="_blank" rel="noopener noreferrer">
+                <Footer.ExternalLink
+                  href="https://medium.com/@handshakealliance"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Medium
                 </Footer.ExternalLink>
-                <Footer.ExternalLink href="https://twitter.com/hnsalliance" target="_blank" rel="noopener noreferrer">
+                <Footer.ExternalLink
+                  href="https://twitter.com/hnsalliance"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Twitter
                 </Footer.ExternalLink>
               </Footer.LinksContainer>
@@ -98,21 +109,35 @@ class FooterComponent extends Component {
         {this.context.isDark}
         <Footer.ToggleThemeContainer>
           <div className="field">
-            <input id="switchRoundedOutlinedDefault"
-              className="switch is-rounded is-outlined"
-              defaultChecked={this.context.isDark}
-              name="switchRoundedOutlinedDefault"
-              type="checkbox"
-              onChange={this.context.toggleTheme} />
-            <label htmlFor="switchRoundedOutlinedDefault"></label>
+            <ThemeToggler toggleTheme={this.props.toggleTheme} />
           </div>
-          <div className="version">Current Version: v0.0.1 <a className="hnscan-link" href="https://github.com/HandshakeAlliance/HNScan" target="_blank" rel="noopener noreferrer">Source</a></div>
-          <div className="copyright">&#9400; Handshake Alliance. All Rights Reserved.</div>
+          <div className="version">
+            Current Version: v0.0.1{" "}
+            <a
+              className="hnscan-link"
+              href="https://github.com/HandshakeAlliance/HNScan"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Source
+            </a>
+          </div>
+          <div className="copyright">
+            &#9400; Handshake Alliance. All Rights Reserved.
+          </div>
         </Footer.ToggleThemeContainer>
       </Footer.FooterContainer>
-    )
+    );
   }
 }
 
 // FooterComponent.contextType = ThemeToggleContext;
 export default FooterComponent;
+
+// <input id="switchRoundedOutlinedDefault"
+//   className="switch is-rounded is-outlined"
+//   defaultChecked={this.context.isDark}
+//   name="switchRoundedOutlinedDefault"
+//   type="checkbox"
+//   onChange={this.context.toggleTheme} />
+// <label htmlFor="switchRoundedOutlinedDefault"></label>

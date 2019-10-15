@@ -37,7 +37,7 @@ import useTheme from "./hooks/useTheme";
 
 //have it return a theme object and a toggle function.
 function App() {
-  const [theme] = useTheme();
+  const [theme, toggleTheme] = useTheme();
   return (
     <NetworkErrorBoundary>
       <ThemeProvider theme={theme}>
@@ -69,7 +69,7 @@ function App() {
                 <Route path="*" component={NotFoundScreen} />
               </Switch>
             </ContentContainer>
-            <FooterComponent />
+            <FooterComponent toggleTheme={toggleTheme}/>
           </Router>
         </>
       </ThemeProvider>

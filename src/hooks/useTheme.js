@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, createContext, useContext } from "react";
 import { themes } from "../util/themes";
 
 export default function useTheme() {
-
   //Configure theme via useState
   const [theme, setTheme] = useState(() => {
     const theme = localStorage.getItem("theme");
@@ -17,30 +16,31 @@ export default function useTheme() {
     }
   };
 
-  switch (theme) {
-    case "light":
-      return [themes["light"], toggleTheme];
-    case "dark":
-      return [themes["dark"], toggleTheme];
-    default:
-      return [themes["light"], toggleTheme];
-  }
+  return [themes[theme], toggleTheme];
 }
+// switch (theme) {
+//   case "light":
+//     return [themeContext, toggleTheme];
+//   case "dark":
+//     return [themes["dark"], toggleTheme];
+//   default:
+//     return [themes["light"], toggleTheme];
+// }
 
-  // document.documentElement.classList.add("color-theme-in-transition");
-  // if (localStorage.getItem("theme") === "light") {
-  //   localStorage.setItem("theme", "dark");
-  //   document.documentElement.setAttribute("data-theme", "dark");
-  // } else {
-  //   localStorage.setItem("theme", "light");
-  //   document.documentElement.removeAttribute("data-theme", "dark");
-  // }
+// document.documentElement.classList.add("color-theme-in-transition");
+// if (localStorage.getItem("theme") === "light") {
+//   localStorage.setItem("theme", "dark");
+//   document.documentElement.setAttribute("data-theme", "dark");
+// } else {
+//   localStorage.setItem("theme", "light");
+//   document.documentElement.removeAttribute("data-theme", "dark");
+// }
 
-  // let theme = localStorage.getItem("theme");
-  // if (!theme) {
-  //   localStorage.setItem("theme", "light");
-  //   theme = "light";
-  // }
+// let theme = localStorage.getItem("theme");
+// if (!theme) {
+//   localStorage.setItem("theme", "light");
+//   theme = "light";
+// }
 
 // import React, { Component } from 'react';
 // import { ThemeProvider } from 'styled-components';
