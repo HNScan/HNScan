@@ -1,73 +1,52 @@
 {
-  "name": "HNScan",
-  "version": "0.0.0",
-  "description": "A developer focused block explorer for Handshake.",
-  "main": "app.js",
-  "scripts": {
-    "start": "node src/app.js",
-    "start:prod": "npm run build; NODE_ENV=production node src/app.js",
-    "dev": "gulp",
-    "build": "gulp build",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HandshakeAlliance/HNScan.git"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/HandshakeAlliance/HNScan/issues"
-  },
-  "homepage": "https://github.com/HandshakeAlliance/HNScan#readme",
+  "name": "hnscan",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://new.hnscan.com",
   "dependencies": {
-    "autoprefixer": "^9.3.1",
-    "axios": "^0.18.1",
-    "boom": "^7.2.2",
-    "browser-sync": "^2.26.5",
-    "bsert": "0.0.8",
-    "bstring": "^0.3.5",
-    "config": "^2.0.1",
-    "cssnano": "^4.1.7",
-    "decimal.js": "^10.0.1",
-    "del": "^3.0.0",
-    "event-stream": "^3.3.4",
-    "gulp": "^4.0.0",
-    "gulp-babel": "^8.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-nodemon": "^2.4.1",
-    "gulp-postcss": "^8.0.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-terser": "^1.1.5",
-    "hapi": "^17.5.3",
-    "hs-airdrop": "0.1.0",
-    "hs-client": "0.0.3",
-    "hsd": "handshake-org/hsd#testnet4-stable",
-    "humanize-duration": "^3.15.3",
-    "inert": "^5.1.2",
-    "leaflet": "^1.3.4",
-    "nomenclate-js": "^0.5.0",
-    "postcss-import": "^12.0.1",
-    "precss": "^3.1.2",
-    "pug": "^2.0.3",
-    "urkel-js": "^0.9.3",
-    "vision": "^5.4.3"
+    "@urkellabs/ucl": "0.1.4",
+    "bulma": "^0.7.5",
+    "bulma-extensions": "^6.2.7",
+    "bulma-switch": "^2.0.0",
+    "decimal.js": "^10.2.0",
+    "humanize-duration": "^3.20.1",
+    "node-sass": "^4.12.0",
+    "query-string": "^6.8.3",
+    "react": "^16.9.0",
+    "react-content-loader": "^4.2.2",
+    "react-dom": "^16.9.0",
+    "react-loading-skeleton": "^1.1.2",
+    "react-router-dom": "^5.1.0",
+    "react-scripts": "3.1.1",
+    "reactbulma": "^3.0.4",
+    "rest-hooks": "^2.1.5",
+    "styled-components": "^4.3.2"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "setup": "yarn",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.1.5",
-    "@babel/preset-env": "^7.1.5",
-    "@babel/register": "^7.0.0",
-    "eslint": "^5.4.0",
-    "eslint-config-prettier": "^3.0.1",
-    "eslint-plugin-prettier": "^2.6.2",
-    "gulp-pug-linter": "^1.1.0",
-    "nodemon": "^1.18.7",
-    "prettier": "^1.14.2",
-    "pug-lint": "^2.5.0"
+    "gh-pages": "^2.1.1"
   }
 }

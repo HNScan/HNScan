@@ -1,334 +1,154 @@
-const { getClient } = require("./clients.js");
-const Covenant = require("hsd/lib/primitives/covenant");
-const rules = require("hsd/lib/covenants/rules");
-const {OwnershipProof} = require("hsd/lib/covenants/ownership");
-const AirdropProof = require("hsd/lib/primitives/airdropproof");
-const config = require("config");
+import humanizeDuration from "humanize-duration";
+import Decimal from "decimal.js";
 
-function currentBlockReward(blockHeight) {
-  //Block Reward starts at 1000, and halves every 340000 blocks
+const exponentScales = [
+  {
+    val: 1000000000000000000000000000000000,
+    name: "?",
+    abbreviation: "V",
+    exponent: "33"
+  },
+  {
+    val: 1000000000000000000000000000000,
+    name: "?",
+    abbreviation: "W",
+    exponent: "30"
+  },
+  {
+    val: 1000000000000000000000000000,
+    name: "?",
+    abbreviation: "X",
+    exponent: "27"
+  },
+  {
+    val: 1000000000000000000000000,
+    name: "yotta",
+    abbreviation: "Y",
+    exponent: "24"
+  },
+  {
+    val: 1000000000000000000000,
+    name: "zetta",
+    abbreviation: "Z",
+    exponent: "21"
+  },
+  { val: 1000000000000000000, name: "exa", abbreviation: "E", exponent: "18" },
+  { val: 1000000000000000, name: "peta", abbreviation: "P", exponent: "15" },
+  { val: 1000000000000, name: "tera", abbreviation: "T", exponent: "12" },
+  { val: 1000000000, name: "giga", abbreviation: "G", exponent: "9" },
+  { val: 1000000, name: "mega", abbreviation: "M", exponent: "6" },
+  { val: 1000, name: "kilo", abbreviation: "K", exponent: "3" },
+  { val: 0.001, name: "milli", abbreviation: "m", exponent: "-3" },
+  { val: 0.000001, name: "micro", abbreviation: "µ", exponent: "-6" },
+  { val: 0.000000001, name: "nano", abbreviation: "n", exponent: "-9" },
+  { val: 0.000000000001, name: "pico", abbreviation: "p", exponent: "-12" }
+];
 
-  //XXX Double check math on this
-  //Block halvening is 5000 blocks on Regtest
-  let exponent = Math.floor(blockHeight / 340000);
+export function formatLargeNumber(n, decimalPlaces) {
+  for (let i = 0; i < exponentScales.length; i++) {
+    let item = exponentScales[i];
 
-  let blockReward = 2000 / Math.pow(2, exponent);
-
-  //Need to convert back to HNS
-  return blockReward * 1000000;
-}
-
-//XXX Convert all of this to Bignum
-function getBlockTotalFees(coinbaseTx, blockHeight) {
-  if (coinbaseTx == null) {
-    return 0;
-  }
-
-  var blockReward = currentBlockReward(blockHeight);
-
-  const inputs = coinbaseTx.inputs;
-  const outputs = coinbaseTx.outputs;
-
-  // Start with the required coinbase output
-  let minerOutput = outputs[0].value;
-
-  for (let i = 1; i < outputs.length; i++) {
-    // Miner added extra subsidy payout outputs
-    if (!inputs[i]) {
-      minerOutput += outputs[i].value;
-    } else {
-      // let proof;
-      // try {
-      //   proof = AirdropProof.decode(Buffer.from(inputs[i].witness[0], "hex"));
-      // } catch (e) {
-      //   proof = OwnershipProof.decode(Buffer.from(inputs[i].witness[0], "hex"));
+    let fraction = new Decimal(n / item.val);
+    if (fraction >= 1) {
+      return [fraction.toDecimalPlaces(decimalPlaces), item];
     }
   }
 
-  return minerOutput - blockReward;
+  return [new Decimal(n).toDecimalPlaces(decimalPlaces), {}];
 }
 
-function _formatName(nameHex) {
-  var str = "";
-  for (var i = 0; i < nameHex.length; i += 2)
-    str += String.fromCharCode(parseInt(nameHex.substr(i, 2), 16));
-  return str;
+//We need to use Bignum across the board in this app. Make that a v2 task XXX
+export function hnsValues(amount) {
+  if (amount == null) return null;
+
+  let realAmount = amount / 1000000;
+  let stringAmount = numberWithCommas(realAmount).toString();
+  stringAmount += " HNS";
+  return stringAmount;
 }
 
-async function _formatInputs(inputs, height) {
-  let newInputs = [];
-  let client = getClient();
+export function numberWithCommas(x) {
+  let parts = x.toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return parts.join(".");
+}
 
-  //XXX Does not work for airdrops right now.
-  for (let input of inputs) {
-    if (!input.coin) {
-      input.value = currentBlockReward(height);
-    } else {
-      input.value = input.coin.value;
-      input.address = input.coin.address;
-    }
+export function truncateHash(hash) {
+  let num = 7;
+  let len = hash.length;
+  let firstHalf = hash.substring(0, num);
+  let secondHalf = hash.substring(len - num, len);
 
-    newInputs.push(input);
+  if (num * 2 >= hash) {
+    //can't be truncated with given num value
+    return hash;
   }
 
-  return newInputs;
+  return firstHalf + "...." + secondHalf;
 }
 
-async function _formatOutputs(outputs) {
-  let newOutputs = [];
-  let client = getClient();
+export function sumTxOutputs(outputs) {
+  let sum = 0;
 
-  for (let output of outputs) {
-    let newOutput = {};
-    //Declare vars for loop
-    let items = output.covenant.items;
-    let action = output.covenant.action;
-
-    //Add initial to output
-    newOutput.action = action;
-    newOutput.address = output.address;
-
-    //XXX We need to understand what the address represents in the case of a OPEN or a BID - there might be a special way we can represent this on the address page.
-    switch (action) {
-      case "NONE":
-        newOutput.value = output.value;
-        break;
-
-      case "OPEN":
-        newOutput.name = _formatName(items[2]);
-        break;
-
-      case "BID":
-        //XXX Need to decode start height
-        newOutput.startHeight = items[1];
-        newOutput.name = _formatName(items[2]);
-        newOutput.value = output.value;
-        break;
-
-      case "REVEAL":
-        //XXX Need to decode start height
-        newOutput.startHeight = items[1];
-        newOutput.nonce = items[2];
-        newOutput.value = output.value;
-        break;
-
-      case "REDEEM":
-        console.log(items);
-        break;
-
-      //Finish cases, add some tests for these.
-      // case "REGISTER":
-    }
-
-    if (action != "NONE") {
-      //XXX convert hash to actual name.
-      newOutput.nameHash = items[0];
-
-      if (!newOutput.name) {
-        newOutput.name = await client.execute("getnamebyhash", [
-          newOutput.nameHash
-        ]);
-      }
-    }
-
-    newOutputs.push(newOutput);
+  for (let i = 0; i < outputs.length; i++) {
+    sum = +outputs[i].value;
   }
 
-  return newOutputs;
+  return sum;
 }
 
-//Function to format transactions splits into outputs and inputs
-async function formatTransactions(txs) {
-  for (let tx of txs) {
-    tx.outputs = await _formatOutputs(tx.outputs);
-    tx.inputs = await _formatInputs(tx.inputs, tx.height);
+// Takes in a time stamp and returns the time ago something was (humanized)
+export function timeAgo(timestamp) {
+  if (timestamp <= 0) return;
+  return (
+    humanizeDuration(Date.now() - timestamp * 1000, {
+      largest: 1,
+      round: true
+    }) + " ago"
+  );
+}
+
+export function sciNotation(num, places) {
+  let arr = toSciNotation(num);
+  let number = arr[0].toFixed(places);
+  let exponent = arr[1];
+
+  return [number, exponent];
+}
+
+// Takes in a number and returns an array
+// return: [decimal, exponent]
+function toSciNotation(num) {
+  if (typeof num !== "number") {
+    return;
   }
 
-  return txs;
-}
-
-async function formatTransaction(tx) {
-  //XXX I feel like these don't need to be awaits...
-  tx.outputs = await _formatOutputs(tx.outputs);
-
-  tx.inputs = await _formatInputs(tx.inputs, tx.height);
-
-  return tx;
-}
-
-async function formatAuctionHistory(name, txs) {
-  let client = getClient();
-
-  //Get the name hash for matching.
-  let nameHash = rules.hashName(name).toString("hex");
-
-  let history = [];
-
-  //XXX Double check - but I believe that all name actions will be outputs
-  for (let tx of txs) {
-    let fulltx = await client.getTX(tx.tx_hash);
-    for (let o of fulltx.outputs) {
-      let newtx = {};
-      let cov = new Covenant(o.covenant.type, o.covenant.items);
-
-      if (cov.isName()) {
-        if (cov.get(0) === nameHash) {
-          if (cov.isOpen()) {
-            newtx.action = "Opened";
-          }
-
-          if (cov.isBid()) {
-            newtx.action = "Bid";
-            newtx.value = o.value;
-          }
-
-          if (cov.isReveal()) {
-            //See if we can connect Reveals to Bids using the nonce.
-            newtx.action = "Reveal";
-            newtx.value = o.value;
-          }
-
-          //XXX Add owner information to this.
-          //See if this is called on a transfer as well.
-          if (cov.isRegister()) {
-            //Link to the data on a new page.
-            newtx.action = "Register";
-          }
-
-          if (cov.isRedeem()) {
-            //Redeem non winning bids?
-            //Possibly also connect these to reveals and bids.
-            newtx.action = "Redeem";
-            newtx.value = o.value;
-          }
-
-          if (cov.isUpdate()) {
-            //Link data on new page
-            newtx.action = "Update";
-          }
-
-          if (cov.isRenew()) {
-            newtx.action = "Renew";
-          }
-
-          newtx.time = fulltx.mtime;
-          newtx.height = fulltx.height;
-
-          history.push(newtx);
-        }
-      }
-    }
+  if (!num) {
+    return [0, 0];
   }
 
-  return history;
-}
+  let sign = Math.sign(num);
+  let coefficient = Math.abs(num);
+  let isLarge = Math.floor(coefficient);
+  let exponent = 0;
 
-async function namesRegistered() {
-  let client = getClient();
-  let names;
-
-  try {
-    //Convert this to a DB action for v3.
-    //Although we should probably have both options available.
-    //If DB -> Do db version -> If not -> run this.
-    names = await client.execute("getnames");
-  } catch (e) {
-    console.log(e);
-  }
-
-  let namesClosed = names.filter(function(value, index, arr) {
-    return value.state === "CLOSED";
-  });
-
-  return namesClosed;
-}
-
-function formatName(name) {
-  //See: https://github.com/handshake-org/hsd/issues/74
-  //XXX Submit P.R. To fix this.
-  if (name.info && name.info.value === 0) {
-    name.info.value = name.info.highest;
-  }
-
-  name.nextState = formatNameNextState(name);
-
-  return name;
-}
-
-function formatNameNextState(name) {
-  let nextState = {};
-
-  if (name.info) {
-    switch (name.info.state) {
-      case "OPENING":
-        nextState.state = "BIDDING";
-        nextState.blocksUntil = name.info.stats.blocksUntilBidding;
-        break;
-
-      case "BIDDING":
-        nextState.state = "REVEAL";
-        nextState.blocksUntil = name.info.stats.blocksUntilReveal;
-        break;
-
-      case "REVEAL":
-        nextState.state = "CLOSED";
-        nextState.blocksUntil = name.info.stats.blocksUntilClose;
-        break;
-
-      case "CLOSED":
-        nextState.state = "RENEWAL";
-        nextState.blocksUntil = name.info.stats.blocksUntilExpire;
-        break;
+  if (isLarge) {
+    while (Math.floor(coefficient / 10) > 0) {
+      coefficient /= 10;
+      exponent++;
     }
   } else {
-    //Check if name is released or not. If it is, then change it's state.
-    nextState.state = "AVAILABLE";
-  }
-
-  return nextState;
-}
-
-function checkUrkel(feature) {
-  if (config.has("urkel-features")) {
-    if (config.get("urkel-features").includes(feature)) {
-      return true;
+    while (Math.floor(coefficient) < 1) {
+      coefficient *= 10;
+      exponent--;
     }
-    return null;
-  } else {
-    return null;
   }
+  return [sign * coefficient, exponent];
 }
 
-function paginate(total, limit, page, url) {
-  return (pagination = {
-    url: url,
-    page: page,
-    totalPages: Math.ceil(total / limit)
-  });
+//@todo
+export function checkPool(minerAddress) {
+  //Check if a pool exists with this address, otherwise just return.
+
+  return minerAddress;
 }
-
-async function formatBlock(block) {
-  let client = getClient();
-
-  let coinbaseTx = await client.getTX(block.tx[0].txid);
-  block.minedBy = coinbaseTx.outputs[0].address;
-  block.totalTxs = block.tx.length;
-  block.fees = getBlockTotalFees(coinbaseTx, block.height);
-  block.reward = currentBlockReward(block.height);
-
-  return block;
-}
-
-module.exports = {
-  getBlockTotalFees: getBlockTotalFees,
-  currentBlockReward: currentBlockReward,
-  formatTransactions: formatTransactions,
-  formatAuctionHistory: formatAuctionHistory,
-  namesRegistered: namesRegistered,
-  formatNameNextState: formatNameNextState,
-  formatName: formatName,
-  checkUrkel: checkUrkel,
-  paginate: paginate,
-  formatBlock: formatBlock,
-  formatTransaction: formatTransaction
-};
