@@ -2,9 +2,9 @@ import React, { Suspense } from "react";
 
 const ChartView = () => {
   return (
-    <div class="tabs is-toggle is-toggle-rounded">
+    <div className="tabs is-toggle is-toggle-rounded">
       <ul>
-        <li class="is-active">
+        <li className="is-active">
           <a>
             <span>Distribution</span>
           </a>

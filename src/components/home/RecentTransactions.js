@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "../styles/Card";
-import styled from "styled-components";
 import ContentLoader from "react-content-loader";
 
 import { Link } from "react-router-dom";
