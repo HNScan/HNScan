@@ -2,8 +2,8 @@ import React, { Suspense, useState, useEffect } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import Table from "reactbulma/lib/components/Table/Table.js";
 import styled from "styled-components";
-import * as Cards from "../components/Cards/Cards";
-import Pagination from "../components/Pagination";
+import Card from "../components/styles/Card";
+import Pagination from "../components/layout/Pagination";
 import queryString from "query-string";
 import { useResource, useResultCache } from "rest-hooks";
 import NameResource from "../resources/NameResource";
@@ -63,11 +63,11 @@ function NamesContainer(props) {
   // 25 blocks per page
   return (
     <>
-      <Cards.Card>
-        <Cards.Header>
-          <Cards.HeaderTitle>TLD Names</Cards.HeaderTitle>
-        </Cards.Header>
-        <Cards.Content>
+      <Card>
+        <Card.Header>
+          <Card.HeaderTitle>TLD Names</Card.HeaderTitle>
+        </Card.Header>
+        <Card.Content>
           <TableContainer>
             <BlocksTable>
               <Table.Head>
@@ -86,8 +86,8 @@ function NamesContainer(props) {
               <Table.Body>{nameRows}</Table.Body>
             </BlocksTable>
           </TableContainer>
-        </Cards.Content>
-      </Cards.Card>
+        </Card.Content>
+      </Card>
       <Pagination
         totalPages={pages}
         page={props.page}

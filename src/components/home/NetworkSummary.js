@@ -1,7 +1,7 @@
 import React from "react";
 
 // Components
-import * as Cards from "../Cards/Cards";
+import Card from "../styles/Card";
 
 // Util
 import { formatLargeNumber, sciNotation } from "../../util/util";
@@ -26,65 +26,65 @@ export default function NetworkSummary({ info }) {
   let registeredNames = info.registeredNames;
 
   return (
-    <Cards.Card>
-      <Cards.Header>
-        <Cards.HeaderTitle>Network Summary</Cards.HeaderTitle>
-      </Cards.Header>
+    <Card>
+      <Card.Header>
+        <Card.HeaderTitle>Network Summary</Card.HeaderTitle>
+      </Card.Header>
       {/* ----- Network Summary - Top Row ----- */}
-      <Cards.HorizontalContainer>
-        <Cards.Column>
-          <Cards.ItemContainer>
-            <Cards.ItemLabel>Hashrate</Cards.ItemLabel>
-            <Cards.ItemDetail>
+      <Card.HorizontalContainer>
+        <Card.Column>
+          <Card.ItemContainer>
+            <Card.ItemLabel>Hashrate</Card.ItemLabel>
+            <Card.ItemDetail>
               <span>{hashrate[0].toString()}</span>
               <span> {hashrate[1].abbreviation}H/s</span>
-            </Cards.ItemDetail>
-          </Cards.ItemContainer>
-        </Cards.Column>
-        <Cards.Column>
-          <Cards.ItemContainer>
-            <Cards.ItemLabel>Unconfirmed</Cards.ItemLabel>
-            <Cards.ItemDetail>
+            </Card.ItemDetail>
+          </Card.ItemContainer>
+        </Card.Column>
+        <Card.Column>
+          <Card.ItemContainer>
+            <Card.ItemLabel>Unconfirmed</Card.ItemLabel>
+            <Card.ItemDetail>
               <span>{handleUnconfirmed(unconfirmed, memSize)}</span>
-            </Cards.ItemDetail>
-          </Cards.ItemContainer>
-        </Cards.Column>
-        <Cards.Column>
-          <Cards.ItemContainer>
-            <Cards.ItemLabel>Network</Cards.ItemLabel>
-            <Cards.ItemDetail>
+            </Card.ItemDetail>
+          </Card.ItemContainer>
+        </Card.Column>
+        <Card.Column>
+          <Card.ItemContainer>
+            <Card.ItemLabel>Network</Card.ItemLabel>
+            <Card.ItemDetail>
               <span>{network}</span>
-            </Cards.ItemDetail>
-          </Cards.ItemContainer>
-        </Cards.Column>
-      </Cards.HorizontalContainer>
+            </Card.ItemDetail>
+          </Card.ItemContainer>
+        </Card.Column>
+      </Card.HorizontalContainer>
       {/* ----- Network Summary - Bottom Row ----- */}
-      <Cards.HorizontalContainer>
-        <Cards.Column>
-          <Cards.ItemContainer>
-            <Cards.ItemLabel>Opened Names</Cards.ItemLabel>
-            <Cards.ItemDetail>
+      <Card.HorizontalContainer>
+        <Card.Column>
+          <Card.ItemContainer>
+            <Card.ItemLabel>Opened Names</Card.ItemLabel>
+            <Card.ItemDetail>
               <span>{registeredNames}</span>
-            </Cards.ItemDetail>
-          </Cards.ItemContainer>
-        </Cards.Column>
-        <Cards.Column>
-          <Cards.ItemContainer>
-            <Cards.ItemLabel>Difficulty</Cards.ItemLabel>
-            <Cards.ItemDetail>
+            </Card.ItemDetail>
+          </Card.ItemContainer>
+        </Card.Column>
+        <Card.Column>
+          <Card.ItemContainer>
+            <Card.ItemLabel>Difficulty</Card.ItemLabel>
+            <Card.ItemDetail>
               {difficulty[0]} x 10<sup>{difficulty[1]}</sup>
-            </Cards.ItemDetail>
-          </Cards.ItemContainer>
-        </Cards.Column>
-        <Cards.Column>
-          <Cards.ItemContainer>
-            <Cards.ItemLabel>Chainwork</Cards.ItemLabel>
-            <Cards.ItemDetail>
+            </Card.ItemDetail>
+          </Card.ItemContainer>
+        </Card.Column>
+        <Card.Column>
+          <Card.ItemContainer>
+            <Card.ItemLabel>Chainwork</Card.ItemLabel>
+            <Card.ItemDetail>
               {chainwork[0]} x 10<sup>{chainwork[1]}</sup>
-            </Cards.ItemDetail>
-          </Cards.ItemContainer>
-        </Cards.Column>
-      </Cards.HorizontalContainer>
-    </Cards.Card>
+            </Card.ItemDetail>
+          </Card.ItemContainer>
+        </Card.Column>
+      </Card.HorizontalContainer>
+    </Card>
   );
 }

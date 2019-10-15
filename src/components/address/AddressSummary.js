@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Skeleton from "react-loading-skeleton";
 
 // Components
-import * as Cards from "../Cards/Cards";
+import Card from "../styles/Card";
 
 // Util
 import { hnsValues } from "../../util/util";
@@ -35,51 +35,51 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
         <AddressTitle>Address</AddressTitle>
         <AddressHash>{hash || <Skeleton />}</AddressHash>
       </AddressWrapper>
-      <Cards.Card>
-        <Cards.Header>
-          <Cards.HeaderTitle>Address Summary</Cards.HeaderTitle>
-        </Cards.Header>
-        <Cards.Content>
-          <Cards.HorizontalContainer>
-            <Cards.Column>
-              <Cards.ItemContainer>
-                <Cards.ItemLabel>Received</Cards.ItemLabel>
-                <Cards.ItemDetail>
+      <Card>
+        <Card.Header>
+          <Card.HeaderTitle>Address Summary</Card.HeaderTitle>
+        </Card.Header>
+        <Card.Content>
+          <Card.HorizontalContainer>
+            <Card.Column>
+              <Card.ItemContainer>
+                <Card.ItemLabel>Received</Card.ItemLabel>
+                <Card.ItemDetail>
                   {hnsValues(received) || (
                     <SkeletonWrapper>
                       <Skeleton />
                     </SkeletonWrapper>
                   )}
-                </Cards.ItemDetail>
-              </Cards.ItemContainer>
-            </Cards.Column>
-            <Cards.Column>
-              <Cards.ItemContainer>
-                <Cards.ItemLabel>Spent</Cards.ItemLabel>
-                <Cards.ItemDetail>
+                </Card.ItemDetail>
+              </Card.ItemContainer>
+            </Card.Column>
+            <Card.Column>
+              <Card.ItemContainer>
+                <Card.ItemLabel>Spent</Card.ItemLabel>
+                <Card.ItemDetail>
                   {hnsValues(spent) || (
                     <SkeletonWrapper>
                       <Skeleton />
                     </SkeletonWrapper>
                   )}
-                </Cards.ItemDetail>
-              </Cards.ItemContainer>
-            </Cards.Column>
-            <Cards.Column>
-              <Cards.ItemContainer>
-                <Cards.ItemLabel>Balance</Cards.ItemLabel>
-                <Cards.ItemDetail>
+                </Card.ItemDetail>
+              </Card.ItemContainer>
+            </Card.Column>
+            <Card.Column>
+              <Card.ItemContainer>
+                <Card.ItemLabel>Balance</Card.ItemLabel>
+                <Card.ItemDetail>
                   {hnsValues(confirmed) || (
                     <SkeletonWrapper>
                       <Skeleton />
                     </SkeletonWrapper>
                   )}
-                </Cards.ItemDetail>
-              </Cards.ItemContainer>
-            </Cards.Column>
-          </Cards.HorizontalContainer>
-        </Cards.Content>
-      </Cards.Card>
+                </Card.ItemDetail>
+              </Card.ItemContainer>
+            </Card.Column>
+          </Card.HorizontalContainer>
+        </Card.Content>
+      </Card>
     </>
   );
 }

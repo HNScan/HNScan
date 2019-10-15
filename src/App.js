@@ -4,12 +4,12 @@ import { NetworkErrorBoundary } from "rest-hooks";
 import { ThemeProvider } from "styled-components";
 
 // Special
-import GlobalStyles from "./components/GlobalStyles";
+import GlobalStyles from "./components/layout/GlobalStyles";
 
 // Components
-import Navigation from "./components/Navigation";
+import Navigation from "./components/layout/Navigation";
 import FooterComponent from "./components/Footer/FooterComponent";
-import ContentContainer from "./components/ContentContainer";
+import ContentContainer from "./components/layout/ContentContainer";
 
 // Main Pages
 import Address from "./screens/Address";

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import * as Cards from "./Cards/Cards";
+import Card from "./styles/Card";
 import StackedComponent from "./Stacked/StackedComponent";
 import { timeAgo } from "../util/util";
 
@@ -18,7 +18,7 @@ const SummaryCardItem = styled.div`
 const PeerInfo = ({ peers, ...props }) => {
   const peerRows = peers.map((peer, index) => (
     <SummaryCardItem>
-      <Cards.SummaryContainer>
+      <Card.SummaryContainer>
         <div className="columns">
           <div className="column">
             <StackedComponent label="Address" value={peer.addr} />
@@ -39,17 +39,17 @@ const PeerInfo = ({ peers, ...props }) => {
             />
           </div>
         </div>
-      </Cards.SummaryContainer>
+      </Card.SummaryContainer>
     </SummaryCardItem>
   ));
   return (
     <>
-      <Cards.Card>
-        <Cards.Header>
-          <Cards.HeaderTitle>Peers</Cards.HeaderTitle>
-        </Cards.Header>
-        <Cards.Content>{peerRows}</Cards.Content>
-      </Cards.Card>
+      <Card>
+        <Card.Header>
+          <Card.HeaderTitle>Peers</Card.HeaderTitle>
+        </Card.Header>
+        <Card.Content>{peerRows}</Card.Content>
+      </Card>
     </>
   );
 };

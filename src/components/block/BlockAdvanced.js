@@ -1,16 +1,16 @@
 import React from "react";
-import * as Cards from "../components/Cards/Cards";
-import StackedData from "../components/Stacked/StackedComponent";
-import { sciNotation, hnsValues } from "../util/util";
+import Card from "../styles/Card";
+import StackedData from "../Stacked/StackedComponent";
+import { sciNotation, hnsValues } from "../../util/util";
 
 export default function BlockAdvanced({ block }) {
   let [difficulty, exponent] = sciNotation(block.difficulty, 5);
 
   return (
-    <Cards.Card>
-      <Cards.Header>
-        <Cards.HeaderTitle>Advanced</Cards.HeaderTitle>
-      </Cards.Header>
+    <Card>
+      <Card.Header>
+        <Card.HeaderTitle>Advanced</Card.HeaderTitle>
+      </Card.Header>
       {/* @todo remove all these class names. */}
       {/* @todo need links in here */}
       {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
@@ -97,6 +97,6 @@ export default function BlockAdvanced({ block }) {
           </div>
         </div>
       </div>
-    </Cards.Card>
+    </Card>
   );
 }

@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import * as Cards from "../../components/Cards/Cards";
+import Card from "../styles/Card";
 import styled from "styled-components";
 import ContentLoader from "react-content-loader";
 
@@ -10,51 +10,49 @@ import Arrow from "../../components/Logos/rightArrow";
 
 const Transaction = ({ tx }) => (
   // ----- TX Details -----
-  <Cards.SummaryItemContainer>
-    <Cards.SummaryItem>
+  <Card.SummaryItemContainer>
+    <Card.SummaryItem>
       {/* ----- Left Side / Top Side ----- */}
-      <Cards.SummaryItemContent>
-        <Cards.LeftItemDetail>
-          <Cards.ItemLogo>
+      <Card.SummaryItemContent>
+        <Card.LeftItemDetail>
+          <Card.ItemLogo>
             <Arrow />
-          </Cards.ItemLogo>
+          </Card.ItemLogo>
           TX #:&nbsp;
           <Link className="hnscan-link" to={"/tx/" + tx.hash}>
             {Util.truncateHash(tx.hash)}
           </Link>
-        </Cards.LeftItemDetail>
-        <Cards.LeftItemDetail>
+        </Card.LeftItemDetail>
+        <Card.LeftItemDetail>
           Amount: {Util.hnsValues(Util.sumTxOutputs(tx.outputs))}
-        </Cards.LeftItemDetail>
-        <Cards.LeftItemDetail>
-          Fee: {Util.hnsValues(tx.fee)}
-        </Cards.LeftItemDetail>
-      </Cards.SummaryItemContent>
+        </Card.LeftItemDetail>
+        <Card.LeftItemDetail>Fee: {Util.hnsValues(tx.fee)}</Card.LeftItemDetail>
+      </Card.SummaryItemContent>
       {/* ----- Right Side / Bottom Side ----- */}
-      <Cards.SummaryItemContent>
-        <Cards.RightItemDetail>
+      <Card.SummaryItemContent>
+        <Card.RightItemDetail>
           <i>{Util.timeAgo(tx.time)}</i>
-        </Cards.RightItemDetail>
-      </Cards.SummaryItemContent>
-    </Cards.SummaryItem>
-  </Cards.SummaryItemContainer>
+        </Card.RightItemDetail>
+      </Card.SummaryItemContent>
+    </Card.SummaryItem>
+  </Card.SummaryItemContainer>
 );
 
 export default function RecentTransactions({ txs }) {
   const txRows = txs.map((tx, index) => <Transaction key={index} tx={tx} />);
 
   return (
-      <Cards.Card>
-        {/* ------ TX Header ----- */}
-        <Cards.Header>
-          <Cards.HeaderTitle>Recent Transactions</Cards.HeaderTitle>
-        </Cards.Header>
-        {/* ----- TX Content ----- */}
-        <Cards.SummaryContainer>
-          {/* This Fxn will return x number of transactions */}
-          {txRows}
-        </Cards.SummaryContainer>
-      </Cards.Card>
+    <Card>
+      {/* ------ TX Header ----- */}
+      <Card.Header>
+        <Card.HeaderTitle>Recent Transactions</Card.HeaderTitle>
+      </Card.Header>
+      {/* ----- TX Content ----- */}
+      <Card.SummaryContainer>
+        {/* This Fxn will return x number of transactions */}
+        {txRows}
+      </Card.SummaryContainer>
+    </Card>
   );
 }
 
@@ -64,9 +62,9 @@ RecentTransactions.propTypes = {
 };
 
 const TxLoading = () => (
-  <Cards.SummaryItemContainer>
-    <Cards.SummaryItem>
-      <Cards.SummaryItemContent>
+  <Card.SummaryItemContainer>
+    <Card.SummaryItem>
+      <Card.SummaryItemContent>
         <ContentLoader
           // height={97}
           // width={461}
@@ -81,8 +79,8 @@ const TxLoading = () => (
           {/* Amount */}
           <rect x="10" y="85" rx="3" ry="3" width="150" height="16" />
         </ContentLoader>
-      </Cards.SummaryItemContent>
-      <Cards.SummaryItemContent>
+      </Card.SummaryItemContent>
+      <Card.SummaryItemContent>
         <ContentLoader
           // height={97}
           // width={461}
@@ -96,7 +94,7 @@ const TxLoading = () => (
           {/* Time */}
           {/* <rect x="25" y="40" rx="3" ry="3" width="125" height="16" /> */}
         </ContentLoader>
-      </Cards.SummaryItemContent>
-    </Cards.SummaryItem>
-  </Cards.SummaryItemContainer>
+      </Card.SummaryItemContent>
+    </Card.SummaryItem>
+  </Card.SummaryItemContainer>
 );

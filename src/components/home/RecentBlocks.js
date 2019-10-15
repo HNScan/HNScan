@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 // Components
-import * as Cards from "../Cards/Cards";
+import Card from "../styles/Card";
 import * as Util from "../../util/util";
 
 // Svgs
@@ -26,20 +26,20 @@ export const MobileMiner = styled.div`
 
 const BlockCardItem = ({ block }) => {
   return (
-    <Cards.SummaryItemContainer>
-      <Cards.SummaryItem>
+    <Card.SummaryItemContainer>
+      <Card.SummaryItem>
         {/* ----- Left Side / Top Side ----- */}
-        <Cards.SummaryItemContent>
-          <Cards.LeftItemDetail>
-            <Cards.ItemLogo>
+        <Card.SummaryItemContent>
+          <Card.LeftItemDetail>
+            <Card.ItemLogo>
               <BlockLogo />
-            </Cards.ItemLogo>
+            </Card.ItemLogo>
             Block #:&nbsp;
             <Link className="hnscan-link" to={"/block/" + block.height}>
               {block.height}
             </Link>
-          </Cards.LeftItemDetail>
-          <Cards.LeftItemDetail>
+          </Card.LeftItemDetail>
+          <Card.LeftItemDetail>
             <Miner>
               Mined By:&nbsp;
               <Link className="hnscan-link" to={"/address/" + block.miner}>
@@ -53,13 +53,13 @@ const BlockCardItem = ({ block }) => {
                 {Util.truncateHash(block.miner)}
               </Link>
             </MobileMiner>
-          </Cards.LeftItemDetail>
-          <Cards.LeftItemDetail>
+          </Card.LeftItemDetail>
+          <Card.LeftItemDetail>
             Transactions: {block.tx.length}
-          </Cards.LeftItemDetail>
-        </Cards.SummaryItemContent>
-      </Cards.SummaryItem>
-    </Cards.SummaryItemContainer>
+          </Card.LeftItemDetail>
+        </Card.SummaryItemContent>
+      </Card.SummaryItem>
+    </Card.SummaryItemContainer>
   );
 };
 
@@ -68,14 +68,14 @@ export default function RecentBlocks({ blocks }) {
     <BlockCardItem key={index} block={block} />
   ));
   return (
-    <Cards.Card>
-      <Cards.Header>
-        <Cards.HeaderTitle>Blocks</Cards.HeaderTitle>
-        <Cards.HeaderLink className="hnscan-link" to="/blocks">
+    <Card>
+      <Card.Header>
+        <Card.HeaderTitle>Blocks</Card.HeaderTitle>
+        <Card.HeaderLink className="hnscan-link" to="/blocks">
           View All
-        </Cards.HeaderLink>
-      </Cards.Header>
-      <Cards.SummaryContainer>{blockRows}</Cards.SummaryContainer>
-    </Cards.Card>
+        </Card.HeaderLink>
+      </Card.Header>
+      <Card.SummaryContainer>{blockRows}</Card.SummaryContainer>
+    </Card>
   );
 }

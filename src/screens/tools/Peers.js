@@ -5,7 +5,7 @@ import queryString from "query-string";
 // import PeersInfoComponent from "./PeersInfoComponent";
 import { useResource, useResultCache } from "rest-hooks";
 import PeerResource from "../../resources/PeerResource";
-import Pagination from "../../components/Pagination";
+import Pagination from "../../components/layout/Pagination";
 import PeerInfo from "../../components/PeerInfo";
 
 // export default class PeersScreen extends Component {

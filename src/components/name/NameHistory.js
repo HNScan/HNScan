@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // Components
-import * as Cards from "./Cards/Cards";
-import Pagination from "./Pagination";
+import Card from "../styles/Card";
+import Pagination from "../layout/Pagination";
 
 // Util
-import { hnsValues, timeAgo } from "../util/util";
+import { hnsValues, timeAgo } from "../../util/util";
 
 //@todo th/tr do not work on Dark mode!! We need to have dark mode just set the global font color to something different.
 //@todo last element is showing a bottom border.
@@ -25,10 +25,10 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
   ));
   return (
     <>
-      <Cards.Card>
-        <Cards.Header>
-          <Cards.HeaderTitle>History</Cards.HeaderTitle>
-        </Cards.Header>
+      <Card>
+        <Card.Header>
+          <Card.HeaderTitle>History</Card.HeaderTitle>
+        </Card.Header>
         {/* @todo remove all these class names. */}
         {/* @todo need links in here */}
         {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
@@ -48,7 +48,7 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
             </table>
           )}
         </div>
-      </Cards.Card>
+      </Card>
       <Pagination
         totalPages={pages}
         page={page}

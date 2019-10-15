@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import { useResource, useResultCache } from "rest-hooks";
 
 // Components
-import NameSummary from "../components/NameSummary";
-import NameAdvanced from "../components/NameAdvanced";
-import NameHistory from "../components/NameHistory";
+import NameSummary from "../components/name/NameSummary";
+import NameAdvanced from "../components/name/NameAdvanced";
+import NameHistory from "../components/name/NameHistory";
 
 // Resources
 import NameHistoryResource from "../resources/NameHistoryResource";

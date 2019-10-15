@@ -4,8 +4,8 @@ import { useResource } from "rest-hooks";
 
 // Components
 import TransactionList from "../components/TransactionList";
-import BlockSummary from "../components/BlockSummary";
-import BlockAdvanced from "../components/BlockAdvanced";
+import BlockSummary from "../components/block/BlockSummary";
+import BlockAdvanced from "../components/block/BlockAdvanced";
 
 // Resources
 import BlockResource from "../resources/BlockResource";

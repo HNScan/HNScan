@@ -1,5 +1,5 @@
 // These are custom components for the home screen
-import styled from 'styled-components';
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // ----- REUSABLE GENERICS -----
@@ -22,14 +22,14 @@ export const Card = styled.div`
 `;
 
 // The header of every card
-export const Header = styled.div`
+const Header = styled.div`
   align-items: stretch;
   box-shadow: 0 1px 2px rgba(10, 10, 10, 0.1);
   display: flex;
 `;
 
 // The header title on every card
-export const HeaderTitle = styled.div`
+const HeaderTitle = styled.div`
   color: ${props => props.theme["--text-color-normal"]};
   align-items: center;
   display: flex;
@@ -39,7 +39,7 @@ export const HeaderTitle = styled.div`
 `;
 
 // View all links in the header
-export const HeaderLink = styled(Link)`
+const HeaderLink = styled(Link)`
   align-items: center;
   cursor: pointer;
   display: flex;
@@ -48,21 +48,21 @@ export const HeaderLink = styled(Link)`
 `;
 
 // Content container for all cards
-export const Content = styled.div`
+const Content = styled.div`
   display: flex;
   flex-direction: column;
   height: auto;
   padding: 1.5rem;
 `;
 
-export const SummaryContainer = styled.div`
+const SummaryContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: auto;
 `;
 
 // Individual item containers for all cards
-export const ItemContainer = styled.div`
+const ItemContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -71,7 +71,7 @@ export const ItemContainer = styled.div`
 `;
 
 // ----- NETWORK SUMMARY SPECIFIC -----
-export const HorizontalContainer = styled.div`
+const HorizontalContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -89,7 +89,7 @@ export const HorizontalContainer = styled.div`
   }
 `;
 
-export const Column = styled.div`
+const Column = styled.div`
   width: 100%;
   padding: 12px;
 
@@ -98,17 +98,17 @@ export const Column = styled.div`
   }
 `;
 
-export const ItemLabel = styled.div`
+const ItemLabel = styled.div`
   font-weight: 800;
 `;
 
-export const ItemDetail = styled.div`
+const ItemDetail = styled.div`
   font-size: 24px;
 `;
 
 // ----- TX'S AND BLOCKS SPECIFIC -----
 // Used on the home screen for recent TX's and Blocks
-export const SummaryItemContainer = styled.div`
+const SummaryItemContainer = styled.div`
   display: flex;
   width: 100%;
   /* TODO: this needs to change to auto to take height of content */
@@ -121,7 +121,7 @@ export const SummaryItemContainer = styled.div`
   }
 `;
 
-export const SummaryItem = styled.div`
+const SummaryItem = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -131,13 +131,13 @@ export const SummaryItem = styled.div`
   }
 `;
 
-export const SummaryItemContent = styled.div`
+const SummaryItemContent = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 `;
 
-export const LeftItemDetail = styled.div`
+const LeftItemDetail = styled.div`
   font-size: 12px;
   margin: 2px 0;
 
@@ -148,7 +148,7 @@ export const LeftItemDetail = styled.div`
   }
 `;
 
-export const RightItemDetail = styled.div`
+const RightItemDetail = styled.div`
   display: flex;
   font-size: 12px;
   margin: 2px 0;
@@ -158,7 +158,7 @@ export const RightItemDetail = styled.div`
   }
 `;
 
-export const ItemLogo = styled.div`
+const ItemLogo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,3 +166,20 @@ export const ItemLogo = styled.div`
   width: 20px;
   margin: 1px 5px 0 0;
 `;
+
+Card.Header = Header;
+Card.HeaderTitle = HeaderTitle;
+Card.HeaderLink = HeaderLink;
+Card.Content = Content;
+Card.SummaryContainer = SummaryContainer;
+Card.ItemContainer = ItemContainer;
+Card.HorizontalContainer = HorizontalContainer;
+Card.Column = Column;
+Card.ItemDetail = ItemDetail;
+Card.ItemLabel = ItemLabel;
+Card.SummaryItem = SummaryItem;
+Card.SummaryItemContent = SummaryItemContent;
+Card.SummaryItemContainer = SummaryItemContainer;
+Card.LeftItemDetail = LeftItemDetail;
+Card.RightItemDetail = RightItemDetail;
+Card.ItemLogo = ItemLogo;

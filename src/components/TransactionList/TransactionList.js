@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Pagination from "../Pagination";
+import Pagination from "../layout/Pagination";
 //@todo fix this
-import * as Cards from "../Cards/Cards";
+import Card from "../styles/Card";
 import { InputList, OutputList } from "./PutsList";
 import { title } from "./util";
 import TransactionResource from "../../resources/TransactionResource";
@@ -63,14 +63,14 @@ const TransactionList = ({ url, page, from }) => {
   ));
   return (
     <>
-      <Cards.Card>
-        <Cards.Header>
-          <Cards.HeaderTitle>
+      <Card>
+        <Card.Header>
+          <Card.HeaderTitle>
             {title(total, "Transaction")} ({offset + 1}-{offset + txs.length})
-          </Cards.HeaderTitle>
-        </Cards.Header>
-        <Cards.Content>{renderTransactions}</Cards.Content>
-      </Cards.Card>
+          </Card.HeaderTitle>
+        </Card.Header>
+        <Card.Content>{renderTransactions}</Card.Content>
+      </Card>
       <Pagination totalPages={pages} page={page} url={url} />
     </>
   );

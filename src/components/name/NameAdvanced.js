@@ -1,18 +1,18 @@
 import React from "react";
 
 // Components
-import * as Cards from "./Cards/Cards";
-import StackedData from "./Stacked/StackedComponent";
+import Card from "../styles/Card";
+import StackedData from "../Stacked/StackedComponent";
 
 // Util
-import { hnsValues } from "../util/util";
+import { hnsValues } from "../../util/util";
 
 export default function NameSummary({ name }) {
   return (
-    <Cards.Card>
-      <Cards.Header>
-        <Cards.HeaderTitle>Advanced</Cards.HeaderTitle>
-      </Cards.Header>
+    <Card>
+      <Card.Header>
+        <Card.HeaderTitle>Advanced</Card.HeaderTitle>
+      </Card.Header>
       {/* @todo remove all these class names. */}
       {/* @todo need links in here */}
       {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
@@ -59,6 +59,6 @@ export default function NameSummary({ name }) {
           </div>
         </div>
       </div>
-    </Cards.Card>
+    </Card>
   );
 }

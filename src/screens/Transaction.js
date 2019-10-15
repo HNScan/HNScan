@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { timeAgo, hnsValues, sumTxOutputs } from "../util/util";
 import { InputList, OutputList } from "../components/TransactionList/PutsList";
 import styled from "styled-components";
-import * as Cards from "../components/Cards/Cards";
+import Card from "../components/styles/Card";
 import StackedComponent from "../components/Stacked/StackedComponent";
 import TransactionResource from "../resources/TransactionResource";
 
@@ -31,48 +31,48 @@ function TxDetailScreen({ hash }) {
   return (
     <>
       {/* ------- Top Card ------ */}
-      <Cards.Card>
-        <Cards.Header>
-          <Cards.HeaderTitle>Transaction Summary</Cards.HeaderTitle>
-        </Cards.Header>
-        <Cards.Content>
-          <Cards.HorizontalContainer>
-            <Cards.Column>
-              <Cards.ItemContainer>
-                <Cards.ItemLabel>Received</Cards.ItemLabel>
-                <Cards.ItemDetail>{timeAgo(tx.time)}</Cards.ItemDetail>
-              </Cards.ItemContainer>
-            </Cards.Column>
-            <Cards.Column>
-              <Cards.ItemContainer>
-                <Cards.ItemLabel>Amount</Cards.ItemLabel>
-                <Cards.ItemDetail>
+      <Card>
+        <Card.Header>
+          <Card.HeaderTitle>Transaction Summary</Card.HeaderTitle>
+        </Card.Header>
+        <Card.Content>
+          <Card.HorizontalContainer>
+            <Card.Column>
+              <Card.ItemContainer>
+                <Card.ItemLabel>Received</Card.ItemLabel>
+                <Card.ItemDetail>{timeAgo(tx.time)}</Card.ItemDetail>
+              </Card.ItemContainer>
+            </Card.Column>
+            <Card.Column>
+              <Card.ItemContainer>
+                <Card.ItemLabel>Amount</Card.ItemLabel>
+                <Card.ItemDetail>
                   {hnsValues(sumTxOutputs(tx.outputs))}
-                </Cards.ItemDetail>
-              </Cards.ItemContainer>
-            </Cards.Column>
-            <Cards.Column>
-              <Cards.ItemContainer>
-                <Cards.ItemLabel>Fee</Cards.ItemLabel>
-                <Cards.ItemDetail>{hnsValues(tx.fee)}</Cards.ItemDetail>
-              </Cards.ItemContainer>
-            </Cards.Column>
-            <Cards.Column>
-              <Cards.ItemContainer>
-                <Cards.ItemLabel>Confirmations</Cards.ItemLabel>
-                <Cards.ItemDetail>{tx.confirmations}</Cards.ItemDetail>
-              </Cards.ItemContainer>
-            </Cards.Column>
-          </Cards.HorizontalContainer>
-        </Cards.Content>
-      </Cards.Card>
+                </Card.ItemDetail>
+              </Card.ItemContainer>
+            </Card.Column>
+            <Card.Column>
+              <Card.ItemContainer>
+                <Card.ItemLabel>Fee</Card.ItemLabel>
+                <Card.ItemDetail>{hnsValues(tx.fee)}</Card.ItemDetail>
+              </Card.ItemContainer>
+            </Card.Column>
+            <Card.Column>
+              <Card.ItemContainer>
+                <Card.ItemLabel>Confirmations</Card.ItemLabel>
+                <Card.ItemDetail>{tx.confirmations}</Card.ItemDetail>
+              </Card.ItemContainer>
+            </Card.Column>
+          </Card.HorizontalContainer>
+        </Card.Content>
+      </Card>
 
       {/* Bottom Card */}
-      <Cards.Card>
-        <Cards.Header>
-          <Cards.HeaderTitle>Advanced</Cards.HeaderTitle>
-        </Cards.Header>
-        <Cards.Content>
+      <Card>
+        <Card.Header>
+          <Card.HeaderTitle>Advanced</Card.HeaderTitle>
+        </Card.Header>
+        <Card.Content>
           <div className="columns">
             <div className="column is-half">
               <table className="table is-fullwidth">
@@ -114,14 +114,14 @@ function TxDetailScreen({ hash }) {
               </table>
             </div>
           </div>
-        </Cards.Content>
-      </Cards.Card>
+        </Card.Content>
+      </Card>
 
-      <Cards.Card>
-        <Cards.Header>
-          <Cards.HeaderTitle>TX Activity</Cards.HeaderTitle>
-        </Cards.Header>
-        <Cards.Content>
+      <Card>
+        <Card.Header>
+          <Card.HeaderTitle>TX Activity</Card.HeaderTitle>
+        </Card.Header>
+        <Card.Content>
           <Container>
             <div className="columns">
               <div className="column is-half">
@@ -132,8 +132,8 @@ function TxDetailScreen({ hash }) {
               </div>
             </div>
           </Container>
-        </Cards.Content>
-      </Cards.Card>
+        </Card.Content>
+      </Card>
     </>
   );
 }

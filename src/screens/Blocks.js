@@ -2,9 +2,9 @@ import React, { Suspense } from "react";
 import { useResource, useResultCache } from "rest-hooks";
 
 // Components
-import Pagination from "../components/Pagination";
-import * as Cards from "../components/Cards/Cards";
-import BlockList from "../components/BlockList";
+import Pagination from "../components/layout/Pagination";
+import Card from "../components/styles/Card";
+import BlockList from "../components/block/BlockList";
 
 // Hooks
 import usePage from "../hooks/usePage";
@@ -21,14 +21,14 @@ function BlocksView({ page }) {
   const pages = Math.ceil(total / limit);
   return (
     <>
-      <Cards.Card>
-        <Cards.Header>
-          <Cards.HeaderTitle>HNS Blocks</Cards.HeaderTitle>
-        </Cards.Header>
-        <Cards.Content>
+      <Card>
+        <Card.Header>
+          <Card.HeaderTitle>HNS Blocks</Card.HeaderTitle>
+        </Card.Header>
+        <Card.Content>
           <BlockList blocks={blocks} />
-        </Cards.Content>
-      </Cards.Card>
+        </Card.Content>
+      </Card>
       <Pagination totalPages={pages} page={page} url="/blocks" />
     </>
   );

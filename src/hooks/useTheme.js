@@ -3,8 +3,6 @@ import { themes } from "../util/themes";
 
 export default function useTheme() {
 
-  //@todo consider just changing this to theme isDark true/false. Easier togglging as well.
-  //setTheme(prevState => !prevState);
   //Configure theme via useState
   const [theme, setTheme] = useState(() => {
     const theme = localStorage.getItem("theme");
