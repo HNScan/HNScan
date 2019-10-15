@@ -13,7 +13,7 @@ const Logo = () => (
     <g
       id="Page-1"
       stroke="none"
-      stroke-width="1"
+      strokeWidth="1"
       fill="none"
       fill-rule="evenodd"
     >
@@ -22,7 +22,7 @@ const Logo = () => (
           <rect
             id="Box-Outline"
             stroke="#1D2D35"
-            stroke-width="1.57"
+            strokeWidth="1.57"
             x="0.785"
             y="0.785"
             width="42.43"
@@ -45,7 +45,7 @@ const Logo = () => (
             <rect
               id="Box-Outline"
               stroke="#1D2D35"
-              stroke-width="1.57"
+              strokeWidth="1.57"
               x="0.785"
               y="0.785"
               width="20.43"
@@ -61,7 +61,7 @@ const Logo = () => (
             <rect
               id="Box-Outline"
               stroke="#1D2D35"
-              stroke-width="1.57"
+              strokeWidth="1.57"
               x="0.785"
               y="22.785"
               width="20.43"

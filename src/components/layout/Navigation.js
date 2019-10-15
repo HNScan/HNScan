@@ -133,7 +133,7 @@ export default function Navigation() {
                   rel="noopener noreferrer"
                 >
                   Report an issue&nbsp;
-                  <i class="fas fa-external-link-alt has-text-grey fa-sm"></i>
+                  <i className="fas fa-external-link-alt has-text-grey fa-sm"></i>
                 </NavBar.Item>
               </NavBar.Dropdown>
             </NavLinkItem>

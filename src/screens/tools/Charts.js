@@ -5,12 +5,12 @@ const ChartView = () => {
     <div className="tabs is-toggle is-toggle-rounded">
       <ul>
         <li className="is-active">
-          <a>
+          <a href="/charts">
             <span>Distribution</span>
           </a>
         </li>
         <li>
-          <a>
+          <a href="/charts">
             <span>Hash Rate</span>
           </a>
         </li>
