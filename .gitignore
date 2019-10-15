@@ -26,3 +26,6 @@ src/dest/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Commit to only using Yarn
+package-lock.json
