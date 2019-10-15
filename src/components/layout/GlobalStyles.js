@@ -24,6 +24,14 @@ const GlobalStyles = createGlobalStyle`
       }
     }
 
+    html.color-theme-in-transition,
+    html.color-theme-in-transition *,
+    html.color-theme-in-transition *:before,
+    html.color-theme-in-transition *:after {
+      transition: all 750ms !important;
+      transition-delay: 0 !important;
+    }
+
 
 
     // table {
