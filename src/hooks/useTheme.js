@@ -6,8 +6,20 @@ import useLocalStorage from "./useLocalStorage";
 // Util
 import { themes } from "../util/themes";
 
+function userPrefersDark() {
+  //@todo this is probably bad because we want to grab the raw value not just check if they prefer dark.
+  //They might prefer colorblind, etc.
+  const darkMatcher = window.matchMedia("(prefers-color-scheme: dark)");
+  return darkMatcher.matches;
+}
+
 export default function useTheme() {
-  const [storedTheme, storeTheme] = useLocalStorage("theme", "light");
+  const prefersDark = userPrefersDark();
+
+  const [storedTheme, storeTheme] = useLocalStorage(
+    "theme",
+    prefersDark ? "dark" : "light"
+  );
 
   const [theme, setTheme] = useState(storedTheme);
 
