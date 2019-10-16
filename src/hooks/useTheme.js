@@ -7,8 +7,6 @@ import useLocalStorage from "./useLocalStorage";
 import { themes } from "../util/themes";
 
 function userPrefersDark() {
-  //@todo this is probably bad because we want to grab the raw value not just check if they prefer dark.
-  //They might prefer colorblind, etc.
   const darkMatcher = window.matchMedia("(prefers-color-scheme: dark)");
   return darkMatcher.matches;
 }
@@ -33,6 +31,12 @@ export default function useTheme() {
 
     //Update state
     setTheme(theme);
+
+    //Remove the transition class after theme has transitioned.
+    //@smells -> Slight code smell, but don't see a better way to do this as of right now.
+    setTimeout(() => {
+      document.documentElement.classList.remove("color-theme-in-transition");
+    }, 1000);
   };
 
   const toggleTheme = () => {
