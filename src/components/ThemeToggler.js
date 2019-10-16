@@ -9,7 +9,8 @@ import LightThemeIcon from "./svg/LightThemeIcon";
 const ThemeIcon = styled.svg`
   cursor: pointer;
   stroke: ${props => props.theme.global.textColor};
-  color: ${props => props.theme.global.textColor};
+  // fill: ${props => props.theme.global.textColor};
+  // color: ${props => props.theme.global.textColor};
 `;
 
 //@todo Need a way to know what theme we are.

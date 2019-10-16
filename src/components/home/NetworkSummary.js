@@ -72,7 +72,8 @@ export default function NetworkSummary({ info }) {
           <Card.ItemContainer>
             <Card.ItemLabel>Difficulty</Card.ItemLabel>
             <Card.ItemDetail>
-              {difficulty[0]} x 10<sup>{difficulty[1]}</sup>
+              {difficulty[0]} x 10
+              <sup>{difficulty[1]}</sup>
             </Card.ItemDetail>
           </Card.ItemContainer>
         </Card.Column>
