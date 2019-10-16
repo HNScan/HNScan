@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import useTheme from "../hooks/useTheme";
 
 // SVGs
 import DarkThemeIcon from "./svg/DarkThemeIcon";
@@ -12,22 +13,14 @@ const ThemeIcon = styled.svg`
 `;
 
 //@todo Need a way to know what theme we are.
-export default function ThemeToggler({ toggleTheme, currentTheme }) {
-  //@todo make this dynamic.
-  const [theme, setTheme] = useState(currentTheme);
-  const toggle = () => {
-    toggleTheme();
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
+export default function ThemeToggler() {
+  const [, toggleTheme, current] = useTheme();
+
   const themeIcon = () => {
-    if (theme === "dark") {
-      return <ThemeIcon as={LightThemeIcon} onClick={e => toggle()} />;
+    if (current === "dark") {
+      return <ThemeIcon as={LightThemeIcon} onClick={e => toggleTheme()} />;
     } else {
-      return <ThemeIcon as={DarkThemeIcon} onClick={e => toggle()} />;
+      return <ThemeIcon as={DarkThemeIcon} onClick={e => toggleTheme()} />;
     }
   };
   return <> {themeIcon()} </>;

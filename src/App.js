@@ -35,9 +35,8 @@ import NotFoundScreen from "./screens/errors/NotFound";
 // Hooks
 import useTheme from "./hooks/useTheme";
 
-//have it return a theme object and a toggle function.
 function App() {
-  const [theme, toggleTheme, currentTheme] = useTheme();
+  const [theme] = useTheme();
   return (
     <NetworkErrorBoundary>
       <ThemeProvider theme={theme}>
@@ -69,10 +68,7 @@ function App() {
                 <Route path="*" component={NotFoundScreen} />
               </Switch>
             </ContentContainer>
-            <FooterComponent
-              toggleTheme={toggleTheme}
-              currentTheme={currentTheme}
-            />
+            <FooterComponent />
           </Router>
         </>
       </ThemeProvider>

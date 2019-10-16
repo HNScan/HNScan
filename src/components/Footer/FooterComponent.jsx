@@ -109,10 +109,7 @@ class FooterComponent extends Component {
         {this.context.isDark}
         <Footer.ToggleThemeContainer>
           <div className="field">
-            <ThemeToggler
-              toggleTheme={this.props.toggleTheme}
-              currentTheme={this.props.currentTheme}
-            />
+            <ThemeToggler />
           </div>
           <div className="version">
             Current Version: v0.0.1{" "}

@@ -1,7 +1,5 @@
-import { useState } from "react";
-
 // Hooks
-import useLocalStorage from "./useLocalStorage";
+import usePersistedState from "./usePersistedState";
 
 // Util
 import { themes } from "../util/themes";
@@ -14,19 +12,13 @@ function userPrefersDark() {
 export default function useTheme() {
   const prefersDark = userPrefersDark();
 
-  const [storedTheme, storeTheme] = useLocalStorage(
+  const [theme, setTheme] = usePersistedState(
     "theme",
     prefersDark ? "dark" : "light"
   );
 
-  const [theme, setTheme] = useState(storedTheme);
-
   const updateTheme = theme => {
-    //Store the theme in localstorage
-    storeTheme(theme);
-
-    //Adds transitions to the theme. @todo likely a cleaner way to do this here.
-    //Can we just enable this from the start?
+    //Adds transitions to the theme. @smells likely a cleaner way to do this here.
     document.documentElement.classList.add("color-theme-in-transition");
 
     //Update state
