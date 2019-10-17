@@ -19,6 +19,7 @@ export const FooterContainer = styled.div`
   width: 100%;
   height: auto;
   padding-top: 25px;
+  padding-bottom: 25px;
 `;
 
 export const ContentContainer = styled.div`
