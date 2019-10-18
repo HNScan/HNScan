@@ -17,3 +17,5 @@ jobs:
           yarn
           yarn build
           yarn test
+        env:
+          CI: true
