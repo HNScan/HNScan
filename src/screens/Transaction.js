@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { useResource } from "rest-hooks";
 import { useParams } from "react-router-dom";
 import { timeAgo, hnsValues, sumTxOutputs } from "../util/util";
-import { InputList, OutputList } from "../components/TransactionList/PutsList";
+import { InputList, OutputList } from "components/shared/PutsList";
 import styled from "styled-components";
 import Card from "../components/styles/Card";
 import StackedComponent from "../components/Stacked/StackedComponent";
