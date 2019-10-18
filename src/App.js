@@ -8,7 +8,7 @@ import GlobalStyles from "./components/layout/GlobalStyles";
 
 // Components
 import Navigation from "./components/layout/Navigation";
-import FooterComponent from "./components/Footer/FooterComponent";
+import Footer from "./components/layout/Footer";
 import ContentContainer from "./components/layout/ContentContainer";
 
 // Main Pages
@@ -68,7 +68,7 @@ function App() {
                 <Route path="*" component={NotFoundScreen} />
               </Switch>
             </ContentContainer>
-            <FooterComponent />
+            <Footer />
           </Router>
         </>
       </ThemeProvider>
