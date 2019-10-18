@@ -21,10 +21,17 @@ After cloning this repository:
  > yarn start
 ```
 
-### 3. Hosted Website
+### 2. Hosted Website
 
 Visit [HNScan](https://HNScan.com)
 
+
+### Development
+
+The easiest way to develop on HNScan, both the frontend and the backend, is by using `yarn/npm link`. Inside of your hnscan-backend directory, run `yarn/npm link` and wait for the process to finish.
+Once the linking process is complete, from your `hsd` folder, run `yarn/npm link hnscan`. This will now allow you run the hnscan plugin from a local install, and changes will be picked up on hsd restarts. 
+
+Lastly, run `./bin/hsd --index-tx=true --index-address=true --plugins=hnscan` from inside your hsd folder to complete the backend setup.
 
 ## License
 
