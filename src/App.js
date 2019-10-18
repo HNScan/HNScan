@@ -8,7 +8,7 @@ import GlobalStyles from "./components/layout/GlobalStyles";
 
 // Components
 import Navigation from "./components/layout/Navigation";
-import FooterComponent from "./components/Footer/FooterComponent";
+import Footer from "./components/layout/Footer";
 import ContentContainer from "./components/layout/ContentContainer";
 
 // Main Pages
@@ -35,7 +35,6 @@ import NotFoundScreen from "./screens/errors/NotFound";
 // Hooks
 import useTheme from "./hooks/useTheme";
 
-//have it return a theme object and a toggle function.
 function App() {
   const [theme] = useTheme();
   return (
@@ -69,7 +68,7 @@ function App() {
                 <Route path="*" component={NotFoundScreen} />
               </Switch>
             </ContentContainer>
-            <FooterComponent />
+            <Footer />
           </Router>
         </>
       </ThemeProvider>

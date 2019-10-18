@@ -38,6 +38,28 @@ export const themes = {
     "--ha-color": "#532ad1"
   },
   dark: {
+    global: {
+      background: "#323232",
+      textColor: "#afafaf",
+      textColorLight: "#969696",
+      linkColor: "#3273dc",
+      linkColorHover: "#cfcfcf"
+    },
+    breakpoints: {
+      desktop: "1024px"
+    },
+    cards: {
+      borderColor: "#dfdfdf"
+    },
+    nav: {
+      background: "#323232",
+      borderColor: "#dfdfdf"
+    },
+    search: {
+      background: "#fff",
+      borderColor: "#e7e7e7",
+      textColor: "#4a4a4a"
+    },
     "--text-color-normal": "#afafaf",
     "--text-color-light": "#969696",
     "--text-color-link": "#3273dc",

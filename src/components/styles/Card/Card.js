@@ -74,7 +74,7 @@ const ItemContainer = styled.div`
 const HorizontalContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  // height: 100%;
   margin: 12px;
 
   &:first-child {

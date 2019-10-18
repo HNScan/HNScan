@@ -1,106 +1,44 @@
-import { useState } from "react";
+// Hooks
+import usePersistedState from "./usePersistedState";
+
+// Util
 import { themes } from "../util/themes";
 
-export default function useTheme() {
+function userPrefersDark() {
+  const darkMatcher = window.matchMedia("(prefers-color-scheme: dark)");
+  return darkMatcher.matches;
+}
 
-  //Configure theme via useState
-  const [theme, setTheme] = useState(() => {
-    const theme = localStorage.getItem("theme");
-    return theme || "light";
-  });
+export default function useTheme() {
+  const prefersDark = userPrefersDark();
+
+  const [theme, setTheme] = usePersistedState(
+    "theme",
+    prefersDark ? "dark" : "light"
+  );
+
+  const updateTheme = theme => {
+    //Adds transitions to the theme. @smells likely a cleaner way to do this here.
+    document.documentElement.classList.add("color-theme-in-transition");
+
+    //Update state
+    setTheme(theme);
+
+    //Remove the transition class after theme has transitioned.
+    //@smells -> Slight code smell, but don't see a better way to do this as of right now.
+    setTimeout(() => {
+      document.documentElement.classList.remove("color-theme-in-transition");
+    }, 1000);
+  };
 
   const toggleTheme = () => {
     if (theme === "light") {
-      setTheme("dark");
+      updateTheme("dark");
     } else {
-      setTheme("light");
+      updateTheme("light");
     }
   };
 
-  switch (theme) {
-    case "light":
-      return [themes["light"], toggleTheme];
-    case "dark":
-      return [themes["dark"], toggleTheme];
-    default:
-      return [themes["light"], toggleTheme];
-  }
+  //Theme object, toggle theme function, theme string.
+  return [themes[theme], toggleTheme, theme];
 }
-
-  // document.documentElement.classList.add("color-theme-in-transition");
-  // if (localStorage.getItem("theme") === "light") {
-  //   localStorage.setItem("theme", "dark");
-  //   document.documentElement.setAttribute("data-theme", "dark");
-  // } else {
-  //   localStorage.setItem("theme", "light");
-  //   document.documentElement.removeAttribute("data-theme", "dark");
-  // }
-
-  // let theme = localStorage.getItem("theme");
-  // if (!theme) {
-  //   localStorage.setItem("theme", "light");
-  //   theme = "light";
-  // }
-
-// import React, { Component } from 'react';
-// import { ThemeProvider } from 'styled-components';
-// import { themes } from '../themes';
-
-// export const ThemeToggleContext = React.createContext({ undefined })
-
-// function toggleTheme() {
-//   document.documentElement.classList.add("color-theme-in-transition");
-//   if (localStorage.getItem("theme") === "light") {
-//     localStorage.setItem("theme", "dark");
-//     document.documentElement.setAttribute("data-theme", "dark");
-//   } else {
-//     localStorage.setItem("theme", "light");
-//     document.documentElement.removeAttribute("data-theme", "dark");
-//   }
-
-//   setTimeout(() => {
-//     document.documentElement.classList.remove("color-theme-in-transition");
-//   }, 1000);
-//   return localStorage.getItem("theme");
-// }
-
-// class ThemeContext extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     if (!localStorage.getItem("theme")) {
-//       localStorage.setItem("theme", "light");
-//     }
-
-//     this.toggleTheme = () => {
-//       let theme = toggleTheme();
-//       this.setState(state => ({
-//         isDark: theme === 'dark',
-//         theme: theme,
-//         themeObj: themes[theme]
-//       }))
-//     }
-
-//     this.state = {
-//       isDark: localStorage.getItem("theme") === 'dark',
-//       theme: localStorage.getItem("theme"),
-//       themeObj: themes[localStorage.getItem("theme")],
-//       toggleTheme: this.toggleTheme
-//     };
-
-//     if (this.state.isDark) document.documentElement.setAttribute("data-theme", "dark");
-//   }
-
-//   render() {
-//     return (
-//       <ThemeToggleContext.Provider value={{ ...this.state, toggleTheme: this.state.toggleTheme}}>
-//         <ThemeProvider theme={this.state.themeObj}>
-//           {this.props.children}
-//         </ThemeProvider>
-//       </ThemeToggleContext.Provider>
-//     )
-//   }
-// }
-
-// ThemeContext.contextType = ThemeToggleContext;
-// export default ThemeContext;
