@@ -13,6 +13,7 @@ import Logo from "../svg/Logo";
 
 const BorderedNav = styled(NavBar)`
   border-bottom: 1px solid ${props => props.theme.nav.borderColor};
+  background: ${props => props.theme.global.background};
   // box-shadow: 0px 1px 12px -1px rgba(0,0,0,0.30);
 `;
 
