@@ -1,25 +1,15 @@
-name: Node CI
-
+name: CI
 on: [push]
-
 jobs:
   build:
-
+    name: Test
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x]
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-    - uses: borales/actions-yarn@v2.0.0
-      with:
+      - uses: actions/checkout@v1
+      - uses: borales/actions-yarn@v2.0.0
+        with:
           cmd: install
-    - name: npm install, build, and test
-      run: |
-        yarn build
-        yarn test
-      env:
-        CI: true
+      - name: yarn build, and test
+        run: |
+          yarn build
+          yarn test
