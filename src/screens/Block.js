@@ -3,9 +3,11 @@ import { useParams } from "react-router-dom";
 import { useResource } from "rest-hooks";
 
 // Components
-import TransactionList from "../components/TransactionList";
 import BlockSummary from "../components/block/BlockSummary";
 import BlockAdvanced from "../components/block/BlockAdvanced";
+
+// Containers
+import TransactionList from "containers/TransactionList";
 
 // Resources
 import BlockResource from "../resources/BlockResource";

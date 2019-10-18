@@ -1,13 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Pagination from "../layout/Pagination";
-//@todo fix this
-import Card from "../styles/Card";
-import { InputList, OutputList } from "./PutsList";
-import { title } from "./util";
-import TransactionResource from "../../resources/TransactionResource";
 import { useResource, useResultCache } from "rest-hooks";
+
+// import { Row, Col } from "@urkellabs/ucl";
+
+// Components
+import Pagination from "components/layout/Pagination";
+import Card from "components/styles/Card";
+import { InputList, OutputList } from "components/shared/PutsList";
+
+// Resources
+import TransactionResource from "resources/TransactionResource";
+
+// Util
+import { title } from "util/util";
 
 const Container = styled.div`
   width: 100%;

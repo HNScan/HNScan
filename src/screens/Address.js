@@ -3,15 +3,17 @@ import { useParams } from "react-router-dom";
 import { useResource } from "rest-hooks";
 
 // Components
-import AddressSummary from "../components/address/AddressSummary";
-import AddressSkeleton from "../components/address/AddressSkeleton";
-import TransactionList from "../components/TransactionList";
+import AddressSummary from "components/address/AddressSummary";
+import AddressSkeleton from "components/address/AddressSkeleton";
+
+// Containers
+import TransactionList from "containers/TransactionList";
 
 // Hooks
-import usePage from "../hooks/usePage";
+import usePage from "hooks/usePage";
 
 // Resources
-import AddressResource from "../resources/AddressResource";
+import AddressResource from "resources/AddressResource";
 
 //@todo if someone requests a wrong address (IE wrong network, help them understand). Show a screen for that.
 //@todo show a QR code component here.
