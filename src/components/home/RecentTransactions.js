@@ -2,17 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Card from "../styles/Card";
-import ContentLoader from "react-content-loader";
 
 import { Link } from "react-router-dom";
 import * as Util from "../../util/util";
 import Arrow from "../../components/Logos/rightArrow";
 
-
 const Time = styled.span`
-font-style: italic;
-`
-
+  font-style: italic;
+`;
 
 const Transaction = ({ tx }) => (
   // ----- TX Details -----
