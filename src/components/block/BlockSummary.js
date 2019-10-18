@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Components
-import Card from "../styles/Card";
+import Card from "components/styles/Card";
 
 // Util
-import { timeAgo, hnsValues, checkPool } from "../../util/util";
+import { timeAgo, hnsValues, checkPool } from "util/util";
 
 const SSkeletonPulse = styled.div`
   display: inline-block;

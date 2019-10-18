@@ -1,10 +1,10 @@
 import React from "react";
 
 // Components
-import Card from "../styles/Card";
+import Card from "components/styles/Card";
 
 // Util
-import { formatLargeNumber, sciNotation } from "../../util/util";
+import { formatLargeNumber, sciNotation } from "util/util";
 
 function handleUnconfirmed(data, size) {
   if (data === 0) {

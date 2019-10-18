@@ -1,11 +1,11 @@
 import React from "react";
 
 // Components
-import Card from "../styles/Card";
-import StackedData from "../Stacked/StackedComponent";
+import Card from "components/styles/Card";
+import StackedData from "components/Stacked/StackedComponent";
 
 // Util
-import { hnsValues } from "../../util/util";
+import { hnsValues } from "util/util";
 
 export default function NameSummary({ name }) {
   return (

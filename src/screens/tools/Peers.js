@@ -1,12 +1,14 @@
 import React, { Suspense, useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import queryString from "query-string";
-// import PeersMapComponent from "./PeersMapComponent";
-// import PeersInfoComponent from "./PeersInfoComponent";
 import { useResource, useResultCache } from "rest-hooks";
+
+// Components
+import Pagination from "components/layout/Pagination";
+import PeerInfo from "components/PeerInfo";
+
+// Resources
 import PeerResource from "../../resources/PeerResource";
-import Pagination from "../../components/layout/Pagination";
-import PeerInfo from "../../components/PeerInfo";
 
 // export default class PeersScreen extends Component {
 const PeersContainer = ({ pages, page, url, changePage }) => {

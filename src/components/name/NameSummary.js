@@ -1,10 +1,7 @@
 import React from "react";
 
 // Components
-import Card from "../styles/Card";
-
-// Util
-// import { timeAgo } from "../util/util";
+import Card from "components/styles/Card";
 
 function timeToNextState(blocks) {
   if (blocks) {

@@ -3,17 +3,17 @@ import { useParams } from "react-router-dom";
 import { useResource } from "rest-hooks";
 
 // Components
-import BlockSummary from "../components/block/BlockSummary";
-import BlockAdvanced from "../components/block/BlockAdvanced";
+import BlockSummary from "components/block/BlockSummary";
+import BlockAdvanced from "components/block/BlockAdvanced";
 
 // Containers
 import TransactionList from "containers/TransactionList";
 
 // Resources
-import BlockResource from "../resources/BlockResource";
+import BlockResource from "resources/BlockResource";
 
 // Hooks
-import usePage from "../hooks/usePage";
+import usePage from "hooks/usePage";
 
 function BlockSkeleton() {
   return (

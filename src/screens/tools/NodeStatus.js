@@ -1,11 +1,16 @@
 import React, { Suspense } from "react";
-import Card from "../../components/styles/Card";
-import StackedComponent from "../../components/Stacked/StackedComponent";
 import { useResource } from "rest-hooks";
-import StatusResource from "../../resources/StatusResource";
 import humanizeDuration from "humanize-duration";
 
-import { sciNotation, formatLargeNumber } from "../../util/util";
+// Components
+import Card from "components/styles/Card";
+import StackedComponent from "components/Stacked/StackedComponent";
+
+// Resources
+import StatusResource from "resources/StatusResource";
+
+// Util
+import { sciNotation, formatLargeNumber } from "util/util";
 
 const NodeStatusContainer = () => {
   const status = useResource(StatusResource.detailShape(), {});

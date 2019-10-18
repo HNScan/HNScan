@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Logo from "../../components/svg/Block";
+
+//SVGs
+import Logo from "components/svg/Block";
 
 const Wrapper = styled.div`
   width: 80%;

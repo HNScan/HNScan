@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "./styles/Card";
-import StackedComponent from "./Stacked/StackedComponent";
-import { timeAgo } from "../util/util";
+
+// Components
+import Card from "components/styles/Card";
+import StackedComponent from "components/Stacked/StackedComponent";
+
+// Util
+import { timeAgo } from "util/util";
 
 const SummaryCardItem = styled.div`
   border-bottom: 1px solid ${props => props.theme.cards.borderColor};
@@ -30,7 +34,10 @@ const PeerInfo = ({ peers, ...props }) => {
                   <StackedComponent label="Address" value={peer.addr} />
                 </tr>
                 <tr>
-                  <StackedComponent label="Name" value={peer.name || 'No name provided'} />
+                  <StackedComponent
+                    label="Name"
+                    value={peer.name || "No name provided"}
+                  />
                 </tr>
                 <tr>
                   <StackedComponent label="Services" value={peer.services} />
@@ -59,7 +66,9 @@ const PeerInfo = ({ peers, ...props }) => {
                 <tr>
                   <StackedComponent
                     label="Last Send / Last Receive"
-                    value={`${timeAgo(peer.lastsend)} / ${timeAgo(peer.lastrecv)}`}
+                    value={`${timeAgo(peer.lastsend)} / ${timeAgo(
+                      peer.lastrecv
+                    )}`}
                   />
                 </tr>
               </tbody>

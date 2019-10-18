@@ -3,14 +3,14 @@ import { useResource } from "rest-hooks";
 import styled from "styled-components";
 
 //Components
-import NetworkSummary from "../components/home/NetworkSummary";
-import RecentTransactions from "../components/home/RecentTransactions";
-import RecentBlocks from "../components/home/RecentBlocks";
+import NetworkSummary from "components/home/NetworkSummary";
+import RecentTransactions from "components/home/RecentTransactions";
+import RecentBlocks from "components/home/RecentBlocks";
 
 // Resources
-import NetworkResource from "../resources/NetworkResource";
-import BlockResource from "../resources/BlockResource";
-import TransactionResource from "../resources/TransactionResource";
+import NetworkResource from "resources/NetworkResource";
+import BlockResource from "resources/BlockResource";
+import TransactionResource from "resources/TransactionResource";
 
 //@todo
 //styled components

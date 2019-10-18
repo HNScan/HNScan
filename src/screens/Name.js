@@ -3,16 +3,16 @@ import { useParams } from "react-router-dom";
 import { useResource, useResultCache } from "rest-hooks";
 
 // Components
-import NameSummary from "../components/name/NameSummary";
-import NameAdvanced from "../components/name/NameAdvanced";
-import NameHistory from "../components/name/NameHistory";
+import NameSummary from "components/name/NameSummary";
+import NameAdvanced from "components/name/NameAdvanced";
+import NameHistory from "components/name/NameHistory";
 
 // Resources
-import NameHistoryResource from "../resources/NameHistoryResource";
-import NameResource from "../resources/NameResource";
+import NameHistoryResource from "resources/NameHistoryResource";
+import NameResource from "resources/NameResource";
 
 // Hooks
-import usePage from "../hooks/usePage";
+import usePage from "hooks/usePage";
 //@todo remove this.
 
 const NameRecords = () => <div>todo</div>;

@@ -4,36 +4,36 @@ import { NetworkErrorBoundary } from "rest-hooks";
 import { ThemeProvider } from "styled-components";
 
 // Special
-import GlobalStyles from "./components/layout/GlobalStyles";
+import GlobalStyles from "components/layout/GlobalStyles";
 
 // Components
-import Navigation from "./components/layout/Navigation";
-import Footer from "./components/layout/Footer";
-import ContentContainer from "./components/layout/ContentContainer";
+import Navigation from "components/layout/Navigation";
+import Footer from "components/layout/Footer";
+import ContentContainer from "components/layout/ContentContainer";
 
 // Main Pages
-import Address from "./screens/Address";
-import Block from "./screens/Block";
-import Blocks from "./screens/Blocks";
-import Home from "./screens/Home";
-import Name from "./screens/Name";
-import Names from "./screens/Names";
-import Search from "./screens/Search";
-import Transaction from "./screens/Transaction";
+import Address from "screens/Address";
+import Block from "screens/Block";
+import Blocks from "screens/Blocks";
+import Home from "screens/Home";
+import Name from "screens/Name";
+import Names from "screens/Names";
+import Search from "screens/Search";
+import Transaction from "screens/Transaction";
 
-import AirdropClaimScreen from "./screens/tools/AirdropClaim/AirdropClaimScreen";
+import AirdropClaimScreen from "screens/tools/AirdropClaim/AirdropClaimScreen";
 
 // Tool Pages
-import NodeStatus from "./screens/tools/NodeStatus";
-import Peers from "./screens/tools/Peers";
-import Charts from "./screens/tools/Charts";
-import Changelog from "./screens/Changelog";
+import NodeStatus from "screens/tools/NodeStatus";
+import Peers from "screens/tools/Peers";
+import Charts from "screens/tools/Charts";
+import Changelog from "screens/Changelog";
 
 // Error Pages
-import NotFoundScreen from "./screens/errors/NotFound";
+import NotFoundScreen from "screens/errors/NotFound";
 
 // Hooks
-import useTheme from "./hooks/useTheme";
+import useTheme from "hooks/useTheme";
 
 function App() {
   const [theme] = useTheme();

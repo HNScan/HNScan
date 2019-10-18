@@ -1,7 +1,7 @@
 //Credit: https://github.com/donavon/use-persisted-state
 import { useState, useEffect, useRef } from "react";
-import useEventListener from "./useEventListener";
-import useLocalStorage from "./useLocalStorage";
+import useEventListener from "hooks/useEventListener";
+import useLocalStorage from "hooks/useLocalStorage";
 
 const globalState = {};
 

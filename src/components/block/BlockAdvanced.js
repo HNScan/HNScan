@@ -1,7 +1,11 @@
 import React from "react";
-import Card from "../styles/Card";
-import StackedData from "../Stacked/StackedComponent";
-import { sciNotation, hnsValues } from "../../util/util";
+
+// Components
+import Card from "components/styles/Card";
+import StackedData from "components/Stacked/StackedComponent";
+
+// Util
+import { sciNotation, hnsValues } from "util/util";
 
 export default function BlockAdvanced({ block }) {
   let [difficulty, exponent] = sciNotation(block.difficulty, 5);
