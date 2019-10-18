@@ -1,11 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import Card from "../styles/Card";
 import ContentLoader from "react-content-loader";
 
 import { Link } from "react-router-dom";
 import * as Util from "../../util/util";
 import Arrow from "../../components/Logos/rightArrow";
+
+
+const Time = styled.span`
+font-style: italic;
+`
+
 
 const Transaction = ({ tx }) => (
   // ----- TX Details -----
@@ -30,7 +37,7 @@ const Transaction = ({ tx }) => (
       {/* ----- Right Side / Bottom Side ----- */}
       <Card.SummaryItemContent>
         <Card.RightItemDetail>
-          <i>{Util.timeAgo(tx.time)}</i>
+          <Time>{Util.timeAgo(tx.time)}</Time>
         </Card.RightItemDetail>
       </Card.SummaryItemContent>
     </Card.SummaryItem>

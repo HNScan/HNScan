@@ -35,7 +35,6 @@ import NotFoundScreen from "./screens/errors/NotFound";
 // Hooks
 import useTheme from "./hooks/useTheme";
 
-//have it return a theme object and a toggle function.
 function App() {
   const [theme] = useTheme();
   return (
