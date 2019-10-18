@@ -17,5 +17,7 @@ jobs:
           yarn
           yarn build
           yarn test
+      - name: Lint
+        uses: gimenete/eslint-action@1.0
         env:
           CI: true
