@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Card from "../../../components/styles/Card";
-import "./AirdropClaim.scss";
 
 export default class AirdropClaimScreen extends Component {
   // TODO: verify that these two functions work correctly
