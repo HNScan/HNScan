@@ -30,7 +30,7 @@ const Header = styled.div`
 
 // The header title on every card
 const HeaderTitle = styled.div`
-  color: ${props => props.theme["--text-color-normal"]};
+  // color: ${props => props.theme["--text-color-normal"]};
   align-items: center;
   display: flex;
   flex-grow: 1;

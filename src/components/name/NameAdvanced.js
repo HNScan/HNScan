@@ -5,7 +5,7 @@ import Card from "components/styles/Card";
 import StackedData from "components/Stacked/StackedComponent";
 
 // Util
-import { hnsValues } from "util/util";
+import { hnsValues } from "utils/util";
 
 export default function NameSummary({ name }) {
   return (

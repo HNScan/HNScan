@@ -14,8 +14,10 @@ import { InputList, OutputList } from "components/shared/PutsList";
 import TransactionResource from "resources/TransactionResource";
 
 // Util
-import { title } from "util/util";
+import { title } from "utils/util";
 
+console.log(Card);
+console.log(Card.HeaderTitle);
 const Container = styled.div`
   width: 100%;
   padding: 10px 0;

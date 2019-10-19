@@ -12,7 +12,7 @@ import { InputList, OutputList } from "components/shared/PutsList";
 import TransactionResource from "resources/TransactionResource";
 
 // Util
-import { timeAgo, hnsValues, sumTxOutputs } from "util/util";
+import { timeAgo, hnsValues, sumTxOutputs } from "utils/util";
 
 const Container = styled.div`
   width: 100%;

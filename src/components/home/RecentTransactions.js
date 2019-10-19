@@ -10,7 +10,7 @@ import Card from "components/styles/Card";
 import Arrow from "components/Logos/rightArrow";
 
 // Util
-import { truncateHash, timeAgo, hnsValues, sumTxOutputs } from "util/util";
+import { truncateHash, timeAgo, hnsValues, sumTxOutputs } from "utils/util";
 
 const Time = styled.span`
   font-style: italic;

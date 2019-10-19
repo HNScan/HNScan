@@ -6,7 +6,7 @@ import Card from "components/styles/Card";
 import StackedComponent from "components/Stacked/StackedComponent";
 
 // Util
-import { timeAgo } from "util/util";
+import { timeAgo } from "utils/util";
 
 const SummaryCardItem = styled.div`
   border-bottom: 1px solid ${props => props.theme.cards.borderColor};

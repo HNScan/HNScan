@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 // Util
 //@todo rename to toHNS()
-import { hnsValues, title } from "util/util";
+import { hnsValues, title } from "utils/util";
 
 const Container = styled.div`
   height: 100%;
