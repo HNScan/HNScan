@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Table from "reactbulma/lib/components/Table/Table.js";
 
 // Util
-import { timeAgo, truncateHash } from "util/util";
+import { timeAgo, truncateHash } from "utils/util";
 
 export const TableContainer = styled.div`
   height: 100%;

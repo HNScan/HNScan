@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Card from "components/styles/Card";
 
 // Util
-import { timeAgo, hnsValues, checkPool } from "util/util";
+import { timeAgo, hnsValues, checkPool } from "utils/util";
 
 const SSkeletonPulse = styled.div`
   display: inline-block;

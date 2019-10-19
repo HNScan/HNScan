@@ -6,7 +6,7 @@ import Card from "components/styles/Card";
 import Pagination from "components/layout/Pagination";
 
 // Util
-import { hnsValues, timeAgo } from "util/util";
+import { hnsValues, timeAgo } from "utils/util";
 
 //@todo th/tr do not work on Dark mode!! We need to have dark mode just set the global font color to something different.
 //@todo last element is showing a bottom border.

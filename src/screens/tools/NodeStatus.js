@@ -10,7 +10,7 @@ import StackedComponent from "components/Stacked/StackedComponent";
 import StatusResource from "resources/StatusResource";
 
 // Util
-import { sciNotation, formatLargeNumber } from "util/util";
+import { sciNotation, formatLargeNumber } from "utils/util";
 
 const NodeStatusContainer = () => {
   const status = useResource(StatusResource.detailShape(), {});

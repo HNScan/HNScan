@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import Card from "components/styles/Card";
 
 // Util
-import { hnsValues } from "util/util";
+import { hnsValues } from "utils/util";
 
 const AddressWrapper = styled.div`
   width: 100%;

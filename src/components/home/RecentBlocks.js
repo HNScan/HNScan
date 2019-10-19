@@ -9,7 +9,7 @@ import Card from "components/styles/Card";
 import BlockLogo from "components/svg/Block";
 
 // Util
-import { truncateHash } from "util/util";
+import { truncateHash } from "utils/util";
 
 //@todo put them here for now.
 export const Miner = styled.div`

@@ -4,7 +4,7 @@ import React from "react";
 import Card from "components/styles/Card";
 
 // Util
-import { formatLargeNumber, sciNotation } from "util/util";
+import { formatLargeNumber, sciNotation } from "utils/util";
 
 function handleUnconfirmed(data, size) {
   if (data === 0) {
