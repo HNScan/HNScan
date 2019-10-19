@@ -2,11 +2,15 @@ import React, { Suspense, useState, useEffect } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import Table from "reactbulma/lib/components/Table/Table.js";
 import styled from "styled-components";
-import Card from "../components/styles/Card";
-import Pagination from "../components/layout/Pagination";
 import queryString from "query-string";
 import { useResource, useResultCache } from "rest-hooks";
-import NameResource from "../resources/NameResource";
+
+// Components
+import Card from "components/styles/Card";
+import Pagination from "components/layout/Pagination";
+
+// Resources
+import NameResource from "resources/NameResource";
 
 export const TableContainer = styled.div`
   height: 100%;

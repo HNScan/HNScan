@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import useTheme from "../hooks/useTheme";
+
+// Hooks
+import useTheme from "hooks/useTheme";
 
 // SVGs
-import DarkThemeIcon from "./svg/DarkThemeIcon";
-import LightThemeIcon from "./svg/LightThemeIcon";
+import DarkThemeIcon from "components/svg/DarkThemeIcon";
+import LightThemeIcon from "components/svg/LightThemeIcon";
 
 const ThemeIcon = styled.svg`
   cursor: pointer;

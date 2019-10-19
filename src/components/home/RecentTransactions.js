@@ -1,11 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Card from "../styles/Card";
-
 import { Link } from "react-router-dom";
-import * as Util from "../../util/util";
-import Arrow from "../../components/Logos/rightArrow";
+
+// Components
+import Card from "components/styles/Card";
+
+//@fixme move to svgs
+import Arrow from "components/Logos/rightArrow";
+
+// Util
+import { truncateHash, timeAgo, hnsValues, sumTxOutputs } from "util/util";
 
 const Time = styled.span`
   font-style: italic;
@@ -23,18 +28,18 @@ const Transaction = ({ tx }) => (
           </Card.ItemLogo>
           TX #:&nbsp;
           <Link className="hnscan-link" to={"/tx/" + tx.hash}>
-            {Util.truncateHash(tx.hash)}
+            {truncateHash(tx.hash)}
           </Link>
         </Card.LeftItemDetail>
         <Card.LeftItemDetail>
-          Amount: {Util.hnsValues(Util.sumTxOutputs(tx.outputs))}
+          Amount: {hnsValues(sumTxOutputs(tx.outputs))}
         </Card.LeftItemDetail>
-        <Card.LeftItemDetail>Fee: {Util.hnsValues(tx.fee)}</Card.LeftItemDetail>
+        <Card.LeftItemDetail>Fee: {hnsValues(tx.fee)}</Card.LeftItemDetail>
       </Card.SummaryItemContent>
       {/* ----- Right Side / Bottom Side ----- */}
       <Card.SummaryItemContent>
         <Card.RightItemDetail>
-          <Time>{Util.timeAgo(tx.time)}</Time>
+          <Time>{timeAgo(tx.time)}</Time>
         </Card.RightItemDetail>
       </Card.SummaryItemContent>
     </Card.SummaryItem>

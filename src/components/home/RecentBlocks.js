@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 // Components
-import Card from "../styles/Card";
-import * as Util from "../../util/util";
+import Card from "components/styles/Card";
 
-// Svgs
-import BlockLogo from "../svg/Block";
+// SVGs
+import BlockLogo from "components/svg/Block";
+
+// Util
+import { truncateHash } from "util/util";
 
 //@todo put them here for now.
 export const Miner = styled.div`
@@ -50,7 +52,7 @@ const BlockCardItem = ({ block }) => {
             <MobileMiner>
               Mined By:{" "}
               <Link className="hnscan-link" to={"/address/" + block.miner}>
-                {Util.truncateHash(block.miner)}
+                {truncateHash(block.miner)}
               </Link>
             </MobileMiner>
           </Card.LeftItemDetail>

@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Styles
-import NavBar from "../styles/NavBar";
+import NavBar from "components/styles/NavBar";
 
 // Components
-import SearchBar from "./SearchBar";
+import SearchBar from "components/layout/SearchBar";
 
 // SVGs
-import Logo from "../svg/Logo";
+import Logo from "components/svg/Logo";
 
 const BorderedNav = styled(NavBar)`
   border-bottom: 1px solid ${props => props.theme.nav.borderColor};

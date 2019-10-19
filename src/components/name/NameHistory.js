@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // Components
-import Card from "../styles/Card";
-import Pagination from "../layout/Pagination";
+import Card from "components/styles/Card";
+import Pagination from "components/layout/Pagination";
 
 // Util
-import { hnsValues, timeAgo } from "../../util/util";
+import { hnsValues, timeAgo } from "util/util";
 
 //@todo th/tr do not work on Dark mode!! We need to have dark mode just set the global font color to something different.
 //@todo last element is showing a bottom border.

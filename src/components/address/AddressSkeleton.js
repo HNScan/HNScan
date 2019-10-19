@@ -1,5 +1,7 @@
 import React from "react";
-import AddressSummary from "./AddressSummary";
+
+// Components
+import AddressSummary from "components/address/AddressSummary";
 
 const AddressSkeleton = () => (
   <>

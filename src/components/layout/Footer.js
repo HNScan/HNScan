@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-
-//@todo make this an svg.
-import Logo from "../Logos/hnscan";
 import { Link } from "react-router-dom";
 
-import ThemeToggler from "../ThemeToggler";
+// Components
+import ThemeToggler from "components/ThemeToggler";
+
+//@todo make this an svg.
+import Logo from "components/Logos/hnscan";
 
 //@todo I really want this to be a span.
 const SubText = styled.div`

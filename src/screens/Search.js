@@ -1,7 +1,9 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import SearchBar from "../components/layout/SearchBar";
+
+// Components
+import SearchBar from "components/layout/SearchBar";
 
 const Header = styled.h1`
   margin-top: 50px;
@@ -26,7 +28,6 @@ const SearchBarWrapper = styled.div`
 
 export default function Search() {
   const location = useLocation();
-  console.log(location);
 
   if (location.state.length === 0) {
     return (

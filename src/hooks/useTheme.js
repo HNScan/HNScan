@@ -1,8 +1,8 @@
 // Hooks
-import usePersistedState from "./usePersistedState";
+import usePersistedState from "hooks/usePersistedState";
 
 // Util
-import { themes } from "../util/themes";
+import { themes } from "util/themes";
 
 function userPrefersDark() {
   const darkMatcher = window.matchMedia("(prefers-color-scheme: dark)");

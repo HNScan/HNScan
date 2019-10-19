@@ -2,15 +2,15 @@ import React, { Suspense } from "react";
 import { useResource, useResultCache } from "rest-hooks";
 
 // Components
-import Pagination from "../components/layout/Pagination";
-import Card from "../components/styles/Card";
-import BlockList from "../components/block/BlockList";
+import Pagination from "components/layout/Pagination";
+import Card from "components/styles/Card";
+import BlockList from "components/block/BlockList";
 
 // Hooks
-import usePage from "../hooks/usePage";
+import usePage from "hooks/usePage";
 
 // Resources
-import BlockResource from "../resources/BlockResource";
+import BlockResource from "resources/BlockResource";
 
 function BlocksView({ page }) {
   const pageOffset = (page - 1) * 25;
