@@ -42,7 +42,7 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
         </Card.Header>
         <Card.Content>
           <Row>
-            <Col mobile={12} desktop>
+            <Col mobile={12} tablet>
               <Card.ItemContainer>
                 <Card.ItemLabel>Received</Card.ItemLabel>
                 <Card.ItemDetail>
@@ -54,7 +54,7 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
                 </Card.ItemDetail>
               </Card.ItemContainer>
             </Col>
-            <Col mobile={12} desktop>
+            <Col mobile={12} tablet>
               <Card.ItemContainer>
                 <Card.ItemLabel>Spent</Card.ItemLabel>
                 <Card.ItemDetail>
@@ -66,7 +66,7 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
                 </Card.ItemDetail>
               </Card.ItemContainer>
             </Col>
-            <Col mobile={12} desktop>
+            <Col mobile={12} tablet>
               <Card.ItemContainer>
                 <Card.ItemLabel>Balance</Card.ItemLabel>
                 <Card.ItemDetail>

@@ -32,7 +32,7 @@ export default function NetworkSummary({ info }) {
       </Card.Header>
       {/* ----- Network Summary - Top Row ----- */}
       <Row>
-        <Col mobile={12} desktop>
+        <Col mobile={12} tablet>
           <Card.ItemContainer>
             <Card.ItemLabel>Hashrate</Card.ItemLabel>
             <Card.ItemDetail>
@@ -41,7 +41,7 @@ export default function NetworkSummary({ info }) {
             </Card.ItemDetail>
           </Card.ItemContainer>
         </Col>
-        <Col mobile={12} desktop>
+        <Col mobile={12} tablet>
           <Card.ItemContainer>
             <Card.ItemLabel>Unconfirmed</Card.ItemLabel>
             <Card.ItemDetail>
@@ -49,7 +49,7 @@ export default function NetworkSummary({ info }) {
             </Card.ItemDetail>
           </Card.ItemContainer>
         </Col>
-        <Col mobile={12} desktop>
+        <Col mobile={12} tablet>
           <Card.ItemContainer>
             <Card.ItemLabel>Network</Card.ItemLabel>
             <Card.ItemDetail>
@@ -59,7 +59,7 @@ export default function NetworkSummary({ info }) {
         </Col>
       </Row>
       <Row>
-        <Col mobile={12} desktop>
+        <Col mobile={12} tablet>
           <Card.ItemContainer>
             <Card.ItemLabel>Opened Names</Card.ItemLabel>
             <Card.ItemDetail>
@@ -67,7 +67,7 @@ export default function NetworkSummary({ info }) {
             </Card.ItemDetail>
           </Card.ItemContainer>
         </Col>
-        <Col mobile={12} desktop>
+        <Col mobile={12} tablet>
           <Card.ItemContainer>
             <Card.ItemLabel>Difficulty</Card.ItemLabel>
             <Card.ItemDetail>
@@ -76,7 +76,7 @@ export default function NetworkSummary({ info }) {
             </Card.ItemDetail>
           </Card.ItemContainer>
         </Col>
-        <Col mobile={12} desktop>
+        <Col mobile={12} tablet>
           <Card.ItemContainer>
             <Card.ItemLabel>Chainwork</Card.ItemLabel>
             <Card.ItemDetail>

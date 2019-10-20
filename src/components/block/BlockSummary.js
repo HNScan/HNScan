@@ -59,19 +59,19 @@ export default function BlockSummary({ block, skeleton }) {
       </Card.Header>
       <Card.Content>
         <Row>
-          <Col mobile={12} desktop>
+          <Col mobile={12} tablet>
             <Card.ItemContainer>
               <Card.ItemLabel>Received</Card.ItemLabel>
               <Card.ItemDetail>{timeAgo(block.time)}</Card.ItemDetail>
             </Card.ItemContainer>
           </Col>
-          <Col mobile={12} desktop>
+          <Col mobile={12} tablet>
             <Card.ItemContainer>
               <Card.ItemLabel>Total Transactions</Card.ItemLabel>
               <Card.ItemDetail>{block.txs}</Card.ItemDetail>
             </Card.ItemContainer>
           </Col>
-          <Col mobile={12} desktop>
+          <Col mobile={12} tablet>
             <Card.ItemContainer>
               <Card.ItemLabel>Total Fees</Card.ItemLabel>
               <Card.ItemDetail>{hnsValues(block.fees)}</Card.ItemDetail>
@@ -79,7 +79,7 @@ export default function BlockSummary({ block, skeleton }) {
           </Col>
         </Row>
         <Row>
-          <Col mobile={12} desktop>
+          <Col mobile={12} tablet>
             <Card.ItemContainer>
               <Card.ItemLabel>Mined By</Card.ItemLabel>
               <Card.ItemDetail>
@@ -89,13 +89,13 @@ export default function BlockSummary({ block, skeleton }) {
               </Card.ItemDetail>
             </Card.ItemContainer>
           </Col>
-          <Col mobile={12} desktop>
+          <Col mobile={12} tablet>
             <Card.ItemContainer>
               <Card.ItemLabel>Weight</Card.ItemLabel>
               <Card.ItemDetail>{block.weight} wu</Card.ItemDetail>
             </Card.ItemContainer>
           </Col>
-          <Col mobile={12} desktop>
+          <Col mobile={12} tablet>
             <Card.ItemContainer>
               <Card.ItemLabel>Confirmations</Card.ItemLabel>
               <Card.ItemDetail>{block.confirmations}</Card.ItemDetail>

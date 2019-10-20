@@ -20,19 +20,19 @@ export default function NameSummary({ name }) {
       </Card.Header>
       <Card.Content>
         <Row>
-          <Col mobile={12} desktop>
+          <Col mobile={12} tablet>
             <Card.ItemContainer>
               <Card.ItemLabel>Name</Card.ItemLabel>
               <Card.ItemDetail>{name.name}</Card.ItemDetail>
             </Card.ItemContainer>
           </Col>
-          <Col mobile={12} desktop>
+          <Col mobile={12} tablet>
             <Card.ItemContainer>
               <Card.ItemLabel>Release Block</Card.ItemLabel>
               <Card.ItemDetail>{name.release}</Card.ItemDetail>
             </Card.ItemContainer>
           </Col>
-          <Col mobile={12} desktop>
+          <Col mobile={12} tablet>
             <Card.ItemContainer>
               <Card.ItemLabel>Reserved</Card.ItemLabel>
               <Card.ItemDetail>{name.reserved.toString()}</Card.ItemDetail>
@@ -40,13 +40,13 @@ export default function NameSummary({ name }) {
           </Col>
         </Row>
         <Row>
-          <Col mobile={12} desktop>
+          <Col mobile={12} tablet>
             <Card.ItemContainer>
               <Card.ItemLabel>State</Card.ItemLabel>
               <Card.ItemDetail>{name.state}</Card.ItemDetail>
             </Card.ItemContainer>
           </Col>
-          <Col mobile={12} desktop>
+          <Col mobile={12} tablet>
             <Card.ItemContainer>
               <Card.ItemLabel>Blocks Until Next State</Card.ItemLabel>
               {/* @todo need time in here as well. */}
@@ -55,7 +55,7 @@ export default function NameSummary({ name }) {
               </Card.ItemDetail>
             </Card.ItemContainer>
           </Col>
-          <Col mobile={12} desktop>
+          <Col mobile={12} tablet>
             <Card.ItemContainer>
               <Card.ItemLabel>Next State</Card.ItemLabel>
               <Card.ItemDetail>{name.nextState}</Card.ItemDetail>
