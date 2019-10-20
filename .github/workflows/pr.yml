@@ -16,8 +16,9 @@ jobs:
         uses: reviewdog/action-eslint@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
+          reporter: github-pr-check
           eslint_flags: 'src/'
+          level: warning
       - name: yarn build, and test
         run: |
           yarn
