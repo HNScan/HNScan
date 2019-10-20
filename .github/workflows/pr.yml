@@ -1,5 +1,5 @@
-name: CI
-on: [push]
+name: Pull Request Review
+on: [pull_request]
 jobs:
   build:
     name: Test
@@ -12,13 +12,19 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install
-      - name: eslint #convert this only to run on PRs?
+      - name: eslint
         uses: reviewdog/action-eslint@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
+          reporter: github-pr-check
           eslint_flags: 'src/'
-      - name: yarn build, and test
+          level: warning
+      - name: spell check
+        uses: reviewdog/action-misspell@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          locale: "US"
+      - name: build and test
         run: |
           yarn
           yarn build
