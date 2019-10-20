@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Row, Col } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
@@ -57,28 +58,28 @@ export default function BlockSummary({ block, skeleton }) {
         <Card.HeaderTitle>Block {block.height} Summary</Card.HeaderTitle>
       </Card.Header>
       <Card.Content>
-        <Card.HorizontalContainer>
-          <Card.Column>
+        <Row>
+          <Col mobile={12} desktop>
             <Card.ItemContainer>
               <Card.ItemLabel>Received</Card.ItemLabel>
               <Card.ItemDetail>{timeAgo(block.time)}</Card.ItemDetail>
             </Card.ItemContainer>
-          </Card.Column>
-          <Card.Column>
+          </Col>
+          <Col mobile={12} desktop>
             <Card.ItemContainer>
               <Card.ItemLabel>Total Transactions</Card.ItemLabel>
               <Card.ItemDetail>{block.txs}</Card.ItemDetail>
             </Card.ItemContainer>
-          </Card.Column>
-          <Card.Column>
+          </Col>
+          <Col mobile={12} desktop>
             <Card.ItemContainer>
               <Card.ItemLabel>Total Fees</Card.ItemLabel>
               <Card.ItemDetail>{hnsValues(block.fees)}</Card.ItemDetail>
             </Card.ItemContainer>
-          </Card.Column>
-        </Card.HorizontalContainer>
-        <Card.HorizontalContainer>
-          <Card.Column>
+          </Col>
+        </Row>
+        <Row>
+          <Col mobile={12} desktop>
             <Card.ItemContainer>
               <Card.ItemLabel>Mined By</Card.ItemLabel>
               <Card.ItemDetail>
@@ -87,20 +88,20 @@ export default function BlockSummary({ block, skeleton }) {
                 </Link>
               </Card.ItemDetail>
             </Card.ItemContainer>
-          </Card.Column>
-          <Card.Column>
+          </Col>
+          <Col mobile={12} desktop>
             <Card.ItemContainer>
               <Card.ItemLabel>Weight</Card.ItemLabel>
               <Card.ItemDetail>{block.weight} wu</Card.ItemDetail>
             </Card.ItemContainer>
-          </Card.Column>
-          <Card.Column>
+          </Col>
+          <Col mobile={12} desktop>
             <Card.ItemContainer>
               <Card.ItemLabel>Confirmations</Card.ItemLabel>
               <Card.ItemDetail>{block.confirmations}</Card.ItemDetail>
             </Card.ItemContainer>
-          </Card.Column>
-        </Card.HorizontalContainer>
+          </Col>
+        </Row>
       </Card.Content>
     </Card>
   );

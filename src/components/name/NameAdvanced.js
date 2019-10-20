@@ -1,4 +1,5 @@
 import React from "react";
+import { Row, Col } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
@@ -16,9 +17,9 @@ export default function NameSummary({ name }) {
       {/* @todo remove all these class names. */}
       {/* @todo need links in here */}
       {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
-      <div className="card-content">
-        <div className="columns">
-          <div className="column is-half">
+      <Card.Content>
+        <Row>
+          <Col mobile={12} desktop>
             <table className="table is-fullwidth">
               <tbody>
                 <tr>
@@ -35,8 +36,8 @@ export default function NameSummary({ name }) {
                 </tr>
               </tbody>
             </table>
-          </div>
-          <div className="column is-half">
+          </Col>
+          <Col mobile={12} desktop>
             <table className="table is-fullwidth">
               <tbody>
                 <tr>
@@ -56,9 +57,9 @@ export default function NameSummary({ name }) {
                 </tr>
               </tbody>
             </table>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Card.Content>
     </Card>
   );
 }

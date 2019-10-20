@@ -1,4 +1,5 @@
 import React from "react";
+import { Row, Col } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
@@ -18,9 +19,9 @@ export default function BlockAdvanced({ block }) {
       {/* @todo remove all these class names. */}
       {/* @todo need links in here */}
       {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
-      <div className="card-content">
-        <div className="columns">
-          <div className="column is-half">
+      <Card.Content>
+        <Row>
+          <Col mobile={12} desktop>
             <table className="table is-fullwidth">
               <tbody>
                 {block.prevBlock && (
@@ -62,8 +63,8 @@ export default function BlockAdvanced({ block }) {
                 </tr>
               </tbody>
             </table>
-          </div>
-          <div className="column is-half">
+          </Col>
+          <Col mobile={12} desktop>
             <table className="table is-fullwidth">
               <tbody>
                 {block.nextHash && (
@@ -98,9 +99,9 @@ export default function BlockAdvanced({ block }) {
                 </tr>
               </tbody>
             </table>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Card.Content>
     </Card>
   );
 }
