@@ -17,7 +17,11 @@ jobs:
           yarn
           yarn build
           yarn test
-      - name: Lint
-        uses: gimenete/eslint-action@1.0
+      - name: eslint #convert this only to run on PRs?
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          eslint_flags: 'src/'
         env:
           CI: true
