@@ -68,36 +68,10 @@ const ItemContainer = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
+  padding: 12px;
 `;
 
 // ----- NETWORK SUMMARY SPECIFIC -----
-const HorizontalContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  // height: 100%;
-  margin: 12px;
-
-  &:first-child {
-    margin-bottom: 0;
-  }
-  &:last-child {
-    margin-top: 0;
-  }
-
-  @media (min-width: 769px) {
-    flex-direction: row;
-  }
-`;
-
-const Column = styled.div`
-  width: 100%;
-  padding: 12px;
-
-  @media (min-width: 769px) {
-    width: 33.3333%;
-  }
-`;
-
 const ItemLabel = styled.div`
   font-weight: 800;
 `;
@@ -173,8 +147,6 @@ Card.HeaderLink = HeaderLink;
 Card.Content = Content;
 Card.SummaryContainer = SummaryContainer;
 Card.ItemContainer = ItemContainer;
-Card.HorizontalContainer = HorizontalContainer;
-Card.Column = Column;
 Card.ItemDetail = ItemDetail;
 Card.ItemLabel = ItemLabel;
 Card.SummaryItem = SummaryItem;

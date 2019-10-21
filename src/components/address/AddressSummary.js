@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Skeleton from "react-loading-skeleton";
+import { Row, Col } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
@@ -40,8 +41,8 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
           <Card.HeaderTitle>Address Summary</Card.HeaderTitle>
         </Card.Header>
         <Card.Content>
-          <Card.HorizontalContainer>
-            <Card.Column>
+          <Row>
+            <Col mobile={12} tablet>
               <Card.ItemContainer>
                 <Card.ItemLabel>Received</Card.ItemLabel>
                 <Card.ItemDetail>
@@ -52,8 +53,8 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
                   )}
                 </Card.ItemDetail>
               </Card.ItemContainer>
-            </Card.Column>
-            <Card.Column>
+            </Col>
+            <Col mobile={12} tablet>
               <Card.ItemContainer>
                 <Card.ItemLabel>Spent</Card.ItemLabel>
                 <Card.ItemDetail>
@@ -64,8 +65,8 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
                   )}
                 </Card.ItemDetail>
               </Card.ItemContainer>
-            </Card.Column>
-            <Card.Column>
+            </Col>
+            <Col mobile={12} tablet>
               <Card.ItemContainer>
                 <Card.ItemLabel>Balance</Card.ItemLabel>
                 <Card.ItemDetail>
@@ -76,8 +77,8 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
                   )}
                 </Card.ItemDetail>
               </Card.ItemContainer>
-            </Card.Column>
-          </Card.HorizontalContainer>
+            </Col>
+          </Row>
         </Card.Content>
       </Card>
     </>

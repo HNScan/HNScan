@@ -8,7 +8,8 @@ export const themes = {
       linkColorHover: "#363636"
     },
     breakpoints: {
-      desktop: "1024px"
+      desktop: "1024px",
+      tablet: "768px"
     },
     cards: {
       borderColor: "#dfdfdf"
@@ -46,7 +47,8 @@ export const themes = {
       linkColorHover: "#cfcfcf"
     },
     breakpoints: {
-      desktop: "1024px"
+      desktop: "1024px",
+      tablet: "768px"
     },
     cards: {
       borderColor: "#dfdfdf"

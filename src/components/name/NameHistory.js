@@ -32,7 +32,7 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
         {/* @todo remove all these class names. */}
         {/* @todo need links in here */}
         {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
-        <div className="card-content">
+        <Card.Content>
           {names.length === 0 && <p>There is no history for this name</p>}
           {names.length > 0 && (
             <table className="table is-fullwidth">
@@ -47,7 +47,7 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
               <tbody>{names}</tbody>
             </table>
           )}
-        </div>
+        </Card.Content>
       </Card>
       <Pagination
         totalPages={pages}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Row, Col } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
@@ -15,7 +16,6 @@ function handleUnconfirmed(data, size) {
 }
 
 //@todo skeleton.
-//@todo clean up card component, but maybe just wait until we pull it into it's own lib.
 export default function NetworkSummary({ info }) {
   let hashrate = formatLargeNumber(info.hashrate, 3);
   let unconfirmed = info.unconfirmed;
@@ -31,8 +31,8 @@ export default function NetworkSummary({ info }) {
         <Card.HeaderTitle>Network Summary</Card.HeaderTitle>
       </Card.Header>
       {/* ----- Network Summary - Top Row ----- */}
-      <Card.HorizontalContainer>
-        <Card.Column>
+      <Row>
+        <Col mobile={12} tablet>
           <Card.ItemContainer>
             <Card.ItemLabel>Hashrate</Card.ItemLabel>
             <Card.ItemDetail>
@@ -40,35 +40,34 @@ export default function NetworkSummary({ info }) {
               <span> {hashrate[1].abbreviation}H/s</span>
             </Card.ItemDetail>
           </Card.ItemContainer>
-        </Card.Column>
-        <Card.Column>
+        </Col>
+        <Col mobile={12} tablet>
           <Card.ItemContainer>
             <Card.ItemLabel>Unconfirmed</Card.ItemLabel>
             <Card.ItemDetail>
               <span>{handleUnconfirmed(unconfirmed, memSize)}</span>
             </Card.ItemDetail>
           </Card.ItemContainer>
-        </Card.Column>
-        <Card.Column>
+        </Col>
+        <Col mobile={12} tablet>
           <Card.ItemContainer>
             <Card.ItemLabel>Network</Card.ItemLabel>
             <Card.ItemDetail>
               <span>{network}</span>
             </Card.ItemDetail>
           </Card.ItemContainer>
-        </Card.Column>
-      </Card.HorizontalContainer>
-      {/* ----- Network Summary - Bottom Row ----- */}
-      <Card.HorizontalContainer>
-        <Card.Column>
+        </Col>
+      </Row>
+      <Row>
+        <Col mobile={12} tablet>
           <Card.ItemContainer>
             <Card.ItemLabel>Opened Names</Card.ItemLabel>
             <Card.ItemDetail>
               <span>{registeredNames}</span>
             </Card.ItemDetail>
           </Card.ItemContainer>
-        </Card.Column>
-        <Card.Column>
+        </Col>
+        <Col mobile={12} tablet>
           <Card.ItemContainer>
             <Card.ItemLabel>Difficulty</Card.ItemLabel>
             <Card.ItemDetail>
@@ -76,16 +75,16 @@ export default function NetworkSummary({ info }) {
               <sup>{difficulty[1]}</sup>
             </Card.ItemDetail>
           </Card.ItemContainer>
-        </Card.Column>
-        <Card.Column>
+        </Col>
+        <Col mobile={12} tablet>
           <Card.ItemContainer>
             <Card.ItemLabel>Chainwork</Card.ItemLabel>
             <Card.ItemDetail>
               {chainwork[0]} x 10<sup>{chainwork[1]}</sup>
             </Card.ItemDetail>
           </Card.ItemContainer>
-        </Card.Column>
-      </Card.HorizontalContainer>
+        </Col>
+      </Row>
     </Card>
   );
 }
