@@ -49,9 +49,9 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
                   label="Received"
                   value={
                     hnsValues(received) || (
-                        <SkeletonWrapper>
-                          <Skeleton />
-                        </SkeletonWrapper>
+                      <SkeletonWrapper>
+                        <Skeleton />
+                      </SkeletonWrapper>
                     )
                   }
                 />
