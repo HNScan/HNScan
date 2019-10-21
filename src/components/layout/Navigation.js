@@ -26,7 +26,6 @@ const NavLinkItem = styled(NavBar.Item)`
 
     ${NavBar.Link} {
         padding-left: 0;
-
     }
   }
 `;
@@ -38,6 +37,7 @@ const Burger = styled(NavBar.Burger)`
 `;
 
 const LogoWrapper = styled(NavBar.Item)`
+  width: 85px;
   @media (max-width: calc(${props => props.theme.breakpoints.desktop} - 1px)){
       margin-left: 2.5vw;
   }
@@ -54,6 +54,7 @@ const Container = styled.div`
     display: flex;
     align-items: stretch;
     width: 90%;
+    max-width: 1216px;
   }
 `;
 
@@ -62,7 +63,7 @@ export default function Navigation() {
   const [moreDropdownActive, updateMoreDropdownActive] = useState(false);
   const [toolsDropdownActive, updateToolsDropdownActive] = useState(false);
   return (
-    <BorderedNav height={"60px"}>
+    <BorderedNav>
       <Container>
         <NavBar.Brand>
           <LogoWrapper as={Link} to={"/"}>
