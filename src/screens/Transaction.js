@@ -45,30 +45,16 @@ function TxDetailScreen({ hash }) {
         <Card.Content>
           <Row>
             <Col mobile={12} tablet>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Received</Card.ItemLabel>
-                <Card.ItemDetail>{timeAgo(tx.time)}</Card.ItemDetail>
-              </Card.ItemContainer>
+              <StackedData label="Received" value={timeAgo(tx.time)} />
             </Col>
             <Col mobile={12} tablet>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Amount</Card.ItemLabel>
-                <Card.ItemDetail>
-                  {hnsValues(sumTxOutputs(tx.outputs))}
-                </Card.ItemDetail>
-              </Card.ItemContainer>
+              <StackedData label="Amount" value={hnsValues(sumTxOutputs(tx.outputs))} />
             </Col>
             <Col mobile={12} tablet>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Fee</Card.ItemLabel>
-                <Card.ItemDetail>{hnsValues(tx.fee)}</Card.ItemDetail>
-              </Card.ItemContainer>
+              <StackedData label="Fee" value={hnsValues(tx.fee)} />
             </Col>
             <Col mobile={12} tablet>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Confirmations</Card.ItemLabel>
-                <Card.ItemDetail>{tx.confirmations}</Card.ItemDetail>
-              </Card.ItemContainer>
+              <StackedData label="Confirmation" value={tx.confirmations} />
             </Col>
           </Row>
         </Card.Content>

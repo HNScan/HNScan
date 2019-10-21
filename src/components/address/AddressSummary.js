@@ -45,46 +45,41 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
           <Row>
             <Col mobile={12} tablet>
               <Card.ItemContainer>
-                <StackedData label="Received" value={
-                  hnsValues(received) || (
+                <StackedData
+                  label="Received"
+                  value={
+                    hnsValues(received) || (
+                        <SkeletonWrapper>
+                          <Skeleton />
+                        </SkeletonWrapper>
+                    )
+                  }
+                />
+              </Card.ItemContainer>
+            </Col>
+            <Col mobile={12} tablet>
+              <StackedData
+                label="Spent"
+                value={
+                  hnsValues(spent) || (
                     <SkeletonWrapper>
                       <Skeleton />
                     </SkeletonWrapper>
                   )
-                }/>
-                {/* <Card.ItemLabel>Received</Card.ItemLabel>
-                <Card.ItemDetail>
-                  {hnsValues(received) || (
-                    <SkeletonWrapper>
-                      <Skeleton />
-                    </SkeletonWrapper>
-                  )}
-                </Card.ItemDetail> */}
-              </Card.ItemContainer>
+                }
+              />
             </Col>
             <Col mobile={12} tablet>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Spent</Card.ItemLabel>
-                <Card.ItemDetail>
-                  {hnsValues(spent) || (
+              <StackedData
+                label="Balance"
+                value={
+                  hnsValues(confirmed) || (
                     <SkeletonWrapper>
                       <Skeleton />
                     </SkeletonWrapper>
-                  )}
-                </Card.ItemDetail>
-              </Card.ItemContainer>
-            </Col>
-            <Col mobile={12} tablet>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Balance</Card.ItemLabel>
-                <Card.ItemDetail>
-                  {hnsValues(confirmed) || (
-                    <SkeletonWrapper>
-                      <Skeleton />
-                    </SkeletonWrapper>
-                  )}
-                </Card.ItemDetail>
-              </Card.ItemContainer>
+                  )
+                }
+              />
             </Col>
           </Row>
         </Card.Content>

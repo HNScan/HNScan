@@ -71,15 +71,6 @@ const ItemContainer = styled.div`
   padding: 12px;
 `;
 
-// ----- NETWORK SUMMARY SPECIFIC -----
-const ItemLabel = styled.div`
-  font-weight: 800;
-`;
-
-const ItemDetail = styled.div`
-  font-size: 20px;
-`;
-
 // ----- TX'S AND BLOCKS SPECIFIC -----
 // Used on the home screen for recent TX's and Blocks
 const SummaryItemContainer = styled.div`
@@ -147,8 +138,6 @@ Card.HeaderLink = HeaderLink;
 Card.Content = Content;
 Card.SummaryContainer = SummaryContainer;
 Card.ItemContainer = ItemContainer;
-Card.ItemDetail = ItemDetail;
-Card.ItemLabel = ItemLabel;
 Card.SummaryItem = SummaryItem;
 Card.SummaryItemContent = SummaryItemContent;
 Card.SummaryItemContainer = SummaryItemContainer;
