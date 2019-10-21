@@ -27,6 +27,7 @@ export default function BlockAdvanced({ block }) {
                 {block.prevBlock && (
                   <tr>
                     <StackedData
+                      cell
                       label="Previous Block"
                       value={block.prevBlock}
                       link={"/block/" + (block.height - 1)}
@@ -35,6 +36,7 @@ export default function BlockAdvanced({ block }) {
                 )}
                 <tr>
                   <StackedData
+                    cell
                     label="Difficulty"
                     value={
                       <span>
@@ -44,22 +46,23 @@ export default function BlockAdvanced({ block }) {
                   />
                 </tr>
                 <tr>
-                  <StackedData label="Version" value={block.version} />
+                  <StackedData cell label="Version" value={block.version} />
                 </tr>
                 <tr>
-                  <StackedData label="Bits" value={block.bits} />
+                  <StackedData cell label="Bits" value={block.bits} />
                 </tr>
                 <tr>
-                  <StackedData label="Size" value={block.size + " bytes"} />
+                  <StackedData cell label="Size" value={block.size + " bytes"} />
                 </tr>
                 <tr>
                   <StackedData
+                    cell
                     label="Average Fee"
                     value={hnsValues(block.averageFee)}
                   />
                 </tr>
                 <tr>
-                  <StackedData label="Nonce" value={block.nonce} />
+                  <StackedData cell label="Nonce" value={block.nonce} />
                 </tr>
               </tbody>
             </table>
@@ -70,6 +73,7 @@ export default function BlockAdvanced({ block }) {
                 {block.nextHash && (
                   <tr>
                     <StackedData
+                      cell
                       label="Next Block"
                       value={block.nextHash}
                       link={"/block/" + (block.height + 1)}
@@ -77,25 +81,26 @@ export default function BlockAdvanced({ block }) {
                   </tr>
                 )}
                 <tr>
-                  <StackedData label="Hash" value={block.hash} />
+                  <StackedData cell label="Hash" value={block.hash} />
                 </tr>
                 <tr>
-                  <StackedData label="Merkle Root" value={block.merkleRoot} />
+                  <StackedData cell label="Merkle Root" value={block.merkleRoot} />
                 </tr>
                 <tr>
-                  <StackedData label="Tree Root" value={block.treeRoot} />
+                  <StackedData cell label="Tree Root" value={block.treeRoot} />
                 </tr>
                 <tr>
-                  <StackedData label="Filter Root" value={block.filterRoot} />
+                  <StackedData cell label="Filter Root" value={block.filterRoot} />
                 </tr>
                 <tr>
                   <StackedData
+                    cell
                     label="Reserved Root"
                     value={block.reservedRoot}
                   />
                 </tr>
                 <tr>
-                  <StackedData label="Chainwork" value={block.chainwork} />
+                  <StackedData cell label="Chainwork" value={block.chainwork} />
                 </tr>
               </tbody>
             </table>

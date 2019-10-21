@@ -31,19 +31,20 @@ const PeerInfo = ({ peers, ...props }) => {
             <table className="table is-fullwidth">
               <tbody>
                 <tr>
-                  <StackedData label="Address" value={peer.addr} />
+                  <StackedData cell label="Address" value={peer.addr} />
                 </tr>
                 <tr>
                   <StackedData
+                    cell
                     label="Name"
                     value={peer.name || "No name provided"}
                   />
                 </tr>
                 <tr>
-                  <StackedData label="Services" value={peer.services} />
+                  <StackedData cell label="Services" value={peer.services} />
                 </tr>
                 <tr>
-                  <StackedData label="Version" value={peer.version} />
+                  <StackedData cell label="Version" value={peer.version} />
                 </tr>
               </tbody>
             </table>
@@ -52,19 +53,21 @@ const PeerInfo = ({ peers, ...props }) => {
             <table className="table is-fullwidth">
               <tbody>
                 <tr>
-                  <StackedData label="Location" value={"todo"} />
+                  <StackedData cell label="Location" value={"todo"} />
                 </tr>
                 <tr>
-                  <StackedData label="Country" value={"todo"} />
+                  <StackedData cell label="Country" value={"todo"} />
                 </tr>
                 <tr>
                   <StackedData
+                    cell
                     label="Whitelisted"
                     value={peer.whitelisted.toString()}
                   />
                 </tr>
                 <tr>
                   <StackedData
+                    cell
                     label="Last Send / Last Receive"
                     value={`${timeAgo(peer.lastsend)} / ${timeAgo(
                       peer.lastrecv

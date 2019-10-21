@@ -3,7 +3,12 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Wrapper = styled.td`
+const CellWrapper = styled.td`
+  display: flex;
+  flex-direction: column;
+`;
+
+const DivWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -19,15 +24,21 @@ const Label = styled.span`
   font-size: 14px;
 `;
 
-const StackedData = props => {
+const StackedBody = props => {
   return (
-    <Wrapper className="stacked">
+    <>
       <Label>{props.label}</Label>
       <Value>
         {props.link ? <Link to={props.link}>{props.value}</Link> : props.value}
       </Value>
-    </Wrapper>
+    </>
   );
+}
+
+const StackedData = props => {
+  return props.cell ?
+    <CellWrapper> <StackedBody {...props}/> </CellWrapper> :
+    <DivWrapper> <StackedBody {...props}/> </DivWrapper>;
 };
 
 StackedData.propTypes = {

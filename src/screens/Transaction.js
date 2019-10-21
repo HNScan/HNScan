@@ -85,17 +85,18 @@ function TxDetailScreen({ hash }) {
                 <tbody>
                   {/* TODO: Get Node Status */}
                   <tr>
-                    <StackedData label="Hash" value={tx.hash} />
+                    <StackedData cell label="Hash" value={tx.hash} />
                   </tr>
                   <tr>
                     <StackedData
+                      cell
                       label="Block Height"
                       value={tx.height}
                       link={"/block/" + tx.height}
                     />
                   </tr>
                   <tr>
-                    <StackedData label="Locktime" value={tx.locktime} />
+                    <StackedData cell label="Locktime" value={tx.locktime} />
                   </tr>
                 </tbody>
               </table>
@@ -106,15 +107,16 @@ function TxDetailScreen({ hash }) {
                   {/* TODO: Get Node Status */}
                   <tr>
                     <StackedData
+                      cell
                       label="Witness Hash"
                       value={tx.witnessHash}
                     />
                   </tr>
                   <tr>
-                    <StackedData label="Version" value={tx.version} />
+                    <StackedData cell label="Version" value={tx.version} />
                   </tr>
                   <tr>
-                    <StackedData label="Index" value={tx.index} />
+                    <StackedData cell label="Index" value={tx.index} />
                   </tr>
                 </tbody>
               </table>
