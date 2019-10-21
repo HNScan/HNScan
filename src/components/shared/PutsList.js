@@ -28,24 +28,31 @@ const DataContainer = styled.div`
 
 const InputWrapper = styled.div`
   padding: 10px;
+  text-align: center;
 `;
 
 const OutputWrapper = styled.div`
   padding: 10px;
 `;
 
+function renderInput(input) {
+  if (input.coinbase) {
+    return <span>{hnsValues(input.value)} from Block Reward</span>;
+  } else if (input.airdrop) {
+    return <span>Airdrop Claim</span>;
+  } else {
+    return (
+      <span>
+        {hnsValues(input.value)} from{" "}
+        <Link to={"/address/" + input.address}>{input.address}</Link>
+      </span>
+    );
+  }
+}
+
 export const InputList = props => {
   const inputs = props.inputs.map((input, index) => (
-    <InputWrapper key={index}>
-      {input.address ? (
-        <span>
-          {hnsValues(input.value)} from{" "}
-          <Link to={"/address/" + input.address}>{input.address}</Link>
-        </span>
-      ) : (
-        <span>{hnsValues(input.value)} from Block Reward</span>
-      )}
-    </InputWrapper>
+    <InputWrapper key={index}>{renderInput(input)}</InputWrapper>
   ));
 
   return (
