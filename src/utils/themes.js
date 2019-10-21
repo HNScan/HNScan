@@ -23,6 +23,10 @@ export const themes = {
       borderColor: "#e7e7e7",
       textColor: "#4a4a4a"
     },
+    logo: {
+      stroke: "#000",
+      fill: "#000"
+    },
     "--text-color-normal": "#4a4a4a",
     "--text-color-light": "#dbdbdb",
     "--text-color-link": "#3273dc",
@@ -33,7 +37,6 @@ export const themes = {
     "--border-color": "#dfdfdf",
     "--card-border": "#dbdbdb",
     "--card-box-shadow": "0 2px 3px rgba(10,10,10,.1)",
-    "--logo-fill": "#000",
     "--input-error-color": "#f00",
     "--urkel-color": "#ee8c3a",
     "--ha-color": "#532ad1"
@@ -62,6 +65,10 @@ export const themes = {
       borderColor: "#e7e7e7",
       textColor: "#4a4a4a"
     },
+    logo: {
+      stroke: "#cfcfcf",
+      fill: "#cfcfcf"
+    },
     "--text-color-normal": "#afafaf",
     "--text-color-light": "#969696",
     "--text-color-link": "#3273dc",
@@ -73,7 +80,6 @@ export const themes = {
     "--card-background": "#373737",
     "--card-border": "#dbdbdb",
     "--card-box-shadow": "0 2px 3px rgba(10,10,10,.1)",
-    "--logo-fill": "#cfcfcf",
     "--input-error-color": "#f00",
     "--searchbar-background-color": "#575757",
     "--searchbar-border-color": "#969696",
