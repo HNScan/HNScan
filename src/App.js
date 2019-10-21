@@ -22,6 +22,7 @@ import Search from "screens/Search";
 import Transaction from "screens/Transaction";
 
 // More Pages
+import Changelog from "screens/more/Changelog";
 
 import AirdropClaimScreen from "screens/tools/AirdropClaim/AirdropClaimScreen";
 
@@ -29,7 +30,6 @@ import AirdropClaimScreen from "screens/tools/AirdropClaim/AirdropClaimScreen";
 import NodeStatus from "screens/tools/NodeStatus";
 import Peers from "screens/tools/Peers";
 import Charts from "screens/tools/Charts";
-import Changelog from "screens/Changelog";
 
 // Error Pages
 import NotFoundScreen from "screens/errors/NotFound";
