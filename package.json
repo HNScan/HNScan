@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://new.hnscan.com",
   "dependencies": {
-    "@urkellabs/ucl": "0.1.4",
+    "@urkellabs/ucl": "0.1.5",
     "bulma": "^0.7.5",
     "bulma-extensions": "^6.2.7",
     "bulma-switch": "^2.0.0",
