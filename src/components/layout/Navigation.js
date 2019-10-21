@@ -114,9 +114,6 @@ export default function Navigation() {
             >
               <NavBar.Link>More</NavBar.Link>
               <NavBar.Dropdown>
-                <NavBar.Item as={Link} to={"/about"}>
-                  About
-                </NavBar.Item>
                 <NavBar.Item as={Link} to={"/changelog"}>
                   Changelog
                 </NavBar.Item>
