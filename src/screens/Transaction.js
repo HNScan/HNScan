@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 // Components
 import Card from "components/styles/Card";
-import StackedComponent from "components/Stacked/StackedComponent";
+import StackedData from "components/Stacked/StackedComponent";
 import { InputList, OutputList } from "components/shared/PutsList";
 
 // Resources
@@ -85,17 +85,17 @@ function TxDetailScreen({ hash }) {
                 <tbody>
                   {/* TODO: Get Node Status */}
                   <tr>
-                    <StackedComponent label="Hash" value={tx.hash} />
+                    <StackedData label="Hash" value={tx.hash} />
                   </tr>
                   <tr>
-                    <StackedComponent
+                    <StackedData
                       label="Block Height"
                       value={tx.height}
                       link={"/block/" + tx.height}
                     />
                   </tr>
                   <tr>
-                    <StackedComponent label="Locktime" value={tx.locktime} />
+                    <StackedData label="Locktime" value={tx.locktime} />
                   </tr>
                 </tbody>
               </table>
@@ -105,16 +105,16 @@ function TxDetailScreen({ hash }) {
                 <tbody>
                   {/* TODO: Get Node Status */}
                   <tr>
-                    <StackedComponent
+                    <StackedData
                       label="Witness Hash"
                       value={tx.witnessHash}
                     />
                   </tr>
                   <tr>
-                    <StackedComponent label="Version" value={tx.version} />
+                    <StackedData label="Version" value={tx.version} />
                   </tr>
                   <tr>
-                    <StackedComponent label="Index" value={tx.index} />
+                    <StackedData label="Index" value={tx.index} />
                   </tr>
                 </tbody>
               </table>
