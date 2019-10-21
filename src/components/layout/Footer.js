@@ -164,9 +164,6 @@ export default function Footer() {
               <FooterLink as={Link} to="/names">
                 Names
               </FooterLink>
-              <FooterLink as={Link} to="/about">
-                About
-              </FooterLink>
             </LinksContainer>
             <LinksContainer>
               <Header>Tools</Header>

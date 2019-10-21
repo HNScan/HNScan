@@ -21,6 +21,8 @@ import Names from "screens/Names";
 import Search from "screens/Search";
 import Transaction from "screens/Transaction";
 
+// More Pages
+
 import AirdropClaimScreen from "screens/tools/AirdropClaim/AirdropClaimScreen";
 
 // Tool Pages
@@ -55,6 +57,7 @@ function App() {
                 {/* Ideally let's get a recent transactions page going */}
                 <Route path="/tx/:hash" exact component={Transaction} />
                 <Route path="/search" exact component={Search} />
+                {/* More Screens */}
                 {/* Tool Screens */}
                 <Route path="/peers" exact component={Peers} />
                 <Route path="/status" exact component={NodeStatus} />
