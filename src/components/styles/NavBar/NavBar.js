@@ -327,7 +327,7 @@ color: ${props => props.theme.global.textColor};
 `;
 
 const Brand = styled.div`
-  align-items: stretch;
+  align-items: center;
   display: flex;
   flex-shrink: 0;
   //@todo come from theme (navbar height);
