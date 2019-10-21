@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 // Components
 import Card from "components/styles/Card";
 
-//@fixme move to svgs
-import Arrow from "components/Logos/rightArrow";
+// SVGs
+import Arrow from "components/svg/RightArrow";
 
 // Util
 import { truncateHash, timeAgo, hnsValues, sumTxOutputs } from "utils/util";
