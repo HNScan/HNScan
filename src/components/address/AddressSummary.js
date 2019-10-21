@@ -44,18 +44,16 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
         <Card.Content>
           <Row>
             <Col mobile={12} tablet>
-              <Card.ItemContainer>
-                <StackedData
-                  label="Received"
-                  value={
-                    hnsValues(received) || (
-                      <SkeletonWrapper>
-                        <Skeleton />
-                      </SkeletonWrapper>
-                    )
-                  }
-                />
-              </Card.ItemContainer>
+              <StackedData
+                label="Received"
+                value={
+                  hnsValues(received) || (
+                    <SkeletonWrapper>
+                      <Skeleton />
+                    </SkeletonWrapper>
+                  )
+                }
+              />
             </Col>
             <Col mobile={12} tablet>
               <StackedData
