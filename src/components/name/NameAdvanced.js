@@ -3,7 +3,7 @@ import { Row, Col } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
-import StackedData from "components/Stacked/StackedComponent";
+import StackedData from "components/shared/StackedData";
 
 // Util
 import { hnsValues } from "utils/util";

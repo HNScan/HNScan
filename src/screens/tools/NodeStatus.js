@@ -4,7 +4,7 @@ import humanizeDuration from "humanize-duration";
 
 // Components
 import Card from "components/styles/Card";
-import StackedData from "components/Stacked/StackedComponent";
+import StackedData from "components/shared/StackedData";
 
 // Resources
 import StatusResource from "resources/StatusResource";

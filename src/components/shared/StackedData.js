@@ -31,6 +31,7 @@ const StackedData = props => {
 };
 
 StackedData.propTypes = {
+  cell: PropTypes.bool,
   label: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.element]).isRequired,
   link: PropTypes.string

@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 // Components
 import Card from "components/styles/Card";
-import StackedData from "components/Stacked/StackedComponent";
+import StackedData from "components/shared/StackedData";
 import { InputList, OutputList } from "components/shared/PutsList";
 
 // Resources
