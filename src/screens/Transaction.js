@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { useResource } from "rest-hooks";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { Row, Col } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
@@ -42,34 +43,34 @@ function TxDetailScreen({ hash }) {
           <Card.HeaderTitle>Transaction Summary</Card.HeaderTitle>
         </Card.Header>
         <Card.Content>
-          <Card.HorizontalContainer>
-            <Card.Column>
+          <Row>
+            <Col mobile={12} tablet>
               <Card.ItemContainer>
                 <Card.ItemLabel>Received</Card.ItemLabel>
                 <Card.ItemDetail>{timeAgo(tx.time)}</Card.ItemDetail>
               </Card.ItemContainer>
-            </Card.Column>
-            <Card.Column>
+            </Col>
+            <Col mobile={12} tablet>
               <Card.ItemContainer>
                 <Card.ItemLabel>Amount</Card.ItemLabel>
                 <Card.ItemDetail>
                   {hnsValues(sumTxOutputs(tx.outputs))}
                 </Card.ItemDetail>
               </Card.ItemContainer>
-            </Card.Column>
-            <Card.Column>
+            </Col>
+            <Col mobile={12} tablet>
               <Card.ItemContainer>
                 <Card.ItemLabel>Fee</Card.ItemLabel>
                 <Card.ItemDetail>{hnsValues(tx.fee)}</Card.ItemDetail>
               </Card.ItemContainer>
-            </Card.Column>
-            <Card.Column>
+            </Col>
+            <Col mobile={12} tablet>
               <Card.ItemContainer>
                 <Card.ItemLabel>Confirmations</Card.ItemLabel>
                 <Card.ItemDetail>{tx.confirmations}</Card.ItemDetail>
               </Card.ItemContainer>
-            </Card.Column>
-          </Card.HorizontalContainer>
+            </Col>
+          </Row>
         </Card.Content>
       </Card>
 
