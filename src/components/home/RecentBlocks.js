@@ -9,7 +9,7 @@ import Card from "components/styles/Card";
 import BlockLogo from "components/svg/Block";
 
 // Util
-import { truncateHash } from "utils/util";
+import { truncateHash, timeAgo } from "utils/util";
 
 //@todo put them here for now.
 export const Miner = styled.div`
@@ -24,6 +24,10 @@ export const MobileMiner = styled.div`
   @media (min-width: 425px) {
     display: none;
   }
+`;
+
+const Time = styled.span`
+  font-style: italic;
 `;
 
 const BlockCardItem = ({ block }) => {
@@ -59,6 +63,11 @@ const BlockCardItem = ({ block }) => {
           <Card.LeftItemDetail>
             Transactions: {block.tx.length}
           </Card.LeftItemDetail>
+        </Card.SummaryItemContent>
+        <Card.SummaryItemContent>
+          <Card.RightItemDetail>
+            <Time>{timeAgo(block.time)}</Time>
+          </Card.RightItemDetail>
         </Card.SummaryItemContent>
       </Card.SummaryItem>
     </Card.SummaryItemContainer>
