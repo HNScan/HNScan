@@ -36,7 +36,7 @@ export default function NetworkSummary({ info }) {
         <Col mobile={12} tablet>
           <StackedData
             label="Hashrate"
-            value={hashrate[0].toString() + " " + hashrate[1].abbreviation  + "H/s"}
+            value={`${hashrate[0].toString()} ${hashrate[1].abbreviation}H/s`}
           />
         </Col>
         <Col mobile={12} tablet>
