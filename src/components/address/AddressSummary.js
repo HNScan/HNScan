@@ -5,6 +5,7 @@ import { Row, Col } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
+import StackedData from "components/shared/StackedData";
 
 // Util
 import { hnsValues } from "utils/util";
@@ -44,14 +45,21 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
           <Row>
             <Col mobile={12} tablet>
               <Card.ItemContainer>
-                <Card.ItemLabel>Received</Card.ItemLabel>
+                <StackedData label="Received" value={
+                  hnsValues(received) || (
+                    <SkeletonWrapper>
+                      <Skeleton />
+                    </SkeletonWrapper>
+                  )
+                }/>
+                {/* <Card.ItemLabel>Received</Card.ItemLabel>
                 <Card.ItemDetail>
                   {hnsValues(received) || (
                     <SkeletonWrapper>
                       <Skeleton />
                     </SkeletonWrapper>
                   )}
-                </Card.ItemDetail>
+                </Card.ItemDetail> */}
               </Card.ItemContainer>
             </Col>
             <Col mobile={12} tablet>

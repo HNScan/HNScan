@@ -77,7 +77,7 @@ const ItemLabel = styled.div`
 `;
 
 const ItemDetail = styled.div`
-  font-size: 24px;
+  font-size: 20px;
 `;
 
 // ----- TX'S AND BLOCKS SPECIFIC -----

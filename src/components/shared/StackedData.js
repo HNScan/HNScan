@@ -9,26 +9,28 @@ const CellWrapper = styled.td`
 `;
 
 const DivWrapper = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
+  padding: 12px;
 `;
 
 const Value = styled.span`
-  font-size: 12px;
+  font-size: ${props => props.cell ? "12px" : "16px"};
   word-wrap: break-word;
   word-break: break-all;
 `;
 
 const Label = styled.span`
   font-weight: 800;
-  font-size: 14px;
+  font-size: ${props => props.cell ? "14px" : "16px"};
 `;
 
 const StackedBody = props => {
   return (
     <>
-      <Label>{props.label}</Label>
-      <Value>
+      <Label {...props}>{props.label}</Label>
+      <Value {...props}>
         {props.link ? <Link to={props.link}>{props.value}</Link> : props.value}
       </Value>
     </>
