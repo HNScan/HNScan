@@ -1,25 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-export const NavBar = styled.nav`
-  background-color: ${props => props.background};
-  min-height: ${props => props.height};
-  position: relative;
-  z-index: 30;
-  @media (min-width: ${props => props.theme.breakpoints.desktop}) {
-    align-items: stretch;
-    display: flex;
-  }
-`;
-
 const BurgerWrapper = styled.a`
   color: #4a4a4a;
   cursor: pointer;
   display: block;
   position: relative;
-  //@todo come from props here. props.theme.navbar.height
-  height: 3.25rem;
-  width: 3.25rem;
+  /* //@todo come from props here. props.theme.navbar.height */
+  /* height: 3.25rem; */
+  /* width: 3.25rem; */
   margin-left: auto;
 
   @media (min-width: ${props => props.theme.breakpoints.desktop}) {
@@ -327,16 +316,55 @@ color: ${props => props.theme.global.textColor};
 `;
 
 const Brand = styled.div`
-  align-items: center;
+  align-items: stretch;
   display: flex;
   flex-shrink: 0;
   //@todo come from theme (navbar height);
-  min-height: 3.25rem;
+  /* min-height: 3.25rem; */
   @media (max-width: calc(${props => props.theme.breakpoints.desktop} - 1px)) {
     ${Item} {
       align-items: center;
       display: flex;
     }
+  }
+`;
+
+const Container = styled.div`
+  min-height: 3.25rem;
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  margin: 0 auto;
+
+  @media (min-width: ${props => props.theme.breakpoints.desktop}) {
+    display: flex;
+    align-items: stretch;
+    width: 90%;
+    /* TODO: Take this in as a prop */
+    max-width: 1216px;
+  }
+`;
+
+export const NavBar = styled.nav`
+  background-color: ${props => props.background};
+  min-height: ${props => props.height};
+  position: relative;
+  z-index: 30;
+
+  ${Container} {
+    min-height: ${props => props.height};
+    ${Brand} {
+      min-height: ${props => props.height};
+      ${BurgerWrapper} {
+        height: ${props => props.height};
+        width: ${props => props.height};
+      }
+    }
+  }
+
+  @media (min-width: ${props => props.theme.breakpoints.desktop}) {
+    align-items: stretch;
+    display: flex;
   }
 `;
 
@@ -348,6 +376,7 @@ NavBar.Burger = Burger;
 NavBar.Menu = Menu;
 NavBar.Start = Start;
 NavBar.End = End;
+NavBar.Container = Container;
 
 NavBar.defaultProps = {
   background: "#fff",

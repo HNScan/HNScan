@@ -43,28 +43,13 @@ const LogoWrapper = styled(NavBar.Item)`
   }
 `;
 
-const Container = styled.div`
-  min-height: 3.25rem;
-  position: relative;
-  z-index: 30;
-  width: 100%;
-  margin: 0 auto;
-
-  @media (min-width: ${props => props.theme.breakpoints.desktop}) {
-    display: flex;
-    align-items: stretch;
-    width: 90%;
-    max-width: 1216px;
-  }
-`;
-
 export default function Navigation() {
   const [mobileNav, updateMobileNav] = useState(false);
   const [moreDropdownActive, updateMoreDropdownActive] = useState(false);
   const [toolsDropdownActive, updateToolsDropdownActive] = useState(false);
   return (
-    <BorderedNav>
-      <Container>
+    <BorderedNav height={"60px"}>
+      <NavBar.Container>
         <NavBar.Brand>
           <LogoWrapper as={Link} to={"/"}>
             <Logo />
@@ -142,7 +127,7 @@ export default function Navigation() {
             </NavBar.Item>
           </NavBar.End>
         </NavBar.Menu>
-      </Container>
+      </NavBar.Container>
     </BorderedNav>
   );
 }
