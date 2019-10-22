@@ -8,6 +8,7 @@ import { useResource, useResultCache } from "rest-hooks";
 // Components
 import Card from "components/styles/Card";
 import Pagination from "components/layout/Pagination";
+import Skeleton from "react-loading-skeleton";
 
 // Resources
 import NameResource from "resources/NameResource";
@@ -22,7 +23,6 @@ export const TableContainer = styled.div`
 `;
 
 export const BlocksTable = styled(Table)`
-  color: ${props => props.theme["--text-color-normal"]} !important;
   width: 90%;
   height: auto;
   margin: 10px auto;
@@ -31,29 +31,58 @@ export const BlocksTable = styled(Table)`
   }
 `;
 
-export const Abbr = styled.abbr`
-  color: ${props => props.theme["--text-color-normal"]};
-  text-decoration: none;
-`;
-
-//@todo needed?
-const StateCell = styled(Table.Td)`
-  color: ${props => props.theme["--text-color-normal"]};
-`;
-
-const Row = ({ name, state, height }) => (
+const Row = ({ name, state, height, loading }) => (
   <Table.Tr>
-    <Table.Td>
-      <Link to={"/name/" + name}>{name}</Link>
+    <Table.Td width="75%">
+      {loading ? <Skeleton /> : <Link to={"/name/" + name}>{name}</Link>}
     </Table.Td>
-    <StateCell>{state}</StateCell>
     <Table.Td>
-      <Link to={"/block/" + height}>{height}</Link>
+      {loading ? <Skeleton /> : state}
+      </Table.Td>
+    <Table.Td>
+      {loading ? <Skeleton /> : <Link to={"/block/" + height}>{height}</Link>}
     </Table.Td>
   </Table.Tr>
 );
 
-function NamesContainer(props) {
+function NamesTableStructure(props) {
+  return (
+    <Card>
+      <Card.Header>
+        <Card.HeaderTitle>TLD Names</Card.HeaderTitle>
+      </Card.Header>
+      <Card.Content>
+        <TableContainer>
+          <BlocksTable>
+            <Table.Head>
+              <Table.Tr>
+                <Table.Th title="Top Level Domain Name">
+                  Name
+                </Table.Th>
+                <Table.Th title="Name Auction State">
+                  State
+                </Table.Th>
+                <Table.Th title="Block Height">
+                  Height
+                </Table.Th>
+              </Table.Tr>
+            </Table.Head>
+            <Table.Body>{props.children}</Table.Body>
+          </BlocksTable>
+        </TableContainer>
+      </Card.Content>
+    </Card>
+  );
+}
+
+function NamesSkeleton() {
+  const rows = [];
+  for (let i = 0; i < 24; i++)
+    rows.push(<Row key={i} loading />)
+  return rows;
+}
+
+function NamesTable(props) {
   const pageOffset = (props.page - 1) * 25;
   const names = useResource(NameResource.listShape(), { offset: pageOffset });
   const { limit, total } = useResultCache(NameResource.listShape(), {
@@ -67,31 +96,9 @@ function NamesContainer(props) {
   // 25 blocks per page
   return (
     <>
-      <Card>
-        <Card.Header>
-          <Card.HeaderTitle>TLD Names</Card.HeaderTitle>
-        </Card.Header>
-        <Card.Content>
-          <TableContainer>
-            <BlocksTable>
-              <Table.Head>
-                <Table.Tr>
-                  <Table.Th>
-                    <Abbr title="Top Level Domain Name">Name</Abbr>
-                  </Table.Th>
-                  <Table.Th>
-                    <Abbr title="Name Auction State">State</Abbr>
-                  </Table.Th>
-                  <Table.Th>
-                    <Abbr title="Block Height">Height</Abbr>
-                  </Table.Th>
-                </Table.Tr>
-              </Table.Head>
-              <Table.Body>{nameRows}</Table.Body>
-            </BlocksTable>
-          </TableContainer>
-        </Card.Content>
-      </Card>
+      <NamesTableStructure>
+        {nameRows}
+      </NamesTableStructure>
       <Pagination
         totalPages={pages}
         page={props.page}
@@ -137,13 +144,12 @@ export default function Names(props) {
     <>
       <Suspense
         fallback={
-          <div>
-            <p>Hi</p>
-          </div>
-          // Blocks skeleton
+          <NamesTableStructure>
+            <NamesSkeleton />
+          </NamesTableStructure>
         }
       >
-        <NamesContainer page={page} changePage={changePage} />
+        <NamesTable page={page} changePage={changePage} />
       </Suspense>
     </>
   );
