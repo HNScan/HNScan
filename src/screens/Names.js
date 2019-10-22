@@ -56,14 +56,14 @@ function NamesTableStructure(props) {
           <BlocksTable>
             <Table.Head>
               <Table.Tr>
-                <Table.Th title="Top Level Domain Name">
-                  Name
+                <Table.Th>
+                  <abbr title="Top Level Domain Name">Name</abbr>
                 </Table.Th>
-                <Table.Th title="Name Auction State">
-                  State
+                <Table.Th>
+                  <abbr title="Name Auction State">State</abbr>
                 </Table.Th>
-                <Table.Th title="Block Height">
-                  Height
+                <Table.Th>
+                  <abbr title="Block Height">Height</abbr>
                 </Table.Th>
               </Table.Tr>
             </Table.Head>

@@ -24,11 +24,6 @@ export const BlocksTable = styled(Table)`
   }
 `;
 
-export const Abbr = styled.abbr`
-  color: ${props => props.theme["--text-color-normal"]};
-  text-decoration: none;
-`;
-
 // ----- Age Row Components -----
 export const AgeHead = styled(Table.Th)`
   color: ${props => props.theme["--text-color-normal"]};
@@ -129,19 +124,19 @@ export default function BlockList(props) {
         <Table.Head>
           <Table.Tr>
             <Table.Th>
-              <Abbr title="Block Height">Height</Abbr>
+              <abbr title="Block Height">Height</abbr>
             </Table.Th>
             <Table.Th className="is-hidden-mobile">
-              <Abbr title="Block Age">Age</Abbr>
+              <abbr title="Block Age">Age</abbr>
             </Table.Th>
             <Table.Th>
-              <Abbr title="Miner Address">Miner</Abbr>
+              <abbr title="Miner Address">Miner</abbr>
             </Table.Th>
             <Table.Th className="is-hidden-mobile">
-              <Abbr title="Block Size">Size</Abbr>
+              <abbr title="Block Size">Size</abbr>
             </Table.Th>
             <Table.Th>
-              <Abbr title="Number of Transactions">TXs</Abbr>
+              <abbr title="Number of Transactions">TXs</abbr>
             </Table.Th>
           </Table.Tr>
         </Table.Head>
