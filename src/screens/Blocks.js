@@ -11,7 +11,6 @@ import Skeleton from "react-loading-skeleton";
 
 // Util
 import { timeAgo, truncateHash } from "utils/util";
-// import BlockList from "components/block/BlockList";
 
 // Hooks
 import usePage from "hooks/usePage";
