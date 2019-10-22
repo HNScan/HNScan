@@ -22,7 +22,7 @@ const TableContainer = styled.div`
   }
 `;
 
-const BlocksTable = styled(Table)`
+const DataTable = styled(Table)`
   width: 90%;
   height: auto;
   margin: 10px auto;
@@ -45,7 +45,7 @@ const Row = ({ name, state, height, loading }) => (
   </Table.Tr>
 );
 
-function NamesTableStructure(props) {
+function NamesTableStructure({ children }) {
   return (
     <Card>
       <Card.Header>
@@ -53,7 +53,7 @@ function NamesTableStructure(props) {
       </Card.Header>
       <Card.Content>
         <TableContainer>
-          <BlocksTable>
+          <DataTable>
             <Table.Head>
               <Table.Tr>
                 <Table.Th>
@@ -67,8 +67,8 @@ function NamesTableStructure(props) {
                 </Table.Th>
               </Table.Tr>
             </Table.Head>
-            <Table.Body>{props.children}</Table.Body>
-          </BlocksTable>
+            <Table.Body>{children}</Table.Body>
+          </DataTable>
         </TableContainer>
       </Card.Content>
     </Card>
