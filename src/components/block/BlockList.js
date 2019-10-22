@@ -6,7 +6,7 @@ import Table from "reactbulma/lib/components/Table/Table.js";
 // Util
 import { timeAgo, truncateHash } from "utils/util";
 
-export const TableContainer = styled.div`
+const TableContainer = styled.div`
   height: 100%;
   width: 100%;
   padding: 0;
@@ -15,7 +15,7 @@ export const TableContainer = styled.div`
   }
 `;
 
-export const BlocksTable = styled(Table)`
+const BlocksTable = styled(Table)`
   width: 90%;
   height: auto;
   margin: 10px auto;
@@ -24,98 +24,35 @@ export const BlocksTable = styled(Table)`
   }
 `;
 
-// ----- Age Row Components -----
-export const AgeHead = styled(Table.Th)`
-  color: ${props => props.theme["--text-color-normal"]};
-  display: none;
-  @media (min-width: 680px) {
-    display: table-cell;
-  }
-`;
-
-export const AgeRow = styled(Table.Td)`
-  color: ${props => props.theme["--text-color-normal"]};
-  display: none;
-  @media (min-width: 680px) {
-    display: table-cell;
-  }
-`;
-
-export const MobileAge = styled.div`
-  color: ${props => props.theme["--text-color-normal"]};
-  display: block;
-  font-size: 14px;
-  @media (min-width: 680px) {
-    display: none;
-  }
-`;
-
-// ----- Miner Row Components -----
-export const MinerAddress = styled.a`
-  display: none;
-  @media (min-width: 869px) {
-    display: table-cell;
-  }
-`;
-
-export const TruncatedMiner = styled.a`
-  display: block;
-  @media (min-width: 869px) {
-    display: none;
-  }
-`;
-
-// ----- Size Row Components -----
-export const SizeHead = styled(Table.Th)`
-  color: ${props => props.theme["--text-color-normal"]};
-  display: none;
-  @media (min-width: 680px) {
-    display: table-cell;
-  }
-`;
-
-export const SizeRow = styled(Table.Td)`
-  color: ${props => props.theme["--text-color-normal"]};
-  display: none;
-  @media (min-width: 680px) {
-    display: table-cell;
-  }
-`;
-
-export const MobileSize = styled.div`
-  color: ${props => props.theme["--text-color-normal"]};
-  display: block;
-  font-size: 14px;
-  @media (min-width: 680px) {
-    display: none;
-  }
-`;
-
-export const Td = styled(Table.Td)`
-  color: ${props => props.theme["--text-color-normal"]};
-`;
+const Row = ({ height, size, time, miner, txs, loading}) => (
+  <Table.Tr >
+    <Table.Td>
+      <Link to={"/block/" + height}>{height}</Link>
+      <div className="is-hidden-tablet">Size: {size}</div>
+    </Table.Td>
+    <Table.Td className="is-hidden-mobile">{timeAgo(time)}</Table.Td>
+    <Table.Td>
+      <Link className="is-hidden-mobile" to={"/address/" + miner}>
+        {miner}
+      </Link>
+      <Link className="is-hidden-tablet" to={"/address/" + miner}>
+        {truncateHash(miner)}
+      </Link>
+      <div className="is-hidden-tablet">{timeAgo(time)}</div>
+    </Table.Td>
+    <Table.Td className="is-hidden-mobile">{size}</Table.Td>
+    <Table.Td>{txs}</Table.Td>
+  </Table.Tr>
+)
 
 export default function BlockList(props) {
-  //Render block rows
-  const blocks = props.blocks.map((block, index) => (
-    <Table.Tr key={index}>
-      <Table.Td>
-        <Link to={"/block/" + block.height}>{block.height}</Link>
-        <div className="is-hidden-tablet">Size: {block.size}</div>
-      </Table.Td>
-      <Table.Td className="is-hidden-mobile">{timeAgo(block.time)}</Table.Td>
-      <Table.Td>
-        <Link className="is-hidden-mobile" to={"/address/" + block.miner}>
-          {block.miner}
-        </Link>
-        <Link className="is-hidden-tablet" to={"/address/" + block.miner}>
-          {truncateHash(block.miner)}
-        </Link>
-        <div className="is-hidden-tablet">{timeAgo(block.time)}</div>
-      </Table.Td>
-      <Table.Td className="is-hidden-mobile">{block.size}</Table.Td>
-      <Table.Td>{block.txs}</Table.Td>
-    </Table.Tr>
+  const blocks = props.blocks.map((block) => (
+    <Row key={block.height}
+      height={block.height}
+      size={block.size}
+      time={block.time}
+      miner={block.miner}
+      txs={block.txs} />
   ));
 
   return (

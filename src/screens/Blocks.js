@@ -12,7 +12,7 @@ import usePage from "hooks/usePage";
 // Resources
 import BlockResource from "resources/BlockResource";
 
-function BlocksView({ page }) {
+function BlocksTable({ page }) {
   const pageOffset = (page - 1) * 25;
   const blocks = useResource(BlockResource.listShape(), { offset: pageOffset });
   const { limit, total } = useResultCache(BlockResource.listShape(), {
@@ -40,7 +40,7 @@ export default function Blocks(props) {
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
-        <BlocksView page={page} />
+        <BlocksTable page={page} />
       </Suspense>
     </>
   );

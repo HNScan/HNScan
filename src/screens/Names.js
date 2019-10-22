@@ -13,7 +13,7 @@ import Skeleton from "react-loading-skeleton";
 // Resources
 import NameResource from "resources/NameResource";
 
-export const TableContainer = styled.div`
+const TableContainer = styled.div`
   height: 100%;
   width: 100%;
   padding: 0;
@@ -22,7 +22,7 @@ export const TableContainer = styled.div`
   }
 `;
 
-export const BlocksTable = styled(Table)`
+const BlocksTable = styled(Table)`
   width: 90%;
   height: auto;
   margin: 10px auto;
@@ -82,8 +82,8 @@ function NamesSkeleton() {
   return rows;
 }
 
-function NamesTable(props) {
-  const pageOffset = (props.page - 1) * 25;
+function NamesTable({ page, changePage }) {
+  const pageOffset = (page - 1) * 25;
   const names = useResource(NameResource.listShape(), { offset: pageOffset });
   const { limit, total } = useResultCache(NameResource.listShape(), {
     offset: pageOffset
@@ -101,9 +101,9 @@ function NamesTable(props) {
       </NamesTableStructure>
       <Pagination
         totalPages={pages}
-        page={props.page}
+        page={page}
         url="/names"
-        changePage={props.changePage}
+        changePage={changePage}
       />
     </>
   );
