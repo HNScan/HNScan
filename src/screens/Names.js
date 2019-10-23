@@ -4,7 +4,7 @@ import { useLocation, useHistory } from "react-router-dom";
 import queryString from "query-string";
 
 // Components
-import { NamesSkeleton, NamesTable } from "components/name/NameList";
+import { NamesSkeleton, NamesTable } from "components/name/NamesTable";
 
 // Resources
 import NameResource from "resources/NameResource";
