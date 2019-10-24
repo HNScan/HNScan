@@ -50,8 +50,6 @@ export const LeftContent = styled.div`
 
   @media (min-width: 1024px) {
     text-align: left;
-    align-items: row;
-    min-width: 200px;
     max-width: none;
   }
 `;
