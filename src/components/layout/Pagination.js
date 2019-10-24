@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-// Components
-import ScrollToTopOnMount from "components/shared/ScrollToTopOnMount";
-
 //@todo move completely to styled components (Pagination Nav, is-centered).
 
 const Wrapper = styled.nav`
@@ -143,7 +140,6 @@ export default function Pagination({ totalPages, page, url }) {
       role="navigation"
       aria-label="pagination"
     >
-      <ScrollToTopOnMount />
       <Previous page={page - 1} url={url} />
       <Next page={page} lastPage={totalPages} url={url} />
       <List className="pagination-list">
