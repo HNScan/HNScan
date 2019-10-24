@@ -4,7 +4,7 @@ import humanizeDuration from "humanize-duration";
 
 // Components
 import Card from "components/styles/Card";
-import StackedComponent from "components/Stacked/StackedComponent";
+import StackedData from "components/shared/StackedData";
 
 // Resources
 import StatusResource from "resources/StatusResource";
@@ -27,35 +27,40 @@ const NodeStatusContainer = () => {
         <table className="table is-fullwidth">
           <tbody>
             <tr>
-              <StackedComponent
+              <StackedData
+                cell
                 label="Key @ Host : Port"
                 value={`${status.key}@${status.host}:${status.port}`}
               />
             </tr>
             <tr>
-              <StackedComponent label="Network" value={status.network} />
+              <StackedData cell label="Network" value={status.network} />
             </tr>
             <tr>
-              <StackedComponent
+              <StackedData
+                cell
                 label="Chain Progress"
                 value={status.progress}
               />
             </tr>
             <tr>
-              <StackedComponent
+              <StackedData
+                cell
                 label="Version"
                 value={`${status.version} (${status.agent})`}
               />
             </tr>
             <tr>
-              <StackedComponent
+              <StackedData
+                cell
                 label="Connections"
                 value={status.connections}
               />
             </tr>
             <tr>
               {/* todo allow stacked component to accept this */}
-              <StackedComponent
+              <StackedData
+                cell
                 label="Difficulty"
                 value={
                   <span>
@@ -65,13 +70,15 @@ const NodeStatusContainer = () => {
               />
             </tr>
             <tr>
-              <StackedComponent
+              <StackedData
+                cell
                 label="Uptime"
                 value={humanizeDuration(status.uptime * 1000)}
               />
             </tr>
             <tr>
-              <StackedComponent
+              <StackedData
+                cell
                 label="Total Downloaded"
                 value={
                   totalDownloaded[0] + " " + totalDownloaded[1].name + "bytes"
@@ -79,7 +86,8 @@ const NodeStatusContainer = () => {
               />
             </tr>
             <tr>
-              <StackedComponent
+              <StackedData
+                cell
                 label="Total Uploaded"
                 value={totalUploaded[0] + " " + totalUploaded[1].name + "bytes"}
               />

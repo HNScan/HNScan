@@ -2,10 +2,11 @@ import React, { Suspense } from "react";
 import { useResource } from "rest-hooks";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { Row, Col } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
-import StackedComponent from "components/Stacked/StackedComponent";
+import StackedData from "components/shared/StackedData";
 import { InputList, OutputList } from "components/shared/PutsList";
 
 // Resources
@@ -42,34 +43,20 @@ function TxDetailScreen({ hash }) {
           <Card.HeaderTitle>Transaction Summary</Card.HeaderTitle>
         </Card.Header>
         <Card.Content>
-          <Card.HorizontalContainer>
-            <Card.Column>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Received</Card.ItemLabel>
-                <Card.ItemDetail>{timeAgo(tx.time)}</Card.ItemDetail>
-              </Card.ItemContainer>
-            </Card.Column>
-            <Card.Column>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Amount</Card.ItemLabel>
-                <Card.ItemDetail>
-                  {hnsValues(sumTxOutputs(tx.outputs))}
-                </Card.ItemDetail>
-              </Card.ItemContainer>
-            </Card.Column>
-            <Card.Column>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Fee</Card.ItemLabel>
-                <Card.ItemDetail>{hnsValues(tx.fee)}</Card.ItemDetail>
-              </Card.ItemContainer>
-            </Card.Column>
-            <Card.Column>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Confirmations</Card.ItemLabel>
-                <Card.ItemDetail>{tx.confirmations}</Card.ItemDetail>
-              </Card.ItemContainer>
-            </Card.Column>
-          </Card.HorizontalContainer>
+          <Row>
+            <Col mobile={12} tablet>
+              <StackedData label="Received" value={timeAgo(tx.time)} />
+            </Col>
+            <Col mobile={12} tablet>
+              <StackedData label="Amount" value={hnsValues(sumTxOutputs(tx.outputs))} />
+            </Col>
+            <Col mobile={12} tablet>
+              <StackedData label="Fee" value={hnsValues(tx.fee)} />
+            </Col>
+            <Col mobile={12} tablet>
+              <StackedData label="Confirmation" value={tx.confirmations} />
+            </Col>
+          </Row>
         </Card.Content>
       </Card>
 
@@ -85,17 +72,18 @@ function TxDetailScreen({ hash }) {
                 <tbody>
                   {/* TODO: Get Node Status */}
                   <tr>
-                    <StackedComponent label="Hash" value={tx.hash} />
+                    <StackedData cell label="Hash" value={tx.hash} />
                   </tr>
                   <tr>
-                    <StackedComponent
+                    <StackedData
+                      cell
                       label="Block Height"
                       value={tx.height}
                       link={"/block/" + tx.height}
                     />
                   </tr>
                   <tr>
-                    <StackedComponent label="Locktime" value={tx.locktime} />
+                    <StackedData cell label="Locktime" value={tx.locktime} />
                   </tr>
                 </tbody>
               </table>
@@ -105,16 +93,17 @@ function TxDetailScreen({ hash }) {
                 <tbody>
                   {/* TODO: Get Node Status */}
                   <tr>
-                    <StackedComponent
+                    <StackedData
+                      cell
                       label="Witness Hash"
                       value={tx.witnessHash}
                     />
                   </tr>
                   <tr>
-                    <StackedComponent label="Version" value={tx.version} />
+                    <StackedData cell label="Version" value={tx.version} />
                   </tr>
                   <tr>
-                    <StackedComponent label="Index" value={tx.index} />
+                    <StackedData cell label="Index" value={tx.index} />
                   </tr>
                 </tbody>
               </table>

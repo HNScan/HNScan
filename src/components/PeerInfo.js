@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 // Components
 import Card from "components/styles/Card";
-import StackedComponent from "components/Stacked/StackedComponent";
+import StackedData from "components/shared/StackedData";
 
 // Util
 import { timeAgo } from "utils/util";
@@ -31,19 +31,20 @@ const PeerInfo = ({ peers, ...props }) => {
             <table className="table is-fullwidth">
               <tbody>
                 <tr>
-                  <StackedComponent label="Address" value={peer.addr} />
+                  <StackedData cell label="Address" value={peer.addr} />
                 </tr>
                 <tr>
-                  <StackedComponent
+                  <StackedData
+                    cell
                     label="Name"
                     value={peer.name || "No name provided"}
                   />
                 </tr>
                 <tr>
-                  <StackedComponent label="Services" value={peer.services} />
+                  <StackedData cell label="Services" value={peer.services} />
                 </tr>
                 <tr>
-                  <StackedComponent label="Version" value={peer.version} />
+                  <StackedData cell label="Version" value={peer.version} />
                 </tr>
               </tbody>
             </table>
@@ -52,19 +53,21 @@ const PeerInfo = ({ peers, ...props }) => {
             <table className="table is-fullwidth">
               <tbody>
                 <tr>
-                  <StackedComponent label="Location" value={"todo"} />
+                  <StackedData cell label="Location" value={"todo"} />
                 </tr>
                 <tr>
-                  <StackedComponent label="Country" value={"todo"} />
+                  <StackedData cell label="Country" value={"todo"} />
                 </tr>
                 <tr>
-                  <StackedComponent
+                  <StackedData
+                    cell
                     label="Whitelisted"
                     value={peer.whitelisted.toString()}
                   />
                 </tr>
                 <tr>
-                  <StackedComponent
+                  <StackedData
+                    cell
                     label="Last Send / Last Receive"
                     value={`${timeAgo(peer.lastsend)} / ${timeAgo(
                       peer.lastrecv

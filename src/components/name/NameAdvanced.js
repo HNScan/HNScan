@@ -3,7 +3,7 @@ import { Row, Col } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
-import StackedData from "components/Stacked/StackedComponent";
+import StackedData from "components/shared/StackedData";
 
 // Util
 import { hnsValues } from "utils/util";
@@ -23,16 +23,16 @@ export default function NameSummary({ name }) {
             <table className="table is-fullwidth">
               <tbody>
                 <tr>
-                  <StackedData label="Name Hash" value={name.hash} />
+                  <StackedData cell label="Name Hash" value={name.hash} />
                 </tr>
                 <tr>
-                  <StackedData label="Height" value={name.height} />
+                  <StackedData cell label="Height" value={name.height} />
                 </tr>
                 <tr>
-                  <StackedData label="Renewal" value={name.renewal} />
+                  <StackedData cell label="Renewal" value={name.renewal} />
                 </tr>
                 <tr>
-                  <StackedData label="Value" value={hnsValues(name.value)} />
+                  <StackedData cell label="Value" value={hnsValues(name.value)} />
                 </tr>
               </tbody>
             </table>
@@ -42,18 +42,19 @@ export default function NameSummary({ name }) {
               <tbody>
                 <tr>
                   <StackedData
+                    cell
                     label="Highest"
                     value={hnsValues(name.highest)}
                   />
                 </tr>
                 <tr>
-                  <StackedData label="Weak" value={name.weak.toString()} />
+                  <StackedData cell label="Weak" value={name.weak.toString()} />
                 </tr>
                 <tr>
-                  <StackedData label="Transfer" value={name.transfer} />
+                  <StackedData cell label="Transfer" value={name.transfer} />
                 </tr>
                 <tr>
-                  <StackedData label="Revoked" value={name.revoked} />
+                  <StackedData cell label="Revoked" value={name.revoked} />
                 </tr>
               </tbody>
             </table>

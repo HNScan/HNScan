@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { Row, Col } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
+import StackedData from "components/shared/StackedData";
 
 // Util
 import { timeAgo, hnsValues, checkPool } from "utils/util";
@@ -60,46 +60,28 @@ export default function BlockSummary({ block, skeleton }) {
       <Card.Content>
         <Row>
           <Col mobile={12} tablet>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Received</Card.ItemLabel>
-              <Card.ItemDetail>{timeAgo(block.time)}</Card.ItemDetail>
-            </Card.ItemContainer>
+            <StackedData label="Received" value={timeAgo(block.time)} />
           </Col>
           <Col mobile={12} tablet>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Total Transactions</Card.ItemLabel>
-              <Card.ItemDetail>{block.txs}</Card.ItemDetail>
-            </Card.ItemContainer>
+            <StackedData label="Total Transactions" value={block.txs} />
           </Col>
           <Col mobile={12} tablet>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Total Fees</Card.ItemLabel>
-              <Card.ItemDetail>{hnsValues(block.fees)}</Card.ItemDetail>
-            </Card.ItemContainer>
+            <StackedData label="Total Fees" value={hnsValues(block.fees)} />
           </Col>
         </Row>
         <Row>
           <Col mobile={12} tablet>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Mined By</Card.ItemLabel>
-              <Card.ItemDetail>
-                <Link to={"/address/" + block.miner}>
-                  {checkPool(block.miner)}
-                </Link>
-              </Card.ItemDetail>
-            </Card.ItemContainer>
+            <StackedData
+              label="Mined By"
+              value={checkPool(block.miner)}
+              link={"/address/" + block.miner}
+            />
           </Col>
           <Col mobile={12} tablet>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Weight</Card.ItemLabel>
-              <Card.ItemDetail>{block.weight} wu</Card.ItemDetail>
-            </Card.ItemContainer>
+            <StackedData label="Weight" value={block.weight} />
           </Col>
           <Col mobile={12} tablet>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Confirmations</Card.ItemLabel>
-              <Card.ItemDetail>{block.confirmations}</Card.ItemDetail>
-            </Card.ItemContainer>
+            <StackedData label="Confirmations" value={block.confirmations} />
           </Col>
         </Row>
       </Card.Content>

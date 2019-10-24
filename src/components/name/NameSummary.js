@@ -3,6 +3,7 @@ import { Row, Col } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
+import StackedData from "components/shared/StackedData";
 
 function timeToNextState(blocks) {
   if (blocks) {
@@ -21,45 +22,24 @@ export default function NameSummary({ name }) {
       <Card.Content>
         <Row>
           <Col mobile={12} tablet>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Name</Card.ItemLabel>
-              <Card.ItemDetail>{name.name}</Card.ItemDetail>
-            </Card.ItemContainer>
+            <StackedData label="Name" value={name.name} />
           </Col>
           <Col mobile={12} tablet>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Release Block</Card.ItemLabel>
-              <Card.ItemDetail>{name.release}</Card.ItemDetail>
-            </Card.ItemContainer>
+            <StackedData label="Release Block" value={name.release} />
           </Col>
           <Col mobile={12} tablet>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Reserved</Card.ItemLabel>
-              <Card.ItemDetail>{name.reserved.toString()}</Card.ItemDetail>
-            </Card.ItemContainer>
+            <StackedData label="Reserved" value={name.reserved.toString()} />
           </Col>
         </Row>
         <Row>
           <Col mobile={12} tablet>
-            <Card.ItemContainer>
-              <Card.ItemLabel>State</Card.ItemLabel>
-              <Card.ItemDetail>{name.state}</Card.ItemDetail>
-            </Card.ItemContainer>
+            <StackedData label="State" value={name.state} />
           </Col>
           <Col mobile={12} tablet>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Blocks Until Next State</Card.ItemLabel>
-              {/* @todo need time in here as well. */}
-              <Card.ItemDetail>
-                {timeToNextState(name.blocksUntil)}
-              </Card.ItemDetail>
-            </Card.ItemContainer>
+            <StackedData label="Blocks Until Next State" value={timeToNextState(name.blocksUntil)} />
           </Col>
           <Col mobile={12} tablet>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Next State</Card.ItemLabel>
-              <Card.ItemDetail>{name.nextState}</Card.ItemDetail>
-            </Card.ItemContainer>
+            <StackedData label="Next State" value={name.nextState} />
           </Col>
         </Row>
       </Card.Content>

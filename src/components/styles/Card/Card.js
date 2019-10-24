@@ -61,25 +61,6 @@ const SummaryContainer = styled.div`
   height: auto;
 `;
 
-// Individual item containers for all cards
-const ItemContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  padding: 12px;
-`;
-
-// ----- NETWORK SUMMARY SPECIFIC -----
-const ItemLabel = styled.div`
-  font-weight: 800;
-`;
-
-const ItemDetail = styled.div`
-  font-size: 24px;
-`;
-
 // ----- TX'S AND BLOCKS SPECIFIC -----
 // Used on the home screen for recent TX's and Blocks
 const SummaryItemContainer = styled.div`
@@ -146,9 +127,6 @@ Card.HeaderTitle = HeaderTitle;
 Card.HeaderLink = HeaderLink;
 Card.Content = Content;
 Card.SummaryContainer = SummaryContainer;
-Card.ItemContainer = ItemContainer;
-Card.ItemDetail = ItemDetail;
-Card.ItemLabel = ItemLabel;
 Card.SummaryItem = SummaryItem;
 Card.SummaryItemContent = SummaryItemContent;
 Card.SummaryItemContainer = SummaryItemContainer;

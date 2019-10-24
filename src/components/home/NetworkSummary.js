@@ -3,6 +3,7 @@ import { Row, Col } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
+import StackedData from "components/shared/StackedData";
 
 // Util
 import { formatLargeNumber, sciNotation } from "utils/util";
@@ -33,56 +34,43 @@ export default function NetworkSummary({ info }) {
       {/* ----- Network Summary - Top Row ----- */}
       <Row>
         <Col mobile={12} tablet>
-          <Card.ItemContainer>
-            <Card.ItemLabel>Hashrate</Card.ItemLabel>
-            <Card.ItemDetail>
-              <span>{hashrate[0].toString()}</span>
-              <span> {hashrate[1].abbreviation}H/s</span>
-            </Card.ItemDetail>
-          </Card.ItemContainer>
+          <StackedData
+            label="Hashrate"
+            value={`${hashrate[0].toString()} ${hashrate[1].abbreviation}H/s`}
+          />
         </Col>
         <Col mobile={12} tablet>
-          <Card.ItemContainer>
-            <Card.ItemLabel>Unconfirmed</Card.ItemLabel>
-            <Card.ItemDetail>
-              <span>{handleUnconfirmed(unconfirmed, memSize)}</span>
-            </Card.ItemDetail>
-          </Card.ItemContainer>
+          <StackedData label="Unconfirmed" value={handleUnconfirmed(unconfirmed, memSize)} />
         </Col>
         <Col mobile={12} tablet>
-          <Card.ItemContainer>
-            <Card.ItemLabel>Network</Card.ItemLabel>
-            <Card.ItemDetail>
-              <span>{network}</span>
-            </Card.ItemDetail>
-          </Card.ItemContainer>
+          <StackedData label="Network" value={network} />
         </Col>
       </Row>
       <Row>
         <Col mobile={12} tablet>
-          <Card.ItemContainer>
-            <Card.ItemLabel>Opened Names</Card.ItemLabel>
-            <Card.ItemDetail>
-              <span>{registeredNames}</span>
-            </Card.ItemDetail>
-          </Card.ItemContainer>
+          <StackedData label="Opened Names" value={registeredNames} />
         </Col>
         <Col mobile={12} tablet>
-          <Card.ItemContainer>
-            <Card.ItemLabel>Difficulty</Card.ItemLabel>
-            <Card.ItemDetail>
-              {difficulty[0]} x 10
-              <sup>{difficulty[1]}</sup>
-            </Card.ItemDetail>
-          </Card.ItemContainer>
+          <StackedData
+            label="Difficulty"
+            value={
+              <>
+                {difficulty[0]} x 10
+                <sup>{difficulty[1]}</sup>
+              </>
+            }
+          />
         </Col>
         <Col mobile={12} tablet>
-          <Card.ItemContainer>
-            <Card.ItemLabel>Chainwork</Card.ItemLabel>
-            <Card.ItemDetail>
-              {chainwork[0]} x 10<sup>{chainwork[1]}</sup>
-            </Card.ItemDetail>
-          </Card.ItemContainer>
+          <StackedData
+            label="Chainwork"
+            value={
+              <>
+                {chainwork[0]} x 10
+                <sup>{chainwork[1]}</sup>
+              </>
+            }
+          />
         </Col>
       </Row>
     </Card>
