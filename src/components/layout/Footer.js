@@ -9,8 +9,8 @@ import ThemeToggler from "components/ThemeToggler";
 import LogoText from "components/svg/LogoText";
 
 
-const LogoContainer = styled.div`
-  margin-bottom: 5px;
+const Logo = styled(LogoText)`
+  margin-bottom: 10px;
   width: 100px;
 `;
 
@@ -45,15 +45,12 @@ export const ContentContainer = styled.div`
 
 export const LeftContent = styled.div`
   height: 100%;
-  display: flex;
-  flex-direction: column;
   text-align: center;
-  align-items: center;
   max-width: 200px;
 
   @media (min-width: 1024px) {
     text-align: left;
-    align-items: flex-start;
+    align-items: row;
     min-width: 200px;
     max-width: none;
   }
@@ -152,9 +149,7 @@ export default function Footer() {
     <FooterContainer>
       <ContentContainer>
         <LeftContent>
-          <LogoContainer>
-            <LogoText />
-          </LogoContainer>
+          <Logo />
           <Tagline>
             Your trusted source for on chain Handshake information
           </Tagline>
