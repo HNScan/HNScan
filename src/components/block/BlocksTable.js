@@ -29,36 +29,39 @@ const DataTable = styled(Table)`
   }
 `;
 
-export function BlocksSkeleton() {
-  const rows = [];
-  for (let i = 0; i < 24; i++)
-    rows.push(<Row key={i} loading />)
+const Row = ({ height, size, time, miner, txs, loading }) => {
+  if (loading) {
+    // @todo figure out a more elegant way to construct the skeleton
+    return (
+      <Table.Tr>
+        <Table.Td className="is-hidden-mobile" width="10%"><Skeleton /></Table.Td>
+        <Table.Td><Skeleton /></Table.Td>
+        <Table.Td width="50%"><Skeleton /></Table.Td>
+        <Table.Td width="10%"><Skeleton /></Table.Td>
+        <Table.Td className="is-hidden-mobile" width="10%"><Skeleton /></Table.Td>
+      </Table.Tr>
+    );
+  }
   return (
-    <>
-      <BlocksTableStructure>
-        {rows}
-      </BlocksTableStructure>
-    </>
-  );
-}
-
-export function BlocksTable({ blocks, pages, page }) {
-  const blockRows = blocks.map((block) => (
-    <Row key={block.height}
-      height={block.height}
-      size={block.size}
-      time={block.time}
-      miner={block.miner}
-      txs={block.txs} />
-  ));
-  return (
-    <>
-      <BlocksTableStructure>
-        {blockRows}
-      </BlocksTableStructure>
-      <Pagination totalPages={pages} page={page} url="/blocks" />
-    </>
-  );
+    <Table.Tr>
+      <Table.Td>
+        <Link to={"/block/" + height}>{height}</Link>
+        <div className="is-hidden-tablet">Size: {size}</div>
+      </Table.Td>
+      <Table.Td className="is-hidden-mobile">{timeAgo(time)}</Table.Td>
+      <Table.Td>
+        <Link className="is-hidden-mobile" to={"/address/" + miner}>
+          {miner}
+        </Link>
+        <Link className="is-hidden-tablet" to={"/address/" + miner}>
+          {truncateHash(miner)}
+        </Link>
+        <div className="is-hidden-tablet">{timeAgo(time)}</div>
+      </Table.Td>
+      <Table.Td className="is-hidden-mobile">{size}</Table.Td>
+      <Table.Td>{txs}</Table.Td>
+    </Table.Tr>
+  )
 }
 
 function BlocksTableStructure({ children }) {
@@ -97,37 +100,34 @@ function BlocksTableStructure({ children }) {
   )
 }
 
-const Row = ({ height, size, time, miner, txs, loading }) => {
-  if (loading) {
-    // @todo figure out a more elegant way to construct the skeleton
-    return (
-      <Table.Tr>
-        <Table.Td className="is-hidden-mobile" width="10%"><Skeleton /></Table.Td>
-        <Table.Td><Skeleton /></Table.Td>
-        <Table.Td width="50%"><Skeleton /></Table.Td>
-        <Table.Td width="10%"><Skeleton /></Table.Td>
-        <Table.Td className="is-hidden-mobile" width="10%"><Skeleton /></Table.Td>
-      </Table.Tr>
-    );
-  }
+export function BlocksSkeleton() {
+  const rows = [];
+  for (let i = 0; i < 24; i++)
+    rows.push(<Row key={i} loading />)
   return (
-    <Table.Tr>
-      <Table.Td>
-        <Link to={"/block/" + height}>{height}</Link>
-        <div className="is-hidden-tablet">Size: {size}</div>
-      </Table.Td>
-      <Table.Td className="is-hidden-mobile">{timeAgo(time)}</Table.Td>
-      <Table.Td>
-        <Link className="is-hidden-mobile" to={"/address/" + miner}>
-          {miner}
-        </Link>
-        <Link className="is-hidden-tablet" to={"/address/" + miner}>
-          {truncateHash(miner)}
-        </Link>
-        <div className="is-hidden-tablet">{timeAgo(time)}</div>
-      </Table.Td>
-      <Table.Td className="is-hidden-mobile">{size}</Table.Td>
-      <Table.Td>{txs}</Table.Td>
-    </Table.Tr>
-  )
+    <>
+      <BlocksTableStructure>
+        {rows}
+      </BlocksTableStructure>
+    </>
+  );
+}
+
+export function BlocksTable({ blocks, pages, page }) {
+  const blockRows = blocks.map((block) => (
+    <Row key={block.height}
+      height={block.height}
+      size={block.size}
+      time={block.time}
+      miner={block.miner}
+      txs={block.txs} />
+  ));
+  return (
+    <>
+      <BlocksTableStructure>
+        {blockRows}
+      </BlocksTableStructure>
+      <Pagination totalPages={pages} page={page} url="/blocks" />
+    </>
+  );
 }
