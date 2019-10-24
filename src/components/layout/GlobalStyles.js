@@ -16,11 +16,15 @@ const GlobalStyles = createGlobalStyle`
         color: ${props => props.theme.global.textColor};
     }
 
+    abbr {
+      text-decoration: none;
+    }
+
     a {
-        color: ${props => props.theme.global.linkColor};
+      color: ${props => props.theme.global.linkColor};
 
       &:hover {
-          color: ${props => props.theme.global.linkColorHover};
+        color: ${props => props.theme.global.linkColorHover};
       }
     }
 

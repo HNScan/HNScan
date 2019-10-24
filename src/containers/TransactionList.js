@@ -16,8 +16,6 @@ import TransactionResource from "resources/TransactionResource";
 // Util
 import { title } from "utils/util";
 
-console.log(Card);
-console.log(Card.HeaderTitle);
 const Container = styled.div`
   width: 100%;
   padding: 10px 0;
