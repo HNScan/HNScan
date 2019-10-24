@@ -6,11 +6,16 @@ import { Link } from "react-router-dom";
 import ThemeToggler from "components/ThemeToggler";
 
 // SVGs
-import Logo from "components/svg/Hnscan";
+import LogoText from "components/svg/LogoText";
 
-//@todo I really want this to be a span.
-const SubText = styled.div`
-  font-size: 8px;
+
+const LogoContainer = styled.div`
+  margin-bottom: 5px;
+  width: 100px;
+`;
+
+const SubText = styled.span`
+  font-size: 10px;
 `;
 
 export const FooterContainer = styled.div`
@@ -40,12 +45,15 @@ export const ContentContainer = styled.div`
 
 export const LeftContent = styled.div`
   height: 100%;
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  align-items: center;
   max-width: 200px;
 
   @media (min-width: 1024px) {
     text-align: left;
-    flex-direction: row;
+    align-items: flex-start;
     min-width: 200px;
     max-width: none;
   }
@@ -144,7 +152,9 @@ export default function Footer() {
     <FooterContainer>
       <ContentContainer>
         <LeftContent>
-          <Logo />
+          <LogoContainer>
+            <LogoText />
+          </LogoContainer>
           <Tagline>
             Your trusted source for on chain Handshake information
           </Tagline>
