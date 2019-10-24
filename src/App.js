@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 
 // Special
 import GlobalStyles from "components/layout/GlobalStyles";
+import ScrollToTop from "components/shared/ScrollToTop";
 
 // Components
 import Navigation from "components/layout/Navigation";
@@ -45,6 +46,7 @@ function App() {
         <>
           <GlobalStyles />
           <Router>
+            <ScrollToTop />
             <Navigation />
             <ContentContainer>
               <Switch>

@@ -1,16 +1,14 @@
 import React, { Suspense } from "react";
-import { useResource, useResultCache } from "rest-hooks";
 
-// Components
-import Pagination from "components/layout/Pagination";
-import Card from "components/styles/Card";
-import BlockList from "components/block/BlockList";
+// Resources
+import { useResource, useResultCache } from "rest-hooks";
+import BlockResource from "resources/BlockResource";
 
 // Hooks
 import usePage from "hooks/usePage";
 
-// Resources
-import BlockResource from "resources/BlockResource";
+// Components
+import { BlocksTable, BlocksSkeleton } from "components/block/BlocksTable";
 
 function BlocksView({ page }) {
   const pageOffset = (page - 1) * 25;
@@ -19,27 +17,16 @@ function BlocksView({ page }) {
     offset: pageOffset
   });
   const pages = Math.ceil(total / limit);
-  return (
-    <>
-      <Card>
-        <Card.Header>
-          <Card.HeaderTitle>HNS Blocks</Card.HeaderTitle>
-        </Card.Header>
-        <Card.Content>
-          <BlockList blocks={blocks} />
-        </Card.Content>
-      </Card>
-      <Pagination totalPages={pages} page={page} url="/blocks" />
-    </>
-  );
+
+  return <BlocksTable blocks={blocks} pages={pages} page={page} />
 }
 
-export default function Blocks(props) {
+export default function Blocks() {
   const page = usePage();
 
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<BlocksSkeleton />}>
         <BlocksView page={page} />
       </Suspense>
     </>

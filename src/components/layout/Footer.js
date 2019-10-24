@@ -6,11 +6,16 @@ import { Link } from "react-router-dom";
 import ThemeToggler from "components/ThemeToggler";
 
 // SVGs
-import Logo from "components/svg/Hnscan";
+import LogoText from "components/svg/LogoText";
 
-//@todo I really want this to be a span.
-const SubText = styled.div`
-  font-size: 8px;
+
+const Logo = styled(LogoText)`
+  margin-bottom: 10px;
+  width: 100px;
+`;
+
+const SubText = styled.span`
+  font-size: 10px;
 `;
 
 export const FooterContainer = styled.div`
@@ -45,8 +50,6 @@ export const LeftContent = styled.div`
 
   @media (min-width: 1024px) {
     text-align: left;
-    flex-direction: row;
-    min-width: 200px;
     max-width: none;
   }
 `;

@@ -11,21 +11,6 @@ import BlockLogo from "components/svg/Block";
 // Util
 import { truncateHash, timeAgo } from "utils/util";
 
-//@todo put them here for now.
-export const Miner = styled.div`
-  display: none;
-  @media (min-width: 425px) {
-    display: flex;
-  }
-`;
-
-export const MobileMiner = styled.div`
-  display: flex;
-  @media (min-width: 425px) {
-    display: none;
-  }
-`;
-
 const Time = styled.span`
   font-style: italic;
 `;
@@ -46,19 +31,11 @@ const BlockCardItem = ({ block }) => {
             </Link>
           </Card.LeftItemDetail>
           <Card.LeftItemDetail>
-            <Miner>
-              Mined By:&nbsp;
-              <Link className="hnscan-link" to={"/address/" + block.miner}>
-                {/* @todo check pool */}
-                {block.miner}
-              </Link>
-            </Miner>
-            <MobileMiner>
-              Mined By:{" "}
-              <Link className="hnscan-link" to={"/address/" + block.miner}>
-                {truncateHash(block.miner)}
-              </Link>
-            </MobileMiner>
+            Mined By:&nbsp;
+            <Link className="hnscan-link" to={"/address/" + block.miner}>
+              {/* @todo check pool */}
+              {truncateHash(block.miner)}
+            </Link>
           </Card.LeftItemDetail>
           <Card.LeftItemDetail>
             Transactions: {block.tx.length}
