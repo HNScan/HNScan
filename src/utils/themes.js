@@ -61,9 +61,9 @@ export const themes = {
       borderColor: "#dfdfdf"
     },
     search: {
-      background: "#fff",
-      borderColor: "#e7e7e7",
-      textColor: "#4a4a4a"
+      background: "#575757",
+      borderColor: "#575757",
+      textColor: "#afafaf"
     },
     logo: {
       stroke: "#cfcfcf",

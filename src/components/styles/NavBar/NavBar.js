@@ -151,7 +151,7 @@ const Link = styled.a`
   line-height: 1.5;
   padding: 0.5rem 0.75rem;
   position: relative;
-color: ${props => props.theme.global.textColor};
+  color: ${props => props.theme.global.textColor};
 
   @media (min-width: ${props => props.theme.breakpoints.desktop}) {
     align-items: center;
@@ -346,7 +346,7 @@ const Container = styled.div`
 `;
 
 export const NavBar = styled.nav`
-  background-color: ${props => props.background};
+  background-color: ${props => console.log(props.theme.nav.background)};
   min-height: ${props => props.height};
   position: relative;
   z-index: 30;
