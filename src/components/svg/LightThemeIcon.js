@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function LightThemeIcon(props) {
-  console.log(props)
   return (
     <svg
       width="24px"

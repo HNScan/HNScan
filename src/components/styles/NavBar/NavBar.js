@@ -346,7 +346,6 @@ const Container = styled.div`
 `;
 
 export const NavBar = styled.nav`
-  background-color: ${props => console.log(props.theme.nav.background)};
   min-height: ${props => props.height};
   position: relative;
   z-index: 30;

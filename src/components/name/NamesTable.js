@@ -1,43 +1,24 @@
 import React from "react";
-import styled from "styled-components";
-import Table from "reactbulma/lib/components/Table/Table.js";
 import { Link } from "react-router-dom";
+import DataTable from "components/styles/DataTable";
 
 // Components
 import Card from "components/styles/Card";
 import Pagination from "components/layout/Pagination";
 import Skeleton from "react-loading-skeleton";
 
-const TableContainer = styled.div`
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  @media (min-width: 680px) {
-    padding: 1.5rem;
-  }
-`;
-
-const DataTable = styled(Table)`
-  width: 90%;
-  height: auto;
-  margin: 10px auto;
-  @media (min-width: 680px) {
-    width: 95%;
-  }
-`;
-
 const Row = ({ name, state, height, loading }) => (
-  <Table.Tr>
-    <Table.Td width="75%">
+  <DataTable.Tr>
+    <DataTable.Td width="75%">
       {loading ? <Skeleton /> : <Link to={"/name/" + name}>{name}</Link>}
-    </Table.Td>
-    <Table.Td>
+    </DataTable.Td>
+    <DataTable.Td>
       {loading ? <Skeleton /> : state}
-    </Table.Td>
-    <Table.Td>
+    </DataTable.Td>
+    <DataTable.Td>
       {loading ? <Skeleton /> : <Link to={"/block/" + height}>{height}</Link>}
-    </Table.Td>
-  </Table.Tr>
+    </DataTable.Td>
+  </DataTable.Tr>
 );
 
 function NamesTableStructure({ children }) {
@@ -47,24 +28,24 @@ function NamesTableStructure({ children }) {
         <Card.HeaderTitle>TLD Names</Card.HeaderTitle>
       </Card.Header>
       <Card.Content>
-        <TableContainer>
+        <DataTable.Wrapper>
           <DataTable>
-            <Table.Head>
-              <Table.Tr>
-                <Table.Th>
+            <DataTable.Head>
+              <DataTable.Tr>
+                <DataTable.Th>
                   <abbr title="Top Level Domain Name">Name</abbr>
-                </Table.Th>
-                <Table.Th>
+                </DataTable.Th>
+                <DataTable.Th>
                   <abbr title="Name Auction State">State</abbr>
-                </Table.Th>
-                <Table.Th>
+                </DataTable.Th>
+                <DataTable.Th>
                   <abbr title="Block Height">Height</abbr>
-                </Table.Th>
-              </Table.Tr>
-            </Table.Head>
-            <Table.Body>{children}</Table.Body>
+                </DataTable.Th>
+              </DataTable.Tr>
+            </DataTable.Head>
+            <DataTable.Body>{children}</DataTable.Body>
           </DataTable>
-        </TableContainer>
+        </DataTable.Wrapper>
       </Card.Content>
     </Card>
   );

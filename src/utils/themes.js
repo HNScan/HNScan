@@ -30,6 +30,10 @@ export const themes = {
       stroke: "#000",
       fill: "#000"
     },
+    skeleton: {
+      color: "#eeeeee",
+      hightlight: "#f5f5f5"
+    },
     "--text-color-normal": "#4a4a4a",
     "--text-color-light": "#dbdbdb",
     "--text-color-link": "#3273dc",
@@ -57,7 +61,8 @@ export const themes = {
       tablet: "768px"
     },
     cards: {
-      borderColor: "#dfdfdf"
+      background: "#373737",
+      borderColor: "#444444"
     },
     nav: {
       background: "#323232",
@@ -74,6 +79,10 @@ export const themes = {
     logo: {
       stroke: "#cfcfcf",
       fill: "#cfcfcf"
+    },
+    skeleton: {
+      color: "#444",
+      highlight: "#303030"
     },
     "--text-color-normal": "#afafaf",
     "--text-color-light": "#969696",
