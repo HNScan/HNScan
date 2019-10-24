@@ -11,6 +11,7 @@ import SearchBar from "components/layout/SearchBar";
 // SVGs
 import Logo from "components/svg/Logo";
 
+//@todo move completely to styled components (Pagination Nav, is-centered).
 const BorderedNav = styled(NavBar)`
   border-bottom: 1px solid ${props => props.theme.nav.borderColor};
   // box-shadow: 0px 1px 12px -1px rgba(0,0,0,0.30);

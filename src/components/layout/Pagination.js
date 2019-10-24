@@ -2,20 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-//@todo move completely to styled components (Pagination Nav, is-centered).
-
-const Wrapper = styled.nav`
-  // padding: 10px;
-  // margin-top: 30px;
-  margin-top: 50px;
-  width: 100%;
-`;
-
-const List = styled.ul``;
+import Page from "components/styles/Page";
 
 const Previous = ({ page, url, onClick }) => (
   // @todo try to figure out a cleaner way of doing this
-  <Link
+  <Page.Button
     to={location => {
       if (page >= 1) {
         return { pathname: url, search: "?p=" + page };
@@ -27,12 +18,12 @@ const Previous = ({ page, url, onClick }) => (
     disabled={page < 1}
   >
     Previous
-  </Link>
+  </Page.Button>
 );
 
 const Next = ({ page, lastPage, url }) => (
   // @todo try to figure out a cleaner way of doing this
-  <Link
+  <Page.Button
     to={location => {
       if (page < lastPage) {
         return { pathname: url, search: "?p=" + (page + 1) };
@@ -44,50 +35,50 @@ const Next = ({ page, lastPage, url }) => (
     disabled={page >= lastPage}
   >
     Next Page
-  </Link>
+  </Page.Button>
 );
 
 const Current = ({ page }) => (
-  <Link
+  <Page.Button
     to={location => location}
     className="pagination-link is-current"
     aria-current="page"
   >
     {page}
-  </Link>
+  </Page.Button>
 );
 
 const PreviousPage = ({ page, url }) => {
   let newPage = page - 1;
   if (newPage < 1) return null;
   return (
-    <Link
+    <Page.Button
       to={{ pathname: url, search: "?p=" + newPage }}
       className="pagination-link"
     >
       {newPage}
-    </Link>
+    </Page.Button>
   );
 };
 
 const FirstPage = ({ page, url }) => {
   if (page <= 2) return null;
   return (
-    <Link to={{ pathname: url, search: "?p=" + 1 }} className="pagination-link">
+    <Page.Button to={{ pathname: url, search: "?p=" + 1 }} className="pagination-link">
       {1}
-    </Link>
+    </Page.Button>
   );
 };
 
 const LastPage = ({ page, url, lastPage }) => {
   if (page >= lastPage - 1) return null;
   return (
-    <Link
+    <Page.Button
       to={{ pathname: url, search: "?p=" + lastPage }}
       className="pagination-link"
     >
       {lastPage}
-    </Link>
+    </Page.Button>
   );
 };
 
@@ -95,12 +86,12 @@ const NextPage = ({ page, lastPage, url }) => {
   let newPage = page + 1;
   if (page >= lastPage) return null;
   return (
-    <Link
+    <Page.Button
       to={{ pathname: url, search: "?p=" + newPage }}
       className="pagination-link"
     >
       {newPage}
-    </Link>
+    </Page.Button>
   );
 };
 
@@ -135,14 +126,14 @@ const NextEllipse = ({ page, lastPage }) => {
 // export default class PaginationComponent extends Component {
 export default function Pagination({ totalPages, page, url }) {
   return (
-    <Wrapper
+    <Page
       className="pagination is-centered"
       role="navigation"
       aria-label="pagination"
     >
       <Previous page={page - 1} url={url} />
       <Next page={page} lastPage={totalPages} url={url} />
-      <List className="pagination-list">
+      <Page.List className="pagination-list">
         <FirstPage page={page} url={url} />
         <PreviousEllipse page={page} />
         <PreviousPage page={page} url={url} />
@@ -150,7 +141,7 @@ export default function Pagination({ totalPages, page, url }) {
         <NextPage page={page} url={url} lastPage={totalPages} />
         <NextEllipse page={page} lastPage={totalPages} />
         <LastPage page={page} url={url} lastPage={totalPages} />
-      </List>
-    </Wrapper>
+      </Page.List>
+    </Page>
   );
 }

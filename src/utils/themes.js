@@ -18,6 +18,9 @@ export const themes = {
       background: "#fefefe",
       borderColor: "#dfdfdf"
     },
+    pagination: {
+      textColor: "#4a4a4a"
+    },
     search: {
       background: "#fff",
       borderColor: "#e7e7e7",
@@ -59,6 +62,9 @@ export const themes = {
     nav: {
       background: "#323232",
       borderColor: "#444444"
+    },
+    pagination: {
+      textColor: "#fff"
     },
     search: {
       background: "#575757",
