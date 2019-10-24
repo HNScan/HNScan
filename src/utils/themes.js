@@ -58,11 +58,11 @@ export const themes = {
     },
     nav: {
       background: "#323232",
-      borderColor: "#dfdfdf"
+      borderColor: "#444444"
     },
     search: {
       background: "#575757",
-      borderColor: "#575757",
+      borderColor: "#444444",
       textColor: "#afafaf"
     },
     logo: {
