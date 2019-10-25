@@ -44,6 +44,7 @@ const LogoWrapper = styled(NavBar.Item)`
   }
 `;
 
+//@todo possibly integrate https://usehooks.com/useWindowSize/ to only trigger nav clicks on mobile.
 export default function Navigation() {
   const [mobileNav, updateMobileNav] = useState(false);
   const [moreDropdownActive, updateMoreDropdownActive] = useState(false);
@@ -55,7 +56,10 @@ export default function Navigation() {
           <LogoWrapper as={Link} to={"/"}>
             <Logo />
           </LogoWrapper>
-          <Burger onClick={e => updateMobileNav(active => !active)} />
+          <Burger
+            active={mobileNav}
+            onClick={e => updateMobileNav(active => !active)}
+          />
         </NavBar.Brand>
         <NavBar.Menu active={mobileNav}>
           <NavBar.Start>
@@ -72,7 +76,15 @@ export default function Navigation() {
               dropdown
             >
               <NavBar.Link>Tools</NavBar.Link>
-              <NavBar.Dropdown>
+              <NavBar.Dropdown
+                onClick={e => {
+                  e.stopPropagation();
+                  updateMobileNav(active => (active ? !active : active));
+                  updateToolsDropdownActive(active =>
+                    active ? !active : active
+                  );
+                }}
+              >
                 <NavBar.Item as={Link} to={"/status"}>
                   Node Status
                 </NavBar.Item>
@@ -100,7 +112,15 @@ export default function Navigation() {
               dropdown
             >
               <NavBar.Link>More</NavBar.Link>
-              <NavBar.Dropdown>
+              <NavBar.Dropdown
+                onClick={e => {
+                  e.stopPropagation();
+                  updateMobileNav(active => (active ? !active : active));
+                  updateMoreDropdownActive(active =>
+                    active ? !active : active
+                  );
+                }}
+              >
                 <NavBar.Item as={Link} to={"/changelog"}>
                   Changelog
                 </NavBar.Item>

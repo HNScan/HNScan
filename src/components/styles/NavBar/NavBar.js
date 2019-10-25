@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const BurgerWrapper = styled.a`
@@ -60,16 +60,10 @@ const BurgerBar = styled.span`
 
 `;
 
-const Burger = ({ onClick, ...props }) => {
-  const [active, changeActive] = useState(false);
-  const handleClick = () => {
-    onClick();
-    changeActive(oldActive => !oldActive);
-  };
-
+const Burger = ({ active, onClick, ...props }) => {
   return (
     <BurgerWrapper
-      onClick={handleClick}
+      onClick={onClick}
       aria-label="menu"
       aria-expanded="false"
       {...props}
