@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const CellWrapper = styled.td`
+  background: ${props => props.theme.cards.background};
+  border-color: ${props => props.theme.cards.borderColor} !important; // Bulma override
   display: flex;
   flex-direction: column;
 `;
