@@ -81,6 +81,7 @@ const SummaryItem = styled.div`
   width: 100%;
   flex-direction: column;
 
+  /* @Exception: custom media query breakpoint */
   @media (min-width: 850px) {
     flex-direction: row;
   }
@@ -108,6 +109,7 @@ const RightItemDetail = styled.div`
   font-size: 12px;
   margin: 2px 0;
 
+  /* @Exception: custom media query breakpoint */
   @media (min-width: 850px) {
     justify-content: flex-end;
   }
