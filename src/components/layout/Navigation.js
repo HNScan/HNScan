@@ -75,7 +75,6 @@ export default function Navigation() {
               dropdown
             >
               <NavBar.Link>Tools</NavBar.Link>
-              {/* <NavBar.Dropdown onClick={e => e.stopPropagation()}> */}
               <NavBar.Dropdown
                 onClick={e => {
                   e.stopPropagation();
