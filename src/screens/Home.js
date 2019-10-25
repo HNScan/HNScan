@@ -23,7 +23,7 @@ export const VerticalContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     flex-direction: row;
   }
 `;
