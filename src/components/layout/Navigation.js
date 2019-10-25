@@ -91,7 +91,7 @@ export default function Navigation() {
                 <NavBar.Item as={Link} to={"/peers"}>
                   Peers
                 </NavBar.Item>
-                <NavBar.Item as={Link} to={"/airdropclaim"}>
+                {/* <NavBar.Item as={Link} to={"/airdropclaim"}>
                   Claim Your Airdrop
                 </NavBar.Item>
                 <NavBar.Item as={Link} to={"/mempool"}>
@@ -102,7 +102,7 @@ export default function Navigation() {
                 </NavBar.Item>
                 <NavBar.Item as={Link} to={"/logs"}>
                   Logs
-                </NavBar.Item>
+                </NavBar.Item> */}
               </NavBar.Dropdown>
             </NavLinkItem>
             <NavLinkItem
@@ -121,6 +121,7 @@ export default function Navigation() {
                   );
                 }}
               >
+                {/*}
                 <NavBar.Item as={Link} to={"/changelog"}>
                   Changelog
                 </NavBar.Item>
@@ -129,7 +130,7 @@ export default function Navigation() {
                 </NavBar.Item>
                 <NavBar.Item as={Link} to={"/config"}>
                   Config
-                </NavBar.Item>
+                </NavBar.Item> */}
                 <NavBar.Item
                   as="a"
                   href="https://github.com/HandshakeAlliance/HNScan/issues"

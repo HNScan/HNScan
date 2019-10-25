@@ -53,10 +53,10 @@ const PeerInfo = ({ peers, ...props }) => {
             <table className="table is-fullwidth">
               <tbody>
                 <tr>
-                  <StackedData cell label="Location" value={"todo"} />
+                  <StackedData cell label="Location" value={"--"} />
                 </tr>
                 <tr>
-                  <StackedData cell label="Country" value={"todo"} />
+                  <StackedData cell label="Country" value={"--"} />
                 </tr>
                 <tr>
                   <StackedData
@@ -69,9 +69,9 @@ const PeerInfo = ({ peers, ...props }) => {
                   <StackedData
                     cell
                     label="Last Send / Last Receive"
-                    value={`${timeAgo(peer.lastsend)} / ${timeAgo(
+                    value={`${timeAgo(peer.lastsend) || "--"} / ${timeAgo(
                       peer.lastrecv
-                    )}`}
+                    ) || "--"}`}
                   />
                 </tr>
               </tbody>
