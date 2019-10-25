@@ -81,7 +81,8 @@ const SummaryItem = styled.div`
   width: 100%;
   flex-direction: column;
 
-  @media (min-width: 769px) {
+  /* @Exception: custom media query breakpoint */
+  @media (min-width: 850px) {
     flex-direction: row;
   }
 `;
@@ -108,7 +109,8 @@ const RightItemDetail = styled.div`
   font-size: 12px;
   margin: 2px 0;
 
-  @media (min-width: 769px) {
+  /* @Exception: custom media query breakpoint */
+  @media (min-width: 850px) {
     justify-content: flex-end;
   }
 `;
