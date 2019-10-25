@@ -18,6 +18,9 @@ export const themes = {
       background: "#fefefe",
       borderColor: "#dfdfdf"
     },
+    pagination: {
+      textColor: "#4a4a4a"
+    },
     search: {
       background: "#fff",
       borderColor: "#e7e7e7",
@@ -26,6 +29,10 @@ export const themes = {
     logo: {
       stroke: "#000",
       fill: "#000"
+    },
+    skeleton: {
+      color: "#eeeeee",
+      hightlight: "#f5f5f5"
     },
     "--text-color-normal": "#4a4a4a",
     "--text-color-light": "#dbdbdb",
@@ -54,20 +61,28 @@ export const themes = {
       tablet: "768px"
     },
     cards: {
-      borderColor: "#dfdfdf"
+      background: "#373737",
+      borderColor: "#444444"
     },
     nav: {
       background: "#323232",
-      borderColor: "#dfdfdf"
+      borderColor: "#444444"
+    },
+    pagination: {
+      textColor: "#fff"
     },
     search: {
-      background: "#fff",
-      borderColor: "#e7e7e7",
-      textColor: "#4a4a4a"
+      background: "#575757",
+      borderColor: "#444444",
+      textColor: "#afafaf"
     },
     logo: {
       stroke: "#cfcfcf",
       fill: "#cfcfcf"
+    },
+    skeleton: {
+      color: "#444",
+      highlight: "#303030"
     },
     "--text-color-normal": "#afafaf",
     "--text-color-light": "#969696",

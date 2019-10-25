@@ -18,6 +18,8 @@ const Header = styled.h1`
 
 const SearchResultsTable = styled.table`
   /* margin-top: 25px; */
+  background: ${props => props.theme.global.background};
+  color: ${props => props.theme.global.textColor};
   margin: 25px auto 0;
   font-size: 20px;
 `;
