@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 
 const Button = styled(Link)`
   color: ${props => props.theme.pagination.textColor};
+
+  &:hover {
+    color: ${props => props.theme.pagination.textColor}
+  }
 `;
 
 const List = styled.ul``;
