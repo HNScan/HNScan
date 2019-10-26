@@ -1,0 +1,21 @@
+name: Deploy Production Site
+on:
+  push:
+      branches:
+        - master
+jobs:
+  build:
+    name: Deploy To Github Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
+      - name: deploy to github pages
+        run: yarn deploy
+
+
