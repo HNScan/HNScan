@@ -49,7 +49,10 @@ function App() {
           <Router>
             <ScrollToTop />
             <Navigation />
-            <SkeletonTheme color={theme.skeleton.color} highlightColor={theme.skeleton.highlight}>
+            <SkeletonTheme
+              color={theme.skeleton.color}
+              highlightColor={theme.skeleton.highlight}
+            >
               <ContentContainer>
                 <Switch>
                   <Route path="/" exact component={Home} />
@@ -64,7 +67,7 @@ function App() {
                   {/* More Screens */}
                   {/* Tool Screens */}
                   <Route path="/peers" exact component={Peers} />
-                  <Route path="/status" exact component={NodeStatus} />
+                  <Route path="/status" component={NodeStatus} />
                   <Route path="/charts" exact component={Charts} />
                   <Route path="/changelog" exact component={Changelog} />
                   <Route
