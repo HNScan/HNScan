@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import DataTable from "components/styles/DataTable";
 
 // Components
 import Card from "components/styles/Card";
@@ -12,16 +13,16 @@ import { hnsValues, timeAgo } from "utils/util";
 //@todo last element is showing a bottom border.
 export default function NameHistory({ history, page, changePage, pages, url }) {
   const names = history.map((name, index) => (
-    <tr key={index}>
-      <td>{name.action}</td>
+    <DataTable.Tr key={index}>
+      <DataTable.Td>{name.action}</DataTable.Td>
       {/* @fixme Not working */}
-      <td>{timeAgo(name.time)}</td>
+      <DataTable.Td>{timeAgo(name.time)}</DataTable.Td>
       {/* @todo need to link this */}
-      <td>
+      <DataTable.Td>
         <Link to={"/block/" + name.height}>{name.height}</Link>
-      </td>
-      <td>{hnsValues(name.value)}</td>
-    </tr>
+      </DataTable.Td>
+      <DataTable.Td>{hnsValues(name.value) || '--'}</DataTable.Td>
+    </DataTable.Tr>
   ));
   return (
     <>
@@ -35,17 +36,17 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
         <Card.Content>
           {names.length === 0 && <p>There is no history for this name</p>}
           {names.length > 0 && (
-            <table className="table is-fullwidth">
-              <thead>
-                <tr>
-                  <th>Action</th>
-                  <th>Time</th>
-                  <th>Block Height</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>{names}</tbody>
-            </table>
+            <DataTable className="table is-fullwidth">
+              <DataTable.Head>
+                <DataTable.Tr>
+                  <DataTable.Th>Action</DataTable.Th>
+                  <DataTable.Th>Time</DataTable.Th>
+                  <DataTable.Th>Block Height</DataTable.Th>
+                  <DataTable.Th>Value</DataTable.Th>
+                </DataTable.Tr>
+              </DataTable.Head>
+              <DataTable.Body>{names}</DataTable.Body>
+            </DataTable>
           )}
         </Card.Content>
       </Card>
