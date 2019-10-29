@@ -13,11 +13,8 @@ const Head = styled(Table.Head)``;
 
 export const DataTable = styled(Table)`
   height: auto;
-  width: 90%;
+  width: 100%;
   margin: 10px auto;
-  @media (min-width: 680px) {
-    width: 95%;
-  }
 
   ${Th}, ${Td} {
     border-color: ${props => props.theme.cards.borderColor};
@@ -29,10 +26,6 @@ export const DataTable = styled(Table)`
 const Wrapper = styled.div`
   height: 100%;
   width: 100%;
-  padding: 0;
-  @media (min-width: 680px) {
-    padding: 1.5rem;
-  }
 `;
 
 DataTable.Th = Th;

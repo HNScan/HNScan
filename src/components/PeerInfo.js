@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 // Components
-import Card from "components/styles/Card";
+import { Card } from "@urkellabs/ucl";
 import StackedData from "components/shared/StackedData";
 
 // Util
@@ -25,7 +25,7 @@ const FullWidthContainer = styled.div`
 const PeerInfo = ({ peers, ...props }) => {
   const peerTable = peers.map((peer, index) => (
     <SummaryCardItem key={peer.addr}>
-      <FullWidthContainer className="card-content">
+      <FullWidthContainer>
         <div className="columns">
           <div className="column is-half">
             <table className="table is-fullwidth">
@@ -83,11 +83,8 @@ const PeerInfo = ({ peers, ...props }) => {
   ));
   return (
     <>
-      <Card>
-        <Card.Header>
-          <Card.HeaderTitle>Peers</Card.HeaderTitle>
-        </Card.Header>
-        <Card.Content>{peerTable}</Card.Content>
+      <Card title="Peers">
+        {peerTable}
       </Card>
     </>
   );

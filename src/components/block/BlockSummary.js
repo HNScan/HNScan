@@ -1,11 +1,8 @@
 import React from "react";
-import styled from "styled-components";
-import { Row, Col } from "@urkellabs/ucl";
-
+import { Row, Col, Card } from "@urkellabs/ucl";
 import { useParams } from "react-router-dom";
 
 // Components
-import { Card } from "@urkellabs/ucl";
 import StackedData from "components/shared/StackedData";
 
 // Util
