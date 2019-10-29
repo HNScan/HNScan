@@ -29,3 +29,7 @@ yarn-error.log*
 
 # Commit to only using Yarn
 package-lock.json
+
+# Yalc
+.yalc
+yalc.lock
