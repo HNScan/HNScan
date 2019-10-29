@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col } from "@urkellabs/ucl";
 
 // Components
-import Card from "components/styles/Card";
+import { Card } from "@urkellabs/ucl";
 import StackedData from "components/shared/StackedData";
 
 // Util
@@ -27,10 +27,7 @@ export default function NetworkSummary({ info }) {
   let registeredNames = info.registeredNames;
 
   return (
-    <Card>
-      <Card.Header>
-        <Card.HeaderTitle>Network Summary</Card.HeaderTitle>
-      </Card.Header>
+    <Card title="Network Summary">
       {/* ----- Network Summary - Top Row ----- */}
       <Row>
         <Col mobile={12} tablet>

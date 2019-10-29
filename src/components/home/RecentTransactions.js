@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 // Components
 import Card from "components/styles/Card";
+import { Card as NewCard, Flex, Col } from "@urkellabs/ucl";
 
 // SVGs
 import Arrow from "components/svg/RightArrow";
@@ -18,16 +19,16 @@ const Time = styled.span`
 
 const Transaction = ({ tx }) => (
   // ----- TX Details -----
-  <Card.SummaryItemContainer>
+  <Col>
     <Card.SummaryItem>
       {/* ----- Left Side / Top Side ----- */}
-      <Card.SummaryItemContent>
+      <Col>
         <Card.LeftItemDetail>
           <Card.ItemLogo>
             <Arrow />
           </Card.ItemLogo>
           TX #:&nbsp;
-          <Link className="hnscan-link" to={"/tx/" + tx.hash}>
+          <Link to={"/tx/" + tx.hash}>
             {truncateHash(tx.hash)}
           </Link>
         </Card.LeftItemDetail>
@@ -35,32 +36,26 @@ const Transaction = ({ tx }) => (
           Amount: {hnsValues(sumTxOutputs(tx.outputs))}
         </Card.LeftItemDetail>
         <Card.LeftItemDetail>Fee: {hnsValues(tx.fee)}</Card.LeftItemDetail>
-      </Card.SummaryItemContent>
+      </Col>
       {/* ----- Right Side / Bottom Side ----- */}
-      <Card.SummaryItemContent>
+      <Col>
         <Card.RightItemDetail>
           <Time>{timeAgo(tx.time)}</Time>
         </Card.RightItemDetail>
-      </Card.SummaryItemContent>
+      </Col>
     </Card.SummaryItem>
-  </Card.SummaryItemContainer>
+  </Col>
 );
 
 export default function RecentTransactions({ txs }) {
   const txRows = txs.map((tx, index) => <Transaction key={index} tx={tx} />);
 
   return (
-    <Card>
-      {/* ------ TX Header ----- */}
-      <Card.Header>
-        <Card.HeaderTitle>Recent Transactions</Card.HeaderTitle>
-      </Card.Header>
-      {/* ----- TX Content ----- */}
-      <Card.SummaryContainer>
-        {/* This Fxn will return x number of transactions */}
+    <NewCard title="Recent Transactions">
+      <Flex columns>
         {txRows}
-      </Card.SummaryContainer>
-    </Card>
+      </Flex>
+    </NewCard>
   );
 }
 

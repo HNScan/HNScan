@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 // Components
 import Card from "components/styles/Card";
+import { Card as NewCard, Flex, Col } from "@urkellabs/ucl";
 
 // SVGs
 import BlockLogo from "components/svg/Block";
@@ -11,28 +12,23 @@ import BlockLogo from "components/svg/Block";
 // Util
 import { truncateHash, timeAgo } from "utils/util";
 
-const Time = styled.span`
-  font-style: italic;
-`;
-
 const BlockCardItem = ({ block }) => {
   return (
-    <Card.SummaryItemContainer>
+    <Col>
       <Card.SummaryItem>
-        {/* ----- Left Side / Top Side ----- */}
-        <Card.SummaryItemContent>
+        <Col>
           <Card.LeftItemDetail>
             <Card.ItemLogo>
               <BlockLogo />
             </Card.ItemLogo>
             Block #:&nbsp;
-            <Link className="hnscan-link" to={"/block/" + block.height}>
+            <Link to={"/block/" + block.height}>
               {block.height}
             </Link>
           </Card.LeftItemDetail>
           <Card.LeftItemDetail>
             Mined By:&nbsp;
-            <Link className="hnscan-link" to={"/address/" + block.miner}>
+            <Link to={"/address/" + block.miner}>
               {/* @todo check pool */}
               {truncateHash(block.miner)}
             </Link>
@@ -40,14 +36,14 @@ const BlockCardItem = ({ block }) => {
           <Card.LeftItemDetail>
             Transactions: {block.tx.length}
           </Card.LeftItemDetail>
-        </Card.SummaryItemContent>
-        <Card.SummaryItemContent>
+        </Col>
+        <Col>
           <Card.RightItemDetail>
-            <Time>{timeAgo(block.time)}</Time>
+            <em>{timeAgo(block.time)}</em>
           </Card.RightItemDetail>
-        </Card.SummaryItemContent>
+        </Col>
       </Card.SummaryItem>
-    </Card.SummaryItemContainer>
+    </Col>
   );
 };
 
@@ -56,14 +52,10 @@ export default function RecentBlocks({ blocks }) {
     <BlockCardItem key={index} block={block} />
   ));
   return (
-    <Card>
-      <Card.Header>
-        <Card.HeaderTitle>Blocks</Card.HeaderTitle>
-        <Card.HeaderLink className="hnscan-link" to="/blocks">
-          View All
-        </Card.HeaderLink>
-      </Card.Header>
-      <Card.SummaryContainer>{blockRows}</Card.SummaryContainer>
-    </Card>
+    <NewCard
+      title="Blocks"
+      headerAction={<Link to="/blocks">View All</Link>}>
+      <Flex columns>{blockRows}</Flex>
+    </NewCard>
   );
 }

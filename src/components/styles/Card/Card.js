@@ -1,6 +1,5 @@
 // These are custom components for the home screen
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 // ----- REUSABLE GENERICS -----
 export const Card = styled.div`
@@ -38,15 +37,6 @@ const HeaderTitle = styled.div`
   padding: 0.75rem;
 `;
 
-// View all links in the header
-const HeaderLink = styled(Link)`
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  padding: 0.75rem;
-`;
-
 // Content container for all cards
 const Content = styled.div`
   display: flex;
@@ -55,42 +45,18 @@ const Content = styled.div`
   padding: 1.5rem;
 `;
 
-const SummaryContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: auto;
-`;
-
 // ----- TX'S AND BLOCKS SPECIFIC -----
-// Used on the home screen for recent TX's and Blocks
-const SummaryItemContainer = styled.div`
-  display: flex;
-  width: 100%;
-  /* TODO: this needs to change to auto to take height of content */
-  height: auto;
-  padding: 0.75rem;
-  border-bottom: 1px solid var(--border-color);
-
-  &:last-child {
-    border: none;
-  }
-`;
 
 const SummaryItem = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
+  padding: 0.75rem 0;
 
   /* @Exception: custom media query breakpoint */
   @media (min-width: 850px) {
     flex-direction: row;
   }
-`;
-
-const SummaryItemContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
 `;
 
 const LeftItemDetail = styled.div`
@@ -100,7 +66,6 @@ const LeftItemDetail = styled.div`
   &:first-child {
     font-size: 16px;
     display: flex;
-    flex-direction: row;
   }
 `;
 
@@ -126,12 +91,8 @@ const ItemLogo = styled.div`
 
 Card.Header = Header;
 Card.HeaderTitle = HeaderTitle;
-Card.HeaderLink = HeaderLink;
 Card.Content = Content;
-Card.SummaryContainer = SummaryContainer;
 Card.SummaryItem = SummaryItem;
-Card.SummaryItemContent = SummaryItemContent;
-Card.SummaryItemContainer = SummaryItemContainer;
 Card.LeftItemDetail = LeftItemDetail;
 Card.RightItemDetail = RightItemDetail;
 Card.ItemLogo = ItemLogo;
