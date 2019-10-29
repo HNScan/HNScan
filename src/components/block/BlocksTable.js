@@ -2,7 +2,7 @@ import React from "react";
 
 // Components
 import Pagination from "components/layout/Pagination";
-import Card from "components/styles/Card";
+import { Card } from "@urkellabs/ucl";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import DataTable from "components/styles/DataTable";
@@ -47,36 +47,31 @@ function Row({ height, size, time, miner, txs, loading }) {
 
 function BlocksTableStructure({ children }) {
   return (
-    <Card>
-      <Card.Header>
-        <Card.HeaderTitle>HNS Blocks</Card.HeaderTitle>
-      </Card.Header>
-      <Card.Content>
-        <DataTable.Wrapper>
-          <DataTable>
-            <DataTable.Head>
-              <DataTable.Tr>
-                <DataTable.Th>
-                  <abbr title="Block Height">Height</abbr>
-                </DataTable.Th>
-                <DataTable.Th className="is-hidden-mobile">
-                  <abbr title="Block Age">Age</abbr>
-                </DataTable.Th>
-                <DataTable.Th>
-                  <abbr title="Miner Address">Miner</abbr>
-                </DataTable.Th>
-                <DataTable.Th className="is-hidden-mobile">
-                  <abbr title="Block Size">Size</abbr>
-                </DataTable.Th>
-                <DataTable.Th>
-                  <abbr title="Number of Transactions">TXs</abbr>
-                </DataTable.Th>
-              </DataTable.Tr>
-            </DataTable.Head>
-            <DataTable.Body>{children}</DataTable.Body>
-          </DataTable>
-        </DataTable.Wrapper>
-      </Card.Content>
+    <Card title="HNS Blocks">
+      <DataTable.Wrapper>
+        <DataTable>
+          <DataTable.Head>
+            <DataTable.Tr>
+              <DataTable.Th>
+                <abbr title="Block Height">Height</abbr>
+              </DataTable.Th>
+              <DataTable.Th className="is-hidden-mobile">
+                <abbr title="Block Age">Age</abbr>
+              </DataTable.Th>
+              <DataTable.Th>
+                <abbr title="Miner Address">Miner</abbr>
+              </DataTable.Th>
+              <DataTable.Th className="is-hidden-mobile">
+                <abbr title="Block Size">Size</abbr>
+              </DataTable.Th>
+              <DataTable.Th>
+                <abbr title="Number of Transactions">TXs</abbr>
+              </DataTable.Th>
+            </DataTable.Tr>
+          </DataTable.Head>
+          <DataTable.Body>{children}</DataTable.Body>
+        </DataTable>
+      </DataTable.Wrapper>
     </Card>
   )
 }
