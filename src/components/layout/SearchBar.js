@@ -38,6 +38,7 @@ const SearchInput = styled.input`
   }
 `;
 
+//@todo move this to containers
 const SearchBar = props => {
   //@todo consider wrapping all of this into a custom hook.
   const [query, setQuery] = useState("");
@@ -45,7 +46,7 @@ const SearchBar = props => {
 
   const search = async e => {
     e.preventDefault();
-    let result = await fetch(`http://localhost:8080/search?q=${query}`);
+    let result = await fetch(`${process.env.REACT_APP_API_URL}/search?q=${query}`);
 
     let data = await result.json();
 
