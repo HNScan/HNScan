@@ -38,7 +38,6 @@ const SearchInput = styled.input`
   }
 `;
 
-//@todo move this to containers
 const SearchBar = props => {
   //@todo consider wrapping all of this into a custom hook.
   const [query, setQuery] = useState("");
