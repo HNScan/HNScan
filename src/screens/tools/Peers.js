@@ -2,7 +2,6 @@ import React, { Suspense, useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import queryString from "query-string";
 import { useResource, useResultCache } from "rest-hooks";
-import { Card } from "@urkellabs/ucl";
 
 // Components
 import Pagination from "components/layout/Pagination";
@@ -66,9 +65,7 @@ export default function Peers() {
   return (
     <>
       <Suspense fallback={<div>Loading Chart...</div>}>
-        <Card>
-          <Map />
-        </Card>
+        <Map />
       </Suspense>
       <Suspense fallback={<div>Loading Peers...</div>}>
         <PeersContainer page={page} changePage={changePage} url={"/peers"} />

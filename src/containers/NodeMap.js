@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useResource } from "rest-hooks";
 import styled from "styled-components";
+import { Card } from "@urkellabs/ucl";
 
 // AMChart imports
 import * as am4maps from "@amcharts/amcharts4/maps";
@@ -75,5 +76,9 @@ export default function PeersMap() {
     };
   }, [data]);
 
-  return <Map id="chartdiv" />;
+  return (
+    <Card>
+      <Map id="chartdiv" />
+    </Card>
+  );
 }
