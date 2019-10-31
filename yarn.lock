@@ -899,7 +899,7 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.4", "@babel/runtime@^7.6.0":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.4", "@babel/runtime@^7.6.0", "@babel/runtime@^7.6.3":
   version "7.6.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.3.tgz#935122c74c73d2240cafd32ddb5fc2a6cd35cf1f"
   integrity sha512-kq6anf9JGjW8Nt5rYfEuGRaEAaH1mkv3Bbu6rYvLOpPh/RusSJXuKPEAoZ7L7gybZkchE8+NV5g9vKF4AGAtsA==
@@ -1539,16 +1539,16 @@
     lodash.unescape "4.0.1"
     semver "^6.3.0"
 
-"@urkellabs/ucl@0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@urkellabs/ucl/-/ucl-0.1.5.tgz#7b0898b4f262cb6972996f31dbc0f3cab214126c"
-  integrity sha512-YMBCpLU37McbmZwHI9vNfKKrsA4z8mgDctYL5GDV1cBfs25O+zZ/16n52tbiVG8kRl3NLWCDvY3qdikwZsxOeg==
+"@urkellabs/ucl@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@urkellabs/ucl/-/ucl-0.1.7.tgz#b885fa0f6f977e322bc472497c52b05dffb7a902"
+  integrity sha512-BGfLsbdGe3u2am2AHzxQc7KAe5P4bL8tfbRCeMa3AReLr8nujmmwBAdwwFbBZPvb0URBTrzK/FqLDp22DWCahg==
   dependencies:
+    "@babel/runtime" "^7.6.3"
     polished "^3.4.1"
     prop-types "^15.7.2"
-    react "^16.10.2"
-    react-dom "^16.10.2"
     react-scripts "3.2.0"
+    styled-theming "^2.2.0"
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
@@ -9118,7 +9118,7 @@ react-dev-utils@^9.0.3, react-dev-utils@^9.1.0:
     strip-ansi "5.2.0"
     text-table "0.2.0"
 
-react-dom@^16.0.0, react-dom@^16.10.2, react-dom@^16.9.0:
+react-dom@^16.0.0, react-dom@^16.9.0:
   version "16.10.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.10.2.tgz#4840bce5409176bc3a1f2bd8cb10b92db452fda6"
   integrity sha512-kWGDcH3ItJK4+6Pl9DZB16BXYAZyrYQItU4OMy0jAkv5aNqc+mAKb4TpFtAteI6TJZu+9ZlNhaeNQSVQDHJzkw==
@@ -9296,7 +9296,7 @@ react-scripts@3.2.0:
   optionalDependencies:
     fsevents "2.0.7"
 
-react@^16.0.0, react@^16.10.2, react@^16.9.0:
+react@^16.0.0, react@^16.9.0:
   version "16.10.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.10.2.tgz#a5ede5cdd5c536f745173c8da47bda64797a4cf0"
   integrity sha512-MFVIq0DpIhrHFyqLU0S3+4dIcBhhOvBE8bJ/5kHPVOVaGdo0KuiQzpcjCPsf585WvhypqtrMILyoE2th6dT+Lw==
