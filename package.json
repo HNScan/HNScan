@@ -27,7 +27,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "link": "yarn link @urkellabs/ucl",
+    "ucllink": "yarn link @urkellabs/ucl",
     "start": "react-scripts start",
     "setup": "yarn",
     "build": "react-scripts build",
