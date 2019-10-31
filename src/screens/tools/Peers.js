@@ -7,7 +7,7 @@ import { Card } from "@urkellabs/ucl";
 // Components
 import Pagination from "components/layout/Pagination";
 import PeerInfo from "components/PeerInfo";
-import Map from "../../containers/MapContainer";
+import Map from "../../containers/NodeMap";
 
 // Resources
 import PeerResource from "../../resources/PeerResource";
