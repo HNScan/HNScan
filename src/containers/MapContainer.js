@@ -17,6 +17,7 @@ const Map = styled.div`
 
 export default function PeersMap() {
   const { data } = useResource(MapResource.detailShape(), {});
+  console.log(data);
 
   useEffect(() => {
     let targetSVG =
@@ -74,7 +75,15 @@ export default function PeersMap() {
     imageSeriesTemplate.tooltipText = "{title}";
     imageSeriesTemplate.setStateOnChildren = true;
     imageSeriesTemplate.states.create("hover");
-    imageSeries.data = data;
+    imageSeries.data = [];
+
+    for (let i = 0; i < data.length; i++) {
+      imageSeries.data.push({
+        latitude: data[i].ll[0],
+        longitude: data[i].ll[1],
+        title: data[i].city
+      });
+    }
 
     return () => {
       if (map) {
