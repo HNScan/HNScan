@@ -17,7 +17,6 @@ const Map = styled.div`
 
 export default function PeersMap() {
   const { data } = useResource(MapResource.detailShape(), {});
-  console.log(data);
 
   useEffect(() => {
     let targetSVG =
@@ -43,14 +42,6 @@ export default function PeersMap() {
     let polygonTemplate = polygonSeries.mapPolygons.template;
     polygonTemplate.strokeOpacity = 0.5;
     polygonTemplate.nonScalingStroke = true;
-    // @TODO: map theming
-    // polygonTemplate.fill = am4core.color("#444444");
-
-    // Create hover state and hover state color
-    // let hs = polygonTemplate.states.create("hover");
-    // hs.properties.fill = am4core.color("#444444");
-    // @TODO: number of nodes per country if possible?
-    // hs.properties.tooltipText = "Test";
 
     // Create data point markers
     let imageSeries = map.series.push(new am4maps.MapImageSeries());
@@ -75,15 +66,7 @@ export default function PeersMap() {
     imageSeriesTemplate.tooltipText = "{title}";
     imageSeriesTemplate.setStateOnChildren = true;
     imageSeriesTemplate.states.create("hover");
-    imageSeries.data = [];
-
-    for (let i = 0; i < data.length; i++) {
-      imageSeries.data.push({
-        latitude: data[i].ll[0],
-        longitude: data[i].ll[1],
-        title: data[i].city
-      });
-    }
+    imageSeries.data = data;
 
     return () => {
       if (map) {
