@@ -28,10 +28,10 @@ export default function PeersMap() {
     map.geodata = am4geodata_worldLow;
     map.projection = new am4maps.projections.Miller();
 
-    // Disable zooming/dragging/scroll hijack
-    map.maxZoomLevel = 1;
-    map.seriesContainer.draggable = false;
-    map.seriesContainer.resizable = false;
+    // Add zoom control
+    map.zoomControl = new am4maps.ZoomControl();
+
+    // Disable scroll hijack
     map.chartContainer.wheelable = false;
 
     // Create map polygon series
