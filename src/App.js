@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { NetworkErrorBoundary } from "rest-hooks";
 import { ThemeProvider } from "styled-components";
 import { SkeletonTheme } from "react-loading-skeleton";
-import { GlobalStyles } from "@urkellabs/ucl";
 
 // Special
+import GlobalStyles from "components/layout/GlobalStyles";
 import ScrollToTop from "components/shared/ScrollToTop";
 
 // Components
@@ -24,6 +24,7 @@ import Search from "screens/Search";
 import Transaction from "screens/Transaction";
 
 // More Pages
+
 import AirdropClaimScreen from "screens/tools/AirdropClaim/AirdropClaimScreen";
 
 // Tool Pages

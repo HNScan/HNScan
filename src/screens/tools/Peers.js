@@ -6,7 +6,6 @@ import { useResource, useResultCache } from "rest-hooks";
 // Components
 import Pagination from "components/layout/Pagination";
 import PeerInfo from "components/PeerInfo";
-import Map from "../../containers/NodeMap";
 
 // Resources
 import PeerResource from "../../resources/PeerResource";
@@ -22,6 +21,7 @@ const PeersContainer = ({ pages, page, url, changePage }) => {
 
   return (
     <>
+      {/* <PeersMapComponent /> */}
       <PeerInfo peers={peers} />
       <Pagination
         totalPages={Math.ceil(total / limit)}
@@ -64,10 +64,7 @@ export default function Peers() {
   };
   return (
     <>
-      <Suspense fallback={<div>Loading Chart...</div>}>
-        <Map />
-      </Suspense>
-      <Suspense fallback={<div>Loading Peers...</div>}>
+      <Suspense fallback={<div>Loading...</div>}>
         <PeersContainer page={page} changePage={changePage} url={"/peers"} />
       </Suspense>
     </>
