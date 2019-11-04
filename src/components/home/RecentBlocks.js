@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // Components
-import Card from "components/styles/Card";
-import { Card as UclCard, Flex, Col } from "@urkellabs/ucl";
+import { SummaryItem, ItemLogo, LeftItemDetail, RightItemDetail } from "./styled-components";
+import { Card, Flex, Col } from "@urkellabs/ucl";
 
 // SVGs
 import BlockLogo from "components/svg/Block";
@@ -14,34 +14,34 @@ import { truncateHash, timeAgo } from "utils/util";
 const BlockCardItem = ({ block }) => {
   return (
     <Col>
-      <Card.SummaryItem>
+      <SummaryItem>
         <Col>
-          <Card.LeftItemDetail>
-            <Card.ItemLogo>
+          <LeftItemDetail>
+            <ItemLogo>
               <BlockLogo />
-            </Card.ItemLogo>
+            </ItemLogo>
             Block #:&nbsp;
             <Link to={"/block/" + block.height}>
               {block.height}
             </Link>
-          </Card.LeftItemDetail>
-          <Card.LeftItemDetail>
+          </LeftItemDetail>
+          <LeftItemDetail>
             Mined By:&nbsp;
             <Link to={"/address/" + block.miner}>
               {/* @todo check pool */}
               {truncateHash(block.miner)}
             </Link>
-          </Card.LeftItemDetail>
-          <Card.LeftItemDetail>
+          </LeftItemDetail>
+          <LeftItemDetail>
             Transactions: {block.tx.length}
-          </Card.LeftItemDetail>
+          </LeftItemDetail>
         </Col>
         <Col>
-          <Card.RightItemDetail>
+          <RightItemDetail>
             <em>{timeAgo(block.time)}</em>
-          </Card.RightItemDetail>
+          </RightItemDetail>
         </Col>
-      </Card.SummaryItem>
+      </SummaryItem>
     </Col>
   );
 };
@@ -51,10 +51,10 @@ export default function RecentBlocks({ blocks }) {
     <BlockCardItem key={index} block={block} />
   ));
   return (
-    <UclCard
+    <Card
       title="Blocks"
       headerAction={<Link to="/blocks">View All</Link>}>
       <Flex columns>{blockRows}</Flex>
-    </UclCard>
+    </Card>
   );
 }

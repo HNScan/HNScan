@@ -1,9 +1,7 @@
 // These are custom components for the home screen
 import styled from "styled-components";
 
-export const Card = {};
-
-const SummaryItem = styled.div`
+export const SummaryItem = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -15,7 +13,7 @@ const SummaryItem = styled.div`
   }
 `;
 
-const LeftItemDetail = styled.div`
+export const LeftItemDetail = styled.div`
   font-size: 12px;
   margin: 2px 0;
   white-space: nowrap;
@@ -26,7 +24,7 @@ const LeftItemDetail = styled.div`
   }
 `;
 
-const RightItemDetail = styled.div`
+export const RightItemDetail = styled.div`
   display: flex;
   font-size: 12px;
   margin: 2px 0;
@@ -37,7 +35,7 @@ const RightItemDetail = styled.div`
   }
 `;
 
-const ItemLogo = styled.div`
+export const ItemLogo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,8 +43,3 @@ const ItemLogo = styled.div`
   width: 20px;
   margin: 1px 5px 0 0;
 `;
-
-Card.SummaryItem = SummaryItem;
-Card.LeftItemDetail = LeftItemDetail;
-Card.RightItemDetail = RightItemDetail;
-Card.ItemLogo = ItemLogo;
