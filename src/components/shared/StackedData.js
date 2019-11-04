@@ -18,12 +18,14 @@ const DivWrapper = styled.div`
 `;
 
 const Value = styled.span`
+  color: ${props => props.theme.global.textColor};
   font-size: ${props => props.cell ? "12px" : "16px"};
   word-wrap: break-word;
   word-break: break-all;
 `;
 
 const Label = styled.span`
+  color: ${props => props.theme.global.textColor};
   font-weight: 800;
   font-size: ${props => props.cell ? "14px" : "16px"};
 `;
