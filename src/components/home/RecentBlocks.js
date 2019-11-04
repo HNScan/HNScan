@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 
 // Components
 import Card from "components/styles/Card";
-import { Card as NewCard, Flex, Col } from "@urkellabs/ucl";
+import { Card as UclCard, Flex, Col } from "@urkellabs/ucl";
 
 // SVGs
 import BlockLogo from "components/svg/Block";
@@ -52,10 +51,10 @@ export default function RecentBlocks({ blocks }) {
     <BlockCardItem key={index} block={block} />
   ));
   return (
-    <NewCard
+    <UclCard
       title="Blocks"
       headerAction={<Link to="/blocks">View All</Link>}>
       <Flex columns>{blockRows}</Flex>
-    </NewCard>
+    </UclCard>
   );
 }

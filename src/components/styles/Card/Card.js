@@ -18,6 +18,7 @@ const SummaryItem = styled.div`
 const LeftItemDetail = styled.div`
   font-size: 12px;
   margin: 2px 0;
+  white-space: nowrap;
 
   &:first-child {
     font-size: 16px;
