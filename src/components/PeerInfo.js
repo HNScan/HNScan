@@ -10,12 +10,8 @@ import DataTable from "components/styles/DataTable";
 import { timeAgo } from "utils/util";
 
 const SummaryCardItem = styled.div`
-  ${Row} {
-    border-bottom: 1px solid ${props => props.theme.cards.borderColor};
-    padding: 24px;
-    width: 100%;
-  }
-
+  border-bottom: 1px solid ${props => props.theme.cards.borderColor};
+  padding: 24px;
   &:last-child {
     border-bottom: 0;
   }
