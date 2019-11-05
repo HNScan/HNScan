@@ -54,14 +54,6 @@ const GlobalStyles = createGlobalStyle`
     //   border-bottom: none !important;
     // }
 
-    // // Bulma override
-    // .hnscan-link {
-    //   color: var(--text-color-link) !important;
-
-    //   // &:visited { color: var(--text-color-link--visited) !important }
-    //   &:hover { color: var(--text-color-link--hover) !important; }
-    // }
-
     // .pagination-link,
     // .pagination-previous,
     // .pagination-next {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import DataTable from "components/styles/DataTable";
 
 // Components
-import Card from "components/styles/Card";
+import { Card } from "@urkellabs/ucl";
 import Pagination from "components/layout/Pagination";
 import Skeleton from "react-loading-skeleton";
 
@@ -23,30 +23,25 @@ const Row = ({ name, state, height, loading }) => (
 
 function NamesTableStructure({ children }) {
   return (
-    <Card>
-      <Card.Header>
-        <Card.HeaderTitle>TLD Names</Card.HeaderTitle>
-      </Card.Header>
-      <Card.Content>
-        <DataTable.Wrapper>
-          <DataTable>
-            <DataTable.Head>
-              <DataTable.Tr>
-                <DataTable.Th>
-                  <abbr title="Top Level Domain Name">Name</abbr>
-                </DataTable.Th>
-                <DataTable.Th>
-                  <abbr title="Name Auction State">State</abbr>
-                </DataTable.Th>
-                <DataTable.Th>
-                  <abbr title="Block Height">Height</abbr>
-                </DataTable.Th>
-              </DataTable.Tr>
-            </DataTable.Head>
-            <DataTable.Body>{children}</DataTable.Body>
-          </DataTable>
-        </DataTable.Wrapper>
-      </Card.Content>
+    <Card title="TLD Names">
+      <DataTable.Wrapper>
+        <DataTable>
+          <DataTable.Head>
+            <DataTable.Tr>
+              <DataTable.Th>
+                Name
+              </DataTable.Th>
+              <DataTable.Th>
+                State
+              </DataTable.Th>
+              <DataTable.Th>
+                Height
+              </DataTable.Th>
+            </DataTable.Tr>
+          </DataTable.Head>
+          <DataTable.Body>{children}</DataTable.Body>
+        </DataTable>
+      </DataTable.Wrapper>
     </Card>
   );
 }
