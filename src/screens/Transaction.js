@@ -8,6 +8,7 @@ import { Row, Col } from "@urkellabs/ucl";
 import { Card } from "@urkellabs/ucl";
 import StackedData from "components/shared/StackedData";
 import { InputList, OutputList } from "components/shared/PutsList";
+import DataTable from "components/styles/DataTable";
 
 // Resources
 import TransactionResource from "resources/TransactionResource";
@@ -44,7 +45,10 @@ function TxDetailScreen({ hash }) {
             <StackedData label="Received" value={timeAgo(tx.time)} />
           </Col>
           <Col mobile={12} tablet>
-            <StackedData label="Amount" value={hnsValues(sumTxOutputs(tx.outputs))} />
+            <StackedData
+              label="Amount"
+              value={hnsValues(sumTxOutputs(tx.outputs))}
+            />
           </Col>
           <Col mobile={12} tablet>
             <StackedData label="Fee" value={hnsValues(tx.fee)} />
@@ -55,63 +59,61 @@ function TxDetailScreen({ hash }) {
         </Row>
       </Card>
 
-      {/* Bottom Card */}
+      {/* ------- Bottom Card ------ */}
       <Card title="Advanced">
-        <div className="columns">
-          <div className="column is-half">
-            <table className="table is-fullwidth">
-              <tbody>
-                {/* TODO: Get Node Status */}
-                <tr>
+        <Row>
+          <Col mobile={12} desktop>
+            <DataTable>
+              <DataTable.Body>
+                <DataTable.Tr>
                   <StackedData cell label="Hash" value={tx.hash} />
-                </tr>
-                <tr>
+                </DataTable.Tr>
+                <DataTable.Tr>
                   <StackedData
                     cell
                     label="Block Height"
                     value={tx.height}
                     link={"/block/" + tx.height}
                   />
-                </tr>
-                <tr>
+                </DataTable.Tr>
+                <DataTable.Tr>
                   <StackedData cell label="Locktime" value={tx.locktime} />
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="column is-half">
-            <table className="table is-fullwidth">
-              <tbody>
-                {/* TODO: Get Node Status */}
-                <tr>
+                </DataTable.Tr>
+              </DataTable.Body>
+            </DataTable>
+          </Col>
+          <Col mobile={12} desktop>
+            <DataTable>
+              <DataTable.Body>
+                <DataTable.Tr>
                   <StackedData
                     cell
                     label="Witness Hash"
                     value={tx.witnessHash}
                   />
-                </tr>
-                <tr>
+                </DataTable.Tr>
+                <DataTable.Tr>
                   <StackedData cell label="Version" value={tx.version} />
-                </tr>
-                <tr>
+                </DataTable.Tr>
+                <DataTable.Tr>
                   <StackedData cell label="Index" value={tx.index} />
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+                </DataTable.Tr>
+              </DataTable.Body>
+            </DataTable>
+          </Col>
+        </Row>
       </Card>
 
       <Card title="TX Activity">
         <Container>
-          <div className="columns">
-            <div className="column is-half">
+          <Row>
+            <Col mobile={12} desktop>
               <InputList inputs={tx.inputs} />
-            </div>
-            <div className="column is-half">
+            </Col>
+            <Col mobile={12} desktop>
               <OutputList outputs={tx.outputs} />
-            </div>
-          </div>
+            </Col>
+          </Row>
         </Container>
       </Card>
     </>
