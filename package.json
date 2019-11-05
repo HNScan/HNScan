@@ -2,7 +2,7 @@
   "name": "hnscan",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://new.hnscan.com",
+  "homepage": "https://hnscan.com",
   "dependencies": {
     "@amcharts/amcharts4": "^4.7.6",
     "@amcharts/amcharts4-geodata": "^4.1.8",
