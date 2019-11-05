@@ -1,5 +1,6 @@
 // These are custom components for the home screen
 import styled from "styled-components";
+import { Card as UclCard } from "@urkellabs/ucl";
 
 export const SummaryItem = styled.div`
   display: flex;
@@ -13,22 +14,20 @@ export const SummaryItem = styled.div`
   }
 `;
 
-export const LeftItemDetail = styled.div`
-  font-size: 12px;
-  margin: 2px 0;
-  white-space: nowrap;
-
-  &:first-child {
-    font-size: 16px;
-    display: flex;
-  }
-`;
-
-export const RightItemDetail = styled.div`
+const ItemDetail = styled.div`
   display: flex;
   font-size: 12px;
   margin: 2px 0;
+`;
 
+export const LeftItemDetail = styled(ItemDetail)`
+  white-space: nowrap;
+  &:first-child {
+    font-size: 14px;
+  }
+`;
+
+export const RightItemDetail = styled(ItemDetail)`
   /* @Exception: custom media query breakpoint */
   @media (min-width: 850px) {
     justify-content: flex-end;

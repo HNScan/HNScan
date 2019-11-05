@@ -17,7 +17,7 @@ const Transaction = ({ tx }) => (
   <Col>
     <SummaryItem>
       {/* ----- Left Side / Top Side ----- */}
-      <Col>
+      <Col mobile={9}>
         <LeftItemDetail>
           <ItemLogo>
             <Arrow />
