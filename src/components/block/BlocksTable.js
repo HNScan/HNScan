@@ -2,7 +2,6 @@ import React from "react";
 import { Pagination } from "@urkellabs/ucl";
 
 // Components
-// import Pagination from "components/layout/Pagination";
 import Card from "components/styles/Card";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
