@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { useResource, useResultCache } from "rest-hooks";
 
 // import { Row, Col } from "@urkellabs/ucl";
+import { Pagination } from "@urkellabs/ucl";
 
 // Components
-import Pagination from "components/layout/Pagination";
 import Card from "components/styles/Card";
 import { InputList, OutputList } from "components/shared/PutsList";
 

@@ -1,20 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DataTable from "components/styles/DataTable";
+import Skeleton from "react-loading-skeleton";
+import { Pagination } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
-import Pagination from "components/layout/Pagination";
-import Skeleton from "react-loading-skeleton";
+import DataTable from "components/styles/DataTable";
 
 const Row = ({ name, state, height, loading }) => (
   <DataTable.Tr>
     <DataTable.Td width="75%">
       {loading ? <Skeleton /> : <Link to={"/name/" + name}>{name}</Link>}
     </DataTable.Td>
-    <DataTable.Td>
-      {loading ? <Skeleton /> : state}
-    </DataTable.Td>
+    <DataTable.Td>{loading ? <Skeleton /> : state}</DataTable.Td>
     <DataTable.Td>
       {loading ? <Skeleton /> : <Link to={"/block/" + height}>{height}</Link>}
     </DataTable.Td>
@@ -53,17 +51,11 @@ function NamesTableStructure({ children }) {
 
 export function NamesSkeleton() {
   const rows = [];
-  for (let i = 0; i < 24; i++)
-    rows.push(<Row key={i} loading />)
-  return (
-    <NamesTableStructure>
-      {rows}
-    </NamesTableStructure>
-  );
+  for (let i = 0; i < 24; i++) rows.push(<Row key={i} loading />);
+  return <NamesTableStructure>{rows}</NamesTableStructure>;
 }
 
 export function NamesTable({ names, pages, page, changePage }) {
-
   const nameRows = names.map((name, index) => (
     <Row key={index} name={name.name} state={name.state} height={name.height} />
   ));
@@ -71,9 +63,7 @@ export function NamesTable({ names, pages, page, changePage }) {
   // 25 blocks per page
   return (
     <>
-      <NamesTableStructure>
-        {nameRows}
-      </NamesTableStructure>
+      <NamesTableStructure>{nameRows}</NamesTableStructure>
       <Pagination
         totalPages={pages}
         page={page}

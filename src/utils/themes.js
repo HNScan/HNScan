@@ -1,5 +1,6 @@
 export const themes = {
   light: {
+    mode: "light",
     global: {
       background: "#fefefe",
       textColor: "#4a4a4a",
@@ -49,6 +50,7 @@ export const themes = {
     "--ha-color": "#532ad1"
   },
   dark: {
+    mode: "dark",
     global: {
       background: "#323232",
       textColor: "#afafaf",

@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DataTable from "components/styles/DataTable";
+import { Pagination } from "@urkellabs/ucl";
 
 // Components
 import Card from "components/styles/Card";
-import Pagination from "components/layout/Pagination";
+import DataTable from "components/styles/DataTable";
 
 // Util
 import { hnsValues, timeAgo } from "utils/util";
@@ -21,7 +21,7 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
       <DataTable.Td>
         <Link to={"/block/" + name.height}>{name.height}</Link>
       </DataTable.Td>
-      <DataTable.Td>{hnsValues(name.value) || '--'}</DataTable.Td>
+      <DataTable.Td>{hnsValues(name.value) || "--"}</DataTable.Td>
     </DataTable.Tr>
   ));
   return (
