@@ -1,5 +1,6 @@
 export const themes = {
   light: {
+    mode: "light",
     global: {
       background: "#fefefe",
       textColor: "#4a4a4a",
@@ -19,11 +20,6 @@ export const themes = {
       borderColor: "#dfdfdf"
     },
     pagination: {
-      textColor: "#4a4a4a"
-    },
-    search: {
-      background: "#fff",
-      borderColor: "#e7e7e7",
       textColor: "#4a4a4a"
     },
     logo: {
@@ -49,6 +45,7 @@ export const themes = {
     "--ha-color": "#532ad1"
   },
   dark: {
+    mode: "dark",
     global: {
       background: "#323232",
       textColor: "#afafaf",
@@ -71,11 +68,6 @@ export const themes = {
     pagination: {
       textColor: "#fff"
     },
-    search: {
-      background: "#575757",
-      borderColor: "#444444",
-      textColor: "#afafaf"
-    },
     logo: {
       stroke: "#cfcfcf",
       fill: "#cfcfcf"
@@ -96,9 +88,6 @@ export const themes = {
     "--card-border": "#dbdbdb",
     "--card-box-shadow": "0 2px 3px rgba(10,10,10,.1)",
     "--input-error-color": "#f00",
-    "--searchbar-background-color": "#575757",
-    "--searchbar-border-color": "#969696",
-    "--searchbar-text-color": "#dbdbdb",
     "--urkel-color": "#ee8c3a",
     "--ha-color": "#532ad1"
   }
