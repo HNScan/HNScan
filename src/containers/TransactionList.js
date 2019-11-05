@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import { useResource, useResultCache } from "rest-hooks";
 
 // import { Row, Col } from "@urkellabs/ucl";
-import { Pagination } from "@urkellabs/ucl";
+import { Pagination, Card } from "@urkellabs/ucl";
 
 // Components
-import Card from "components/styles/Card";
 import { InputList, OutputList } from "components/shared/PutsList";
 
 // Resources
@@ -70,13 +69,11 @@ const TransactionList = ({ url, page, from }) => {
   ));
   return (
     <>
-      <Card>
-        <Card.Header>
-          <Card.HeaderTitle>
-            {title(total, "Transaction")} ({offset + 1}-{offset + txs.length})
-          </Card.HeaderTitle>
-        </Card.Header>
-        <Card.Content>{renderTransactions}</Card.Content>
+      <Card
+        title={`${title(total, "Transaction")} (${offset + 1}-${offset +
+          txs.length})`}
+      >
+        {renderTransactions}
       </Card>
       <Pagination totalPages={pages} page={page} url={url} />
     </>

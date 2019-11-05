@@ -2,8 +2,8 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
-// Containers
-import SearchBar from "containers/SearchBar";
+// Components
+import SearchBar from "components/layout/SearchBar";
 
 const Header = styled.h1`
   margin-top: 50px;

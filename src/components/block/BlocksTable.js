@@ -1,10 +1,9 @@
 import React from "react";
-import { Pagination } from "@urkellabs/ucl";
-
-// Components
-import Card from "components/styles/Card";
+import { Pagination, Card } from "@urkellabs/ucl";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
+
+// Components
 import DataTable from "components/styles/DataTable";
 
 // Util
@@ -57,36 +56,21 @@ function Row({ height, size, time, miner, txs, loading }) {
 
 function BlocksTableStructure({ children }) {
   return (
-    <Card>
-      <Card.Header>
-        <Card.HeaderTitle>HNS Blocks</Card.HeaderTitle>
-      </Card.Header>
-      <Card.Content>
-        <DataTable.Wrapper>
-          <DataTable>
-            <DataTable.Head>
-              <DataTable.Tr>
-                <DataTable.Th>
-                  <abbr title="Block Height">Height</abbr>
-                </DataTable.Th>
-                <DataTable.Th className="is-hidden-mobile">
-                  <abbr title="Block Age">Age</abbr>
-                </DataTable.Th>
-                <DataTable.Th>
-                  <abbr title="Miner Address">Miner</abbr>
-                </DataTable.Th>
-                <DataTable.Th className="is-hidden-mobile">
-                  <abbr title="Block Size">Size</abbr>
-                </DataTable.Th>
-                <DataTable.Th>
-                  <abbr title="Number of Transactions">TXs</abbr>
-                </DataTable.Th>
-              </DataTable.Tr>
-            </DataTable.Head>
-            <DataTable.Body>{children}</DataTable.Body>
-          </DataTable>
-        </DataTable.Wrapper>
-      </Card.Content>
+    <Card title="HNS Blocks">
+      <DataTable.Wrapper>
+        <DataTable>
+          <DataTable.Head>
+            <DataTable.Tr>
+              <DataTable.Th>Height</DataTable.Th>
+              <DataTable.Th className="is-hidden-mobile">Age</DataTable.Th>
+              <DataTable.Th>Miner</DataTable.Th>
+              <DataTable.Th className="is-hidden-mobile">Size</DataTable.Th>
+              <DataTable.Th>TXs</DataTable.Th>
+            </DataTable.Tr>
+          </DataTable.Head>
+          <DataTable.Body>{children}</DataTable.Body>
+        </DataTable>
+      </DataTable.Wrapper>
     </Card>
   );
 }
