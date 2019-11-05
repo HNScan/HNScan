@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
-// Containers
+// Components
 import SearchBar from "containers/SearchBar";
 
 const Header = styled.h1`

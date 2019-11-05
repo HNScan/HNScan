@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 
 // Components
-import Card from "components/styles/Card";
+import { SummaryItem, ItemLogo, LeftItemDetail, RightItemDetail } from "./styled-components";
+import { Card, Flex, Col } from "@urkellabs/ucl";
 
 // SVGs
 import BlockLogo from "components/svg/Block";
@@ -11,43 +11,38 @@ import BlockLogo from "components/svg/Block";
 // Util
 import { truncateHash, timeAgo } from "utils/util";
 
-const Time = styled.span`
-  font-style: italic;
-`;
-
 const BlockCardItem = ({ block }) => {
   return (
-    <Card.SummaryItemContainer>
-      <Card.SummaryItem>
-        {/* ----- Left Side / Top Side ----- */}
-        <Card.SummaryItemContent>
-          <Card.LeftItemDetail>
-            <Card.ItemLogo>
+    <Col>
+      <SummaryItem>
+        <Col>
+          <LeftItemDetail>
+            <ItemLogo>
               <BlockLogo />
-            </Card.ItemLogo>
+            </ItemLogo>
             Block #:&nbsp;
-            <Link className="hnscan-link" to={"/block/" + block.height}>
+            <Link to={"/block/" + block.height}>
               {block.height}
             </Link>
-          </Card.LeftItemDetail>
-          <Card.LeftItemDetail>
+          </LeftItemDetail>
+          <LeftItemDetail>
             Mined By:&nbsp;
-            <Link className="hnscan-link" to={"/address/" + block.miner}>
+            <Link to={"/address/" + block.miner}>
               {/* @todo check pool */}
               {truncateHash(block.miner)}
             </Link>
-          </Card.LeftItemDetail>
-          <Card.LeftItemDetail>
+          </LeftItemDetail>
+          <LeftItemDetail>
             Transactions: {block.tx.length}
-          </Card.LeftItemDetail>
-        </Card.SummaryItemContent>
-        <Card.SummaryItemContent>
-          <Card.RightItemDetail>
-            <Time>{timeAgo(block.time)}</Time>
-          </Card.RightItemDetail>
-        </Card.SummaryItemContent>
-      </Card.SummaryItem>
-    </Card.SummaryItemContainer>
+          </LeftItemDetail>
+        </Col>
+        <Col>
+          <RightItemDetail>
+            <em>{timeAgo(block.time)}</em>
+          </RightItemDetail>
+        </Col>
+      </SummaryItem>
+    </Col>
   );
 };
 
@@ -56,14 +51,10 @@ export default function RecentBlocks({ blocks }) {
     <BlockCardItem key={index} block={block} />
   ));
   return (
-    <Card>
-      <Card.Header>
-        <Card.HeaderTitle>Blocks</Card.HeaderTitle>
-        <Card.HeaderLink className="hnscan-link" to="/blocks">
-          View All
-        </Card.HeaderLink>
-      </Card.Header>
-      <Card.SummaryContainer>{blockRows}</Card.SummaryContainer>
+    <Card
+      title="Blocks"
+      headerAction={<Link to="/blocks">View All</Link>}>
+      <Flex columns>{blockRows}</Flex>
     </Card>
   );
 }

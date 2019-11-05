@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import DataTable from "components/styles/DataTable";
 
 // Components
-import Card from "components/styles/Card";
+import { Card } from "@urkellabs/ucl";
 import Pagination from "components/layout/Pagination";
 
 // Util
@@ -26,29 +26,24 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
   ));
   return (
     <>
-      <Card>
-        <Card.Header>
-          <Card.HeaderTitle>History</Card.HeaderTitle>
-        </Card.Header>
+      <Card title="History">
         {/* @todo remove all these class names. */}
         {/* @todo need links in here */}
         {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
-        <Card.Content>
-          {names.length === 0 && <p>There is no history for this name</p>}
-          {names.length > 0 && (
-            <DataTable className="table is-fullwidth">
-              <DataTable.Head>
-                <DataTable.Tr>
-                  <DataTable.Th>Action</DataTable.Th>
-                  <DataTable.Th>Time</DataTable.Th>
-                  <DataTable.Th>Block Height</DataTable.Th>
-                  <DataTable.Th>Value</DataTable.Th>
-                </DataTable.Tr>
-              </DataTable.Head>
-              <DataTable.Body>{names}</DataTable.Body>
-            </DataTable>
-          )}
-        </Card.Content>
+        {names.length === 0 && <p>There is no history for this name</p>}
+        {names.length > 0 && (
+          <DataTable>
+            <DataTable.Head>
+              <DataTable.Tr>
+                <DataTable.Th>Action</DataTable.Th>
+                <DataTable.Th>Time</DataTable.Th>
+                <DataTable.Th>Block Height</DataTable.Th>
+                <DataTable.Th>Value</DataTable.Th>
+              </DataTable.Tr>
+            </DataTable.Head>
+            <DataTable.Body>{names}</DataTable.Body>
+          </DataTable>
+        )}
       </Card>
       <Pagination
         totalPages={pages}

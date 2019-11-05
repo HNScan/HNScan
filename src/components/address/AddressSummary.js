@@ -4,7 +4,7 @@ import Skeleton from "react-loading-skeleton";
 import { Row, Col } from "@urkellabs/ucl";
 
 // Components
-import Card from "components/styles/Card";
+import { Card } from "@urkellabs/ucl";
 import StackedData from "components/shared/StackedData";
 
 // Util
@@ -37,50 +37,45 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
         <AddressTitle>Address</AddressTitle>
         <AddressHash>{hash || <Skeleton />}</AddressHash>
       </AddressWrapper>
-      <Card>
-        <Card.Header>
-          <Card.HeaderTitle>Address Summary</Card.HeaderTitle>
-        </Card.Header>
-        <Card.Content>
-          <Row>
-            <Col mobile={12} tablet>
-              <StackedData
-                label="Received"
-                value={
-                  hnsValues(received) || (
-                    <SkeletonWrapper>
-                      <Skeleton />
-                    </SkeletonWrapper>
-                  )
-                }
-              />
-            </Col>
-            <Col mobile={12} tablet>
-              <StackedData
-                label="Spent"
-                value={
-                  hnsValues(spent) || (
-                    <SkeletonWrapper>
-                      <Skeleton />
-                    </SkeletonWrapper>
-                  )
-                }
-              />
-            </Col>
-            <Col mobile={12} tablet>
-              <StackedData
-                label="Balance"
-                value={
-                  hnsValues(confirmed) || (
-                    <SkeletonWrapper>
-                      <Skeleton />
-                    </SkeletonWrapper>
-                  )
-                }
-              />
-            </Col>
-          </Row>
-        </Card.Content>
+      <Card title="Address Summary">
+        <Row>
+          <Col mobile={12} tablet>
+            <StackedData
+              label="Received"
+              value={
+                hnsValues(received) || (
+                  <SkeletonWrapper>
+                    <Skeleton />
+                  </SkeletonWrapper>
+                )
+              }
+            />
+          </Col>
+          <Col mobile={12} tablet>
+            <StackedData
+              label="Spent"
+              value={
+                hnsValues(spent) || (
+                  <SkeletonWrapper>
+                    <Skeleton />
+                  </SkeletonWrapper>
+                )
+              }
+            />
+          </Col>
+          <Col mobile={12} tablet>
+            <StackedData
+              label="Balance"
+              value={
+                hnsValues(confirmed) || (
+                  <SkeletonWrapper>
+                    <Skeleton />
+                  </SkeletonWrapper>
+                )
+              }
+            />
+          </Col>
+        </Row>
       </Card>
     </>
   );

@@ -7,7 +7,7 @@ import { useResource, useResultCache } from "rest-hooks";
 
 // Components
 import Pagination from "components/layout/Pagination";
-import Card from "components/styles/Card";
+import { Card } from "@urkellabs/ucl";
 import { InputList, OutputList } from "components/shared/PutsList";
 
 // Resources
@@ -70,13 +70,8 @@ const TransactionList = ({ url, page, from }) => {
   ));
   return (
     <>
-      <Card>
-        <Card.Header>
-          <Card.HeaderTitle>
-            {title(total, "Transaction")} ({offset + 1}-{offset + txs.length})
-          </Card.HeaderTitle>
-        </Card.Header>
-        <Card.Content>{renderTransactions}</Card.Content>
+      <Card title={`${title(total, "Transaction")} (${offset + 1}-${offset + txs.length})`}>
+        {renderTransactions}
       </Card>
       <Pagination totalPages={pages} page={page} url={url} />
     </>

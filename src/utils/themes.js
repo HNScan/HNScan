@@ -92,23 +92,3 @@ export const themes = {
     "--ha-color": "#532ad1"
   }
 };
-
-// /* Responsive thresholds */
-// $tablet: 1087px;
-// $mobile: 48em;
-
-// /* Sizes */
-// $hnscan-navbar-height: 60px;
-// $footer-height: 400px;
-
-// /* Typography */
-// $font-weight-bold: 800;
-// $font-weight-semi-bold: 600;
-// $font-weight-normal: 400;
-// $font-weight-light: 200;
-
-// /* Misc Colors */
-// $border-color: #dbdbdb;
-// $urkel-color: #ee8c3a;
-// $dark-gray-color: #696969;
-// $tooltip-colors: #555555;
