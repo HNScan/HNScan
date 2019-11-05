@@ -1,5 +1,5 @@
 import React from "react";
-import { Pagination, Card } from "@urkellabs/ucl";
+import { Pagination, Card, Hidden } from "@urkellabs/ucl";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
@@ -14,9 +14,11 @@ function Row({ height, size, time, miner, txs, loading }) {
     // @todo figure out a more elegant way to construct the skeleton
     return (
       <DataTable.Tr>
-        <DataTable.Td className="is-hidden-mobile" width="10%">
-          <Skeleton />
-        </DataTable.Td>
+        <Hidden mobile>
+          <DataTable.Td width="10%">
+            <Skeleton />
+          </DataTable.Td>
+        </Hidden>
         <DataTable.Td>
           <Skeleton />
         </DataTable.Td>
@@ -26,9 +28,11 @@ function Row({ height, size, time, miner, txs, loading }) {
         <DataTable.Td width="10%">
           <Skeleton />
         </DataTable.Td>
-        <DataTable.Td className="is-hidden-mobile" width="10%">
-          <Skeleton />
-        </DataTable.Td>
+        <Hidden mobile>
+          <DataTable.Td width="10%">
+            <Skeleton />
+          </DataTable.Td>
+        </Hidden>
       </DataTable.Tr>
     );
   }
@@ -36,19 +40,23 @@ function Row({ height, size, time, miner, txs, loading }) {
     <DataTable.Tr>
       <DataTable.Td>
         <Link to={"/block/" + height}>{height}</Link>
-        <div className="is-hidden-tablet">Size: {size}</div>
+        <Hidden tablet>Size: {size} </Hidden>
       </DataTable.Td>
-      <DataTable.Td className="is-hidden-mobile">{timeAgo(time)}</DataTable.Td>
+      <Hidden mobileOnly as={DataTable.Td}>
+        {timeAgo(time)}
+      </Hidden>
       <DataTable.Td>
-        <Link className="is-hidden-mobile" to={"/address/" + miner}>
-          {miner}
-        </Link>
-        <Link className="is-hidden-tablet" to={"/address/" + miner}>
-          {truncateHash(miner)}
-        </Link>
-        <div className="is-hidden-tablet">{timeAgo(time)}</div>
+        <Hidden mobileOnly>
+          <Link to={"/address/" + miner}>{miner}</Link>
+        </Hidden>
+        <Hidden tablet>
+          <Link to={"/address/" + miner}>{truncateHash(miner)}</Link>
+        </Hidden>
+        <Hidden tablet>{timeAgo(time)}</Hidden>
       </DataTable.Td>
-      <DataTable.Td className="is-hidden-mobile">{size}</DataTable.Td>
+      <Hidden mobileOnly as={DataTable.Th}>
+        {size}
+      </Hidden>
       <DataTable.Td>{txs}</DataTable.Td>
     </DataTable.Tr>
   );
@@ -62,9 +70,13 @@ function BlocksTableStructure({ children }) {
           <DataTable.Head>
             <DataTable.Tr>
               <DataTable.Th>Height</DataTable.Th>
-              <DataTable.Th className="is-hidden-mobile">Age</DataTable.Th>
+              <Hidden mobileOnly as={DataTable.Th}>
+                Age
+              </Hidden>
               <DataTable.Th>Miner</DataTable.Th>
-              <DataTable.Th className="is-hidden-mobile">Size</DataTable.Th>
+              <Hidden mobileOnly as={DataTable.Th}>
+                Size
+              </Hidden>
               <DataTable.Th>TXs</DataTable.Th>
             </DataTable.Tr>
           </DataTable.Head>
