@@ -1,6 +1,7 @@
 export const themes = {
   light: {
     mode: "light",
+    name: "Light",
     global: {
       background: "#fefefe",
       textColor: "#4a4a4a",
@@ -51,6 +52,7 @@ export const themes = {
   },
   dark: {
     mode: "dark",
+    name: "Dark",
     global: {
       background: "#323232",
       textColor: "#afafaf",
