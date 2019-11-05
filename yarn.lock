@@ -1539,10 +1539,10 @@
     lodash.unescape "4.0.1"
     semver "^6.3.0"
 
-"@urkellabs/ucl@0.1.9":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@urkellabs/ucl/-/ucl-0.1.9.tgz#527d295b50ea96764187c230ef115d33d99f2aaf"
-  integrity sha512-DMo3wWKjkPvuvJJYduyebvdYIGGCCNDqRocSU6zggeumzlirFgNF86FNjRDYew4FAwG19VE5A/Fb/2hSSNP+ng==
+"@urkellabs/ucl@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@urkellabs/ucl/-/ucl-0.1.10.tgz#04a8eefbe0fa38130fabc1717400a4b591ef0451"
+  integrity sha512-GcvjUhcIjd4fXOyau/kQqKVNe6J/38UIQAWxxSREBjIo5o1YSexSoDyXs8kExDKoW5nO6LO/PDFq0+EMCukgWA==
   dependencies:
     "@babel/runtime" "^7.6.3"
     polished "^3.4.1"
