@@ -1,7 +1,6 @@
 export const themes = {
   light: {
     mode: "light",
-    name: "Light",
     global: {
       background: "#fefefe",
       textColor: "#4a4a4a",
@@ -21,11 +20,6 @@ export const themes = {
       borderColor: "#dfdfdf"
     },
     pagination: {
-      textColor: "#4a4a4a"
-    },
-    search: {
-      background: "#fff",
-      borderColor: "#e7e7e7",
       textColor: "#4a4a4a"
     },
     logo: {
@@ -52,7 +46,6 @@ export const themes = {
   },
   dark: {
     mode: "dark",
-    name: "Dark",
     global: {
       background: "#323232",
       textColor: "#afafaf",
@@ -75,11 +68,6 @@ export const themes = {
     pagination: {
       textColor: "#fff"
     },
-    search: {
-      background: "#575757",
-      borderColor: "#444444",
-      textColor: "#afafaf"
-    },
     logo: {
       stroke: "#cfcfcf",
       fill: "#cfcfcf"
@@ -100,30 +88,7 @@ export const themes = {
     "--card-border": "#dbdbdb",
     "--card-box-shadow": "0 2px 3px rgba(10,10,10,.1)",
     "--input-error-color": "#f00",
-    "--searchbar-background-color": "#575757",
-    "--searchbar-border-color": "#969696",
-    "--searchbar-text-color": "#dbdbdb",
     "--urkel-color": "#ee8c3a",
     "--ha-color": "#532ad1"
   }
 };
-
-// /* Responsive thresholds */
-// $tablet: 1087px;
-// $mobile: 48em;
-
-// /* Sizes */
-// $hnscan-navbar-height: 60px;
-// $footer-height: 400px;
-
-// /* Typography */
-// $font-weight-bold: 800;
-// $font-weight-semi-bold: 600;
-// $font-weight-normal: 400;
-// $font-weight-light: 200;
-
-// /* Misc Colors */
-// $border-color: #dbdbdb;
-// $urkel-color: #ee8c3a;
-// $dark-gray-color: #696969;
-// $tooltip-colors: #555555;
