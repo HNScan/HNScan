@@ -53,19 +53,19 @@ function BlocksTableStructure({ children }) {
           <DataTable.Head>
             <DataTable.Tr>
               <DataTable.Th>
-                <abbr title="Block Height">Height</abbr>
+                Height
               </DataTable.Th>
               <DataTable.Th className="is-hidden-mobile">
-                <abbr title="Block Age">Age</abbr>
+                Age
               </DataTable.Th>
               <DataTable.Th>
-                <abbr title="Miner Address">Miner</abbr>
+                Miner
               </DataTable.Th>
               <DataTable.Th className="is-hidden-mobile">
-                <abbr title="Block Size">Size</abbr>
+                Size
               </DataTable.Th>
               <DataTable.Th>
-                <abbr title="Number of Transactions">TXs</abbr>
+                TXs
               </DataTable.Th>
             </DataTable.Tr>
           </DataTable.Head>

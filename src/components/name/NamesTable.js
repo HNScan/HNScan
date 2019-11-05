@@ -29,13 +29,13 @@ function NamesTableStructure({ children }) {
           <DataTable.Head>
             <DataTable.Tr>
               <DataTable.Th>
-                <abbr title="Top Level Domain Name">Name</abbr>
+                Name
               </DataTable.Th>
               <DataTable.Th>
-                <abbr title="Name Auction State">State</abbr>
+                State
               </DataTable.Th>
               <DataTable.Th>
-                <abbr title="Block Height">Height</abbr>
+                Height
               </DataTable.Th>
             </DataTable.Tr>
           </DataTable.Head>
