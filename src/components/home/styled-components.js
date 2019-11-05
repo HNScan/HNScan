@@ -1,6 +1,5 @@
 // These are custom components for the home screen
 import styled from "styled-components";
-import { Card as UclCard } from "@urkellabs/ucl";
 
 export const SummaryItem = styled.div`
   display: flex;
