@@ -1,9 +1,9 @@
 import React, { Suspense } from "react";
 import { useResource } from "rest-hooks";
 import humanizeDuration from "humanize-duration";
+import { Card } from "@urkellabs/ucl";
 
 // Components
-import { Card } from "@urkellabs/ucl";
 import StackedData from "components/shared/StackedData";
 import DataTable from "components/styles/DataTable";
 
@@ -34,11 +34,7 @@ const NodeStatusContainer = () => {
             <StackedData cell label="Network" value={status.network} />
           </DataTable.Tr>
           <DataTable.Tr>
-            <StackedData
-              cell
-              label="Chain Progress"
-              value={status.progress}
-            />
+            <StackedData cell label="Chain Progress" value={status.progress} />
           </DataTable.Tr>
           <DataTable.Tr>
             <StackedData
@@ -48,11 +44,7 @@ const NodeStatusContainer = () => {
             />
           </DataTable.Tr>
           <DataTable.Tr>
-            <StackedData
-              cell
-              label="Connections"
-              value={status.connections}
-            />
+            <StackedData cell label="Connections" value={status.connections} />
           </DataTable.Tr>
           <DataTable.Tr>
             {/* todo allow stacked component to accept this */}
