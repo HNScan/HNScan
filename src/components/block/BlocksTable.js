@@ -42,11 +42,11 @@ function Row({ height, size, time, miner, txs, loading }) {
         <Link to={"/block/" + height}>{height}</Link>
         <Hidden tablet>Size: {size} </Hidden>
       </DataTable.Td>
-      <Hidden mobileOnly as={DataTable.Td}>
+      <Hidden onlyMobile as={DataTable.Td}>
         {timeAgo(time)}
       </Hidden>
       <DataTable.Td>
-        <Hidden mobileOnly>
+        <Hidden onlyMobile>
           <Link to={"/address/" + miner}>{miner}</Link>
         </Hidden>
         <Hidden tablet>
@@ -54,7 +54,7 @@ function Row({ height, size, time, miner, txs, loading }) {
         </Hidden>
         <Hidden tablet>{timeAgo(time)}</Hidden>
       </DataTable.Td>
-      <Hidden mobileOnly as={DataTable.Th}>
+      <Hidden onlyMobile as={DataTable.Th}>
         {size}
       </Hidden>
       <DataTable.Td>{txs}</DataTable.Td>
@@ -70,11 +70,11 @@ function BlocksTableStructure({ children }) {
           <DataTable.Head>
             <DataTable.Tr>
               <DataTable.Th>Height</DataTable.Th>
-              <Hidden mobileOnly as={DataTable.Th}>
+              <Hidden onlyMobile as={DataTable.Th}>
                 Age
               </Hidden>
               <DataTable.Th>Miner</DataTable.Th>
-              <Hidden mobileOnly as={DataTable.Th}>
+              <Hidden onlyMobile as={DataTable.Th}>
                 Size
               </Hidden>
               <DataTable.Th>TXs</DataTable.Th>
