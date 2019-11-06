@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Pagination, Card, Skeleton, Hidden } from "@urkellabs/ucl";
 import { Link } from "react-router-dom";
 
