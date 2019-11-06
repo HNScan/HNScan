@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
 
 // Components
 import Card from "components/styles/Card";
@@ -26,33 +27,35 @@ export default function NetworkSummary({ info }) {
   let chainwork = sciNotation(parseInt("0x" + info.chainWork), 2);
   let registeredNames = info.registeredNames;
 
+  const {t} = useTranslation();
+
   return (
     <Card>
       <Card.Header>
-        <Card.HeaderTitle>Network Summary</Card.HeaderTitle>
+        <Card.HeaderTitle>{t("Network Summary")}</Card.HeaderTitle>
       </Card.Header>
       {/* ----- Network Summary - Top Row ----- */}
       <Row>
         <Col mobile={12} tablet>
           <StackedData
-            label="Hashrate"
+            label={t("Hashrate")}
             value={`${hashrate[0].toString()} ${hashrate[1].abbreviation}H/s`}
           />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label="Unconfirmed" value={handleUnconfirmed(unconfirmed, memSize)} />
+          <StackedData label={t("Unconfirmed")} value={handleUnconfirmed(unconfirmed, memSize)} />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label="Network" value={network} />
+          <StackedData label={t("Network")} value={network} />
         </Col>
       </Row>
       <Row>
         <Col mobile={12} tablet>
-          <StackedData label="Opened Names" value={registeredNames} />
+          <StackedData label={t("Opened Names")} value={registeredNames} />
         </Col>
         <Col mobile={12} tablet>
           <StackedData
-            label="Difficulty"
+            label={t("Difficulty")}
             value={
               <>
                 {difficulty[0]} x 10
@@ -63,7 +66,7 @@ export default function NetworkSummary({ info }) {
         </Col>
         <Col mobile={12} tablet>
           <StackedData
-            label="Chainwork"
+            label={t("Chainwork")}
             value={
               <>
                 {chainwork[0]} x 10
