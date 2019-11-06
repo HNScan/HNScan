@@ -1,8 +1,7 @@
 import React from "react";
-import { Row, Col } from "@urkellabs/ucl";
+import { Row, Col, Card } from "@urkellabs/ucl";
 
 // Components
-import { Card } from "@urkellabs/ucl";
 import StackedData from "components/shared/StackedData";
 import DataTable from "components/styles/DataTable";
 

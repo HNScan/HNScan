@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { Card, Flex, Col } from "@urkellabs/ucl";
 
 // Components
 import { SummaryItem, LeftItemDetail, RightItemDetail, ItemLogo } from "./styled-components";
-import { Card, Flex, Col } from "@urkellabs/ucl";
 
 // SVGs
 import Arrow from "components/svg/RightArrow";

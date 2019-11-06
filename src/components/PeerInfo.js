@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { Card, Col, Row } from "@urkellabs/ucl";
 
 // Components
-import { Card, Col, Row } from "@urkellabs/ucl";
 import StackedData from "components/shared/StackedData";
 import DataTable from "components/styles/DataTable";
 
@@ -18,7 +18,7 @@ const SummaryCardItem = styled.div`
 `;
 
 const PeerInfo = ({ peers }) => {
-  const peerTable = peers.map((peer) => (
+  const peerTable = peers.map(peer => (
     <SummaryCardItem key={peer.addr}>
       <Row>
         <Col mobile={12} tablet>
@@ -76,9 +76,7 @@ const PeerInfo = ({ peers }) => {
   ));
   return (
     <>
-      <Card title="Peers">
-        {peerTable}
-      </Card>
+      <Card title="Peers">{peerTable}</Card>
     </>
   );
 };

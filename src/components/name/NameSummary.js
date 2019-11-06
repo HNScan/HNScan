@@ -1,8 +1,7 @@
 import React from "react";
-import { Row, Col } from "@urkellabs/ucl";
+import { Row, Col, Card } from "@urkellabs/ucl";
 
 // Components
-import { Card } from "@urkellabs/ucl";
 import StackedData from "components/shared/StackedData";
 
 function timeToNextState(blocks) {
@@ -32,7 +31,10 @@ export default function NameSummary({ name }) {
           <StackedData label="State" value={name.state} />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label="Blocks Until Next State" value={timeToNextState(name.blocksUntil)} />
+          <StackedData
+            label="Blocks Until Next State"
+            value={timeToNextState(name.blocksUntil)}
+          />
         </Col>
         <Col mobile={12} tablet>
           <StackedData label="Next State" value={name.nextState} />

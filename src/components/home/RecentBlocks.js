@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Card, Flex, Col } from "@urkellabs/ucl";
 
 // Components
 import { SummaryItem, ItemLogo, LeftItemDetail, RightItemDetail } from "./styled-components";
-import { Card, Flex, Col } from "@urkellabs/ucl";
 
 // SVGs
 import BlockLogo from "components/svg/Block";

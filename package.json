@@ -14,9 +14,7 @@
     "humanize-duration": "^3.20.1",
     "query-string": "^6.8.3",
     "react": "^16.9.0",
-    "react-content-loader": "^4.2.2",
     "react-dom": "^16.9.0",
-    "react-loading-skeleton": "^1.1.2",
     "react-router-dom": "^5.1.0",
     "react-scripts": "3.1.1",
     "reactbulma": "^3.0.4",
@@ -35,7 +33,25 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "plugin:prettier/recommended"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.+(json|css|md)": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "browserslist": {
     "production": [
@@ -50,6 +66,12 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1"
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "gh-pages": "^2.1.1",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2"
   }
 }
