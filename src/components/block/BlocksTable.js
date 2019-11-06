@@ -1,7 +1,6 @@
 import React from "react";
-import { Pagination, Card } from "@urkellabs/ucl";
+import { Pagination, Card, Skeleton } from "@urkellabs/ucl";
 import { Link } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
 
 // Components
 import DataTable from "components/styles/DataTable";

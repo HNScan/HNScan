@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Skeleton from "react-loading-skeleton";
 import { Row, Col } from "@urkellabs/ucl";
 
 // Components
-import { Card } from "@urkellabs/ucl";
+import { Card, Skeleton } from "@urkellabs/ucl";
 import StackedData from "components/shared/StackedData";
 
 // Util

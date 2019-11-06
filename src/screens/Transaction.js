@@ -2,10 +2,9 @@ import React, { Suspense } from "react";
 import { useResource } from "rest-hooks";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { Row, Col } from "@urkellabs/ucl";
+import { Row, Col, Card } from "@urkellabs/ucl";
 
 // Components
-import { Card } from "@urkellabs/ucl";
 import StackedData from "components/shared/StackedData";
 import { InputList, OutputList } from "components/shared/PutsList";
 import DataTable from "components/styles/DataTable";
