@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Pagination, Card, Skeleton, Table } from "@urkellabs/ucl";
 
-// Components
-// import Table from "components/styles/Table";
-
 const Row = ({ name, state, height, loading }) => (
   <Table.Tr>
     <Table.Td width="75%">
