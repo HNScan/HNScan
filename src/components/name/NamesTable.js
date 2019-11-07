@@ -1,37 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Pagination, Card, Skeleton } from "@urkellabs/ucl";
+import { Pagination, Card, Skeleton, Table } from "@urkellabs/ucl";
 
 // Components
-import DataTable from "components/styles/DataTable";
+// import Table from "components/styles/Table";
 
 const Row = ({ name, state, height, loading }) => (
-  <DataTable.Tr>
-    <DataTable.Td width="75%">
+  <Table.Tr>
+    <Table.Td width="75%">
       {loading ? <Skeleton /> : <Link to={"/name/" + name}>{name}</Link>}
-    </DataTable.Td>
-    <DataTable.Td>{loading ? <Skeleton /> : state}</DataTable.Td>
-    <DataTable.Td>
+    </Table.Td>
+    <Table.Td>{loading ? <Skeleton /> : state}</Table.Td>
+    <Table.Td>
       {loading ? <Skeleton /> : <Link to={"/block/" + height}>{height}</Link>}
-    </DataTable.Td>
-  </DataTable.Tr>
+    </Table.Td>
+  </Table.Tr>
 );
 
 function NamesTableStructure({ children }) {
   return (
     <Card title="TLD Names">
-      <DataTable.Wrapper>
-        <DataTable>
-          <DataTable.Head>
-            <DataTable.Tr>
-              <DataTable.Th>Name</DataTable.Th>
-              <DataTable.Th>State</DataTable.Th>
-              <DataTable.Th>Height</DataTable.Th>
-            </DataTable.Tr>
-          </DataTable.Head>
-          <DataTable.Body>{children}</DataTable.Body>
-        </DataTable>
-      </DataTable.Wrapper>
+      <Table>
+        <Table.Head>
+          <Table.Tr>
+            <Table.Th>Name</Table.Th>
+            <Table.Th>State</Table.Th>
+            <Table.Th>Height</Table.Th>
+          </Table.Tr>
+        </Table.Head>
+        <Table.Body>{children}</Table.Body>
+      </Table>
     </Card>
   );
 }

@@ -1,11 +1,10 @@
 import React, { Suspense } from "react";
 import { useResource } from "rest-hooks";
 import humanizeDuration from "humanize-duration";
-import { Card } from "@urkellabs/ucl";
+import { Card, Table } from "@urkellabs/ucl";
 
 // Components
 import StackedData from "components/shared/StackedData";
-import DataTable from "components/styles/DataTable";
 
 // Resources
 import StatusResource from "resources/StatusResource";
@@ -21,32 +20,32 @@ const NodeStatusContainer = () => {
 
   return (
     <Card title="Node Status">
-      <DataTable>
-        <DataTable.Body>
-          <DataTable.Tr>
+      <Table>
+        <Table.Body>
+          <Table.Tr>
             <StackedData
               cell
               label="Key @ Host : Port"
               value={`${status.key}@${status.host}:${status.port}`}
             />
-          </DataTable.Tr>
-          <DataTable.Tr>
+          </Table.Tr>
+          <Table.Tr>
             <StackedData cell label="Network" value={status.network} />
-          </DataTable.Tr>
-          <DataTable.Tr>
+          </Table.Tr>
+          <Table.Tr>
             <StackedData cell label="Chain Progress" value={status.progress} />
-          </DataTable.Tr>
-          <DataTable.Tr>
+          </Table.Tr>
+          <Table.Tr>
             <StackedData
               cell
               label="Version"
               value={`${status.version} (${status.agent})`}
             />
-          </DataTable.Tr>
-          <DataTable.Tr>
+          </Table.Tr>
+          <Table.Tr>
             <StackedData cell label="Connections" value={status.connections} />
-          </DataTable.Tr>
-          <DataTable.Tr>
+          </Table.Tr>
+          <Table.Tr>
             {/* todo allow stacked component to accept this */}
             <StackedData
               cell
@@ -57,15 +56,15 @@ const NodeStatusContainer = () => {
                 </span>
               }
             />
-          </DataTable.Tr>
-          <DataTable.Tr>
+          </Table.Tr>
+          <Table.Tr>
             <StackedData
               cell
               label="Uptime"
               value={humanizeDuration(status.uptime * 1000)}
             />
-          </DataTable.Tr>
-          <DataTable.Tr>
+          </Table.Tr>
+          <Table.Tr>
             <StackedData
               cell
               label="Total Downloaded"
@@ -73,16 +72,16 @@ const NodeStatusContainer = () => {
                 totalDownloaded[0] + " " + totalDownloaded[1].name + "bytes"
               }
             />
-          </DataTable.Tr>
-          <DataTable.Tr>
+          </Table.Tr>
+          <Table.Tr>
             <StackedData
               cell
               label="Total Uploaded"
               value={totalUploaded[0] + " " + totalUploaded[1].name + "bytes"}
             />
-          </DataTable.Tr>
-        </DataTable.Body>
-      </DataTable>
+          </Table.Tr>
+        </Table.Body>
+      </Table>
     </Card>
   );
 };

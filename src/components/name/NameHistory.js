@@ -1,9 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Pagination, Card } from "@urkellabs/ucl";
-
-// Components
-import DataTable from "components/styles/DataTable";
+import { Pagination, Card, Table } from "@urkellabs/ucl";
 
 // Util
 import { hnsValues, timeAgo } from "utils/util";
@@ -12,16 +9,16 @@ import { hnsValues, timeAgo } from "utils/util";
 //@todo last element is showing a bottom border.
 export default function NameHistory({ history, page, changePage, pages, url }) {
   const names = history.map((name, index) => (
-    <DataTable.Tr key={index}>
-      <DataTable.Td>{name.action}</DataTable.Td>
+    <Table.Tr key={index}>
+      <Table.Td>{name.action}</Table.Td>
       {/* @fixme Not working */}
-      <DataTable.Td>{timeAgo(name.time)}</DataTable.Td>
+      <Table.Td>{timeAgo(name.time)}</Table.Td>
       {/* @todo need to link this */}
-      <DataTable.Td>
+      <Table.Td>
         <Link to={"/block/" + name.height}>{name.height}</Link>
-      </DataTable.Td>
-      <DataTable.Td>{hnsValues(name.value) || "--"}</DataTable.Td>
-    </DataTable.Tr>
+      </Table.Td>
+      <Table.Td>{hnsValues(name.value) || "--"}</Table.Td>
+    </Table.Tr>
   ));
   return (
     <>
@@ -31,17 +28,17 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
         {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
         {names.length === 0 && <p>There is no history for this name</p>}
         {names.length > 0 && (
-          <DataTable>
-            <DataTable.Head>
-              <DataTable.Tr>
-                <DataTable.Th>Action</DataTable.Th>
-                <DataTable.Th>Time</DataTable.Th>
-                <DataTable.Th>Block Height</DataTable.Th>
-                <DataTable.Th>Value</DataTable.Th>
-              </DataTable.Tr>
-            </DataTable.Head>
-            <DataTable.Body>{names}</DataTable.Body>
-          </DataTable>
+          <Table>
+            <Table.Head>
+              <Table.Tr>
+                <Table.Th>Action</Table.Th>
+                <Table.Th>Time</Table.Th>
+                <Table.Th>Block Height</Table.Th>
+                <Table.Th>Value</Table.Th>
+              </Table.Tr>
+            </Table.Head>
+            <Table.Body>{names}</Table.Body>
+          </Table>
         )}
       </Card>
       <Pagination
