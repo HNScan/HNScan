@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { Table } from "@urkellabs/ucl";
 import styled from "styled-components";
 
-const CellWrapper = styled.td`
+const CellWrapper = styled(Table.Td)`
   background: ${props => props.theme.cards.background};
-  border-color: ${props => props.theme.cards.borderColor} !important; // Bulma override
+  border-color: ${props =>
+    props.theme.cards.borderColor} !important; // Bulma override
   display: flex;
   flex-direction: column;
 `;
@@ -19,7 +21,7 @@ const DivWrapper = styled.div`
 
 const Value = styled.span`
   color: ${props => props.theme.global.textColor};
-  font-size: ${props => props.cell ? "12px" : "16px"};
+  font-size: ${props => (props.cell ? "12px" : "16px")};
   word-wrap: break-word;
   word-break: break-all;
 `;
@@ -27,7 +29,7 @@ const Value = styled.span`
 const Label = styled.span`
   color: ${props => props.theme.global.textColor};
   font-weight: 800;
-  font-size: ${props => props.cell ? "14px" : "16px"};
+  font-size: ${props => (props.cell ? "14px" : "16px")};
 `;
 
 const StackedBody = props => {
@@ -39,18 +41,30 @@ const StackedBody = props => {
       </Value>
     </>
   );
-}
+};
 
 const StackedData = props => {
-  return props.cell ?
-    <CellWrapper> <StackedBody {...props}/> </CellWrapper> :
-    <DivWrapper> <StackedBody {...props}/> </DivWrapper>;
+  return props.cell ? (
+    <CellWrapper>
+      {" "}
+      <StackedBody {...props} />{" "}
+    </CellWrapper>
+  ) : (
+    <DivWrapper>
+      {" "}
+      <StackedBody {...props} />{" "}
+    </DivWrapper>
+  );
 };
 
 StackedData.propTypes = {
   cell: PropTypes.bool,
   label: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.element]).isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.element
+  ]).isRequired,
   link: PropTypes.string
 };
 

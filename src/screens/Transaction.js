@@ -2,12 +2,11 @@ import React, { Suspense } from "react";
 import { useResource } from "rest-hooks";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { Row, Col, Card } from "@urkellabs/ucl";
+import { Row, Col, Card, Table } from "@urkellabs/ucl";
 
 // Components
 import StackedData from "components/shared/StackedData";
 import { InputList, OutputList } from "components/shared/PutsList";
-import DataTable from "components/styles/DataTable";
 
 // Resources
 import TransactionResource from "resources/TransactionResource";
@@ -62,43 +61,43 @@ function TxDetailScreen({ hash }) {
       <Card title="Advanced">
         <Row>
           <Col mobile={12} desktop>
-            <DataTable>
-              <DataTable.Body>
-                <DataTable.Tr>
+            <Table>
+              <Table.Body>
+                <Table.Tr>
                   <StackedData cell label="Hash" value={tx.hash} />
-                </DataTable.Tr>
-                <DataTable.Tr>
+                </Table.Tr>
+                <Table.Tr>
                   <StackedData
                     cell
                     label="Block Height"
                     value={tx.height}
                     link={"/block/" + tx.height}
                   />
-                </DataTable.Tr>
-                <DataTable.Tr>
+                </Table.Tr>
+                <Table.Tr>
                   <StackedData cell label="Locktime" value={tx.locktime} />
-                </DataTable.Tr>
-              </DataTable.Body>
-            </DataTable>
+                </Table.Tr>
+              </Table.Body>
+            </Table>
           </Col>
           <Col mobile={12} desktop>
-            <DataTable>
-              <DataTable.Body>
-                <DataTable.Tr>
+            <Table>
+              <Table.Body>
+                <Table.Tr>
                   <StackedData
                     cell
                     label="Witness Hash"
                     value={tx.witnessHash}
                   />
-                </DataTable.Tr>
-                <DataTable.Tr>
+                </Table.Tr>
+                <Table.Tr>
                   <StackedData cell label="Version" value={tx.version} />
-                </DataTable.Tr>
-                <DataTable.Tr>
+                </Table.Tr>
+                <Table.Tr>
                   <StackedData cell label="Index" value={tx.index} />
-                </DataTable.Tr>
-              </DataTable.Body>
-            </DataTable>
+                </Table.Tr>
+              </Table.Body>
+            </Table>
           </Col>
         </Row>
       </Card>

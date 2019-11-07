@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Card, Col, Row } from "@urkellabs/ucl";
+import { Card, Col, Row, Table } from "@urkellabs/ucl";
 
 // Components
 import StackedData from "components/shared/StackedData";
-import DataTable from "components/styles/DataTable";
 
 // Util
 import { timeAgo } from "utils/util";
@@ -22,44 +21,44 @@ const PeerInfo = ({ peers }) => {
     <SummaryCardItem key={peer.addr}>
       <Row>
         <Col mobile={12} tablet>
-          <DataTable>
-            <DataTable.Body>
-              <DataTable.Tr>
+          <Table>
+            <Table.Body>
+              <Table.Tr>
                 <StackedData cell label="Address" value={peer.addr} />
-              </DataTable.Tr>
-              <DataTable.Tr>
+              </Table.Tr>
+              <Table.Tr>
                 <StackedData
                   cell
                   label="Name"
                   value={peer.name || "No name provided"}
                 />
-              </DataTable.Tr>
-              <DataTable.Tr>
+              </Table.Tr>
+              <Table.Tr>
                 <StackedData cell label="Services" value={peer.services} />
-              </DataTable.Tr>
-              <DataTable.Tr>
+              </Table.Tr>
+              <Table.Tr>
                 <StackedData cell label="Version" value={peer.version} />
-              </DataTable.Tr>
-            </DataTable.Body>
-          </DataTable>
+              </Table.Tr>
+            </Table.Body>
+          </Table>
         </Col>
         <Col mobile={12} tablet>
-          <DataTable>
-            <DataTable.Body>
-              <DataTable.Tr>
+          <Table>
+            <Table.Body>
+              <Table.Tr>
                 <StackedData cell label="Location" value={"--"} />
-              </DataTable.Tr>
-              <DataTable.Tr>
+              </Table.Tr>
+              <Table.Tr>
                 <StackedData cell label="Country" value={"--"} />
-              </DataTable.Tr>
-              <DataTable.Tr>
+              </Table.Tr>
+              <Table.Tr>
                 <StackedData
                   cell
                   label="Whitelisted"
                   value={peer.whitelisted.toString()}
                 />
-              </DataTable.Tr>
-              <DataTable.Tr>
+              </Table.Tr>
+              <Table.Tr>
                 <StackedData
                   cell
                   label="Last Send / Last Receive"
@@ -67,9 +66,9 @@ const PeerInfo = ({ peers }) => {
                     peer.lastrecv
                   ) || "--"}`}
                 />
-              </DataTable.Tr>
-            </DataTable.Body>
-          </DataTable>
+              </Table.Tr>
+            </Table.Body>
+          </Table>
         </Col>
       </Row>
     </SummaryCardItem>
