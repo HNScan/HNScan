@@ -2,9 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useResource, useResultCache } from "rest-hooks";
-
-// import { Row, Col } from "@urkellabs/ucl";
-import { Pagination, Card } from "@urkellabs/ucl";
+import { Row, Col, Pagination, Card } from "@urkellabs/ucl";
+import theme from "styled-theming";
 
 // Components
 import { InputList, OutputList } from "components/shared/PutsList";
@@ -15,12 +14,17 @@ import TransactionResource from "resources/TransactionResource";
 // Util
 import { title } from "utils/util";
 
+const borderColor = theme("mode", {
+  light: "#dfdfdf",
+  dark: "#575757"
+});
+
 const Container = styled.div`
   width: 100%;
   padding: 10px 0;
   display: flex;
   flex-direction: column;
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 2px solid ${borderColor};
 
   &:first-child {
     padding: 0;
@@ -33,7 +37,7 @@ const Container = styled.div`
 `;
 
 const HashWrapper = styled.div`
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid ${borderColor};
   display: flex;
   padding: 10px 0 10px 0;
 `;
@@ -57,14 +61,14 @@ const TransactionList = ({ url, page, from }) => {
       <HashWrapper>
         Tx {index + 1}:&nbsp;<Link to={"/tx/" + tx.hash}>{tx.hash}</Link>
       </HashWrapper>
-      <div className="columns">
-        <div className="column is-half">
+      <Row>
+        <Col mobile={12} tablet>
           <InputList inputs={tx.inputs} />
-        </div>
-        <div className="column is-half">
+        </Col>
+        <Col mobile={12} tablet>
           <OutputList outputs={tx.outputs} />
-        </div>
-      </div>
+        </Col>
+      </Row>
     </Container>
   ));
   return (
