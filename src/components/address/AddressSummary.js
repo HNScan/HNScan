@@ -40,6 +40,18 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
         <Row>
           <Col mobile={12} tablet>
             <StackedData
+              label="Balance"
+              value={
+                hnsValues(confirmed) || (
+                  <SkeletonWrapper>
+                    <Skeleton />
+                  </SkeletonWrapper>
+                )
+              }
+            />
+          </Col>
+          <Col mobile={12} tablet>
+            <StackedData
               label="Received"
               value={
                 hnsValues(received) || (
@@ -55,18 +67,6 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
               label="Spent"
               value={
                 hnsValues(spent) || (
-                  <SkeletonWrapper>
-                    <Skeleton />
-                  </SkeletonWrapper>
-                )
-              }
-            />
-          </Col>
-          <Col mobile={12} tablet>
-            <StackedData
-              label="Balance"
-              value={
-                hnsValues(confirmed) || (
                   <SkeletonWrapper>
                     <Skeleton />
                   </SkeletonWrapper>
