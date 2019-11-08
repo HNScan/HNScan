@@ -28,10 +28,17 @@ Visit [HNScan](https://HNScan.com)
 
 ## Development
 
+### Setup
+
 The easiest way to develop on HNScan, both the frontend and the backend, is by using `yarn/npm link`. Inside of your hnscan-backend directory, run `yarn/npm link` and wait for the process to finish.
 Once the linking process is complete, from your `hsd` folder, run `yarn/npm link hnscan`. This will now allow you run the hnscan plugin from a local install, and changes will be picked up on hsd restarts. 
 
 Lastly, run `./bin/hsd --index-tx=true --index-address=true --plugins=hnscan` from inside your hsd folder to complete the backend setup.
+
+### Workflow
+
+We use a staging/master workflow on HNScan. All git feature branches should be forked from `staging` and compared to `staging` inside of a PR. We then cut releases from `staging` to `master` when 
+there is enough new development to justify a release.
 
 ## License
 
