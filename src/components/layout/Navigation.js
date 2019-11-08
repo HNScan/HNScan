@@ -3,19 +3,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Styles
-import NavBar from "components/styles/NavBar";
+import { NavBar } from "@urkellabs/ucl";
 
 // Containers
 import SearchBar from "containers/SearchBar";
 
 // SVGs
 import Logo from "components/svg/Logo";
-
-//@todo move completely to styled components (Pagination Nav, is-centered).
-const BorderedNav = styled(NavBar)`
-  border-bottom: 1px solid ${props => props.theme.nav.borderColor};
-  // box-shadow: 0px 1px 12px -1px rgba(0,0,0,0.30);
-`;
 
 const NavLinkItem = styled(NavBar.Item)`
   justify-content: center;
@@ -50,7 +44,7 @@ export default function Navigation() {
   const [moreDropdownActive, updateMoreDropdownActive] = useState(false);
   const [toolsDropdownActive, updateToolsDropdownActive] = useState(false);
   return (
-    <BorderedNav height={"60px"}>
+    <NavBar height={"60px"}>
       <NavBar.Container>
         <NavBar.Brand>
           <LogoWrapper as={Link} to={"/"}>
@@ -150,6 +144,6 @@ export default function Navigation() {
           </NavBar.End>
         </NavBar.Menu>
       </NavBar.Container>
-    </BorderedNav>
+    </NavBar>
   );
 }
