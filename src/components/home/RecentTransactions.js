@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 import { Card, Flex, Col } from "@urkellabs/ucl";
 
 // Components
-import { SummaryItem, LeftItemDetail, RightItemDetail, ItemLogo } from "./styled-components";
+import {
+  SummaryItem,
+  LeftItemDetail,
+  RightItemDetail,
+  ItemLogo
+} from "./styled-components";
 
 // SVGs
 import Arrow from "components/svg/RightArrow";
@@ -23,9 +28,7 @@ const Transaction = ({ tx }) => (
             <Arrow />
           </ItemLogo>
           TX #:&nbsp;
-          <Link to={"/tx/" + tx.hash}>
-            {truncateHash(tx.hash)}
-          </Link>
+          <Link to={"/tx/" + tx.hash}>{truncateHash(tx.hash)}</Link>
         </LeftItemDetail>
         <LeftItemDetail>
           Amount: {hnsValues(sumTxOutputs(tx.outputs))}
@@ -47,9 +50,7 @@ export default function RecentTransactions({ txs }) {
 
   return (
     <Card title="Recent Transactions">
-      <Flex columns>
-        {txRows}
-      </Flex>
+      <Flex columns>{txRows}</Flex>
     </Card>
   );
 }

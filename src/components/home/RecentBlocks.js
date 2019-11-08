@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import { Card, Flex, Col } from "@urkellabs/ucl";
 
 // Components
-import { SummaryItem, ItemLogo, LeftItemDetail, RightItemDetail } from "./styled-components";
+import {
+  SummaryItem,
+  ItemLogo,
+  LeftItemDetail,
+  RightItemDetail
+} from "./styled-components";
 
 // SVGs
 import BlockLogo from "components/svg/Block";
@@ -21,9 +26,7 @@ const BlockCardItem = ({ block }) => {
               <BlockLogo />
             </ItemLogo>
             Block #:&nbsp;
-            <Link to={"/block/" + block.height}>
-              {block.height}
-            </Link>
+            <Link to={"/block/" + block.height}>{block.height}</Link>
           </LeftItemDetail>
           <LeftItemDetail>
             Mined By:&nbsp;
@@ -32,9 +35,7 @@ const BlockCardItem = ({ block }) => {
               {truncateHash(block.miner)}
             </Link>
           </LeftItemDetail>
-          <LeftItemDetail>
-            Transactions: {block.tx.length}
-          </LeftItemDetail>
+          <LeftItemDetail>Transactions: {block.tx.length}</LeftItemDetail>
         </Col>
         <Col>
           <RightItemDetail>
@@ -51,9 +52,7 @@ export default function RecentBlocks({ blocks }) {
     <BlockCardItem key={index} block={block} />
   ));
   return (
-    <Card
-      title="Blocks"
-      headerAction={<Link to="/blocks">View All</Link>}>
+    <Card title="Blocks" headerAction={<Link to="/blocks">View All</Link>}>
       <Flex columns>{blockRows}</Flex>
     </Card>
   );

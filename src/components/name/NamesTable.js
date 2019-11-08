@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Pagination, Card, Skeleton, Table } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
 
 const Row = ({ name, state, height, loading }) => (
   <Table.Tr>
@@ -15,14 +16,15 @@ const Row = ({ name, state, height, loading }) => (
 );
 
 function NamesTableStructure({ children }) {
+  const { t } = useTranslation();
   return (
     <Card title="TLD Names">
       <Table>
         <Table.Head>
           <Table.Tr>
-            <Table.Th>Name</Table.Th>
-            <Table.Th>State</Table.Th>
-            <Table.Th>Height</Table.Th>
+            <Table.Th>{t("Name")}</Table.Th>
+            <Table.Th>{t("State")}</Table.Th>
+            <Table.Th>{t("Height")}</Table.Th>
           </Table.Tr>
         </Table.Head>
         <Table.Body>{children}</Table.Body>

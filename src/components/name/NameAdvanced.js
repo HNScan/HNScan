@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Card, Table } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
 
 // Components
 import StackedData from "components/shared/StackedData";
@@ -8,8 +9,9 @@ import StackedData from "components/shared/StackedData";
 import { hnsValues } from "utils/util";
 
 export default function NameSummary({ name }) {
+  const { t } = useTranslation();
   return (
-    <Card title="Advanced">
+    <Card title={t("Advanced")}>
       {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
       <Row>
         <Col mobile={12} desktop>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Card } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
 
 // Components
 import StackedData from "components/shared/StackedData";
@@ -13,8 +14,9 @@ function timeToNextState(blocks) {
 }
 
 export default function NameSummary({ name }) {
+  const { t } = useTranslation();
   return (
-    <Card title="Name Summary">
+    <Card title={t("Name Summary")}>
       <Row>
         <Col mobile={12} tablet>
           <StackedData label="Name" value={name.name} />

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 // Components
 import SearchBar from "containers/SearchBar";
@@ -30,12 +31,13 @@ const SearchBarWrapper = styled.div`
 
 export default function Search() {
   const location = useLocation();
+  const { t } = useTranslation();
 
   if (location.state.length === 0) {
     return (
       <>
-        <Header>We couldn't find what you were looking for</Header>
-        <h2>Please try searching again</h2>
+        <Header>{t("search_header")}</Header>
+        <h2>{t("search_subheader")}</h2>
         <SearchBarWrapper>
           <SearchBar />
         </SearchBarWrapper>
@@ -54,7 +56,7 @@ export default function Search() {
 
   return (
     <>
-      <Header>We found multiple resources matching your search</Header>
+      <Header>{t("search_multiple_results")}</Header>
       <SearchResultsTable className="table">
         <tbody>{results}</tbody>
       </SearchResultsTable>

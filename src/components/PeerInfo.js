@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Card, Col, Row, Table } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
 
 // Components
 import StackedData from "components/shared/StackedData";
@@ -17,6 +18,7 @@ const SummaryCardItem = styled.div`
 `;
 
 const PeerInfo = ({ peers }) => {
+  const { t } = useTranslation();
   const peerTable = peers.map(peer => (
     <SummaryCardItem key={peer.addr}>
       <Row>
@@ -30,7 +32,7 @@ const PeerInfo = ({ peers }) => {
                 <StackedData
                   cell
                   label="Name"
-                  value={peer.name || "No name provided"}
+                  value={peer.name || t("No name provided")}
                 />
               </Table.Tr>
               <Table.Tr>
@@ -75,7 +77,7 @@ const PeerInfo = ({ peers }) => {
   ));
   return (
     <>
-      <Card title="Peers">{peerTable}</Card>
+      <Card title={t("Peers")}>{peerTable}</Card>
     </>
   );
 };

@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 //SVGs
 import Logo from "components/svg/Block";
@@ -40,29 +41,27 @@ const HugeBlock = styled.div`
   margin-right: 4px;
 `;
 
-export default class NotFoundScreen extends Component {
-  render() {
-    return (
-      <Wrapper>
-        <Header>
-          <span>Oh no!</span>
-          <span> Where'd it go?</span>
-        </Header>
-        <Subtext>
-          It's cold out here in the void...let's bring you back to
-          <a href="/" rel="noopener noreferrer">
-            {" "}
-            safety
-          </a>
-        </Subtext>
-        <Container404>
-          <span>4</span>
-          <HugeBlock>
-            <Logo />
-          </HugeBlock>
-          <span>4</span>
-        </Container404>
-      </Wrapper>
-    );
-  }
+export default function NotFoundScreen() {
+  const { t } = useTranslation();
+  return (
+    <Wrapper>
+      <Header>
+        <span>{t("Oh no!")}</span>
+      </Header>
+      <Subtext>
+        {/* @todo: could probably combine these translations */}
+        {t("void_message")}
+        <a href="/" rel="noopener noreferrer">
+          {t("safety")}
+        </a>
+      </Subtext>
+      <Container404>
+        <span>4</span>
+        <HugeBlock>
+          <Logo />
+        </HugeBlock>
+        <span>4</span>
+      </Container404>
+    </Wrapper>
+  );
 }

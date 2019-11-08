@@ -4,15 +4,13 @@ import { Link } from "react-router-dom";
 import { useResource, useResultCache } from "rest-hooks";
 import { Row, Col, Pagination, Card } from "@urkellabs/ucl";
 import theme from "styled-theming";
+import { useTranslation } from "react-i18next";
 
 // Components
 import { InputList, OutputList } from "components/shared/PutsList";
 
 // Resources
 import TransactionResource from "resources/TransactionResource";
-
-// Util
-import { title } from "utils/util";
 
 const borderColor = theme("mode", {
   light: "#dfdfdf",
@@ -55,6 +53,7 @@ const TransactionList = ({ url, page, from }) => {
   from.offset = offset;
   const txs = useResource(TransactionResource.listShape(), from);
   const { total } = useResultCache(TransactionResource.listShape(), from);
+  const { t } = useTranslation();
   const pages = Math.ceil(total / limit);
   const renderTransactions = txs.map((tx, index) => (
     <Container key={index}>
@@ -74,8 +73,8 @@ const TransactionList = ({ url, page, from }) => {
   return (
     <>
       <Card
-        title={`${title(total, "Transaction")} (${offset + 1}-${offset +
-          txs.length})`}
+        title={`${t("transaction", { count: txs.length })} (${offset +
+          1}-${offset + txs.length})`}
       >
         {renderTransactions}
       </Card>
