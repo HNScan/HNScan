@@ -1,9 +1,8 @@
 import React from "react";
-import { Row, Col } from "@urkellabs/ucl";
+import { Row, Col, Card } from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
 
 // Components
-import Card from "components/styles/Card";
 import StackedData from "components/shared/StackedData";
 
 // Util
@@ -27,13 +26,10 @@ export default function NetworkSummary({ info }) {
   let chainwork = sciNotation(parseInt("0x" + info.chainWork), 2);
   let registeredNames = info.registeredNames;
 
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
-    <Card>
-      <Card.Header>
-        <Card.HeaderTitle>{t("Network Summary")}</Card.HeaderTitle>
-      </Card.Header>
+    <Card title={t("Network Summary")}>
       {/* ----- Network Summary - Top Row ----- */}
       <Row>
         <Col mobile={12} tablet>
@@ -43,7 +39,10 @@ export default function NetworkSummary({ info }) {
           />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label={t("Unconfirmed")} value={handleUnconfirmed(unconfirmed, memSize)} />
+          <StackedData
+            label={t("Unconfirmed")}
+            value={handleUnconfirmed(unconfirmed, memSize)}
+          />
         </Col>
         <Col mobile={12} tablet>
           <StackedData label={t("Network")} value={network} />

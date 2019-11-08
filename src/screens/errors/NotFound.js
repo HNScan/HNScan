@@ -50,7 +50,7 @@ export default class NotFoundScreen extends Component {
         </Header>
         <Subtext>
           It's cold out here in the void...let's bring you back to
-          <a className="hnscan-link" href="/" rel="noopener noreferrer">
+          <a href="/" rel="noopener noreferrer">
             {" "}
             safety
           </a>

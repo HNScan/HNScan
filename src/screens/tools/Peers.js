@@ -2,9 +2,9 @@ import React, { Suspense, useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import queryString from "query-string";
 import { useResource, useResultCache } from "rest-hooks";
+import { Pagination } from "@urkellabs/ucl";
 
 // Components
-import Pagination from "components/layout/Pagination";
 import PeerInfo from "components/PeerInfo";
 import Map from "../../containers/NodeMap";
 
