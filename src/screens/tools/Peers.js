@@ -2,10 +2,11 @@ import React, { Suspense, useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import queryString from "query-string";
 import { useResource, useResultCache } from "rest-hooks";
+import { Pagination } from "@urkellabs/ucl";
 
 // Components
-import Pagination from "components/layout/Pagination";
 import PeerInfo from "components/PeerInfo";
+import Map from "../../containers/NodeMap";
 
 // Resources
 import PeerResource from "../../resources/PeerResource";
@@ -21,7 +22,6 @@ const PeersContainer = ({ pages, page, url, changePage }) => {
 
   return (
     <>
-      {/* <PeersMapComponent /> */}
       <PeerInfo peers={peers} />
       <Pagination
         totalPages={Math.ceil(total / limit)}
@@ -64,7 +64,10 @@ export default function Peers() {
   };
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading Chart...</div>}>
+        <Map />
+      </Suspense>
+      <Suspense fallback={<div>Loading Peers...</div>}>
         <PeersContainer page={page} changePage={changePage} url={"/peers"} />
       </Suspense>
     </>

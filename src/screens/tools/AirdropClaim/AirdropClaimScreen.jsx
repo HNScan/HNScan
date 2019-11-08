@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Card from "../../../components/styles/Card";
+import { Card } from "@urkellabs/ucl";
 
 export default class AirdropClaimScreen extends Component {
   // TODO: verify that these two functions work correctly
@@ -75,92 +75,87 @@ export default class AirdropClaimScreen extends Component {
   render() {
     // TODO: This template needs refining
     return (
-      <Card>
-        <Card.Header>
-          <Card.HeaderTitle>Claim Your Airdrop</Card.HeaderTitle>
-        </Card.Header>
-        <Card.Content>
-          <Card.HorizontalContainer>
-            <span className="column is-half">
-              <span className="control">
-                <label htmlFor="claim" className="radio">
-                  <input readOnly type="radio" name="claim" checked />
-                  Faucet
-                </label>
-                {/* br
-                  label.radio
-                    input(name="claim" type="radio")
-                    | Github
-                  br
-                  label.radio
-                    input(name="claim" type="radio")
-                    | Web of Trust PGP
-                  br
-                  label.radio
-                    input(name="claim" type="radio")
-                    | Sponsor/Investor */}
+      <Card title="Claim Your Airdrop">
+        <Card.HorizontalContainer>
+          <span className="column is-half">
+            <span className="control">
+              <label htmlFor="claim" className="radio">
+                <input readOnly type="radio" name="claim" checked />
+                Faucet
+              </label>
+              {/* br
+                label.radio
+                  input(name="claim" type="radio")
+                  | Github
+                br
+                label.radio
+                  input(name="claim" type="radio")
+                  | Web of Trust PGP
+                br
+                label.radio
+                  input(name="claim" type="radio")
+                  | Sponsor/Investor */}
+            </span>
+          </span>
+          <span className="column is-half">
+            <span className="airdropClaimContainer">
+              <h2 className="airdropTitle">Claim your faucet HNS</h2>
+              <span className="airdropDescription">
+                This will first generate your proof for the airdrop. You can
+                either submit that proof yourself, or submit through HNScan.
+                Once your proof has been submitted and mined, the HNS is
+                deposited into the address associated with the private key
+                provided to you in the faucet. We do not have access to your
+                HNS, we are simply processing the claim for you.
+              </span>
+              <p className="error" id="airdropError"></p>
+              <form onSubmit={this.submitClaim} id="airdropSubmitForm">
+                <span className="control" id="airdropAddressControl"></span>
+                <input
+                  placeholder="Provided HNS Address"
+                  className="input"
+                  id="airdropAddress"
+                />
+                <input
+                  value="Confirm Claim"
+                  type="submit"
+                  className="button is-rounded airdropButton"
+                />
+              </form>
+              <form onSubmit={this.confirmClaim} id="airdropConfirmForm">
+                <textarea className="textarea" id="proof" disabled />
+                <input
+                  value="Send Claim"
+                  type="submit"
+                  className="button is-rounded airdropButton"
+                />
+              </form>
+              <span className="successMessage" id="successMessage">
+                <svg
+                  className="checkmark"
+                  id="svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 52 52"
+                  width="70"
+                >
+                  <circle
+                    className="checkmarkCircle"
+                    cx="26"
+                    cy="26"
+                    r="23"
+                    fill="none"
+                  />
+                  <path
+                    className="checkmarkCheck"
+                    fill="none"
+                    d="M14.1 27.2l7.1 7.2 16.7-16.8"
+                  />
+                </svg>
+                <span>Your airdrop claim has been submitted!</span>
               </span>
             </span>
-            <span className="column is-half">
-              <span className="airdropClaimContainer">
-                <h2 className="airdropTitle">Claim your faucet HNS</h2>
-                <span className="airdropDescription">
-                  This will first generate your proof for the airdrop. You can
-                  either submit that proof yourself, or submit through HNScan.
-                  Once your proof has been submitted and mined, the HNS is
-                  deposited into the address associated with the private key
-                  provided to you in the faucet. We do not have access to your
-                  HNS, we are simply processing the claim for you.
-                </span>
-                <p className="error" id="airdropError"></p>
-                <form onSubmit={this.submitClaim} id="airdropSubmitForm">
-                  <span className="control" id="airdropAddressControl"></span>
-                  <input
-                    placeholder="Provided HNS Address"
-                    className="input"
-                    id="airdropAddress"
-                  />
-                  <input
-                    value="Confirm Claim"
-                    type="submit"
-                    className="button is-rounded airdropButton"
-                  />
-                </form>
-                <form onSubmit={this.confirmClaim} id="airdropConfirmForm">
-                  <textarea className="textarea" id="proof" disabled />
-                  <input
-                    value="Send Claim"
-                    type="submit"
-                    className="button is-rounded airdropButton"
-                  />
-                </form>
-                <span className="successMessage" id="successMessage">
-                  <svg
-                    className="checkmark"
-                    id="svg"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 52 52"
-                    width="70"
-                  >
-                    <circle
-                      className="checkmarkCircle"
-                      cx="26"
-                      cy="26"
-                      r="23"
-                      fill="none"
-                    />
-                    <path
-                      className="checkmarkCheck"
-                      fill="none"
-                      d="M14.1 27.2l7.1 7.2 16.7-16.8"
-                    />
-                  </svg>
-                  <span>Your airdrop claim has been submitted!</span>
-                </span>
-              </span>
-            </span>
-          </Card.HorizontalContainer>
-        </Card.Content>
+          </span>
+        </Card.HorizontalContainer>
       </Card>
     );
   }

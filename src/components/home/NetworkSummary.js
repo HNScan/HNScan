@@ -1,8 +1,7 @@
 import React from "react";
-import { Row, Col } from "@urkellabs/ucl";
+import { Row, Col, Card } from "@urkellabs/ucl";
 
 // Components
-import Card from "components/styles/Card";
 import StackedData from "components/shared/StackedData";
 
 // Util
@@ -27,10 +26,7 @@ export default function NetworkSummary({ info }) {
   let registeredNames = info.registeredNames;
 
   return (
-    <Card>
-      <Card.Header>
-        <Card.HeaderTitle>Network Summary</Card.HeaderTitle>
-      </Card.Header>
+    <Card title="Network Summary">
       {/* ----- Network Summary - Top Row ----- */}
       <Row>
         <Col mobile={12} tablet>
@@ -40,7 +36,10 @@ export default function NetworkSummary({ info }) {
           />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label="Unconfirmed" value={handleUnconfirmed(unconfirmed, memSize)} />
+          <StackedData
+            label="Unconfirmed"
+            value={handleUnconfirmed(unconfirmed, memSize)}
+          />
         </Col>
         <Col mobile={12} tablet>
           <StackedData label="Network" value={network} />

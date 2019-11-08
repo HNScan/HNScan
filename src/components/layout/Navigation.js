@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 // Styles
 import NavBar from "components/styles/NavBar";
 
-// Components
-import SearchBar from "components/layout/SearchBar";
+// Containers
+import SearchBar from "containers/SearchBar";
 
 // SVGs
 import Logo from "components/svg/Logo";

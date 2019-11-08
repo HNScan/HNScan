@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 // Components
-import SearchBar from "components/layout/SearchBar";
+import SearchBar from "containers/SearchBar";
 
 const Header = styled.h1`
   margin-top: 50px;
