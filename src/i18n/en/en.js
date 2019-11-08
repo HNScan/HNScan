@@ -131,7 +131,7 @@ export const en = {
     Twitter: "Twitter",
     "Current Version": "Current Version",
     Source: "Source",
-    copywrite: "Handshake Alliance. All Rights Reserved.",
+    copyright: "Handshake Alliance. All Rights Reserved.",
     support_email: "engineering@urkel.io",
     tagline: "Your trusted source for on chain Handshake information"
   }

@@ -259,7 +259,7 @@ export default function Footer() {
             {t("Source")}
           </a>
         </SubText>
-        <SubText>&#9400; {t("copywrite")}</SubText>
+        <SubText>&#9400; {t("copyright")}</SubText>
       </ToggleThemeContainer>
     </FooterContainer>
   );
