@@ -86,7 +86,7 @@ export const en = {
     Location: "Location",
     Country: "Country",
     Whitelisted: "Whitelisted",
-    "Last Send / Last Received": "Last Send / Last Received",
+    "Last Send / Last Receive": "Last Send / Last Receive",
     Peers: "Peers",
 
     // Airdrop Claim

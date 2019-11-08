@@ -63,7 +63,7 @@ const PeerInfo = ({ peers }) => {
               <Table.Tr>
                 <StackedData
                   cell
-                  label="Last Send / Last Received"
+                  label="Last Send / Last Receive"
                   value={`${timeAgo(peer.lastsend) || "--"} / ${timeAgo(
                     peer.lastrecv
                   ) || "--"}`}
