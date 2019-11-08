@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { useResource } from "rest-hooks";
 import humanizeDuration from "humanize-duration";
 import { Card, Table } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
 
 // Components
 import StackedData from "components/shared/StackedData";
@@ -14,12 +15,13 @@ import { sciNotation, formatLargeNumber } from "utils/util";
 
 const NodeStatusContainer = () => {
   const status = useResource(StatusResource.detailShape(), {});
+  const { t } = useTranslation();
   let [difficulty, exponent] = sciNotation(status.difficulty, 5);
   let totalDownloaded = formatLargeNumber(status.totalBytesRecv, 2);
   let totalUploaded = formatLargeNumber(status.totalBytesSent, 2);
 
   return (
-    <Card title="Node Status">
+    <Card title={t("Node Status")}>
       <Table>
         <Table.Body>
           <Table.Tr>
@@ -46,7 +48,6 @@ const NodeStatusContainer = () => {
             <StackedData cell label="Connections" value={status.connections} />
           </Table.Tr>
           <Table.Tr>
-            {/* todo allow stacked component to accept this */}
             <StackedData
               cell
               label="Difficulty"

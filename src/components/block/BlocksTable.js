@@ -1,11 +1,13 @@
 import React from "react";
 import { Pagination, Card, Skeleton, Hidden, Table } from "@urkellabs/ucl";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Util
 import { timeAgo, truncateHash } from "utils/util";
 
 function Row({ height, size, time, miner, txs, loading }) {
+  const { t } = useTranslation();
   if (loading) {
     // @todo figure out a more elegant way to construct the skeleton
     return (
@@ -32,7 +34,7 @@ function Row({ height, size, time, miner, txs, loading }) {
     <Table.Tr>
       <Table.Td>
         <Link to={"/block/" + height}>{height}</Link>
-        <Hidden tablet>Size: {size} </Hidden>
+        <Hidden tablet>{t("Size: ") + size} </Hidden>
       </Table.Td>
       <Hidden onlyMobile as={Table.Td}>
         {timeAgo(time)}
@@ -55,20 +57,21 @@ function Row({ height, size, time, miner, txs, loading }) {
 }
 
 function BlocksTableStructure({ children }) {
+  const { t } = useTranslation();
   return (
-    <Card title="HNS Blocks">
+    <Card title={t("HNS Blocks")}>
       <Table>
         <Table.Head>
           <Table.Tr>
-            <Table.Th>Height</Table.Th>
+            <Table.Th>{t("Height")}</Table.Th>
             <Hidden onlyMobile as={Table.Th}>
-              Age
+              {t("Age")}
             </Hidden>
-            <Table.Th>Miner</Table.Th>
+            <Table.Th>{t("Miner")}</Table.Th>
             <Hidden onlyMobile as={Table.Th}>
-              Size
+              {t("Size")}
             </Hidden>
-            <Table.Th>TXs</Table.Th>
+            <Table.Th>{t("TXs")}</Table.Th>
           </Table.Tr>
         </Table.Head>
         <Table.Body>{children}</Table.Body>

@@ -34,27 +34,27 @@ export default function NetworkSummary({ info }) {
       <Row>
         <Col mobile={12} tablet>
           <StackedData
-            label={t("Hashrate")}
+            label="Hashrate"
             value={`${hashrate[0].toString()} ${hashrate[1].abbreviation}H/s`}
           />
         </Col>
         <Col mobile={12} tablet>
           <StackedData
-            label={t("Unconfirmed")}
+            label="Unconfirmed"
             value={handleUnconfirmed(unconfirmed, memSize)}
           />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label={t("Network")} value={network} />
+          <StackedData label="Network" value={network} />
         </Col>
       </Row>
       <Row>
         <Col mobile={12} tablet>
-          <StackedData label={t("Opened Names")} value={registeredNames} />
+          <StackedData label="Opened Names" value={registeredNames} />
         </Col>
         <Col mobile={12} tablet>
           <StackedData
-            label={t("Difficulty")}
+            label="Difficulty"
             value={
               <>
                 {difficulty[0]} x 10
@@ -65,7 +65,7 @@ export default function NetworkSummary({ info }) {
         </Col>
         <Col mobile={12} tablet>
           <StackedData
-            label={t("Chainwork")}
+            label="Chainwork"
             value={
               <>
                 {chainwork[0]} x 10
