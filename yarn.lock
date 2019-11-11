@@ -1535,10 +1535,10 @@
     semver "^6.3.0"
     tsutils "^3.17.1"
 
-"@urkellabs/ucl@0.1.12":
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/@urkellabs/ucl/-/ucl-0.1.12.tgz#a304ae0b4ae615315be42419b713381ce77fc19b"
-  integrity sha512-dhrrUEOFZLrNS4am4Z+X3TzkNmH6lC3mLpiOmZE+EYbb87/VBrm4waOWXEq3p6ThbCvhv86g5qPxh4US/IQq8Q==
+"@urkellabs/ucl@0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@urkellabs/ucl/-/ucl-0.1.13.tgz#2a250e9bef4c4b1d8f25d577f95321f0c34e08e1"
+  integrity sha512-9OLaouVFkbmJzFshlGFedAhRGbqDAa6+foRhRryE63GBSkCAag03C4PajTmt7hkZvwHWFVF/IBRcLuC1IPw1oQ==
   dependencies:
     "@babel/runtime" "^7.6.3"
     polished "^3.4.1"
