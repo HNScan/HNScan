@@ -35,7 +35,7 @@ import Changelog from "screens/Changelog";
 import NotFoundScreen from "screens/errors/NotFound";
 
 // Internationalization
-import "./i18n/i18n";
+import "../i18n/i18n";
 
 function App() {
   const [theme] = useTheme();

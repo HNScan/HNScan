@@ -6,7 +6,7 @@
   "dependencies": {
     "@amcharts/amcharts4": "^4.7.6",
     "@amcharts/amcharts4-geodata": "^4.1.8",
-    "@urkellabs/ucl": "0.1.14",
+    "@urkellabs/ucl": "0.1.15",
     "decimal.js": "^10.2.0",
     "humanize-duration": "^3.20.1",
     "i18next": "^19.0.0",

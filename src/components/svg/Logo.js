@@ -1,9 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import theme from "styled-theming";
+
+const color = theme("mode", {
+  light: "#4a4a4a",
+  dark: "#afafaf"
+});
 
 const Logo = styled(HnsScan)`
-  fill: ${props => props.theme.global.textColor};
-  stroke: ${props => props.theme.global.textColor};
+  fill: ${color};
+  stroke: ${color};
 `;
 
 function HnsScan(props) {
@@ -76,4 +82,4 @@ function HnsScan(props) {
   );
 }
 
-export default Logo
+export default Logo;
