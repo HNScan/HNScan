@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Styles
-import { NavBar } from "@urkellabs/ucl";
+import { NavBar, breakpoint } from "@urkellabs/ucl";
 
 // Containers
 import SearchBar from "containers/SearchBar";
@@ -14,27 +14,27 @@ import Logo from "components/svg/Logo";
 const NavLinkItem = styled(NavBar.Item)`
   justify-content: center;
 
-  @media (max-width: calc(${props => props.theme.breakpoints.desktop} - 1px)){
-      padding-left: 12px;
-      padding-right: 12px;
-      margin-left: 2.5vw
+  ${breakpoint.upToDesktop} {
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-left: 2.5vw;
 
     ${NavBar.Link} {
-        padding-left: 0;
+      padding-left: 0;
     }
   }
 `;
 
 const Burger = styled(NavBar.Burger)`
-  @media (max-width: calc(${props => props.theme.breakpoints.desktop} - 1px)){
-      margin-right: 2.5vw;
+  ${breakpoint.upToDesktop} {
+    margin-right: 2.5vw;
   }
 `;
 
 const LogoWrapper = styled(NavBar.Item)`
   width: 85px;
-  @media (max-width: calc(${props => props.theme.breakpoints.desktop} - 1px)){
-      margin-left: 2.5vw;
+  ${breakpoint.upToDesktop} {
+    margin-left: 2.5vw;
   }
 `;
 
