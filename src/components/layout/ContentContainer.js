@@ -10,7 +10,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: calc(100vh - 460px);
-  ${breakpoint.upToDesktop} {
+  ${breakpoint.desktop} {
     width: 90%;
     max-width: 1216px;
   }
