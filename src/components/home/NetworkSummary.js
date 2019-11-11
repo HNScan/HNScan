@@ -29,23 +29,23 @@ export default function NetworkSummary({ info }) {
   const { t } = useTranslation();
 
   return (
-    <Card title={t("Network Summary")}>
+    <Card title={t("home.network_summary")}>
       {/* ----- Network Summary - Top Row ----- */}
       <Row>
         <Col mobile={12} tablet>
           <StackedData
-            label="Hashrate"
+            label="home.hashrate"
             value={`${hashrate[0].toString()} ${hashrate[1].abbreviation}H/s`}
           />
         </Col>
         <Col mobile={12} tablet>
           <StackedData
-            label="Unconfirmed"
+            label="home.unconfirmed"
             value={handleUnconfirmed(unconfirmed, memSize)}
           />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label="Network" value={network} />
+          <StackedData label="home.network" value={network} />
         </Col>
       </Row>
       <Row>

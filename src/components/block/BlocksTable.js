@@ -63,7 +63,7 @@ function BlocksTableStructure({ children }) {
       <Table>
         <Table.Head>
           <Table.Tr>
-            <Table.Th>{t("Height")}</Table.Th>
+            <Table.Th>{t("blocks.height")}</Table.Th>
             <Hidden onlyMobile as={Table.Th}>
               {t("Age")}
             </Hidden>
