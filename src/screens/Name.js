@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { useParams } from "react-router-dom";
 import { useResource, useResultCache } from "rest-hooks";
+import { usePage } from "@urkellabs/ucl";
 
 // Components
 import NameSummary from "components/name/NameSummary";
@@ -11,8 +12,6 @@ import NameHistory from "components/name/NameHistory";
 import NameHistoryResource from "resources/NameHistoryResource";
 import NameResource from "resources/NameResource";
 
-// Hooks
-import usePage from "hooks/usePage";
 //@todo remove this.
 
 const NameRecords = () => <div>todo</div>;
