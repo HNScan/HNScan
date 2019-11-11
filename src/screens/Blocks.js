@@ -1,11 +1,9 @@
 import React, { Suspense } from "react";
+import { usePage } from "@urkellabs/ucl";
 
 // Resources
 import { useResource, useResultCache } from "rest-hooks";
 import BlockResource from "resources/BlockResource";
-
-// Hooks
-import usePage from "hooks/usePage";
 
 // Components
 import { BlocksTable, BlocksSkeleton } from "components/block/BlocksTable";
@@ -18,7 +16,7 @@ function BlocksView({ page }) {
   });
   const pages = Math.ceil(total / limit);
 
-  return <BlocksTable blocks={blocks} pages={pages} page={page} />
+  return <BlocksTable blocks={blocks} pages={pages} page={page} />;
 }
 
 export default function Blocks() {

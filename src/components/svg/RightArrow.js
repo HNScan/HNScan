@@ -1,7 +1,7 @@
 import React from "react";
 
 // Hooks
-import useTheme from "hooks/useTheme";
+import { useTheme } from "@urkellabs/ucl";
 
 export default function Arrow(props) {
   const [theme] = useTheme();

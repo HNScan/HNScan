@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { useParams } from "react-router-dom";
 import { useResource } from "rest-hooks";
+import { usePage } from "@urkellabs/ucl";
 
 // Components
 import AddressSummary from "components/address/AddressSummary";
@@ -8,9 +9,6 @@ import AddressSkeleton from "components/address/AddressSkeleton";
 
 // Containers
 import TransactionList from "containers/TransactionList";
-
-// Hooks
-import usePage from "hooks/usePage";
 
 // Resources
 import AddressResource from "resources/AddressResource";

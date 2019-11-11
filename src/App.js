@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { NetworkErrorBoundary } from "rest-hooks";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "@urkellabs/ucl";
+import { GlobalStyles, useTheme } from "@urkellabs/ucl";
 
 // Special
 import ScrollToTop from "components/shared/ScrollToTop";
@@ -33,9 +33,6 @@ import Changelog from "screens/Changelog";
 
 // Error Pages
 import NotFoundScreen from "screens/errors/NotFound";
-
-// Hooks
-import useTheme from "hooks/useTheme";
 
 // Internationalization
 import "./i18n/i18n";

@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { useParams } from "react-router-dom";
 import { useResource } from "rest-hooks";
+import { usePage } from "@urkellabs/ucl";
 
 // Components
 import BlockSummary from "components/block/BlockSummary";
@@ -11,9 +12,6 @@ import TransactionList from "containers/TransactionList";
 
 // Resources
 import BlockResource from "resources/BlockResource";
-
-// Hooks
-import usePage from "hooks/usePage";
 
 function BlockSkeleton() {
   return (

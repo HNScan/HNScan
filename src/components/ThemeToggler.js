@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-// Hooks
-import useTheme from "hooks/useTheme";
+import { useTheme } from "@urkellabs/ucl";
 
 // SVGs
 import DarkThemeIcon from "components/svg/DarkThemeIcon";
