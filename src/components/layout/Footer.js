@@ -3,9 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import theme from "styled-theming";
-
-// Components
-import ThemeToggler from "components/ThemeToggler";
+import { ThemeToggler } from "@urkellabs/ucl";
 
 // SVGs
 import LogoText from "components/svg/LogoText";
