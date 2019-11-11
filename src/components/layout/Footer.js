@@ -18,6 +18,10 @@ const SubText = styled.span`
   font-size: 10px;
 `;
 
+const ToggleWrapper = styled.div`
+  margin-bottom: 0.75rem;
+`;
+
 export const FooterContainer = styled.div`
   display: flex;
   align-items: center;
@@ -246,9 +250,9 @@ export default function Footer() {
         </RightContent>
       </ContentContainer>
       <ToggleThemeContainer>
-        <div className="field">
+        <ToggleWrapper>
           <ThemeToggler />
-        </div>
+        </ToggleWrapper>
         <SubText>
           {t("Current Version")}: v0.0.1{" "}
           <a
