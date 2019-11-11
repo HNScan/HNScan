@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import theme from "styled-theming";
 
 // Components
 import ThemeToggler from "components/ThemeToggler";
@@ -63,7 +64,6 @@ export const Tagline = styled.div`
 `;
 
 export const Header = styled.div`
-  color: ${props => props.theme.global.textColor};
   text-transform: uppercase;
   font-size: 10pt;
   letter-spacing: 1px;
@@ -76,16 +76,19 @@ export const ContactItem = styled.div`
   margin: 5px 0;
 `;
 
+// @note we should be exporting this from somewhere other than here. But, not a big deal,
+// that is something to be done later.
+const textColor = theme("mode", {
+  light: "#4a4a4a",
+  dark: "#afafaf"
+});
+
 // External Links using <a>
 export const FooterLink = styled.a`
   font-size: 10pt;
   margin: 8px 0;
   width: 55%;
-  color: ${props => props.theme.global.textColor};
-
-  &:hover {
-    color: ${props => props.theme.global.linkColorHover};
-  }
+  color: ${textColor};
 
   @media (min-width: 445px) {
     margin: 5px 0;
