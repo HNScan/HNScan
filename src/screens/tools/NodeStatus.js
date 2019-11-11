@@ -2,11 +2,10 @@ import React, { Suspense, useState } from "react";
 import { useResource } from "rest-hooks";
 import humanizeDuration from "humanize-duration";
 import { useLocation, useHistory } from "react-router-dom";
-import { Card, Table } from "@urkellabs/ucl";
+import { Card, Table, Modal, Header, Text } from "@urkellabs/ucl";
 
 // Components
 import StackedData from "components/shared/StackedData";
-import Modal from "components/Modal";
 
 // Resources
 import StatusResource from "resources/StatusResource";
@@ -16,11 +15,21 @@ import { sciNotation, formatLargeNumber } from "utils/util";
 
 function ConnectHelp(props) {
   return (
-    <Modal show={props.showModal} closeFunction={props.toggleModal}>
-      <h1>How to connect to this node</h1>
-      <p>This node's IP and identity key are: </p>
+    <Modal
+      show={props.showModal}
+      closeFunction={props.toggleModal}
+      title={"Connecting to this node"}
+    >
+      <p>
+        This node's IP is <code>{props.ip}</code> and identity key is:{" "}
+        <code>{props.idkey}</code>
+      </p>
       <p>There are 2 supported methods of connecting to this node.</p>
-      <p>1. Through the RPC </p>
+      <Header medium>Through the RPC</Header>
+      <Text>
+        If you have an HSD node running, as well as hs-client installed, then
+        run.{" "}
+      </Text>
     </Modal>
   );
 }
@@ -63,7 +72,6 @@ const NodeStatusContainer = () => {
                 label="Key @ Host : Port"
                 value={`${status.key}@${status.host}:${status.port}`}
               />
-              {/* <Link to={url + "#connect"}> Modal </Link> */}
               <button onClick={toggleModal} />
             </Table.Tr>
             <Table.Tr>
@@ -128,7 +136,12 @@ const NodeStatusContainer = () => {
           </Table.Body>
         </Table>
       </Card>
-      <ConnectHelp showModal={showModal} toggleModal={toggleModal} />
+      <ConnectHelp
+        showModal={showModal}
+        toggleModal={toggleModal}
+        ip={`${status.host}:${status.port}`}
+        idkey={status.key}
+      />
     </>
   );
 };
