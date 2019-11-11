@@ -1535,14 +1535,15 @@
     semver "^6.3.0"
     tsutils "^3.17.1"
 
-"@urkellabs/ucl@0.1.13":
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/@urkellabs/ucl/-/ucl-0.1.13.tgz#2a250e9bef4c4b1d8f25d577f95321f0c34e08e1"
-  integrity sha512-9OLaouVFkbmJzFshlGFedAhRGbqDAa6+foRhRryE63GBSkCAag03C4PajTmt7hkZvwHWFVF/IBRcLuC1IPw1oQ==
+"@urkellabs/ucl@0.1.14":
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/@urkellabs/ucl/-/ucl-0.1.14.tgz#0c497354a969683fde76691085f1b225c696c8b9"
+  integrity sha512-Pnf3oM+kQAWbHQHiwAAbnYYoB5U64fioK9Z2eLeDM00SPcfypow33Qgsbk0cq5Ah53EMhEOt6XsCqR2naYLqkw==
   dependencies:
     "@babel/runtime" "^7.6.3"
     polished "^3.4.1"
     prop-types "^15.7.2"
+    query-string "^6.8.3"
     react-scripts "3.2.0"
     styled-theming "^2.2.0"
 
