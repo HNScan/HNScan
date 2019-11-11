@@ -22,7 +22,7 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
   ));
   return (
     <>
-      <Card title="History">
+      <Card title="History" collapse>
         {/* @todo remove all these class names. */}
         {/* @todo need links in here */}
         {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
