@@ -58,7 +58,7 @@ function TxDetailScreen({ hash }) {
       </Card>
 
       {/* ------- Bottom Card ------ */}
-      <Card title="Advanced">
+      <Card title="Advanced" collapse closed>
         <Row>
           <Col mobile={12} desktop>
             <Table>
@@ -102,7 +102,7 @@ function TxDetailScreen({ hash }) {
         </Row>
       </Card>
 
-      <Card title="TX Activity">
+      <Card title="TX Activity" collapse>
         <Container>
           <Row>
             <Col mobile={12} desktop>

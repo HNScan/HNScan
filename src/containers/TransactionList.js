@@ -73,6 +73,7 @@ const TransactionList = ({ url, page, from }) => {
   return (
     <>
       <Card
+        collapse
         title={`${t("transaction", { count: txs.length })} (${offset +
           1}-${offset + txs.length})`}
       >
