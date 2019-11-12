@@ -3,6 +3,7 @@ import { useResource } from "rest-hooks";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Row, Col, Card, Table } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
 
 // Components
 import StackedData from "components/shared/StackedData";
@@ -32,50 +33,56 @@ const Container = styled.div`
 `;
 
 function TxDetailScreen({ hash }) {
+  const { t } = useTranslation();
   const tx = useResource(TransactionResource.detailShape(), { hash });
 
   return (
     <>
-      {/* ------- Top Card ------ */}
-      <Card title="Transaction Summary">
+      <Card title={t("tx_detail.summary")}>
         <Row>
           <Col mobile={12} tablet>
-            <StackedData label="Received" value={timeAgo(tx.time)} />
+            <StackedData label="tx_detail.received" value={timeAgo(tx.time)} />
           </Col>
           <Col mobile={12} tablet>
             <StackedData
-              label="Amount"
+              label="tx_detail.amount"
               value={hnsValues(sumTxOutputs(tx.outputs))}
             />
           </Col>
           <Col mobile={12} tablet>
-            <StackedData label="Fee" value={hnsValues(tx.fee)} />
+            <StackedData label="tx_detail.fee" value={hnsValues(tx.fee)} />
           </Col>
           <Col mobile={12} tablet>
-            <StackedData label="Confirmation" value={tx.confirmations} />
+            <StackedData
+              label="tx_detail.confirmation"
+              value={tx.confirmations}
+            />
           </Col>
         </Row>
       </Card>
 
-      {/* ------- Bottom Card ------ */}
-      <Card title="Advanced" collapse closed>
+      <Card title={t("tx_detail.advanced")} collapse closed>
         <Row>
           <Col mobile={12} desktop>
             <Table>
               <Table.Body>
                 <Table.Tr>
-                  <StackedData cell label="Hash" value={tx.hash} />
+                  <StackedData cell label="tx_detail.hash" value={tx.hash} />
                 </Table.Tr>
                 <Table.Tr>
                   <StackedData
                     cell
-                    label="Block Height"
+                    label="tx_detail.height"
                     value={tx.height}
                     link={"/block/" + tx.height}
                   />
                 </Table.Tr>
                 <Table.Tr>
-                  <StackedData cell label="Locktime" value={tx.locktime} />
+                  <StackedData
+                    cell
+                    label="tx_detail.locktime"
+                    value={tx.locktime}
+                  />
                 </Table.Tr>
               </Table.Body>
             </Table>
@@ -86,15 +93,19 @@ function TxDetailScreen({ hash }) {
                 <Table.Tr>
                   <StackedData
                     cell
-                    label="Witness Hash"
+                    label="tx_detail.witness_hash"
                     value={tx.witnessHash}
                   />
                 </Table.Tr>
                 <Table.Tr>
-                  <StackedData cell label="Version" value={tx.version} />
+                  <StackedData
+                    cell
+                    label="tx_detail.version"
+                    value={tx.version}
+                  />
                 </Table.Tr>
                 <Table.Tr>
-                  <StackedData cell label="Index" value={tx.index} />
+                  <StackedData cell label="tx_detail.index" value={tx.index} />
                 </Table.Tr>
               </Table.Body>
             </Table>
@@ -102,7 +113,7 @@ function TxDetailScreen({ hash }) {
         </Row>
       </Card>
 
-      <Card title="TX Activity" collapse>
+      <Card title={t("tx_detail.tx_activity")} collapse>
         <Container>
           <Row>
             <Col mobile={12} desktop>

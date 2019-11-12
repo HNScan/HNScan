@@ -22,9 +22,9 @@ function NamesTableStructure({ children }) {
       <Table>
         <Table.Head>
           <Table.Tr>
-            <Table.Th>{t("Name")}</Table.Th>
-            <Table.Th>{t("State")}</Table.Th>
-            <Table.Th>{t("Height")}</Table.Th>
+            <Table.Th>{t("names.name")}</Table.Th>
+            <Table.Th>{t("names.state")}</Table.Th>
+            <Table.Th>{t("names.height")}</Table.Th>
           </Table.Tr>
         </Table.Head>
         <Table.Body>{children}</Table.Body>

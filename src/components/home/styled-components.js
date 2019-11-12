@@ -20,7 +20,7 @@ const ItemDetail = styled.div`
 `;
 
 export const LeftItemDetail = styled(ItemDetail)`
-  white-space: nowrap;
+  white-space: pre;
   &:first-child {
     font-size: 14px;
   }

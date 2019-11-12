@@ -34,7 +34,7 @@ function Row({ height, size, time, miner, txs, loading }) {
     <Table.Tr>
       <Table.Td>
         <Link to={"/block/" + height}>{height}</Link>
-        <Hidden tablet>{t("Size: ") + size} </Hidden>
+        <Hidden tablet>{t("blocks.size") + size} </Hidden>
       </Table.Td>
       <Hidden onlyMobile as={Table.Td}>
         {timeAgo(time)}
@@ -59,19 +59,19 @@ function Row({ height, size, time, miner, txs, loading }) {
 function BlocksTableStructure({ children }) {
   const { t } = useTranslation();
   return (
-    <Card title={t("HNS Blocks")}>
+    <Card title={t("blocks.title")}>
       <Table>
         <Table.Head>
           <Table.Tr>
-            <Table.Th>{t("Height")}</Table.Th>
+            <Table.Th>{t("blocks.height")}</Table.Th>
             <Hidden onlyMobile as={Table.Th}>
-              {t("Age")}
+              {t("blocks.age")}
             </Hidden>
-            <Table.Th>{t("Miner")}</Table.Th>
+            <Table.Th>{t("blocks.miner")}</Table.Th>
             <Hidden onlyMobile as={Table.Th}>
-              {t("Size")}
+              {t("blocks.size")}
             </Hidden>
-            <Table.Th>{t("TXs")}</Table.Th>
+            <Table.Th>{t("blocks.txs")}</Table.Th>
           </Table.Tr>
         </Table.Head>
         <Table.Body>{children}</Table.Body>
