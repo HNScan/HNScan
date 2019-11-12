@@ -61,7 +61,7 @@ function TxDetailScreen({ hash }) {
         </Row>
       </Card>
 
-      <Card title={t("tx_detail.advanced")}>
+      <Card title={t("tx_detail.advanced")} collapse closed>
         <Row>
           <Col mobile={12} desktop>
             <Table>
@@ -113,7 +113,7 @@ function TxDetailScreen({ hash }) {
         </Row>
       </Card>
 
-      <Card title={t("tx_detail.tx_activity")}>
+      <Card title={t("tx_detail.tx_activity")} collapse>
         <Container>
           <Row>
             <Col mobile={12} desktop>

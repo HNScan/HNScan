@@ -6,12 +6,11 @@
   "dependencies": {
     "@amcharts/amcharts4": "^4.7.6",
     "@amcharts/amcharts4-geodata": "^4.1.8",
-    "@urkellabs/ucl": "0.1.13",
+    "@urkellabs/ucl": "0.1.15",
     "decimal.js": "^10.2.0",
     "humanize-duration": "^3.20.1",
     "i18next": "^19.0.0",
     "i18next-browser-languagedetector": "^4.0.1",
-    "query-string": "^6.8.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-i18next": "^11.0.1",

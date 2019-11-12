@@ -11,7 +11,7 @@ import { hnsValues } from "utils/util";
 export default function NameSummary({ name }) {
   const { t } = useTranslation();
   return (
-    <Card title={t("name_detail.advanced")}>
+    <Card title={t("name_detail.advanced")} collapse closed>
       {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
       <Row>
         <Col mobile={12} desktop>

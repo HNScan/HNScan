@@ -12,7 +12,7 @@ export default function BlockAdvanced({ block }) {
   let [difficulty, exponent] = sciNotation(block.difficulty, 5);
   const { t } = useTranslation();
   return (
-    <Card title={t("block_detail.advanced")}>
+    <Card title={t("block_detail.advanced")} collapse closed>
       {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
       <Row>
         <Col mobile={12} desktop>

@@ -6,9 +6,6 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 
 const CellWrapper = styled(Table.Td)`
-  background: ${props => props.theme.cards.background};
-  border-color: ${props =>
-    props.theme.cards.borderColor} !important; // Bulma override
   display: flex;
   flex-direction: column;
 `;
@@ -21,14 +18,12 @@ const DivWrapper = styled.div`
 `;
 
 const Value = styled.span`
-  color: ${props => props.theme.global.textColor};
   font-size: ${props => (props.cell ? "12px" : "16px")};
   word-wrap: break-word;
   word-break: break-all;
 `;
 
 const Label = styled.span`
-  color: ${props => props.theme.global.textColor};
   font-weight: 800;
   font-size: ${props => (props.cell ? "14px" : "16px")};
 `;
