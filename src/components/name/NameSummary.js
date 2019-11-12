@@ -16,30 +16,33 @@ function timeToNextState(blocks) {
 export default function NameSummary({ name }) {
   const { t } = useTranslation();
   return (
-    <Card title={t("Name Summary")}>
+    <Card title={t("name_detail.summary")}>
       <Row>
         <Col mobile={12} tablet>
-          <StackedData label="Name" value={name.name} />
+          <StackedData label="name_detail.name" value={name.name} />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label="Release Block" value={name.release} />
+          <StackedData label="name_detail.release_block" value={name.release} />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label="Reserved" value={name.reserved.toString()} />
+          <StackedData
+            label="name_detail.reserved"
+            value={name.reserved.toString()}
+          />
         </Col>
       </Row>
       <Row>
         <Col mobile={12} tablet>
-          <StackedData label="State" value={name.state} />
+          <StackedData label="name_detail.state" value={name.state} />
         </Col>
         <Col mobile={12} tablet>
           <StackedData
-            label="Blocks Until Next State"
+            label="name_detail.blocks_until_next"
             value={timeToNextState(name.blocksUntil)}
           />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label="Next State" value={name.nextState} />
+          <StackedData label="name_detail.next_state" value={name.nextState} />
         </Col>
       </Row>
     </Card>

@@ -1,0 +1,198 @@
+{
+  "translation": {
+    "home": {
+      "summary": "Network Summary",
+      "hashrate": "Hashrate",
+      "unconfirmed": "Unconfirmed",
+      "network": "Network",
+      "opened_names": "Opened Names",
+      "difficulty": "Difficulty",
+      "chainwork": "Chainwork",
+
+      "recent_transactions": "Recent Transactions",
+      "tx_num": "TX #: <0>{{hash}}</0>",
+      "amount": "Amount: {{amount}}",
+      "fee": "Fee: {{fee}}",
+
+      "recent_blocks": "Recent Blocks",
+      "block_num": "Block #: <0>{{height}}</0>",
+      "view_all": "View All",
+      "block": "Block",
+      "mined_by": "Mined By: <0>{{miner}}</0>",
+      "transactions": "Transactions: {{tx_num}}"
+    },
+
+    "blocks": {
+      "title": "HNS Blocks",
+      "height": "Height",
+      "age": "Age",
+      "miner": "Miner",
+      "size": "Size",
+      "txs": "TXs"
+    },
+
+    "block_detail": {
+      "summary": "Block {{height}} Summary",
+      "received": "Received",
+      "total_txs": "Total Transactions",
+      "total_fees": "Total Fees",
+      "mined_by": "Mined By",
+      "weight": "Weight",
+      "confirmations": "Confirmations",
+
+      "advanced": "Advanced",
+      "previous_block": "Previous Block",
+      "difficulty": "Difficulty",
+      "version": "Version",
+      "bits": "Bits",
+      "size": "Size",
+      "average_fee": "Average Fee",
+      "nonce": "Nonce",
+      "next_block": "Next Block",
+      "hash": "Hash",
+      "merkle_root": "Merkle Root",
+      "tree_root": "Tree Root",
+      "filter_root": "Filter Root",
+      "reserved_root": "Reserved Root",
+      "chainwork": "Chainwork",
+
+      "transaction": "Transaction",
+      "transaction_plural": "Transactions"
+    },
+
+    "puts_list": {
+      "input": "1 Input",
+      "input_plural": "{{count}} Inputs",
+      "output": "1 Output",
+      "output_plural": "{{count}} Outputs",
+      "airdrop_claim": "Airdrop Claim",
+      "input_from_reward": "{{value}} from Block Reward",
+      "input_from": "{{value}} from <0>{{address}}</0>",
+      "output_to": "{{value}} to <0>{{address}}</0>",
+      "output_for": "{{action}} for <0>{{name}}</0>",
+      "output_for_of": "{{action}} for <0>{{name}}</0> of {{value}}"
+    },
+
+    "names": {
+      "name": "Name",
+      "state": "State",
+      "height": "Height"
+    },
+
+    "name_detail": {
+      "summary": "Name Summary",
+      "name": "Name",
+      "release_block": "Release Block",
+      "reserved": "Reserved",
+      "state": "State",
+      "blocks_until_next": "Blocks Until Next State",
+      "next_state": "Next State",
+
+      "advanced": "Advanced",
+      "name_hash": "Name Hash",
+      "height": "Height",
+      "renewal": "Renewal",
+      "highest": "Highest",
+      "weak": "Weak",
+      "transfer": "Transfer",
+      "revoked": "Revoked",
+
+      "history": "History",
+      "action": "Actions",
+      "time": "Time",
+      "block_height": "Block Height",
+      "value": "Value"
+    },
+
+    "address_detail": {
+      "address": "Address",
+      "summary": "Address Summary",
+      "balance": "Balance",
+      "received": "Received",
+      "spent": "Spent"
+    },
+
+    "tx_detail": {
+      "summary": "Transaction Summary",
+      "received": "Received",
+      "amount": "Amount",
+      "fee": "Fee",
+      "confirmation": "Confirmations",
+
+      "advanced": "Advanced",
+      "hash": "Hash",
+      "height": "Block Height",
+      "locktime": "Locktime",
+      "witness_hash": "Witness Hash",
+      "version": "Version",
+      "index": "Index",
+
+      "tx_activity": "TX Activity"
+    },
+
+    "peers": {
+      "peers": "Peers",
+      "address": "Address",
+      "name": "Name",
+      "no_name": "No name provided",
+      "services": "Services",
+      "version": "Version",
+      "location": "Location",
+      "country": "Country",
+      "whitelisted": "Whitelisted",
+      "last_send_received": "Last Send / Last Receive"
+    },
+
+    "node_status": {
+      "node_status": "Node Status",
+      "network": "Network",
+      "version": "Version",
+      "difficulty": "Difficulty",
+      "host": "Key @ Host : Port",
+      "chain_progress": "Chain Progress",
+      "connections": "Connections",
+      "uptime": "Uptime",
+      "total_downloaded": "Total Downloaded",
+      "total_uploaded": "Total Uploaded"
+    },
+
+    "search": {
+      "placeholder": "Search the HNS Blockchain",
+      "header": "We couldn't find what you were looking for",
+      "subheader": "Please try searching again",
+      "multiple_results": "We found multiple resources matching your search"
+    },
+
+    "not_found": {
+      "oh_no": "Oh no! Where'd it go?",
+      "void_message": "It's cold out here in the void...let's bring you back to ",
+      "safety": "safety"
+    },
+
+    "footer": {
+      "contact": "Contact",
+      "explore": "Explore",
+      "home": "Home",
+      "blocks": "Blocks",
+      "names": "Names",
+      "tools": "Tools",
+      "peers": "Peers",
+      "node_status": "Node Status",
+      "airdrop_claim": "Airdrop Claim",
+      "related": "Related",
+      "academy": "Academy",
+      "community": "Community",
+      "urkel": "Urkel",
+      "paper": "Paper",
+      "follow": "Follow",
+      "github": "Github",
+      "medium": "Medium",
+      "twitter": "Twitter",
+      "version": "Current Version",
+      "source": "Source",
+      "copyright": "Handshake Alliance. All Rights Reserved.",
+      "support_email": "engineering@urkel.io",
+      "tagline": "Your trusted source for on chain Handshake information"
+    }
+  }
+}

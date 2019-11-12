@@ -154,41 +154,41 @@ export default function Footer() {
       <ContentContainer>
         <LeftContent>
           <Logo />
-          <Tagline>{t("tagline")}</Tagline>
-          <Header>{t("Contact")}</Header>
-          <ContactItem>{t("support_email")}</ContactItem>
+          <Tagline>{t("footer.tagline")}</Tagline>
+          <Header>{t("footer.contact")}</Header>
+          <ContactItem>{t("footer.support_email")}</ContactItem>
         </LeftContent>
         <RightContent>
           <LeftLinksContainer>
             <LinksContainer>
-              <Header>{t("Explore")}</Header>
+              <Header>{t("footer.explore")}</Header>
               <FooterLink as={Link} to="/">
-                {t("Home")}
+                {t("footer.home")}
               </FooterLink>
               <FooterLink as={Link} to="/blocks">
-                {t("Blocks")}
+                {t("footer.blocks")}
               </FooterLink>
               <FooterLink as={Link} to="/names">
-                {t("Names")}
+                {t("footer.names")}
               </FooterLink>
             </LinksContainer>
             <LinksContainer>
-              <Header>{t("Tools")}</Header>
+              <Header>{t("footer.tools")}</Header>
               <FooterLink as={Link} to="/peers">
-                {t("Peers")}
+                {t("footer.peers")}
               </FooterLink>
               <FooterLink as={Link} to="/status">
-                {t("Node Status")}
+                {t("footer.node_status")}
               </FooterLink>
               <FooterLink as={Link} to="/airdropclaim">
-                {t("Airdrop Claim")}
+                {t("footer.airdrop_claim")}
               </FooterLink>
             </LinksContainer>
           </LeftLinksContainer>
           <RightLinksContainer>
             <LinksContainer>
               <Header>
-                {t("Related")}&nbsp;
+                {t("footer.related")}&nbsp;
                 <i className="fas fa-external-link-alt has-text-grey fa-sm"></i>
               </Header>
               <FooterLink
@@ -196,33 +196,33 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("Academy")}
+                {t("footer.academy")}
               </FooterLink>
               <FooterLink
                 href="https://handshake.community"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("Community")}
+                {t("footer.community")}
               </FooterLink>
               <FooterLink
                 href="https://urkel.io"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("Urkel")}
+                {t("footer.urkel")}
               </FooterLink>
               <FooterLink
                 href="https://handshake.org/files/handshake.txt"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("Paper")}
+                {t("footer.paper")}
               </FooterLink>
             </LinksContainer>
             <LinksContainer>
               <Header>
-                {t("Follow")}&nbsp;
+                {t("footer.follow")}&nbsp;
                 <i className="fas fa-external-link-alt has-text-grey fa-sm"></i>
               </Header>
               <FooterLink
@@ -230,21 +230,21 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("Github")}
+                {t("footer.github")}
               </FooterLink>
               <FooterLink
                 href="https://medium.com/@handshakealliance"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("Medium")}
+                {t("footer.medium")}
               </FooterLink>
               <FooterLink
                 href="https://twitter.com/hnsalliance"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("Twitter")}
+                {t("footer.twitter")}
               </FooterLink>
             </LinksContainer>
           </RightLinksContainer>
@@ -255,16 +255,17 @@ export default function Footer() {
           <ThemeToggler />
         </ToggleWrapper>
         <SubText>
-          {t("Current Version")}: v0.0.1{" "}
+          {/* @todo: dynamicize this */}
+          {t("footer.version")}: v0.0.1{" "}
           <a
             href="https://github.com/HandshakeAlliance/HNScan"
             target="_blank"
             rel="noopener noreferrer"
           >
-            {t("Source")}
+            {t("footer.source")}
           </a>
         </SubText>
-        <SubText>&#9400; {t("copyright")}</SubText>
+        <SubText>&#9400; {t("footer.copyright")}</SubText>
       </ToggleThemeContainer>
     </FooterContainer>
   );

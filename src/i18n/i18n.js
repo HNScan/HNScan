@@ -7,7 +7,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 // https://github.com/i18next/i18next-browser-languageDetector
 
 // Languages
-import { en } from "./en/en.js";
+import en from "./en/en.json";
 import { zh } from "./zh/zh.js";
 
 // the translations
@@ -23,9 +23,6 @@ i18n
   .init({
     fallbackLng: "en",
     resources,
-
-    keySeparator: false, // we do not use keys in form messages.welcome
-
     interpolation: {
       escapeValue: false // react already safe from xss
     }
