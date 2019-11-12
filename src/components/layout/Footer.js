@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import theme from "styled-theming";
-import { ThemeToggler } from "@urkellabs/ucl";
+import { ThemeToggler, ExternalLink } from "@urkellabs/ucl";
 
 // SVGs
 import LogoText from "components/svg/LogoText";
@@ -19,6 +19,11 @@ const SubText = styled.span`
 
 const ToggleWrapper = styled.div`
   margin-bottom: 0.75rem;
+`;
+
+const IconWrapper = styled.div`
+  display: inline-block;
+  width: 10pt;
 `;
 
 export const FooterContainer = styled.div`
@@ -189,7 +194,9 @@ export default function Footer() {
             <LinksContainer>
               <Header>
                 {t("footer.related")}&nbsp;
-                <i className="fas fa-external-link-alt has-text-grey fa-sm"></i>
+                <IconWrapper>
+                  <ExternalLink />
+                </IconWrapper>
               </Header>
               <FooterLink
                 href="https://handshakeacademy.org"
@@ -223,7 +230,9 @@ export default function Footer() {
             <LinksContainer>
               <Header>
                 {t("footer.follow")}&nbsp;
-                <i className="fas fa-external-link-alt has-text-grey fa-sm"></i>
+                <IconWrapper>
+                  <ExternalLink />
+                </IconWrapper>
               </Header>
               <FooterLink
                 href="https://github.com/handshakealliance"
