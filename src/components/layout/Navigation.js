@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
-// Styles
-import { NavBar, breakpoint } from "@urkellabs/ucl";
+import { NavBar, breakpoint, ExternalLink } from "@urkellabs/ucl";
 
 // Containers
 import SearchBar from "containers/SearchBar";
@@ -36,6 +34,10 @@ const LogoWrapper = styled(NavBar.Item)`
   ${breakpoint.upToDesktop} {
     margin-left: 2.5vw;
   }
+`;
+
+const IconWrapper = styled.div`
+  width: 14px;
 `;
 
 //@todo possibly integrate https://usehooks.com/useWindowSize/ to only trigger nav clicks on mobile.
@@ -132,7 +134,9 @@ export default function Navigation() {
                   rel="noopener noreferrer"
                 >
                   Report an issue&nbsp;
-                  <i className="fas fa-external-link-alt has-text-grey fa-sm"></i>
+                  <IconWrapper>
+                    <ExternalLink />
+                  </IconWrapper>
                 </NavBar.Item>
               </NavBar.Dropdown>
             </NavLinkItem>
