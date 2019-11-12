@@ -73,8 +73,9 @@ const TransactionList = ({ url, page, from }) => {
   return (
     <>
       <Card
-        title={`${t("transaction", { count: txs.length })} (${offset +
-          1}-${offset + txs.length})`}
+        title={`${t("block_detail.transaction", {
+          count: txs.length
+        })} (${offset + 1}-${offset + txs.length})`}
       >
         {renderTransactions}
       </Card>

@@ -46,13 +46,13 @@ export default function NotFoundScreen() {
   return (
     <Wrapper>
       <Header>
-        <span>{t("Oh no!")}</span>
+        <span>{t("not_found.oh_no")}</span>
       </Header>
       <Subtext>
         {/* @todo: could probably combine these translations */}
-        {t("void_message")}
+        {t("not_found.void_message")}
         <a href="/" rel="noopener noreferrer">
-          {t("safety")}
+          {t("not_found.safety")}
         </a>
       </Subtext>
       <Container404>

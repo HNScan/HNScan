@@ -11,23 +11,39 @@ import { hnsValues } from "utils/util";
 export default function NameSummary({ name }) {
   const { t } = useTranslation();
   return (
-    <Card title={t("Advanced")}>
+    <Card title={t("name_detail.advanced")}>
       {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
       <Row>
         <Col mobile={12} desktop>
           <Table>
             <Table.Body>
               <Table.Tr>
-                <StackedData cell label="Name Hash" value={name.hash} />
+                <StackedData
+                  cell
+                  label="name_detail.name_hash"
+                  value={name.hash}
+                />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Height" value={name.height} />
+                <StackedData
+                  cell
+                  label="name_detail.height"
+                  value={name.height}
+                />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Renewal" value={name.renewal} />
+                <StackedData
+                  cell
+                  label="name_detail.renewal"
+                  value={name.renewal}
+                />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Value" value={hnsValues(name.value)} />
+                <StackedData
+                  cell
+                  label="name_detail.value"
+                  value={hnsValues(name.value)}
+                />
               </Table.Tr>
             </Table.Body>
           </Table>
@@ -38,18 +54,30 @@ export default function NameSummary({ name }) {
               <Table.Tr>
                 <StackedData
                   cell
-                  label="Highest"
+                  label="name_detail.highest"
                   value={hnsValues(name.highest)}
                 />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Weak" value={name.weak.toString()} />
+                <StackedData
+                  cell
+                  label="name_detail.weak"
+                  value={name.weak.toString()}
+                />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Transfer" value={name.transfer} />
+                <StackedData
+                  cell
+                  label="name_detail.transfer"
+                  value={name.transfer}
+                />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Revoked" value={name.revoked} />
+                <StackedData
+                  cell
+                  label="name_detail.revoked"
+                  value={name.revoked}
+                />
               </Table.Tr>
             </Table.Body>
           </Table>

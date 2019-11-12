@@ -22,7 +22,7 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
   ));
   return (
     <>
-      <Card title="History">
+      <Card title={t("name_detail.history")}>
         {/* @todo remove all these class names. */}
         {/* @todo need links in here */}
         {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
@@ -31,10 +31,10 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
           <Table>
             <Table.Head>
               <Table.Tr>
-                <Table.Th>{t("Action")}</Table.Th>
-                <Table.Th>{t("Time")}</Table.Th>
-                <Table.Th>{t("Block Height")}</Table.Th>
-                <Table.Th>{t("Value")}</Table.Th>
+                <Table.Th>{t("name_detail.action")}</Table.Th>
+                <Table.Th>{t("name_detail.time")}</Table.Th>
+                <Table.Th>{t("name_detail.block_height")}</Table.Th>
+                <Table.Th>{t("name_detail.value")}</Table.Th>
               </Table.Tr>
             </Table.Head>
             <Table.Body>{names}</Table.Body>

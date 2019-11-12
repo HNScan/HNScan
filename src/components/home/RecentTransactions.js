@@ -19,7 +19,6 @@ import Arrow from "components/svg/RightArrow";
 import { truncateHash, timeAgo, hnsValues, sumTxOutputs } from "utils/util";
 
 const Transaction = ({ tx }) => {
-  const { t } = useTranslation();
   return (
     // ----- TX Details -----
     <Col>
@@ -30,15 +29,22 @@ const Transaction = ({ tx }) => {
             <ItemLogo>
               <Arrow />
             </ItemLogo>
-            <Trans i18nKey="home.tx_num" hash={truncateHash(tx.hash)}>
+            <Trans
+              i18nKey="home.tx_num"
+              values={{ hash: truncateHash(tx.hash) }}
+            >
               <Link to={"/tx/" + tx.hash}></Link>
             </Trans>
-            {/* {t("home.tx_num")}&nbsp; */}
           </LeftItemDetail>
           <LeftItemDetail>
-            Amount: {hnsValues(sumTxOutputs(tx.outputs))}
+            <Trans
+              i18nKey="home.amount"
+              values={{ amount: hnsValues(sumTxOutputs(tx.outputs)) }}
+            />
           </LeftItemDetail>
-          <LeftItemDetail>Fee: {hnsValues(tx.fee)}</LeftItemDetail>
+          <LeftItemDetail>
+            <Trans i18nKey="home.fee" values={{ fee: hnsValues(tx.fee) }} />
+          </LeftItemDetail>
         </Col>
         {/* ----- Right Side / Bottom Side ----- */}
         <Col>

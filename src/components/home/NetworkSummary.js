@@ -29,7 +29,7 @@ export default function NetworkSummary({ info }) {
   const { t } = useTranslation();
 
   return (
-    <Card title={t("home.network_summary")}>
+    <Card title={t("home.summary")}>
       {/* ----- Network Summary - Top Row ----- */}
       <Row>
         <Col mobile={12} tablet>
@@ -50,11 +50,11 @@ export default function NetworkSummary({ info }) {
       </Row>
       <Row>
         <Col mobile={12} tablet>
-          <StackedData label="Opened Names" value={registeredNames} />
+          <StackedData label="home.opened_names" value={registeredNames} />
         </Col>
         <Col mobile={12} tablet>
           <StackedData
-            label="Difficulty"
+            label="home.difficulty"
             value={
               <>
                 {difficulty[0]} x 10
@@ -65,7 +65,7 @@ export default function NetworkSummary({ info }) {
         </Col>
         <Col mobile={12} tablet>
           <StackedData
-            label="Chainwork"
+            label="home.chainwork"
             value={
               <>
                 {chainwork[0]} x 10

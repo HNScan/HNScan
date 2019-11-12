@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Trans } from "react-i18next";
 
 // Util
 //@todo rename to toHNS()
-import { hnsValues, title } from "utils/util";
+import { hnsValues } from "utils/util";
 
 const Container = styled.div`
   height: 100%;
@@ -26,15 +27,12 @@ const DataContainer = styled.div`
   flex-direction: column;
 `;
 
-const InputWrapper = styled.div`
+const PutsWrapper = styled.div`
   padding: 10px;
   text-align: center;
 `;
 
-const OutputWrapper = styled.div`
-  padding: 10px;
-`;
-
+// @todo translate other values in this file
 function renderInput(input) {
   if (input.coinbase) {
     return <span>{hnsValues(input.value)} from Block Reward</span>;
@@ -52,12 +50,14 @@ function renderInput(input) {
 
 export const InputList = props => {
   const inputs = props.inputs.map((input, index) => (
-    <InputWrapper key={index}>{renderInput(input)}</InputWrapper>
+    <PutsWrapper key={index}>{renderInput(input)}</PutsWrapper>
   ));
 
   return (
     <Container>
-      <Title>{title(inputs.length, "Input")}</Title>
+      <Title>
+        <Trans i18nKey="block_detail.input" count={inputs.length} />
+      </Title>
       <DataContainer>{inputs}</DataContainer>
     </Container>
   );
@@ -91,12 +91,18 @@ const renderOutputAction = output => {
 
 export const OutputList = props => {
   const outputs = props.outputs.map((output, index) => (
-    <OutputWrapper key={index}>{renderOutputAction(output)}</OutputWrapper>
+    <PutsWrapper key={index}>{renderOutputAction(output)}</PutsWrapper>
   ));
 
   return (
     <Container>
-      <Title>{title(outputs.length, "Output")}</Title>
+      <Title>
+        <Trans
+          i18nKey="block_detail.output"
+          count={outputs.length}
+          as={Title}
+        />
+      </Title>
       <DataContainer>{outputs}</DataContainer>
     </Container>
   );

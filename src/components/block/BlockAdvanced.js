@@ -12,7 +12,7 @@ export default function BlockAdvanced({ block }) {
   let [difficulty, exponent] = sciNotation(block.difficulty, 5);
   const { t } = useTranslation();
   return (
-    <Card title={t("Advanced")}>
+    <Card title={t("block_detail.advanced")}>
       {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
       <Row>
         <Col mobile={12} desktop>
@@ -22,7 +22,7 @@ export default function BlockAdvanced({ block }) {
                 <Table.Tr>
                   <StackedData
                     cell
-                    label="Previous Block"
+                    label="block_detail.previous_block"
                     value={block.prevBlock}
                     link={"/block/" + (block.height - 1)}
                   />
@@ -31,7 +31,7 @@ export default function BlockAdvanced({ block }) {
               <Table.Tr>
                 <StackedData
                   cell
-                  label="Difficulty"
+                  label="block_detail.difficulty"
                   value={
                     <span>
                       {difficulty} x 10<sup>{exponent}</sup>
@@ -40,23 +40,39 @@ export default function BlockAdvanced({ block }) {
                 />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Version" value={block.version} />
-              </Table.Tr>
-              <Table.Tr>
-                <StackedData cell label="Bits" value={block.bits} />
-              </Table.Tr>
-              <Table.Tr>
-                <StackedData cell label="Size" value={block.size + " bytes"} />
+                <StackedData
+                  cell
+                  label="block_detail.version"
+                  value={block.version}
+                />
               </Table.Tr>
               <Table.Tr>
                 <StackedData
                   cell
-                  label="Average Fee"
+                  label="block_detail.bits"
+                  value={block.bits}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.size"
+                  value={block.size + " bytes"}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.average_fee"
                   value={hnsValues(block.averageFee)}
                 />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Nonce" value={block.nonce} />
+                <StackedData
+                  cell
+                  label="block_detail.nonce"
+                  value={block.nonce}
+                />
               </Table.Tr>
             </Table.Body>
           </Table>
@@ -68,41 +84,53 @@ export default function BlockAdvanced({ block }) {
                 <Table.Tr>
                   <StackedData
                     cell
-                    label="Next Block"
+                    label="block_detail.next_block"
                     value={block.nextHash}
                     link={"/block/" + (block.height + 1)}
                   />
                 </Table.Tr>
               )}
               <Table.Tr>
-                <StackedData cell label="Hash" value={block.hash} />
+                <StackedData
+                  cell
+                  label="block_detail.hash"
+                  value={block.hash}
+                />
               </Table.Tr>
               <Table.Tr>
                 <StackedData
                   cell
-                  label="Merkle Root"
+                  label="block_detail.merkle_root"
                   value={block.merkleRoot}
                 />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Tree Root" value={block.treeRoot} />
+                <StackedData
+                  cell
+                  label="block_detail.tree_root"
+                  value={block.treeRoot}
+                />
               </Table.Tr>
               <Table.Tr>
                 <StackedData
                   cell
-                  label="Filter Root"
+                  label="block_detail.filter_root"
                   value={block.filterRoot}
                 />
               </Table.Tr>
               <Table.Tr>
                 <StackedData
                   cell
-                  label="Reserved Root"
+                  label="block_detail.reserved_root"
                   value={block.reservedRoot}
                 />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Chainwork" value={block.chainwork} />
+                <StackedData
+                  cell
+                  label="block_detail.chainwork"
+                  value={block.chainwork}
+                />
               </Table.Tr>
             </Table.Body>
           </Table>

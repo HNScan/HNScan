@@ -20,31 +20,40 @@ export default function BlockSummary({ block, skeleton }) {
     return <BlockSummarySkeleton />;
   }
   return (
-    <Card title={t("Block Summary", { height: block.height })}>
+    <Card title={t("block_detail.summary", { height: block.height })}>
       <Row>
         <Col mobile={12} tablet>
-          <StackedData label="Received" value={timeAgo(block.time)} />
+          <StackedData
+            label="block_detail.received"
+            value={timeAgo(block.time)}
+          />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label="Total Transactions" value={block.txs} />
+          <StackedData label="block_detail.total_txs" value={block.txs} />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label="Total Fees" value={hnsValues(block.fees)} />
+          <StackedData
+            label="block_detail.total_fees"
+            value={hnsValues(block.fees)}
+          />
         </Col>
       </Row>
       <Row>
         <Col mobile={12} tablet>
           <StackedData
-            label="Mined By"
+            label="block_detail.mined_by"
             value={checkPool(block.miner)}
             link={"/address/" + block.miner}
           />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label="Weight" value={block.weight} />
+          <StackedData label="block_detail.weight" value={block.weight} />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label="Confirmations" value={block.confirmations} />
+          <StackedData
+            label="block_detail.confirmations"
+            value={block.confirmations}
+          />
         </Col>
       </Row>
     </Card>

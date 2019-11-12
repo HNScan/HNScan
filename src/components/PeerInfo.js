@@ -26,20 +26,24 @@ const PeerInfo = ({ peers }) => {
           <Table>
             <Table.Body>
               <Table.Tr>
-                <StackedData cell label="Address" value={peer.addr} />
+                <StackedData cell label="peers.address" value={peer.addr} />
               </Table.Tr>
               <Table.Tr>
                 <StackedData
                   cell
-                  label="Name"
-                  value={peer.name || t("No name provided")}
+                  label="peers.name"
+                  value={peer.name || t("peers.no_name")}
                 />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Services" value={peer.services} />
+                <StackedData
+                  cell
+                  label="peers.services"
+                  value={peer.services}
+                />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Version" value={peer.version} />
+                <StackedData cell label="peers.version" value={peer.version} />
               </Table.Tr>
             </Table.Body>
           </Table>
@@ -48,22 +52,22 @@ const PeerInfo = ({ peers }) => {
           <Table>
             <Table.Body>
               <Table.Tr>
-                <StackedData cell label="Location" value={"--"} />
+                <StackedData cell label="peers.location" value={"--"} />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Country" value={"--"} />
+                <StackedData cell label="peers.country" value={"--"} />
               </Table.Tr>
               <Table.Tr>
                 <StackedData
                   cell
-                  label="Whitelisted"
+                  label="peers.whitelisted"
                   value={peer.whitelisted.toString()}
                 />
               </Table.Tr>
               <Table.Tr>
                 <StackedData
                   cell
-                  label="Last Send / Last Receive"
+                  label="peers.last_send_received"
                   value={`${timeAgo(peer.lastsend) || "--"} / ${timeAgo(
                     peer.lastrecv
                   ) || "--"}`}
@@ -77,7 +81,7 @@ const PeerInfo = ({ peers }) => {
   ));
   return (
     <>
-      <Card title={t("Peers")}>{peerTable}</Card>
+      <Card title={t("peers.peers")}>{peerTable}</Card>
     </>
   );
 };

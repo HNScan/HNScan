@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card, Flex, Col } from "@urkellabs/ucl";
+import { useTranslation, Trans } from "react-i18next";
 
 // Components
 import {
@@ -25,17 +26,26 @@ const BlockCardItem = ({ block }) => {
             <ItemLogo>
               <BlockLogo />
             </ItemLogo>
-            Block #:&nbsp;
-            <Link to={"/block/" + block.height}>{block.height}</Link>
+            <Trans i18nKey="home.block_num" values={{ height: block.height }}>
+              <Link to={"/block/" + block.height}></Link>
+            </Trans>
           </LeftItemDetail>
           <LeftItemDetail>
-            Mined By:&nbsp;
-            <Link to={"/address/" + block.miner}>
-              {/* @todo check pool */}
-              {truncateHash(block.miner)}
-            </Link>
+            <Trans
+              i18nKey="home.mined_by"
+              values={{ miner: truncateHash(block.miner) }}
+            >
+              <Link to={"/address/" + block.miner}>
+                {/* @todo check pool */}
+              </Link>
+            </Trans>
           </LeftItemDetail>
-          <LeftItemDetail>Transactions: {block.tx.length}</LeftItemDetail>
+          <LeftItemDetail>
+            <Trans
+              i18nKey="home.transactions"
+              values={{ tx_num: block.tx.length }}
+            />
+          </LeftItemDetail>
         </Col>
         <Col>
           <RightItemDetail>
@@ -48,11 +58,15 @@ const BlockCardItem = ({ block }) => {
 };
 
 export default function RecentBlocks({ blocks }) {
+  const { t } = useTranslation();
   const blockRows = blocks.map((block, index) => (
     <BlockCardItem key={index} block={block} />
   ));
   return (
-    <Card title="Blocks" headerAction={<Link to="/blocks">View All</Link>}>
+    <Card
+      title={t("home.recent_blocks")}
+      headerAction={<Link to="/blocks"></Link>}
+    >
       <Flex columns>{blockRows}</Flex>
     </Card>
   );

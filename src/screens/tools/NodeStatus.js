@@ -21,36 +21,48 @@ const NodeStatusContainer = () => {
   let totalUploaded = formatLargeNumber(status.totalBytesSent, 2);
 
   return (
-    <Card title={t("Node Status")}>
+    <Card title={t("node_status.node_status")}>
       <Table>
         <Table.Body>
           <Table.Tr>
             <StackedData
               cell
-              label="Key @ Host : Port"
+              label="node_status.host"
               value={`${status.key}@${status.host}:${status.port}`}
             />
           </Table.Tr>
           <Table.Tr>
-            <StackedData cell label="Network" value={status.network} />
-          </Table.Tr>
-          <Table.Tr>
-            <StackedData cell label="Chain Progress" value={status.progress} />
+            <StackedData
+              cell
+              label="node_status.network"
+              value={status.network}
+            />
           </Table.Tr>
           <Table.Tr>
             <StackedData
               cell
-              label="Version"
+              label="node_status.chain_progress"
+              value={status.progress}
+            />
+          </Table.Tr>
+          <Table.Tr>
+            <StackedData
+              cell
+              label="node_status.version"
               value={`${status.version} (${status.agent})`}
             />
           </Table.Tr>
           <Table.Tr>
-            <StackedData cell label="Connections" value={status.connections} />
+            <StackedData
+              cell
+              label="node_status.connections"
+              value={status.connections}
+            />
           </Table.Tr>
           <Table.Tr>
             <StackedData
               cell
-              label="Difficulty"
+              label="node_status.difficulty"
               value={
                 <span>
                   {difficulty} x 10<sup>{exponent}</sup>
@@ -61,14 +73,14 @@ const NodeStatusContainer = () => {
           <Table.Tr>
             <StackedData
               cell
-              label="Uptime"
+              label="node_status.uptime"
               value={humanizeDuration(status.uptime * 1000)}
             />
           </Table.Tr>
           <Table.Tr>
             <StackedData
               cell
-              label="Total Downloaded"
+              label="node_status.total_downloaded"
               value={
                 totalDownloaded[0] + " " + totalDownloaded[1].name + "bytes"
               }
@@ -77,7 +89,7 @@ const NodeStatusContainer = () => {
           <Table.Tr>
             <StackedData
               cell
-              label="Total Uploaded"
+              label="node_status.total_uploaded"
               value={totalUploaded[0] + " " + totalUploaded[1].name + "bytes"}
             />
           </Table.Tr>

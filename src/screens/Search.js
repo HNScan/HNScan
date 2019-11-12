@@ -36,8 +36,8 @@ export default function Search() {
   if (location.state.length === 0) {
     return (
       <>
-        <Header>{t("search_header")}</Header>
-        <h2>{t("search_subheader")}</h2>
+        <Header>{t("search.header")}</Header>
+        <h2>{t("search.subheader")}</h2>
         <SearchBarWrapper>
           <SearchBar />
         </SearchBarWrapper>
@@ -56,7 +56,7 @@ export default function Search() {
 
   return (
     <>
-      <Header>{t("search_multiple_results")}</Header>
+      <Header>{t("search.multiple_results")}</Header>
       <SearchResultsTable className="table">
         <tbody>{results}</tbody>
       </SearchResultsTable>

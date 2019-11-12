@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Row, Col } from "@urkellabs/ucl";
+import { Row, Col, Card, Skeleton } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
 
 // Components
-import { Card, Skeleton } from "@urkellabs/ucl";
 import StackedData from "components/shared/StackedData";
 
 // Util
@@ -30,17 +30,18 @@ const SkeletonWrapper = styled.div`
 `;
 
 export default function AddressSummary({ hash, received, spent, confirmed }) {
+  const { t } = useTranslation();
   return (
     <>
       <AddressWrapper>
-        <AddressTitle>Address</AddressTitle>
+        <AddressTitle>{t("address_detail.address")}</AddressTitle>
         <AddressHash>{hash || <Skeleton />}</AddressHash>
       </AddressWrapper>
-      <Card title="Address Summary">
+      <Card title={t("address_detail.summary")}>
         <Row>
           <Col mobile={12} tablet>
             <StackedData
-              label="Balance"
+              label="address_detail.balance"
               value={
                 hnsValues(confirmed) || (
                   <SkeletonWrapper>
@@ -52,7 +53,7 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
           </Col>
           <Col mobile={12} tablet>
             <StackedData
-              label="Received"
+              label="address_detail.received"
               value={
                 hnsValues(received) || (
                   <SkeletonWrapper>
@@ -64,7 +65,7 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
           </Col>
           <Col mobile={12} tablet>
             <StackedData
-              label="Spent"
+              label="address_detail.spent"
               value={
                 hnsValues(spent) || (
                   <SkeletonWrapper>
