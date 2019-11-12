@@ -37,6 +37,7 @@ const LogoWrapper = styled(NavBar.Item)`
 `;
 
 const IconWrapper = styled.div`
+  display: inline-block;
   width: 14px;
 `;
 
