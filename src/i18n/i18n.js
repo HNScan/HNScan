@@ -21,7 +21,6 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
-    // @todo kill the debug
     debug: true,
     fallbackLng: "en",
     resources,

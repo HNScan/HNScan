@@ -32,18 +32,24 @@ const PutsWrapper = styled.div`
   text-align: center;
 `;
 
-// @todo translate other values in this file
 function renderInput(input) {
   if (input.coinbase) {
-    return <span>{hnsValues(input.value)} from Block Reward</span>;
+    return (
+      <Trans
+        i18nKey="puts_list.input_from_reward"
+        values={{ value: hnsValues(input.value) }}
+      />
+    );
   } else if (input.airdrop) {
-    return <span>Airdrop Claim</span>;
+    return <Trans i18nKey="puts_list.airdrop_claim" />;
   } else {
     return (
-      <span>
-        {hnsValues(input.value)} from{" "}
-        <Link to={"/address/" + input.address}>{input.address}</Link>
-      </span>
+      <Trans
+        i18nKey="puts_list.input_from"
+        values={{ value: hnsValues(input.value), address: input.address }}
+      >
+        <Link to={"/address/" + input.address}></Link>
+      </Trans>
     );
   }
 }
@@ -56,7 +62,7 @@ export const InputList = props => {
   return (
     <Container>
       <Title>
-        <Trans i18nKey="block_detail.input" count={inputs.length} />
+        <Trans i18nKey="puts_list.input" count={inputs.length} />
       </Title>
       <DataContainer>{inputs}</DataContainer>
     </Container>
@@ -66,25 +72,34 @@ export const InputList = props => {
 const renderOutputAction = output => {
   if (output.action === "NONE") {
     return (
-      <span>
-        {hnsValues(output.value)} to{" "}
-        <Link to={"/address/" + output.address}>{output.address}</Link>
-      </span>
+      <Trans
+        i18nKey="puts_list.output_to"
+        values={{ value: hnsValues(output.value), address: output.address }}
+      >
+        <Link to={"/address/" + output.address}></Link>
+      </Trans>
     );
   } else if (output.action === "BID") {
     return (
-      <span>
-        {output.action} for{" "}
-        <Link to={"/name/" + output.name}>{output.name}</Link> of{" "}
-        {hnsValues(output.value)}
-      </span>
+      <Trans
+        i18nKey="puts_list.output_for_of"
+        values={{
+          action: output.action,
+          name: output.name,
+          value: hnsValues(output.value)
+        }}
+      >
+        <Link to={"/name/" + output.name}></Link>
+      </Trans>
     );
   } else {
     return (
-      <span>
-        {output.action} for{" "}
-        <Link to={"/name/" + output.name}>{output.name}</Link>
-      </span>
+      <Trans
+        i18nKey="puts_list.output_for"
+        values={{ action: output.action, name: output.name }}
+      >
+        <Link to={"/name/" + output.name}></Link>
+      </Trans>
     );
   }
 };
@@ -97,11 +112,7 @@ export const OutputList = props => {
   return (
     <Container>
       <Title>
-        <Trans
-          i18nKey="block_detail.output"
-          count={outputs.length}
-          as={Title}
-        />
+        <Trans i18nKey="puts_list.output" count={outputs.length} as={Title} />
       </Title>
       <DataContainer>{outputs}</DataContainer>
     </Container>

@@ -57,11 +57,20 @@
       "chainwork": "Chainwork",
 
       "transaction": "Transaction",
-      "transaction_plural": "Transactions",
+      "transaction_plural": "Transactions"
+    },
+
+    "puts_list": {
       "input": "1 Input",
       "input_plural": "{{count}} Inputs",
       "output": "1 Output",
-      "output_plural": "{{count}} Outputs"
+      "output_plural": "{{count}} Outputs",
+      "airdrop_claim": "Airdrop Claim",
+      "input_from_reward": "{{value}} from Block Reward",
+      "input_from": "{{value}} from <0>{{address}}</0>",
+      "output_to": "{{value}} to <0>{{address}}</0>",
+      "output_for": "{{action}} for <0>{{name}}</0>",
+      "output_for_of": "{{action}} for <0>{{name}}</0> of {{value}}"
     },
 
     "names": {
