@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { NavBar, breakpoint, ExternalLink } from "@urkellabs/ucl";
+import {
+  NavBar,
+  breakpoint,
+  ExternalLink,
+  ThemeToggler,
+  LanguageSwitcher
+} from "@urkellabs/ucl";
 
 // Containers
 import SearchBar from "containers/SearchBar";
@@ -39,6 +45,10 @@ const LogoWrapper = styled(NavBar.Item)`
 const IconWrapper = styled.div`
   display: inline-block;
   width: 14px;
+`;
+
+const FullWidthContainer = styled.div`
+  width: 100%;
 `;
 
 //@todo possibly integrate https://usehooks.com/useWindowSize/ to only trigger nav clicks on mobile.
@@ -138,6 +148,11 @@ export default function Navigation() {
                   <IconWrapper>
                     <ExternalLink />
                   </IconWrapper>
+                </NavBar.Item>
+                <NavBar.Item>
+                  <FullWidthContainer>
+                    <LanguageSwitcher />
+                  </FullWidthContainer>
                 </NavBar.Item>
               </NavBar.Dropdown>
             </NavLinkItem>
