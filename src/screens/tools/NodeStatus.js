@@ -2,7 +2,7 @@ import React, { Suspense, useState } from "react";
 import { useResource } from "rest-hooks";
 import humanizeDuration from "humanize-duration";
 import { useLocation, useHistory } from "react-router-dom";
-import { Card, Table, Modal, Header, Text } from "@urkellabs/ucl";
+import { Card, Table, Modal, Header, Text, Code } from "@urkellabs/ucl";
 
 // Components
 import StackedData from "components/shared/StackedData";
@@ -21,8 +21,8 @@ function ConnectHelp(props) {
       title={"Connecting to this node"}
     >
       <p>
-        This node's IP is <code>{props.ip}</code> and identity key is:{" "}
-        <code>{props.idkey}</code>
+        This node's IP is <Code>{props.ip}</Code> and identity key is:{" "}
+        <Code>{props.idkey}</Code>
       </p>
       <p>There are 2 supported methods of connecting to this node.</p>
       <Header medium>Through the RPC</Header>
