@@ -25,6 +25,7 @@ function NameView({ name, page, changePage, url }) {
     name
   });
   const pages = Math.ceil(total / limit);
+  //@todo MORE CONTAINERS
   return (
     <>
       <NameSummary name={nameData} />

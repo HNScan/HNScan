@@ -1,16 +1,11 @@
 import React, { Suspense } from "react";
-import { useResource } from "rest-hooks";
 import styled from "styled-components";
+import { useQuery } from "@urkellabs/ucl";
 
 //Components
 import NetworkSummary from "components/home/NetworkSummary";
 import RecentTransactions from "components/home/RecentTransactions";
 import RecentBlocks from "components/home/RecentBlocks";
-
-// Resources
-import NetworkResource from "resources/NetworkResource";
-import BlockResource from "resources/BlockResource";
-import TransactionResource from "resources/TransactionResource";
 
 //@todo
 //styled components
@@ -39,13 +34,11 @@ const IndividualCardContainer = styled.div`
 
 //@todo skeleton.
 function HomeView() {
-  //API Calls
-  const [summary, blocks, txs] = useResource(
-    [NetworkResource.detailShape(), {}],
-    [BlockResource.listShape(), { limit: 5 }],
-    [TransactionResource.listShape(), { limit: 5 }]
-  );
+  const { data: summary } = useQuery("/summary");
+  const { data: blocks } = useQuery("/blocks/", { limit: 5 });
+  const { data: txs } = useQuery("/txs/", { limit: 5 });
 
+  //All of these below should just be containers. @todo
   return (
     <>
       <HorizontalContainer>
