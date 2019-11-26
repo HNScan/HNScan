@@ -1,15 +1,11 @@
 import React, { useEffect } from "react";
-import { useResource } from "rest-hooks";
 import styled from "styled-components";
-import { Card } from "@urkellabs/ucl";
+import { Card, useQuery } from "@urkellabs/ucl";
 
 // AMChart imports
 import * as am4maps from "@amcharts/amcharts4/maps";
 import * as am4core from "@amcharts/amcharts4/core";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
-
-// API Resources
-import MapResource from "../resources/MapResource";
 
 const Map = styled.div`
   width: 100%;
@@ -17,7 +13,7 @@ const Map = styled.div`
 `;
 
 export default function PeersMap() {
-  const { data } = useResource(MapResource.detailShape(), {});
+  const { data } = useQuery("/mapdata");
 
   useEffect(() => {
     let targetSVG =
@@ -67,7 +63,7 @@ export default function PeersMap() {
     imageSeriesTemplate.tooltipText = "{title}";
     imageSeriesTemplate.setStateOnChildren = true;
     imageSeriesTemplate.states.create("hover");
-    imageSeries.data = data;
+    imageSeries.data = data.data;
 
     return () => {
       if (map) {

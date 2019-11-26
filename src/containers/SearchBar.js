@@ -97,6 +97,7 @@ const SearchBar = props => {
   //Search API Call
   const search = async e => {
     e.preventDefault();
+    //@todo convert this to useQuery
     let result = await fetch(
       `${process.env.REACT_APP_API_URL}/search?q=${query}`
     );
