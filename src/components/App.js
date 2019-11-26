@@ -37,13 +37,17 @@ import NotFoundScreen from "screens/errors/NotFound";
 // Internationalization
 import "../i18n/i18n";
 
+// Hooks
+import useNetwork from "hooks/useNetwork";
+
 //@todo useNetwork custom hook
 function App() {
   const [theme] = useTheme();
+  const [network] = useNetwork();
   return (
     <NetworkErrorBoundary>
       <ThemeProvider theme={theme}>
-        <ApiConfig config={{ url: "http://localhost:8080" }}>
+        <ApiConfig config={{ url: network }}>
           <>
             <GlobalStyles />
             <Router>
