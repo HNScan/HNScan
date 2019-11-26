@@ -8,12 +8,13 @@ import PeerInfo from "components/PeerInfo";
 import Map from "containers/NodeMap";
 
 const PeersContainer = ({ page }) => {
+  const limit = 10;
   const { data } = useQuery("/peers/", { page });
 
   return (
     <>
       <PeerInfo peers={data.result} />
-      <Pagination totalPages={Math.ceil(data.total / data.limit)} page={page} />
+      <Pagination totalPages={Math.ceil(data.total / limit)} page={page} />
     </>
   );
 };
