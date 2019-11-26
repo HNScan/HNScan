@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Card, Col, Row, Table } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
+import theme from "styled-theming";
 
 // Components
 import StackedData from "components/shared/StackedData";
@@ -8,8 +10,13 @@ import StackedData from "components/shared/StackedData";
 // Util
 import { timeAgo } from "utils/util";
 
+const borderColor = theme("mode", {
+  light: "#dfdfdf",
+  dark: "#444444"
+});
+
 const SummaryCardItem = styled.div`
-  border-bottom: 1px solid ${props => props.theme.cards.borderColor};
+  border-bottom: 1px solid ${borderColor};
   padding: 24px;
   &:last-child {
     border-bottom: 0;
@@ -17,6 +24,7 @@ const SummaryCardItem = styled.div`
 `;
 
 const PeerInfo = ({ peers }) => {
+  const { t } = useTranslation();
   const peerTable = peers.map(peer => (
     <SummaryCardItem key={peer.addr}>
       <Row>
@@ -24,20 +32,24 @@ const PeerInfo = ({ peers }) => {
           <Table>
             <Table.Body>
               <Table.Tr>
-                <StackedData cell label="Address" value={peer.addr} />
+                <StackedData cell label="peers.address" value={peer.addr} />
               </Table.Tr>
               <Table.Tr>
                 <StackedData
                   cell
-                  label="Name"
-                  value={peer.name || "No name provided"}
+                  label="peers.name"
+                  value={peer.name || t("peers.no_name")}
                 />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Services" value={peer.services} />
+                <StackedData
+                  cell
+                  label="peers.services"
+                  value={peer.services}
+                />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Version" value={peer.version} />
+                <StackedData cell label="peers.version" value={peer.version} />
               </Table.Tr>
             </Table.Body>
           </Table>
@@ -46,22 +58,22 @@ const PeerInfo = ({ peers }) => {
           <Table>
             <Table.Body>
               <Table.Tr>
-                <StackedData cell label="Location" value={"--"} />
+                <StackedData cell label="peers.location" value={"--"} />
               </Table.Tr>
               <Table.Tr>
-                <StackedData cell label="Country" value={"--"} />
+                <StackedData cell label="peers.country" value={"--"} />
               </Table.Tr>
               <Table.Tr>
                 <StackedData
                   cell
-                  label="Whitelisted"
+                  label="peers.whitelisted"
                   value={peer.whitelisted.toString()}
                 />
               </Table.Tr>
               <Table.Tr>
                 <StackedData
                   cell
-                  label="Last Send / Last Receive"
+                  label="peers.last_send_received"
                   value={`${timeAgo(peer.lastsend) || "--"} / ${timeAgo(
                     peer.lastrecv
                   ) || "--"}`}
@@ -75,7 +87,7 @@ const PeerInfo = ({ peers }) => {
   ));
   return (
     <>
-      <Card title="Peers">{peerTable}</Card>
+      <Card title={t("peers.peers")}>{peerTable}</Card>
     </>
   );
 };

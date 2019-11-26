@@ -3,11 +3,9 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Table } from "@urkellabs/ucl";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 const CellWrapper = styled(Table.Td)`
-  background: ${props => props.theme.cards.background};
-  border-color: ${props =>
-    props.theme.cards.borderColor} !important; // Bulma override
   display: flex;
   flex-direction: column;
 `;
@@ -20,14 +18,12 @@ const DivWrapper = styled.div`
 `;
 
 const Value = styled.span`
-  color: ${props => props.theme.global.textColor};
   font-size: ${props => (props.cell ? "12px" : "16px")};
   word-wrap: break-word;
   word-break: break-all;
 `;
 
 const Label = styled.span`
-  color: ${props => props.theme.global.textColor};
   font-weight: 800;
   font-size: ${props => (props.cell ? "14px" : "16px")};
 `;
@@ -35,7 +31,7 @@ const Label = styled.span`
 const StackedBody = props => {
   return (
     <>
-      <Label {...props}>{props.label}</Label>
+      <Label {...props}>{props.t(props.label)}</Label>
       <Value {...props}>
         {props.link ? <Link to={props.link}>{props.value}</Link> : props.value}
       </Value>
@@ -44,15 +40,16 @@ const StackedBody = props => {
 };
 
 const StackedData = props => {
+  const { t } = useTranslation();
   return props.cell ? (
     <CellWrapper>
       {" "}
-      <StackedBody {...props} />{" "}
+      <StackedBody t={t} {...props} />{" "}
     </CellWrapper>
   ) : (
     <DivWrapper>
       {" "}
-      <StackedBody {...props} />{" "}
+      <StackedBody t={t} {...props} />{" "}
     </DivWrapper>
   );
 };

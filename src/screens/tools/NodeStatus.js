@@ -3,6 +3,7 @@ import { useResource } from "rest-hooks";
 import humanizeDuration from "humanize-duration";
 import { useLocation, useHistory } from "react-router-dom";
 import { Card, Table, Modal, Header, Text, Code } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
 
 // Components
 import StackedData from "components/shared/StackedData";
@@ -57,52 +58,56 @@ const NodeStatusContainer = () => {
     });
 
   const status = useResource(StatusResource.detailShape(), {});
+  const { t } = useTranslation();
   let [difficulty, exponent] = sciNotation(status.difficulty, 5);
   let totalDownloaded = formatLargeNumber(status.totalBytesRecv, 2);
   let totalUploaded = formatLargeNumber(status.totalBytesSent, 2);
 
   return (
     <>
-      <Card title="Node Status">
+      <Card title={t("node_status.node_status")}>
         <Table>
           <Table.Body>
             <Table.Tr>
               <StackedData
                 cell
-                label="Key @ Host : Port"
+                label="node_status.host"
                 value={`${status.key}@${status.host}:${status.port}`}
               />
               <button onClick={toggleModal} />
             </Table.Tr>
             <Table.Tr>
-              <StackedData cell label="Network" value={status.network} />
+              <StackedData
+                cell
+                label="node_status.network"
+                value={status.network}
+              />
             </Table.Tr>
             <Table.Tr>
               <StackedData
                 cell
-                label="Chain Progress"
+                label="node_status.chain_progress"
                 value={status.progress}
               />
             </Table.Tr>
             <Table.Tr>
               <StackedData
                 cell
-                label="Version"
+                label="node_status.version"
                 value={`${status.version} (${status.agent})`}
               />
             </Table.Tr>
             <Table.Tr>
               <StackedData
                 cell
-                label="Connections"
+                label="node_status.connections"
                 value={status.connections}
               />
             </Table.Tr>
             <Table.Tr>
-              {/* todo allow stacked component to accept this */}
               <StackedData
                 cell
-                label="Difficulty"
+                label="node_status.difficulty"
                 value={
                   <span>
                     {difficulty} x 10<sup>{exponent}</sup>
@@ -113,14 +118,14 @@ const NodeStatusContainer = () => {
             <Table.Tr>
               <StackedData
                 cell
-                label="Uptime"
+                label="node_status.uptime"
                 value={humanizeDuration(status.uptime * 1000)}
               />
             </Table.Tr>
             <Table.Tr>
               <StackedData
                 cell
-                label="Total Downloaded"
+                label="node_status.total_downloaded"
                 value={
                   totalDownloaded[0] + " " + totalDownloaded[1].name + "bytes"
                 }
@@ -129,7 +134,7 @@ const NodeStatusContainer = () => {
             <Table.Tr>
               <StackedData
                 cell
-                label="Total Uploaded"
+                label="node_status.total_uploaded"
                 value={totalUploaded[0] + " " + totalUploaded[1].name + "bytes"}
               />
             </Table.Tr>

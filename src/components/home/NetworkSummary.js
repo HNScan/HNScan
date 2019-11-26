@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Card } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
 
 // Components
 import StackedData from "components/shared/StackedData";
@@ -25,33 +26,35 @@ export default function NetworkSummary({ info }) {
   let chainwork = sciNotation(parseInt("0x" + info.chainWork), 2);
   let registeredNames = info.registeredNames;
 
+  const { t } = useTranslation();
+
   return (
-    <Card title="Network Summary">
+    <Card title={t("home.summary")}>
       {/* ----- Network Summary - Top Row ----- */}
       <Row>
         <Col mobile={12} tablet>
           <StackedData
-            label="Hashrate"
+            label="home.hashrate"
             value={`${hashrate[0].toString()} ${hashrate[1].abbreviation}H/s`}
           />
         </Col>
         <Col mobile={12} tablet>
           <StackedData
-            label="Unconfirmed"
+            label="home.unconfirmed"
             value={handleUnconfirmed(unconfirmed, memSize)}
           />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label="Network" value={network} />
+          <StackedData label="home.network" value={network} />
         </Col>
       </Row>
       <Row>
         <Col mobile={12} tablet>
-          <StackedData label="Opened Names" value={registeredNames} />
+          <StackedData label="home.opened_names" value={registeredNames} />
         </Col>
         <Col mobile={12} tablet>
           <StackedData
-            label="Difficulty"
+            label="home.difficulty"
             value={
               <>
                 {difficulty[0]} x 10
@@ -62,7 +65,7 @@ export default function NetworkSummary({ info }) {
         </Col>
         <Col mobile={12} tablet>
           <StackedData
-            label="Chainwork"
+            label="home.chainwork"
             value={
               <>
                 {chainwork[0]} x 10

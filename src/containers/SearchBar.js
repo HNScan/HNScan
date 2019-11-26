@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import theme from "styled-theming";
 
 import { SearchIcon } from "@urkellabs/ucl";
@@ -91,6 +92,7 @@ const SearchInput = styled.input`
 const SearchBar = props => {
   const [query, setQuery] = useState("");
   const history = useHistory();
+  const { t } = useTranslation();
 
   //Search API Call
   const search = async e => {
@@ -118,7 +120,7 @@ const SearchBar = props => {
       {/* <button className="hiddenSearchSubmit" type="submit"></button> */}
       <SearchInput
         type="search"
-        placeholder="Search the HNS Blockchain"
+        placeholder={t("search.placeholder")}
         maxLength="64"
         value={query}
         onChange={e => setQuery(e.target.value)}

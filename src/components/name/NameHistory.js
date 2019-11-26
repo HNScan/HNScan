@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Pagination, Card, Table } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
 
 // Util
 import { hnsValues, timeAgo } from "utils/util";
 
-//@todo th/tr do not work on Dark mode!! We need to have dark mode just set the global font color to something different.
-//@todo last element is showing a bottom border.
 export default function NameHistory({ history, page, changePage, pages, url }) {
+  const { t } = useTranslation();
   const names = history.map((name, index) => (
     <Table.Tr key={index}>
       <Table.Td>{name.action}</Table.Td>
@@ -22,7 +22,7 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
   ));
   return (
     <>
-      <Card title="History">
+      <Card title={t("name_detail.history")} collapse>
         {/* @todo remove all these class names. */}
         {/* @todo need links in here */}
         {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
@@ -31,10 +31,10 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
           <Table>
             <Table.Head>
               <Table.Tr>
-                <Table.Th>Action</Table.Th>
-                <Table.Th>Time</Table.Th>
-                <Table.Th>Block Height</Table.Th>
-                <Table.Th>Value</Table.Th>
+                <Table.Th>{t("name_detail.action")}</Table.Th>
+                <Table.Th>{t("name_detail.time")}</Table.Th>
+                <Table.Th>{t("name_detail.block_height")}</Table.Th>
+                <Table.Th>{t("name_detail.value")}</Table.Th>
               </Table.Tr>
             </Table.Head>
             <Table.Body>{names}</Table.Body>
