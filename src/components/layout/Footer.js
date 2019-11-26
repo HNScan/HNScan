@@ -3,10 +3,21 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import theme from "styled-theming";
-import { ThemeToggler, ExternalLink } from "@urkellabs/ucl";
+import { ThemeToggler, ExternalLink, Select } from "@urkellabs/ucl";
 
 // SVGs
 import LogoText from "components/svg/LogoText";
+
+//Hooks
+import useNetwork from "hooks/useNetwork";
+
+//@todo move this out.
+//@todo have this take settings from a config file?
+//@todo can I get dropdown to be a dropup?
+const NetworkToggle = styled(Select)`
+  margin-left: 20px;
+  min-width: 200px;
+`;
 
 const Logo = styled(LogoText)`
   margin-bottom: 10px;
@@ -19,6 +30,10 @@ const SubText = styled.span`
 
 const ToggleWrapper = styled.div`
   margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 
 const IconWrapper = styled.div`
@@ -154,6 +169,7 @@ export const ToggleThemeContainer = styled.div`
 
 export default function Footer() {
   const { t } = useTranslation();
+  let [network, setNetwork] = useNetwork();
   return (
     <FooterContainer>
       <ContentContainer>
@@ -262,6 +278,19 @@ export default function Footer() {
       <ToggleThemeContainer>
         <ToggleWrapper>
           <ThemeToggler />
+          <p>Current Network:</p>
+          <NetworkToggle
+            options={[
+              { value: "http://localhost:8080", label: "Local Testnet" },
+              { value: "https://api.hnscan.com", label: "HNScan Testnet" },
+              { value: "http://", label: "Experimental Testnet" }
+            ]}
+            placeholder="Testnet"
+            defaultValue={network}
+            onChange={kv => {
+              setNetwork(kv.value);
+            }}
+          />
         </ToggleWrapper>
         <SubText>
           {/* @todo: dynamicize this */}
