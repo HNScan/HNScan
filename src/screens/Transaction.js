@@ -1,16 +1,12 @@
 import React, { Suspense } from "react";
-import { useResource } from "rest-hooks";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { Row, Col, Card, Table } from "@urkellabs/ucl";
+import { Row, Col, Card, Table, useQuery } from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
 
 // Components
 import StackedData from "components/shared/StackedData";
 import { InputList, OutputList } from "components/shared/PutsList";
-
-// Resources
-import TransactionResource from "resources/TransactionResource";
 
 // Util
 import { timeAgo, hnsValues, sumTxOutputs } from "utils/util";
@@ -34,7 +30,7 @@ const Container = styled.div`
 
 function TxDetailScreen({ hash }) {
   const { t } = useTranslation();
-  const tx = useResource(TransactionResource.detailShape(), { hash });
+  const tx = useQuery("/tx" + hash);
 
   return (
     <>

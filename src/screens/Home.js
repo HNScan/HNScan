@@ -46,10 +46,10 @@ function HomeView() {
       </HorizontalContainer>
       <VerticalContainer>
         <IndividualCardContainer>
-          <RecentTransactions txs={txs} />
+          <RecentTransactions txs={txs.result} />
         </IndividualCardContainer>
         <IndividualCardContainer>
-          <RecentBlocks blocks={blocks} />
+          <RecentBlocks blocks={blocks.result} />
         </IndividualCardContainer>
       </VerticalContainer>
     </>
