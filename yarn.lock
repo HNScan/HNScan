@@ -1609,10 +1609,10 @@
     semver "^6.3.0"
     tsutils "^3.17.1"
 
-"@urkellabs/ucl@^0.1.24":
-  version "0.1.24"
-  resolved "https://registry.yarnpkg.com/@urkellabs/ucl/-/ucl-0.1.24.tgz#55d04e81faaecf189dd2002b0273261c6f74310b"
-  integrity sha512-Wj7URdKbs5ueAHbNOzFji+4km0EZOFHrubcj84W+s2xmrof4hOiFE2gB/6ssCBGw0RdGBA5DnUVO8Uf5XQcldw==
+"@urkellabs/ucl@^0.1.26":
+  version "0.1.26"
+  resolved "https://registry.yarnpkg.com/@urkellabs/ucl/-/ucl-0.1.26.tgz#82133b9aecadaafc983c019c5e18001f2e6a856f"
+  integrity sha512-Hw+FNOBGcI2aqcGa9JhMTxSzf9DXiQ5G/8D6X5MSACKonbUzhgNRr4Olxit0YUjZeIZrXWG6CIE1umUPCWzs/Q==
   dependencies:
     "@babel/runtime" "^7.6.3"
     jsx-to-string "^1.4.0"
