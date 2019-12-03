@@ -16,7 +16,7 @@ const SmallText = styled(Text)`
 `;
 
 const supportedOptions = [
-  { value: "en-US", label: "English" },
+  { value: "en", label: "English" },
   { value: "zh", label: "Chinese (incomplete)" }
 ];
 
@@ -40,18 +40,18 @@ function SettingsInput({ label, description, children }) {
 
 export default function Settings() {
   const { t, i18n } = useTranslation();
+
   return (
     <Card title={t("settings.title")}>
-      <SettingsInput
+      {/* <SettingsInput
         label={t("settings.language_title")}
         description={t("settings.language_desc")}
       >
-        {/* @todo: we may need to wrap this sucker in a suspense, currently not working */}
         <LanguageSwitcher
           supportedOptions={supportedOptions}
-          updateLanguage={value => i18n.changeLanguage(value)}
+          updateLanguage={value => i18n.changeLanguage(value, () => console.log(value))}
         />
-      </SettingsInput>
+      </SettingsInput> */}
       <SettingsInput
         label={t("settings.theme_title")}
         description={t("settings.theme_desc")}
