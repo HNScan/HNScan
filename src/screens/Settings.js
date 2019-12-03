@@ -43,15 +43,17 @@ export default function Settings() {
 
   return (
     <Card title={t("settings.title")}>
-      {/* <SettingsInput
+      <SettingsInput
         label={t("settings.language_title")}
         description={t("settings.language_desc")}
       >
         <LanguageSwitcher
           supportedOptions={supportedOptions}
-          updateLanguage={value => i18n.changeLanguage(value, () => console.log(value))}
+          updateLanguage={value =>
+            i18n.changeLanguage(value, () => console.log(value))
+          }
         />
-      </SettingsInput> */}
+      </SettingsInput>
       <SettingsInput
         label={t("settings.theme_title")}
         description={t("settings.theme_desc")}
