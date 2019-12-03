@@ -6,7 +6,8 @@ import {
   LanguageSwitcher,
   Row,
   Select,
-  Text
+  Text,
+  ThemeToggler
 } from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
@@ -62,7 +63,7 @@ export default function Settings() {
         label={t("settings.theme_title")}
         description={t("settings.theme_desc")}
       >
-        <Select />
+        <ThemeToggler />
       </SettingsInput>
     </Card>
   );
