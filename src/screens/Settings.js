@@ -5,7 +5,6 @@ import {
   Header,
   LanguageSwitcher,
   Row,
-  Select,
   Text,
   ThemeToggler
 } from "@urkellabs/ucl";
@@ -52,12 +51,6 @@ export default function Settings() {
           supportedOptions={supportedOptions}
           updateLanguage={value => i18n.changeLanguage(value)}
         />
-      </SettingsInput>
-      <SettingsInput
-        label={t("settings.network_title")}
-        description={t("settings.network_desc")}
-      >
-        <Select />
       </SettingsInput>
       <SettingsInput
         label={t("settings.theme_title")}
