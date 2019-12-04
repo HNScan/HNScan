@@ -1,0 +1,40 @@
+name: Deploy Production Site and Bump Version
+on:
+  push:
+      branches:
+        - master
+      paths-ignore:
+        - 'package.json'
+        - 'CHANGELOG.md'
+
+jobs:
+  build:
+    name: Deploy To Github Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Bump version and push tag
+        uses: TriPSs/conventional-changelog-action@master
+        with:
+          github-token: ${{ secrets.ACCESS_TOKEN }}
+          git-message: 'chore(release): {version}'
+          preset: 'angular'
+          tag-prefix: ''
+          output-file: 'CHANGELOG.md'
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
+      - name: Build and Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v2
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BASE_BRANCH: master
+          BRANCH: gh-pages
+          FOLDER: build
+          BUILD_SCRIPT: yarn build
+          REACT_APP_API_URL: https://api.hnscan.com
+
+

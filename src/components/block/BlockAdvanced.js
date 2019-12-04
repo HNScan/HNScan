@@ -1,102 +1,141 @@
 import React from "react";
-import Card from "../styles/Card";
-import StackedData from "../Stacked/StackedComponent";
-import { sciNotation, hnsValues } from "../../util/util";
+import { Row, Col, Card, Table } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
+
+// Components
+import StackedData from "components/shared/StackedData";
+
+// Util
+import { sciNotation, hnsValues } from "utils/util";
 
 export default function BlockAdvanced({ block }) {
   let [difficulty, exponent] = sciNotation(block.difficulty, 5);
-
+  const { t } = useTranslation();
   return (
-    <Card>
-      <Card.Header>
-        <Card.HeaderTitle>Advanced</Card.HeaderTitle>
-      </Card.Header>
-      {/* @todo remove all these class names. */}
-      {/* @todo need links in here */}
+    <Card title={t("block_detail.advanced")} collapse closed>
       {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
-      <div className="card-content">
-        <div className="columns">
-          <div className="column is-half">
-            <table className="table is-fullwidth">
-              <tbody>
-                {block.prevBlock && (
-                  <tr>
-                    <StackedData
-                      label="Previous Block"
-                      value={block.prevBlock}
-                      link={"/block/" + (block.height - 1)}
-                    />
-                  </tr>
-                )}
-                <tr>
+      <Row>
+        <Col mobile={12} desktop>
+          <Table>
+            <Table.Body>
+              {block.prevBlock && (
+                <Table.Tr>
                   <StackedData
-                    label="Difficulty"
-                    value={
-                      <span>
-                        {difficulty} x 10<sup>{exponent}</sup>
-                      </span>
-                    }
+                    cell
+                    label="block_detail.previous_block"
+                    value={block.prevBlock}
+                    link={"/block/" + (block.height - 1)}
                   />
-                </tr>
-                <tr>
-                  <StackedData label="Version" value={block.version} />
-                </tr>
-                <tr>
-                  <StackedData label="Bits" value={block.bits} />
-                </tr>
-                <tr>
-                  <StackedData label="Size" value={block.size + " bytes"} />
-                </tr>
-                <tr>
+                </Table.Tr>
+              )}
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.difficulty"
+                  value={
+                    <span>
+                      {difficulty} x 10<sup>{exponent}</sup>
+                    </span>
+                  }
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.version"
+                  value={block.version}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.bits"
+                  value={block.bits}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.size"
+                  value={block.size + " bytes"}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.average_fee"
+                  value={hnsValues(block.averageFee)}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.nonce"
+                  value={block.nonce}
+                />
+              </Table.Tr>
+            </Table.Body>
+          </Table>
+        </Col>
+        <Col mobile={12} desktop>
+          <Table>
+            <Table.Body>
+              {block.nextHash && (
+                <Table.Tr>
                   <StackedData
-                    label="Average Fee"
-                    value={hnsValues(block.averageFee)}
+                    cell
+                    label="block_detail.next_block"
+                    value={block.nextHash}
+                    link={"/block/" + (block.height + 1)}
                   />
-                </tr>
-                <tr>
-                  <StackedData label="Nonce" value={block.nonce} />
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="column is-half">
-            <table className="table is-fullwidth">
-              <tbody>
-                {block.nextHash && (
-                  <tr>
-                    <StackedData
-                      label="Next Block"
-                      value={block.nextHash}
-                      link={"/block/" + (block.height + 1)}
-                    />
-                  </tr>
-                )}
-                <tr>
-                  <StackedData label="Hash" value={block.hash} />
-                </tr>
-                <tr>
-                  <StackedData label="Merkle Root" value={block.merkleRoot} />
-                </tr>
-                <tr>
-                  <StackedData label="Tree Root" value={block.treeRoot} />
-                </tr>
-                <tr>
-                  <StackedData label="Filter Root" value={block.filterRoot} />
-                </tr>
-                <tr>
-                  <StackedData
-                    label="Reserved Root"
-                    value={block.reservedRoot}
-                  />
-                </tr>
-                <tr>
-                  <StackedData label="Chainwork" value={block.chainwork} />
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+                </Table.Tr>
+              )}
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.hash"
+                  value={block.hash}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.merkle_root"
+                  value={block.merkleRoot}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.tree_root"
+                  value={block.treeRoot}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.filter_root"
+                  value={block.filterRoot}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.reserved_root"
+                  value={block.reservedRoot}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.chainwork"
+                  value={block.chainwork}
+                />
+              </Table.Tr>
+            </Table.Body>
+          </Table>
+        </Col>
+      </Row>
     </Card>
   );
 }

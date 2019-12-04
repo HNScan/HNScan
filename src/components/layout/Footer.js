@@ -1,15 +1,50 @@
 import React from "react";
 import styled from "styled-components";
-
-//@todo make this an svg.
-import Logo from "../Logos/hnscan";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import theme from "styled-theming";
+import { Cog, ExternalLink } from "@urkellabs/ucl";
 
-import ThemeToggler from "../ThemeToggler";
+// SVGs
+import LogoText from "components/svg/LogoText";
 
-//@todo I really want this to be a span.
-const SubText = styled.div`
-  font-size: 8px;
+// Misc
+import pkg from "../../../package.json";
+
+// @note we should be exporting this from somewhere other than here. But, not a big deal,
+// that is something to be done later.
+const textColor = theme("mode", {
+  light: "#4a4a4a",
+  dark: "#afafaf"
+});
+
+const textColorHover = theme("mode", {
+  light: "#646464",
+  dark: "#969696"
+});
+
+const Logo = styled(LogoText)`
+  margin-bottom: 10px;
+  width: 100px;
+`;
+
+const SubText = styled.span`
+  font-size: 10px;
+`;
+const CogWrapper = styled.div`
+  color: ${textColor};
+  margin-bottom: 0.75rem;
+  height: 24px;
+  width: 24px;
+
+  &:hover {
+    color: ${textColorHover};
+  }
+`;
+
+const IconWrapper = styled.div`
+  display: inline-block;
+  width: 10pt;
 `;
 
 export const FooterContainer = styled.div`
@@ -44,8 +79,6 @@ export const LeftContent = styled.div`
 
   @media (min-width: 1024px) {
     text-align: left;
-    flex-direction: row;
-    min-width: 200px;
     max-width: none;
   }
 `;
@@ -55,7 +88,6 @@ export const Tagline = styled.div`
 `;
 
 export const Header = styled.div`
-  color: ${props => props.theme.global.textColor};
   text-transform: uppercase;
   font-size: 10pt;
   letter-spacing: 1px;
@@ -73,11 +105,7 @@ export const FooterLink = styled.a`
   font-size: 10pt;
   margin: 8px 0;
   width: 55%;
-  color: ${props => props.theme.global.textColor};
-
-  &:hover {
-    color: ${props => props.theme.global.linkColorHover};
-  }
+  color: ${textColor};
 
   @media (min-width: 445px) {
     margin: 5px 0;
@@ -130,7 +158,7 @@ export const LinksContainer = styled.div`
 `;
 
 // ----- Toggle Switch and Copyright -----
-export const ToggleThemeContainer = styled.div`
+export const SubTextContainer = styled.div`
   width: 90%;
   height: auto;
   display: flex;
@@ -139,128 +167,128 @@ export const ToggleThemeContainer = styled.div`
 `;
 
 export default function Footer() {
+  const { t } = useTranslation();
   return (
     <FooterContainer>
       <ContentContainer>
         <LeftContent>
           <Logo />
-          <Tagline>
-            Your trusted source for on chain Handshake information
-          </Tagline>
-          <Header>Contact</Header>
-          <ContactItem>engineering@urkel.io</ContactItem>
+          <Tagline>{t("footer.tagline")}</Tagline>
+          <Header>{t("footer.contact")}</Header>
+          <ContactItem>{t("footer.support_email")}</ContactItem>
         </LeftContent>
         <RightContent>
           <LeftLinksContainer>
             <LinksContainer>
-              <Header>Explore</Header>
+              <Header>{t("footer.explore")}</Header>
               <FooterLink as={Link} to="/">
-                Home
+                {t("footer.home")}
               </FooterLink>
               <FooterLink as={Link} to="/blocks">
-                Blocks
+                {t("footer.blocks")}
               </FooterLink>
               <FooterLink as={Link} to="/names">
-                Names
-              </FooterLink>
-              <FooterLink as={Link} to="/about">
-                About
+                {t("footer.names")}
               </FooterLink>
             </LinksContainer>
             <LinksContainer>
-              <Header>Tools</Header>
+              <Header>{t("footer.tools")}</Header>
               <FooterLink as={Link} to="/peers">
-                Peers
+                {t("footer.peers")}
               </FooterLink>
               <FooterLink as={Link} to="/status">
-                Node Status
+                {t("footer.node_status")}
               </FooterLink>
               <FooterLink as={Link} to="/airdropclaim">
-                Airdrop Claim
+                {t("footer.airdrop_claim")}
               </FooterLink>
             </LinksContainer>
           </LeftLinksContainer>
           <RightLinksContainer>
             <LinksContainer>
               <Header>
-                Related&nbsp;
-                <i className="fas fa-external-link-alt has-text-grey fa-sm"></i>
+                {t("footer.related")}&nbsp;
+                <IconWrapper>
+                  <ExternalLink />
+                </IconWrapper>
               </Header>
               <FooterLink
                 href="https://handshakeacademy.org"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Academy
+                {t("footer.academy")}
               </FooterLink>
               <FooterLink
                 href="https://handshake.community"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Community
+                {t("footer.community")}
               </FooterLink>
               <FooterLink
                 href="https://urkel.io"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Urkel
+                {t("footer.urkel")}
               </FooterLink>
               <FooterLink
                 href="https://handshake.org/files/handshake.txt"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Paper
+                {t("footer.paper")}
               </FooterLink>
             </LinksContainer>
             <LinksContainer>
               <Header>
-                Follow&nbsp;
-                <i className="fas fa-external-link-alt has-text-grey fa-sm"></i>
+                {t("footer.follow")}&nbsp;
+                <IconWrapper>
+                  <ExternalLink />
+                </IconWrapper>
               </Header>
               <FooterLink
                 href="https://github.com/handshakealliance"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Github
+                {t("footer.github")}
               </FooterLink>
               <FooterLink
                 href="https://medium.com/@handshakealliance"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Medium
+                {t("footer.medium")}
               </FooterLink>
               <FooterLink
                 href="https://twitter.com/hnsalliance"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Twitter
+                {t("footer.twitter")}
               </FooterLink>
             </LinksContainer>
           </RightLinksContainer>
         </RightContent>
       </ContentContainer>
-      <ToggleThemeContainer>
-        <div className="field">
-          <ThemeToggler />
-        </div>
+      <SubTextContainer>
+        <CogWrapper as={Link} to="/settings">
+          <Cog />
+        </CogWrapper>
         <SubText>
-          Current Version: v0.0.1{" "}
+          {t("footer.version")}: v{pkg.version}{" "}
           <a
             href="https://github.com/HandshakeAlliance/HNScan"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Source
+            {t("footer.source")}
           </a>
         </SubText>
-        <SubText>&#9400; Handshake Alliance. All Rights Reserved.</SubText>
-      </ToggleThemeContainer>
+        <SubText>&#9400; {t("footer.copyright")}</SubText>
+      </SubTextContainer>
     </FooterContainer>
   );
 }

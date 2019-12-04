@@ -1,82 +1,93 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "./styles/Card";
-import StackedComponent from "./Stacked/StackedComponent";
-import { timeAgo } from "../util/util";
+import { Card, Col, Row, Table } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
+import theme from "styled-theming";
+
+// Components
+import StackedData from "components/shared/StackedData";
+
+// Util
+import { timeAgo } from "utils/util";
+
+const borderColor = theme("mode", {
+  light: "#dfdfdf",
+  dark: "#444444"
+});
 
 const SummaryCardItem = styled.div`
-  border-bottom: 1px solid ${props => props.theme.cards.borderColor};
-  display: flex;
-  flex-direction: row;
-
+  border-bottom: 1px solid ${borderColor};
+  padding: 24px;
   &:last-child {
     border-bottom: 0;
   }
 `;
 
-const FullWidthContainer = styled.div`
-  width: 100%;
-`;
-
-const PeerInfo = ({ peers, ...props }) => {
-  const peerTable = peers.map((peer, index) => (
+const PeerInfo = ({ peers }) => {
+  const { t } = useTranslation();
+  const peerTable = peers.map(peer => (
     <SummaryCardItem key={peer.addr}>
-      <FullWidthContainer className="card-content">
-        <div className="columns">
-          <div className="column is-half">
-            <table className="table is-fullwidth">
-              <tbody>
-                <tr>
-                  <StackedComponent label="Address" value={peer.addr} />
-                </tr>
-                <tr>
-                  <StackedComponent label="Name" value={peer.name || 'No name provided'} />
-                </tr>
-                <tr>
-                  <StackedComponent label="Services" value={peer.services} />
-                </tr>
-                <tr>
-                  <StackedComponent label="Version" value={peer.version} />
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="column is-half">
-            <table className="table is-fullwidth">
-              <tbody>
-                <tr>
-                  <StackedComponent label="Location" value={"todo"} />
-                </tr>
-                <tr>
-                  <StackedComponent label="Country" value={"todo"} />
-                </tr>
-                <tr>
-                  <StackedComponent
-                    label="Whitelisted"
-                    value={peer.whitelisted.toString()}
-                  />
-                </tr>
-                <tr>
-                  <StackedComponent
-                    label="Last Send / Last Receive"
-                    value={`${timeAgo(peer.lastsend)} / ${timeAgo(peer.lastrecv)}`}
-                  />
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </FullWidthContainer>
+      <Row>
+        <Col mobile={12} tablet>
+          <Table>
+            <Table.Body>
+              <Table.Tr>
+                <StackedData cell label="peers.address" value={peer.addr} />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="peers.name"
+                  value={peer.name || t("peers.no_name")}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="peers.services"
+                  value={peer.services}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData cell label="peers.version" value={peer.version} />
+              </Table.Tr>
+            </Table.Body>
+          </Table>
+        </Col>
+        <Col mobile={12} tablet>
+          <Table>
+            <Table.Body>
+              <Table.Tr>
+                <StackedData cell label="peers.location" value={"--"} />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData cell label="peers.country" value={"--"} />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="peers.whitelisted"
+                  value={peer.whitelisted.toString()}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="peers.last_send_received"
+                  value={`${timeAgo(peer.lastsend) || "--"} / ${timeAgo(
+                    peer.lastrecv
+                  ) || "--"}`}
+                />
+              </Table.Tr>
+            </Table.Body>
+          </Table>
+        </Col>
+      </Row>
     </SummaryCardItem>
   ));
   return (
     <>
-      <Card>
-        <Card.Header>
-          <Card.HeaderTitle>Peers</Card.HeaderTitle>
-        </Card.Header>
-        <Card.Content>{peerTable}</Card.Content>
-      </Card>
+      <Card title={t("peers.peers")}>{peerTable}</Card>
     </>
   );
 };

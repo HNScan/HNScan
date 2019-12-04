@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import Skeleton from "react-loading-skeleton";
+import { Row, Col, Card, Skeleton } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
 
 // Components
-import Card from "../styles/Card";
+import StackedData from "components/shared/StackedData";
 
 // Util
-import { hnsValues } from "../../util/util";
+import { hnsValues } from "utils/util";
 
 const AddressWrapper = styled.div`
   width: 100%;
@@ -29,56 +30,52 @@ const SkeletonWrapper = styled.div`
 `;
 
 export default function AddressSummary({ hash, received, spent, confirmed }) {
+  const { t } = useTranslation();
   return (
     <>
       <AddressWrapper>
-        <AddressTitle>Address</AddressTitle>
+        <AddressTitle>{t("address_detail.address")}</AddressTitle>
         <AddressHash>{hash || <Skeleton />}</AddressHash>
       </AddressWrapper>
-      <Card>
-        <Card.Header>
-          <Card.HeaderTitle>Address Summary</Card.HeaderTitle>
-        </Card.Header>
-        <Card.Content>
-          <Card.HorizontalContainer>
-            <Card.Column>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Received</Card.ItemLabel>
-                <Card.ItemDetail>
-                  {hnsValues(received) || (
-                    <SkeletonWrapper>
-                      <Skeleton />
-                    </SkeletonWrapper>
-                  )}
-                </Card.ItemDetail>
-              </Card.ItemContainer>
-            </Card.Column>
-            <Card.Column>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Spent</Card.ItemLabel>
-                <Card.ItemDetail>
-                  {hnsValues(spent) || (
-                    <SkeletonWrapper>
-                      <Skeleton />
-                    </SkeletonWrapper>
-                  )}
-                </Card.ItemDetail>
-              </Card.ItemContainer>
-            </Card.Column>
-            <Card.Column>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Balance</Card.ItemLabel>
-                <Card.ItemDetail>
-                  {hnsValues(confirmed) || (
-                    <SkeletonWrapper>
-                      <Skeleton />
-                    </SkeletonWrapper>
-                  )}
-                </Card.ItemDetail>
-              </Card.ItemContainer>
-            </Card.Column>
-          </Card.HorizontalContainer>
-        </Card.Content>
+      <Card title={t("address_detail.summary")}>
+        <Row>
+          <Col mobile={12} tablet>
+            <StackedData
+              label="address_detail.balance"
+              value={
+                hnsValues(confirmed) || (
+                  <SkeletonWrapper>
+                    <Skeleton />
+                  </SkeletonWrapper>
+                )
+              }
+            />
+          </Col>
+          <Col mobile={12} tablet>
+            <StackedData
+              label="address_detail.received"
+              value={
+                hnsValues(received) || (
+                  <SkeletonWrapper>
+                    <Skeleton />
+                  </SkeletonWrapper>
+                )
+              }
+            />
+          </Col>
+          <Col mobile={12} tablet>
+            <StackedData
+              label="address_detail.spent"
+              value={
+                hnsValues(spent) || (
+                  <SkeletonWrapper>
+                    <Skeleton />
+                  </SkeletonWrapper>
+                )
+              }
+            />
+          </Col>
+        </Row>
       </Card>
     </>
   );

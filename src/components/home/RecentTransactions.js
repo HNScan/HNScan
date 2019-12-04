@@ -1,103 +1,73 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import Card from "../styles/Card";
-
 import { Link } from "react-router-dom";
-import * as Util from "../../util/util";
-import Arrow from "../../components/Logos/rightArrow";
+import { Card, Flex, Col } from "@urkellabs/ucl";
+import { useTranslation, Trans } from "react-i18next";
 
-const Time = styled.span`
-  font-style: italic;
-`;
+// Components
+import {
+  SummaryItem,
+  LeftItemDetail,
+  RightItemDetail,
+  ItemLogo
+} from "./styled-components";
 
-const Transaction = ({ tx }) => (
-  // ----- TX Details -----
-  <Card.SummaryItemContainer>
-    <Card.SummaryItem>
-      {/* ----- Left Side / Top Side ----- */}
-      <Card.SummaryItemContent>
-        <Card.LeftItemDetail>
-          <Card.ItemLogo>
-            <Arrow />
-          </Card.ItemLogo>
-          TX #:&nbsp;
-          <Link className="hnscan-link" to={"/tx/" + tx.hash}>
-            {Util.truncateHash(tx.hash)}
-          </Link>
-        </Card.LeftItemDetail>
-        <Card.LeftItemDetail>
-          Amount: {Util.hnsValues(Util.sumTxOutputs(tx.outputs))}
-        </Card.LeftItemDetail>
-        <Card.LeftItemDetail>Fee: {Util.hnsValues(tx.fee)}</Card.LeftItemDetail>
-      </Card.SummaryItemContent>
-      {/* ----- Right Side / Bottom Side ----- */}
-      <Card.SummaryItemContent>
-        <Card.RightItemDetail>
-          <Time>{Util.timeAgo(tx.time)}</Time>
-        </Card.RightItemDetail>
-      </Card.SummaryItemContent>
-    </Card.SummaryItem>
-  </Card.SummaryItemContainer>
-);
+// SVGs
+import Arrow from "components/svg/RightArrow";
+
+// Util
+import { truncateHash, timeAgo, hnsValues, sumTxOutputs } from "utils/util";
+
+const Transaction = ({ tx }) => {
+  return (
+    // ----- TX Details -----
+    <Col>
+      <SummaryItem>
+        {/* ----- Left Side / Top Side ----- */}
+        <Col mobile={9}>
+          <LeftItemDetail>
+            <ItemLogo>
+              <Arrow />
+            </ItemLogo>
+            <Trans
+              i18nKey="home.tx_num"
+              values={{ hash: truncateHash(tx.hash) }}
+            >
+              <Link to={"/tx/" + tx.hash}></Link>
+            </Trans>
+          </LeftItemDetail>
+          <LeftItemDetail>
+            <Trans
+              i18nKey="home.amount"
+              values={{ amount: hnsValues(sumTxOutputs(tx.outputs)) }}
+            />
+          </LeftItemDetail>
+          <LeftItemDetail>
+            <Trans i18nKey="home.fee" values={{ fee: hnsValues(tx.fee) }} />
+          </LeftItemDetail>
+        </Col>
+        {/* ----- Right Side / Bottom Side ----- */}
+        <Col>
+          <RightItemDetail>
+            <em>{timeAgo(tx.time)}</em>
+          </RightItemDetail>
+        </Col>
+      </SummaryItem>
+    </Col>
+  );
+};
 
 export default function RecentTransactions({ txs }) {
   const txRows = txs.map((tx, index) => <Transaction key={index} tx={tx} />);
+  const { t } = useTranslation();
 
   return (
-    <Card>
-      {/* ------ TX Header ----- */}
-      <Card.Header>
-        <Card.HeaderTitle>Recent Transactions</Card.HeaderTitle>
-      </Card.Header>
-      {/* ----- TX Content ----- */}
-      <Card.SummaryContainer>
-        {/* This Fxn will return x number of transactions */}
-        {txRows}
-      </Card.SummaryContainer>
+    <Card title={t("home.recent_transactions")}>
+      <Flex columns>{txRows}</Flex>
     </Card>
   );
 }
 
-// Property Types
 RecentTransactions.propTypes = {
   txs: PropTypes.array
 };
-
-// const TxLoading = () => (
-//   <Card.SummaryItemContainer>
-//     <Card.SummaryItem>
-//       <Card.SummaryItemContent>
-//         <ContentLoader
-//           // height={97}
-//           // width={461}
-//           speed={2}
-//           primaryColor="#f3f3f3"
-//           secondaryColor="#ecebeb"
-//         >
-//           {/* Transaction ID Rectangle */}
-//           <rect x="10" y="15" rx="4" ry="4" width="320" height="24" />
-//           {/* Miner reward */}
-//           <rect x="10" y="55" rx="3" ry="3" width="100" height="16" />
-//           {/* Amount */}
-//           <rect x="10" y="85" rx="3" ry="3" width="150" height="16" />
-//         </ContentLoader>
-//       </Card.SummaryItemContent>
-//       <Card.SummaryItemContent>
-//         <ContentLoader
-//           // height={97}
-//           // width={461}
-//           speed={2}
-//           primaryColor="#f3f3f3"
-//           secondaryColor="#ecebeb"
-//           rtl={true}
-//         >
-//           {/* Transaction To */}
-//           <rect x="25" y="15" rx="3" ry="3" width="125" height="16" />
-//           {/* Time */}
-//           {/* <rect x="25" y="40" rx="3" ry="3" width="125" height="16" /> */}
-//         </ContentLoader>
-//       </Card.SummaryItemContent>
-//     </Card.SummaryItem>
-//   </Card.SummaryItemContainer>
-// );

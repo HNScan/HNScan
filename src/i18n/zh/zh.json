@@ -1,0 +1,30 @@
+{
+  "translation": {
+    "Network Summary": "网络摘要",
+    "Hashrate": "哈希值",
+    "Unconfirmed": "未确认",
+    "Network": "网络",
+    "Opened Names": "公开名称",
+    "Difficulty": "困难",
+    "Chainwork": "连锁店",
+
+    "Recent Transactions": "",
+    "Blocks": "",
+    "Block": "",
+    "View All": "",
+    "Amount": "",
+    "Fee": "",
+    "Mined By": "",
+    "Transactions": "",
+
+    "settings": {
+      "title": "设定值",
+      "language_title": "语言",
+      "language_desc": "更改整个网站的语言（警告：某些语言不完全可用)",
+      "network_title": "网络",
+      "network_desc": "",
+      "theme_title": "主题",
+      "theme_desc": "更新网站主题"
+    }
+  }
+}

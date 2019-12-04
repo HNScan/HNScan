@@ -1,53 +1,45 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-// Components
-import Card from "../styles/Card";
-import Pagination from "../layout/Pagination";
+import { Pagination, Card, Table } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
 
 // Util
-import { hnsValues, timeAgo } from "../../util/util";
+import { hnsValues, timeAgo } from "utils/util";
 
-//@todo th/tr do not work on Dark mode!! We need to have dark mode just set the global font color to something different.
-//@todo last element is showing a bottom border.
 export default function NameHistory({ history, page, changePage, pages, url }) {
+  const { t } = useTranslation();
   const names = history.map((name, index) => (
-    <tr key={index}>
-      <td>{name.action}</td>
+    <Table.Tr key={index}>
+      <Table.Td>{name.action}</Table.Td>
       {/* @fixme Not working */}
-      <td>{timeAgo(name.time)}</td>
+      <Table.Td>{timeAgo(name.time)}</Table.Td>
       {/* @todo need to link this */}
-      <td>
+      <Table.Td>
         <Link to={"/block/" + name.height}>{name.height}</Link>
-      </td>
-      <td>{hnsValues(name.value)}</td>
-    </tr>
+      </Table.Td>
+      <Table.Td>{hnsValues(name.value) || "--"}</Table.Td>
+    </Table.Tr>
   ));
   return (
     <>
-      <Card>
-        <Card.Header>
-          <Card.HeaderTitle>History</Card.HeaderTitle>
-        </Card.Header>
+      <Card title={t("name_detail.history")} collapse>
         {/* @todo remove all these class names. */}
         {/* @todo need links in here */}
         {/* @todo need auxilary labels -> bytes for size, scientific format for diff, etc */}
-        <div className="card-content">
-          {names.length === 0 && <p>There is no history for this name</p>}
-          {names.length > 0 && (
-            <table className="table is-fullwidth">
-              <thead>
-                <tr>
-                  <th>Action</th>
-                  <th>Time</th>
-                  <th>Block Height</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>{names}</tbody>
-            </table>
-          )}
-        </div>
+        {names.length === 0 && <p>There is no history for this name</p>}
+        {names.length > 0 && (
+          <Table>
+            <Table.Head>
+              <Table.Tr>
+                <Table.Th>{t("name_detail.action")}</Table.Th>
+                <Table.Th>{t("name_detail.time")}</Table.Th>
+                <Table.Th>{t("name_detail.block_height")}</Table.Th>
+                <Table.Th>{t("name_detail.value")}</Table.Th>
+              </Table.Tr>
+            </Table.Head>
+            <Table.Body>{names}</Table.Body>
+          </Table>
+        )}
       </Card>
       <Pagination
         totalPages={pages}

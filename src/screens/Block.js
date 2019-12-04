@@ -1,17 +1,13 @@
 import React, { Suspense } from "react";
 import { useParams } from "react-router-dom";
-import { useResource } from "rest-hooks";
+import { usePage, useQuery } from "@urkellabs/ucl";
 
 // Components
-import TransactionList from "../components/TransactionList";
-import BlockSummary from "../components/block/BlockSummary";
-import BlockAdvanced from "../components/block/BlockAdvanced";
+import BlockSummary from "components/block/BlockSummary";
+import BlockAdvanced from "components/block/BlockAdvanced";
 
-// Resources
-import BlockResource from "../resources/BlockResource";
-
-// Hooks
-import usePage from "../hooks/usePage";
+// Containers
+import TransactionList from "containers/TransactionList";
 
 function BlockSkeleton() {
   return (
@@ -23,9 +19,7 @@ function BlockSkeleton() {
 
 //@todo move most of this into a component, not in here.
 function BlockContainer({ height, page }) {
-  const block = useResource(BlockResource.detailShape(), {
-    height
-  });
+  const { data: block } = useQuery("/blocks/" + height);
 
   return (
     <>

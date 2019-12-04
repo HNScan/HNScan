@@ -1,10 +1,9 @@
 import React from "react";
+import { Row, Col, Card } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
 
 // Components
-import Card from "../styles/Card";
-
-// Util
-// import { timeAgo } from "../util/util";
+import StackedData from "components/shared/StackedData";
 
 function timeToNextState(blocks) {
   if (blocks) {
@@ -15,57 +14,37 @@ function timeToNextState(blocks) {
 }
 
 export default function NameSummary({ name }) {
+  const { t } = useTranslation();
   return (
-    <Card>
-      <Card.Header>
-        <Card.HeaderTitle>Name Summary</Card.HeaderTitle>
-      </Card.Header>
-      <Card.Content>
-        <Card.HorizontalContainer>
-          <Card.Column>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Name</Card.ItemLabel>
-              <Card.ItemDetail>{name.name}</Card.ItemDetail>
-            </Card.ItemContainer>
-          </Card.Column>
-          <Card.Column>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Release Block</Card.ItemLabel>
-              <Card.ItemDetail>{name.release}</Card.ItemDetail>
-            </Card.ItemContainer>
-          </Card.Column>
-          <Card.Column>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Reserved</Card.ItemLabel>
-              <Card.ItemDetail>{name.reserved.toString()}</Card.ItemDetail>
-            </Card.ItemContainer>
-          </Card.Column>
-        </Card.HorizontalContainer>
-        {/* I think this is all optional here. */}
-        <Card.HorizontalContainer>
-          <Card.Column>
-            <Card.ItemContainer>
-              <Card.ItemLabel>State</Card.ItemLabel>
-              <Card.ItemDetail>{name.state}</Card.ItemDetail>
-            </Card.ItemContainer>
-          </Card.Column>
-          <Card.Column>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Blocks Until Next State</Card.ItemLabel>
-              {/* @todo need time in here as well. */}
-              <Card.ItemDetail>
-                {timeToNextState(name.blocksUntil)}
-              </Card.ItemDetail>
-            </Card.ItemContainer>
-          </Card.Column>
-          <Card.Column>
-            <Card.ItemContainer>
-              <Card.ItemLabel>Next State</Card.ItemLabel>
-              <Card.ItemDetail>{name.nextState}</Card.ItemDetail>
-            </Card.ItemContainer>
-          </Card.Column>
-        </Card.HorizontalContainer>
-      </Card.Content>
+    <Card title={t("name_detail.summary")}>
+      <Row>
+        <Col mobile={12} tablet>
+          <StackedData label="name_detail.name" value={name.name} />
+        </Col>
+        <Col mobile={12} tablet>
+          <StackedData label="name_detail.release_block" value={name.release} />
+        </Col>
+        <Col mobile={12} tablet>
+          <StackedData
+            label="name_detail.reserved"
+            value={name.reserved.toString()}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col mobile={12} tablet>
+          <StackedData label="name_detail.state" value={name.state} />
+        </Col>
+        <Col mobile={12} tablet>
+          <StackedData
+            label="name_detail.blocks_until_next"
+            value={timeToNextState(name.blocksUntil)}
+          />
+        </Col>
+        <Col mobile={12} tablet>
+          <StackedData label="name_detail.next_state" value={name.nextState} />
+        </Col>
+      </Row>
     </Card>
   );
 }

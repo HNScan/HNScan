@@ -1,81 +1,73 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Card, Flex, Col } from "@urkellabs/ucl";
+import { useTranslation, Trans } from "react-i18next";
 
 // Components
-import Card from "../styles/Card";
-import * as Util from "../../util/util";
+import {
+  SummaryItem,
+  ItemLogo,
+  LeftItemDetail,
+  RightItemDetail
+} from "./styled-components";
 
-// Svgs
-import BlockLogo from "../svg/Block";
+// SVGs
+import BlockLogo from "components/svg/Block";
 
-//@todo put them here for now.
-export const Miner = styled.div`
-  display: none;
-  @media (min-width: 425px) {
-    display: flex;
-  }
-`;
-
-export const MobileMiner = styled.div`
-  display: flex;
-  @media (min-width: 425px) {
-    display: none;
-  }
-`;
+// Util
+import { truncateHash, timeAgo } from "utils/util";
 
 const BlockCardItem = ({ block }) => {
   return (
-    <Card.SummaryItemContainer>
-      <Card.SummaryItem>
-        {/* ----- Left Side / Top Side ----- */}
-        <Card.SummaryItemContent>
-          <Card.LeftItemDetail>
-            <Card.ItemLogo>
+    <Col>
+      <SummaryItem>
+        <Col>
+          <LeftItemDetail>
+            <ItemLogo>
               <BlockLogo />
-            </Card.ItemLogo>
-            Block #:&nbsp;
-            <Link className="hnscan-link" to={"/block/" + block.height}>
-              {block.height}
-            </Link>
-          </Card.LeftItemDetail>
-          <Card.LeftItemDetail>
-            <Miner>
-              Mined By:&nbsp;
-              <Link className="hnscan-link" to={"/address/" + block.miner}>
+            </ItemLogo>
+            <Trans i18nKey="home.block_num" values={{ height: block.height }}>
+              <Link to={"/block/" + block.height}></Link>
+            </Trans>
+          </LeftItemDetail>
+          <LeftItemDetail>
+            <Trans
+              i18nKey="home.mined_by"
+              values={{ miner: truncateHash(block.miner) }}
+            >
+              <Link to={"/address/" + block.miner}>
                 {/* @todo check pool */}
-                {block.miner}
               </Link>
-            </Miner>
-            <MobileMiner>
-              Mined By:{" "}
-              <Link className="hnscan-link" to={"/address/" + block.miner}>
-                {Util.truncateHash(block.miner)}
-              </Link>
-            </MobileMiner>
-          </Card.LeftItemDetail>
-          <Card.LeftItemDetail>
-            Transactions: {block.tx.length}
-          </Card.LeftItemDetail>
-        </Card.SummaryItemContent>
-      </Card.SummaryItem>
-    </Card.SummaryItemContainer>
+            </Trans>
+          </LeftItemDetail>
+          <LeftItemDetail>
+            <Trans
+              i18nKey="home.transactions"
+              values={{ tx_num: block.tx.length }}
+            />
+          </LeftItemDetail>
+        </Col>
+        <Col>
+          <RightItemDetail>
+            <em>{timeAgo(block.time)}</em>
+          </RightItemDetail>
+        </Col>
+      </SummaryItem>
+    </Col>
   );
 };
 
 export default function RecentBlocks({ blocks }) {
+  const { t } = useTranslation();
   const blockRows = blocks.map((block, index) => (
     <BlockCardItem key={index} block={block} />
   ));
   return (
-    <Card>
-      <Card.Header>
-        <Card.HeaderTitle>Blocks</Card.HeaderTitle>
-        <Card.HeaderLink className="hnscan-link" to="/blocks">
-          View All
-        </Card.HeaderLink>
-      </Card.Header>
-      <Card.SummaryContainer>{blockRows}</Card.SummaryContainer>
+    <Card
+      title={t("home.recent_blocks")}
+      headerAction={<Link to="/blocks"></Link>}
+    >
+      <Flex columns>{blockRows}</Flex>
     </Card>
   );
 }

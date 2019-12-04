@@ -1,0 +1,33 @@
+name: Pull Request Review
+on: [pull_request]
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
+      - name: eslint
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          eslint_flags: 'src/'
+          level: warning
+      - name: spell check
+        uses: reviewdog/action-misspell@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          locale: "US"
+      - name: build and test
+        run: |
+          yarn
+          yarn build
+          yarn test
+        env:
+          CI: true

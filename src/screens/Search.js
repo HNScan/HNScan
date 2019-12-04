@@ -1,7 +1,10 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import SearchBar from "../components/layout/SearchBar";
+import { useTranslation } from "react-i18next";
+
+// Components
+import SearchBar from "containers/SearchBar";
 
 const Header = styled.h1`
   margin-top: 50px;
@@ -16,6 +19,8 @@ const Header = styled.h1`
 
 const SearchResultsTable = styled.table`
   /* margin-top: 25px; */
+  background: ${props => props.theme.global.background};
+  color: ${props => props.theme.global.textColor};
   margin: 25px auto 0;
   font-size: 20px;
 `;
@@ -26,13 +31,13 @@ const SearchBarWrapper = styled.div`
 
 export default function Search() {
   const location = useLocation();
-  console.log(location);
+  const { t } = useTranslation();
 
   if (location.state.length === 0) {
     return (
       <>
-        <Header>We couldn't find what you were looking for</Header>
-        <h2>Please try searching again</h2>
+        <Header>{t("search.header")}</Header>
+        <h2>{t("search.subheader")}</h2>
         <SearchBarWrapper>
           <SearchBar />
         </SearchBarWrapper>
@@ -51,7 +56,7 @@ export default function Search() {
 
   return (
     <>
-      <Header>We found multiple resources matching your search</Header>
+      <Header>{t("search.multiple_results")}</Header>
       <SearchResultsTable className="table">
         <tbody>{results}</tbody>
       </SearchResultsTable>

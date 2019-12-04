@@ -1,12 +1,15 @@
 import React, { Suspense } from "react";
-import { useResource } from "rest-hooks";
 import { useParams } from "react-router-dom";
-import { timeAgo, hnsValues, sumTxOutputs } from "../util/util";
-import { InputList, OutputList } from "../components/TransactionList/PutsList";
 import styled from "styled-components";
-import Card from "../components/styles/Card";
-import StackedComponent from "../components/Stacked/StackedComponent";
-import TransactionResource from "../resources/TransactionResource";
+import { Row, Col, Card, Table, useQuery } from "@urkellabs/ucl";
+import { useTranslation } from "react-i18next";
+
+// Components
+import StackedData from "components/shared/StackedData";
+import { InputList, OutputList } from "components/shared/PutsList";
+
+// Util
+import { timeAgo, hnsValues, sumTxOutputs } from "utils/util";
 
 const Container = styled.div`
   width: 100%;
@@ -26,113 +29,97 @@ const Container = styled.div`
 `;
 
 function TxDetailScreen({ hash }) {
-  const tx = useResource(TransactionResource.detailShape(), { hash });
+  const { t } = useTranslation();
+  const tx = useQuery("/tx" + hash);
 
   return (
     <>
-      {/* ------- Top Card ------ */}
-      <Card>
-        <Card.Header>
-          <Card.HeaderTitle>Transaction Summary</Card.HeaderTitle>
-        </Card.Header>
-        <Card.Content>
-          <Card.HorizontalContainer>
-            <Card.Column>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Received</Card.ItemLabel>
-                <Card.ItemDetail>{timeAgo(tx.time)}</Card.ItemDetail>
-              </Card.ItemContainer>
-            </Card.Column>
-            <Card.Column>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Amount</Card.ItemLabel>
-                <Card.ItemDetail>
-                  {hnsValues(sumTxOutputs(tx.outputs))}
-                </Card.ItemDetail>
-              </Card.ItemContainer>
-            </Card.Column>
-            <Card.Column>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Fee</Card.ItemLabel>
-                <Card.ItemDetail>{hnsValues(tx.fee)}</Card.ItemDetail>
-              </Card.ItemContainer>
-            </Card.Column>
-            <Card.Column>
-              <Card.ItemContainer>
-                <Card.ItemLabel>Confirmations</Card.ItemLabel>
-                <Card.ItemDetail>{tx.confirmations}</Card.ItemDetail>
-              </Card.ItemContainer>
-            </Card.Column>
-          </Card.HorizontalContainer>
-        </Card.Content>
+      <Card title={t("tx_detail.summary")}>
+        <Row>
+          <Col mobile={12} tablet>
+            <StackedData label="tx_detail.received" value={timeAgo(tx.time)} />
+          </Col>
+          <Col mobile={12} tablet>
+            <StackedData
+              label="tx_detail.amount"
+              value={hnsValues(sumTxOutputs(tx.outputs))}
+            />
+          </Col>
+          <Col mobile={12} tablet>
+            <StackedData label="tx_detail.fee" value={hnsValues(tx.fee)} />
+          </Col>
+          <Col mobile={12} tablet>
+            <StackedData
+              label="tx_detail.confirmation"
+              value={tx.confirmations}
+            />
+          </Col>
+        </Row>
       </Card>
 
-      {/* Bottom Card */}
-      <Card>
-        <Card.Header>
-          <Card.HeaderTitle>Advanced</Card.HeaderTitle>
-        </Card.Header>
-        <Card.Content>
-          <div className="columns">
-            <div className="column is-half">
-              <table className="table is-fullwidth">
-                <tbody>
-                  {/* TODO: Get Node Status */}
-                  <tr>
-                    <StackedComponent label="Hash" value={tx.hash} />
-                  </tr>
-                  <tr>
-                    <StackedComponent
-                      label="Block Height"
-                      value={tx.height}
-                      link={"/block/" + tx.height}
-                    />
-                  </tr>
-                  <tr>
-                    <StackedComponent label="Locktime" value={tx.locktime} />
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="column is-half">
-              <table className="table is-fullwidth">
-                <tbody>
-                  {/* TODO: Get Node Status */}
-                  <tr>
-                    <StackedComponent
-                      label="Witness Hash"
-                      value={tx.witnessHash}
-                    />
-                  </tr>
-                  <tr>
-                    <StackedComponent label="Version" value={tx.version} />
-                  </tr>
-                  <tr>
-                    <StackedComponent label="Index" value={tx.index} />
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </Card.Content>
+      <Card title={t("tx_detail.advanced")} collapse closed>
+        <Row>
+          <Col mobile={12} desktop>
+            <Table>
+              <Table.Body>
+                <Table.Tr>
+                  <StackedData cell label="tx_detail.hash" value={tx.hash} />
+                </Table.Tr>
+                <Table.Tr>
+                  <StackedData
+                    cell
+                    label="tx_detail.height"
+                    value={tx.height}
+                    link={"/block/" + tx.height}
+                  />
+                </Table.Tr>
+                <Table.Tr>
+                  <StackedData
+                    cell
+                    label="tx_detail.locktime"
+                    value={tx.locktime}
+                  />
+                </Table.Tr>
+              </Table.Body>
+            </Table>
+          </Col>
+          <Col mobile={12} desktop>
+            <Table>
+              <Table.Body>
+                <Table.Tr>
+                  <StackedData
+                    cell
+                    label="tx_detail.witness_hash"
+                    value={tx.witnessHash}
+                  />
+                </Table.Tr>
+                <Table.Tr>
+                  <StackedData
+                    cell
+                    label="tx_detail.version"
+                    value={tx.version}
+                  />
+                </Table.Tr>
+                <Table.Tr>
+                  <StackedData cell label="tx_detail.index" value={tx.index} />
+                </Table.Tr>
+              </Table.Body>
+            </Table>
+          </Col>
+        </Row>
       </Card>
 
-      <Card>
-        <Card.Header>
-          <Card.HeaderTitle>TX Activity</Card.HeaderTitle>
-        </Card.Header>
-        <Card.Content>
-          <Container>
-            <div className="columns">
-              <div className="column is-half">
-                <InputList inputs={tx.inputs} />
-              </div>
-              <div className="column is-half">
-                <OutputList outputs={tx.outputs} />
-              </div>
-            </div>
-          </Container>
-        </Card.Content>
+      <Card title={t("tx_detail.tx_activity")} collapse>
+        <Container>
+          <Row>
+            <Col mobile={12} desktop>
+              <InputList inputs={tx.inputs} />
+            </Col>
+            <Col mobile={12} desktop>
+              <OutputList outputs={tx.outputs} />
+            </Col>
+          </Row>
+        </Container>
       </Card>
     </>
   );
