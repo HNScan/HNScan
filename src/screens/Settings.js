@@ -1,5 +1,13 @@
 import React from "react";
-import { Card, Col, Header, LanguageSwitcher, Row, Text } from "@urkellabs/ucl";
+import {
+  Card,
+  Col,
+  Header,
+  LanguageSwitcher,
+  Row,
+  Text,
+  useLocalStorage
+} from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
@@ -36,6 +44,7 @@ function SettingsInput({ label, description, children }) {
 
 export default function Settings() {
   const { t, i18n } = useTranslation();
+  const [, setLang] = useLocalStorage("i18nextLng");
 
   return (
     <Card title={t("settings.title")}>
@@ -45,9 +54,7 @@ export default function Settings() {
       >
         <LanguageSwitcher
           supportedOptions={supportedOptions}
-          updateLanguage={value =>
-            i18n.changeLanguage(value, () => console.log(value))
-          }
+          updateLanguage={value => i18n.changeLanguage(value)}
         />
       </SettingsInput>
       <SettingsInput
