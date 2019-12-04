@@ -1,16 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useResource, useResultCache } from "rest-hooks";
-import { Row, Col, Pagination, Card } from "@urkellabs/ucl";
+import { Row, Col, Pagination, Card, useQuery } from "@urkellabs/ucl";
 import theme from "styled-theming";
 import { useTranslation } from "react-i18next";
 
 // Components
 import { InputList, OutputList } from "components/shared/PutsList";
-
-// Resources
-import TransactionResource from "resources/TransactionResource";
 
 const borderColor = theme("mode", {
   light: "#dfdfdf",
@@ -51,11 +47,10 @@ const TransactionList = ({ url, page, from }) => {
   const offset = (page - 1) * limit;
   from.limit = limit;
   from.offset = offset;
-  const txs = useResource(TransactionResource.listShape(), from);
-  const { total } = useResultCache(TransactionResource.listShape(), from);
+  const { data } = useQuery("/txs", from);
   const { t } = useTranslation();
-  const pages = Math.ceil(total / limit);
-  const renderTransactions = txs.map((tx, index) => (
+  const pages = Math.ceil(data.total / limit);
+  const renderTransactions = data.result.map((tx, index) => (
     <Container key={index}>
       <HashWrapper>
         Tx {index + 1}:&nbsp;<Link to={"/tx/" + tx.hash}>{tx.hash}</Link>
@@ -75,8 +70,8 @@ const TransactionList = ({ url, page, from }) => {
       <Card
         collapse
         title={`${t("block_detail.transaction", {
-          count: txs.length
-        })} (${offset + 1}-${offset + txs.length})`}
+          count: data.result.length
+        })} (${offset + 1}-${offset + data.result.length})`}
       >
         {renderTransactions}
       </Card>

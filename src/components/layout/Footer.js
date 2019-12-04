@@ -8,6 +8,9 @@ import { Cog, ExternalLink } from "@urkellabs/ucl";
 // SVGs
 import LogoText from "components/svg/LogoText";
 
+// Misc
+import pkg from "../../../package.json";
+
 // @note we should be exporting this from somewhere other than here. But, not a big deal,
 // that is something to be done later.
 const textColor = theme("mode", {
@@ -275,8 +278,7 @@ export default function Footer() {
           <Cog />
         </CogWrapper>
         <SubText>
-          {/* @todo: dynamicize this */}
-          {t("footer.version")}: v0.0.1{" "}
+          {t("footer.version")}: v{pkg.version}{" "}
           <a
             href="https://github.com/HandshakeAlliance/HNScan"
             target="_blank"

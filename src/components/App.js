@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { NetworkErrorBoundary } from "rest-hooks";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyles, useTheme } from "@urkellabs/ucl";
+import { GlobalStyles, useTheme, ApiConfig } from "@urkellabs/ucl";
 
 // Special
 import ScrollToTop from "components/shared/ScrollToTop";
@@ -38,11 +37,15 @@ import NotFoundScreen from "screens/errors/NotFound";
 // Internationalization
 import "../i18n/i18n";
 
+// Hooks
+import useNetwork from "hooks/useNetwork";
+
 function App() {
   const [theme] = useTheme();
+  const [network] = useNetwork();
   return (
-    <NetworkErrorBoundary>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <ApiConfig config={{ url: network }}>
         <>
           <GlobalStyles />
           <Router>
@@ -77,8 +80,8 @@ function App() {
             <Footer />
           </Router>
         </>
-      </ThemeProvider>
-    </NetworkErrorBoundary>
+      </ApiConfig>
+    </ThemeProvider>
   );
 }
 
