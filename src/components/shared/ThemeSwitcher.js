@@ -1,7 +1,7 @@
 import React from "react";
 import { Select, useTheme } from "@urkellabs/ucl";
 
-export default function NetworkSwitcher(props) {
+export default function ThemeSwitcher(props) {
   let [, toggleTheme, current] = useTheme();
 
   let options = [
