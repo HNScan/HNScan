@@ -1,22 +1,17 @@
 import React, { Suspense } from "react";
-import { usePage } from "@urkellabs/ucl";
-
-// Resources
-import { useResource, useResultCache } from "rest-hooks";
-import BlockResource from "resources/BlockResource";
+import { usePage, useQuery } from "@urkellabs/ucl";
 
 // Components
 import { BlocksTable, BlocksSkeleton } from "components/block/BlocksTable";
 
 function BlocksView({ page }) {
   const pageOffset = (page - 1) * 25;
-  const blocks = useResource(BlockResource.listShape(), { offset: pageOffset });
-  const { limit, total } = useResultCache(BlockResource.listShape(), {
-    offset: pageOffset
-  });
-  const pages = Math.ceil(total / limit);
 
-  return <BlocksTable blocks={blocks} pages={pages} page={page} />;
+  const { data } = useQuery("/blocks/", { offset: pageOffset });
+
+  const pages = Math.ceil(data.total / data.limit);
+
+  return <BlocksTable blocks={data.result} pages={pages} page={page} />;
 }
 
 export default function Blocks() {

@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { NetworkErrorBoundary } from "rest-hooks";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyles, useTheme } from "@urkellabs/ucl";
+import { GlobalStyles, useTheme, ApiConfig } from "@urkellabs/ucl";
 
 // Special
 import ScrollToTop from "components/shared/ScrollToTop";
@@ -20,6 +19,7 @@ import Home from "screens/Home";
 import Name from "screens/Name";
 import Names from "screens/Names";
 import Search from "screens/Search";
+import Settings from "screens/Settings";
 import Transaction from "screens/Transaction";
 
 // More Pages
@@ -37,11 +37,15 @@ import NotFoundScreen from "screens/errors/NotFound";
 // Internationalization
 import "../i18n/i18n";
 
+// Hooks
+import useNetwork from "hooks/useNetwork";
+
 function App() {
   const [theme] = useTheme();
+  const [network] = useNetwork();
   return (
-    <NetworkErrorBoundary>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <ApiConfig config={{ url: network }}>
         <>
           <GlobalStyles />
           <Router>
@@ -55,6 +59,7 @@ function App() {
                 <Route path="/block/:height" exact component={Block} />
                 <Route path="/names" exact component={Names} />
                 <Route path="/name/:name" exact component={Name} />
+                <Route path="/settings" exact component={Settings} />
                 {/* Ideally let's get a recent transactions page going */}
                 <Route path="/tx/:hash" exact component={Transaction} />
                 <Route path="/search" exact component={Search} />
@@ -75,8 +80,8 @@ function App() {
             <Footer />
           </Router>
         </>
-      </ThemeProvider>
-    </NetworkErrorBoundary>
+      </ApiConfig>
+    </ThemeProvider>
   );
 }
 

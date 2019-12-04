@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { NavBar, breakpoint, ExternalLink } from "@urkellabs/ucl";
+import { breakpoint, ExternalLink, NavBar, ThemeToggler } from "@urkellabs/ucl";
 
 // Containers
 import SearchBar from "containers/SearchBar";
@@ -20,6 +20,14 @@ const NavLinkItem = styled(NavBar.Item)`
     ${NavBar.Link} {
       padding-left: 0;
     }
+  }
+`;
+
+const ThemeTogglerWrapper = styled.div`
+  margin: 0 0.5rem;
+
+  ${breakpoint.onlyMobile} {
+    display: none;
   }
 `;
 
@@ -139,12 +147,18 @@ export default function Navigation() {
                     <ExternalLink />
                   </IconWrapper>
                 </NavBar.Item>
+                <NavBar.Item as={Link} to="/settings">
+                  Settings
+                </NavBar.Item>
               </NavBar.Dropdown>
             </NavLinkItem>
           </NavBar.Start>
           <NavBar.End>
             <NavBar.Item>
               <SearchBar />
+              <ThemeTogglerWrapper>
+                <ThemeToggler />
+              </ThemeTogglerWrapper>
             </NavBar.Item>
           </NavBar.End>
         </NavBar.Menu>

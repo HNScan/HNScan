@@ -1,16 +1,20 @@
 import React, { Suspense, useState } from "react";
 import styled from "styled-components";
-import { useResource } from "rest-hooks";
 import humanizeDuration from "humanize-duration";
 import { useLocation, useHistory } from "react-router-dom";
-import { Card, Table, Modal, Text, Code, HelpIcon } from "@urkellabs/ucl";
+import {
+  Card,
+  Table,
+  Modal,
+  Text,
+  Code,
+  HelpIcon,
+  useQuery
+} from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
 
 // Components
 import StackedData from "components/shared/StackedData";
-
-// Resources
-import StatusResource from "resources/StatusResource";
 
 // Util
 import { sciNotation, formatLargeNumber } from "utils/util";
@@ -68,7 +72,7 @@ const NodeStatusContainer = () => {
     }
     return false;
   });
-  //Pull this to a custom hook.
+  //Pull this to a custom hook. @todo
   const toggleModal = () =>
     setModal(active => {
       if (location.hash === "#connect") {
@@ -81,7 +85,7 @@ const NodeStatusContainer = () => {
       return !active;
     });
 
-  const status = useResource(StatusResource.detailShape(), {});
+  const { data: status } = useQuery("/status/");
   const { t } = useTranslation();
   let [difficulty, exponent] = sciNotation(status.difficulty, 5);
   let totalDownloaded = formatLargeNumber(status.totalBytesRecv, 2);

@@ -163,6 +163,18 @@
       "multiple_results": "We found multiple resources matching your search"
     },
 
+    "settings": {
+      "title": "Settings",
+      "language_title": "Language",
+      "language_desc": "Changes the language across the entire site (Warning: some languages are not fully available)",
+      "network_title": "Network",
+      "network_desc": "TODO",
+      "theme_title": "Theme",
+      "theme_desc": "Update the theme for the site",
+      "network_title": "Network",
+      "network_desc": "Update the current Handshake Network URL."
+    },
+
     "not_found": {
       "oh_no": "Oh no! Where'd it go?",
       "void_message": "It's cold out here in the void...let's bring you back to ",

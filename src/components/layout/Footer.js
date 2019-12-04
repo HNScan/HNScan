@@ -3,10 +3,25 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import theme from "styled-theming";
-import { ThemeToggler, ExternalLink } from "@urkellabs/ucl";
+import { Cog, ExternalLink } from "@urkellabs/ucl";
 
 // SVGs
 import LogoText from "components/svg/LogoText";
+
+// Misc
+import pkg from "../../../package.json";
+
+// @note we should be exporting this from somewhere other than here. But, not a big deal,
+// that is something to be done later.
+const textColor = theme("mode", {
+  light: "#4a4a4a",
+  dark: "#afafaf"
+});
+
+const textColorHover = theme("mode", {
+  light: "#646464",
+  dark: "#969696"
+});
 
 const Logo = styled(LogoText)`
   margin-bottom: 10px;
@@ -16,9 +31,15 @@ const Logo = styled(LogoText)`
 const SubText = styled.span`
   font-size: 10px;
 `;
-
-const ToggleWrapper = styled.div`
+const CogWrapper = styled.div`
+  color: ${textColor};
   margin-bottom: 0.75rem;
+  height: 24px;
+  width: 24px;
+
+  &:hover {
+    color: ${textColorHover};
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -79,13 +100,6 @@ export const ContactItem = styled.div`
   margin: 5px 0;
 `;
 
-// @note we should be exporting this from somewhere other than here. But, not a big deal,
-// that is something to be done later.
-const textColor = theme("mode", {
-  light: "#4a4a4a",
-  dark: "#afafaf"
-});
-
 // External Links using <a>
 export const FooterLink = styled.a`
   font-size: 10pt;
@@ -144,7 +158,7 @@ export const LinksContainer = styled.div`
 `;
 
 // ----- Toggle Switch and Copyright -----
-export const ToggleThemeContainer = styled.div`
+export const SubTextContainer = styled.div`
   width: 90%;
   height: auto;
   display: flex;
@@ -259,13 +273,12 @@ export default function Footer() {
           </RightLinksContainer>
         </RightContent>
       </ContentContainer>
-      <ToggleThemeContainer>
-        <ToggleWrapper>
-          <ThemeToggler />
-        </ToggleWrapper>
+      <SubTextContainer>
+        <CogWrapper as={Link} to="/settings">
+          <Cog />
+        </CogWrapper>
         <SubText>
-          {/* @todo: dynamicize this */}
-          {t("footer.version")}: v0.0.1{" "}
+          {t("footer.version")}: v{pkg.version}{" "}
           <a
             href="https://github.com/HandshakeAlliance/HNScan"
             target="_blank"
@@ -275,7 +288,7 @@ export default function Footer() {
           </a>
         </SubText>
         <SubText>&#9400; {t("footer.copyright")}</SubText>
-      </ToggleThemeContainer>
+      </SubTextContainer>
     </FooterContainer>
   );
 }
