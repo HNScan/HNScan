@@ -1589,10 +1589,10 @@
     semver "^6.3.0"
     tsutils "^3.17.1"
 
-"@urkellabs/ucl@^0.1.26":
-  version "0.1.26"
-  resolved "https://registry.yarnpkg.com/@urkellabs/ucl/-/ucl-0.1.26.tgz#82133b9aecadaafc983c019c5e18001f2e6a856f"
-  integrity sha512-Hw+FNOBGcI2aqcGa9JhMTxSzf9DXiQ5G/8D6X5MSACKonbUzhgNRr4Olxit0YUjZeIZrXWG6CIE1umUPCWzs/Q==
+"@urkellabs/ucl@^0.1.30":
+  version "0.1.30"
+  resolved "https://registry.yarnpkg.com/@urkellabs/ucl/-/ucl-0.1.30.tgz#3144bcd8765dd16b3e1b9bb46188fab7fad62dfd"
+  integrity sha512-lPJyeb7VXHT015D/xMhq5qFpApnEV7CHHXVqV4iChlLnGKAkVR1xgRfJyMZobszJUwj8IKlxUuleGX1/YPRXpA==
   dependencies:
     "@babel/runtime" "^7.6.3"
     jsx-to-string "^1.4.0"
@@ -3127,7 +3127,7 @@ commoner@^0.10.1:
     q "^1.1.2"
     recast "^0.11.17"
 
-component-emitter@^1.2.1, component-emitter@^1.3.0:
+component-emitter@^1.2.1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
   integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
