@@ -44,7 +44,7 @@ function SettingsInput({ label, description, children }) {
 
 export default function Settings() {
   const { t, i18n } = useTranslation();
-  const [, setLang] = useLocalStorage("i18nextLng");
+  const [, setLang] = useLocalStorage("i18nextLng", null, false);
 
   return (
     <Card title={t("settings.title")}>
@@ -54,7 +54,9 @@ export default function Settings() {
       >
         <LanguageSwitcher
           supportedOptions={supportedOptions}
-          updateLanguage={value => i18n.changeLanguage(value)}
+          updateLanguage={value =>
+            i18n.changeLanguage(value, () => setLang(value))
+          }
         />
       </SettingsInput>
       <SettingsInput
