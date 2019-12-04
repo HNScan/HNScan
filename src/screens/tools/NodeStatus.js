@@ -1,4 +1,5 @@
 import React, { Suspense, useState } from "react";
+import styled from "styled-components";
 import { useResource } from "rest-hooks";
 import humanizeDuration from "humanize-duration";
 import { useLocation, useHistory } from "react-router-dom";
@@ -14,6 +15,14 @@ import StatusResource from "resources/StatusResource";
 // Util
 import { sciNotation, formatLargeNumber } from "utils/util";
 
+const Help = styled(HelpIcon)`
+  height: 20px;
+  width: 15px;
+  margin-left: 20px;
+  cursor: pointer;
+`;
+
+//@todo move this somewhere else?
 function ConnectHelp(props) {
   return (
     <Modal
@@ -87,10 +96,13 @@ const NodeStatusContainer = () => {
               <StackedData
                 cell
                 label="node_status.host"
-                value={`${status.key}@${status.host}:${status.port}`}
+                value={
+                  <>
+                    {status.key}@{status.host}:{status.port}
+                    <Help circle onClick={toggleModal} />
+                  </>
+                }
               />
-              {/* <button onClick={toggleModal} /> */}
-              <HelpIcon circle onClick={toggleModal} />
             </Table.Tr>
             <Table.Tr>
               <StackedData
