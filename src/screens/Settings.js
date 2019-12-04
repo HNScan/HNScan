@@ -11,6 +11,9 @@ import {
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
+// Components
+import NetworkSwitcher from "components/shared/NetworkSwitcher";
+
 const SmallText = styled(Text)`
   font-size: 0.875rem;
 `;
@@ -59,6 +62,12 @@ export default function Settings() {
         description={t("settings.theme_desc")}
       >
         <ThemeToggler />
+      </SettingsInput>
+      <SettingsInput
+        label={t("settings.network_title")}
+        description={t("settings.network_desc")}
+      >
+        <NetworkSwitcher />
       </SettingsInput>
     </Card>
   );

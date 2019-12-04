@@ -170,7 +170,9 @@
       "network_title": "Network",
       "network_desc": "TODO",
       "theme_title": "Theme",
-      "theme_desc": "Update the theme for the site"
+      "theme_desc": "Update the theme for the site",
+      "network_title": "Network",
+      "network_desc": "Update the current Handshake Network URL."
     },
 
     "not_found": {
