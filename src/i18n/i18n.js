@@ -8,10 +8,9 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 // Languages
 import en from "./en/en.json";
-import { zh } from "./zh/zh.js";
+import zh from "./zh/zh.json";
 
 // the translations
-// (tip move them in a JSON file and import them)
 const resources = {
   en: en,
   zh: zh
@@ -21,6 +20,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
+    debug: true,
     fallbackLng: "en",
     resources,
     interpolation: {

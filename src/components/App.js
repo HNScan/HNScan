@@ -19,6 +19,7 @@ import Home from "screens/Home";
 import Name from "screens/Name";
 import Names from "screens/Names";
 import Search from "screens/Search";
+import Settings from "screens/Settings";
 import Transaction from "screens/Transaction";
 
 // More Pages
@@ -59,6 +60,7 @@ function App() {
                 <Route path="/block/:height" exact component={Block} />
                 <Route path="/names" exact component={Names} />
                 <Route path="/name/:name" exact component={Name} />
+                <Route path="/settings" exact component={Settings} />
                 {/* Ideally let's get a recent transactions page going */}
                 <Route path="/tx/:hash" exact component={Transaction} />
                 <Route path="/search" exact component={Search} />
