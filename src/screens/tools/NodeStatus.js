@@ -1,7 +1,6 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense } from "react";
 import styled from "styled-components";
 import humanizeDuration from "humanize-duration";
-import { useLocation, useHistory } from "react-router-dom";
 import {
   Card,
   Table,
@@ -15,6 +14,9 @@ import { useTranslation } from "react-i18next";
 
 // Components
 import StackedData from "components/shared/StackedData";
+
+// Hooks
+import useRoutedModal from "hooks/useRoutedModal";
 
 // Util
 import { sciNotation, formatLargeNumber } from "utils/util";
@@ -35,19 +37,13 @@ function ConnectHelp(props) {
       title={"Connecting to this node"}
     >
       <p>
-        This node's IP is{" "}
-        <Code copy>
-          <p>{props.ip}</p>
-        </Code>{" "}
-        and identity key is:{" "}
-        <Code copy>
-          <p>{props.idkey}</p>
-        </Code>
+        This node's IP is <Code copy>{props.ip}</Code> and identity key is:{" "}
+        <Code copy>{props.idkey}</Code>
       </p>
       <Text>
         To add this node to your outbound connections, run the following:
-        <Code copy>
-          <p>{`$hsd-cli rpc addnode ${props.idkey}@${props.ip} add`}</p>
+        <Code copy shell>
+          {`hsd-cli rpc addnode ${props.idkey}@${props.ip} add`}
         </Code>
         If you do not have hsd-cli installed, follow these{" "}
         <a
@@ -64,26 +60,7 @@ function ConnectHelp(props) {
 }
 
 const NodeStatusContainer = () => {
-  const location = useLocation();
-  let history = useHistory();
-  let [showModal, setModal] = useState(() => {
-    if (location.hash === "#connect") {
-      return true;
-    }
-    return false;
-  });
-  //Pull this to a custom hook. @todo
-  const toggleModal = () =>
-    setModal(active => {
-      if (location.hash === "#connect") {
-        //I don't think it works this way.
-        history.push(location.pathname);
-      } else {
-        history.push(location.pathname + "#connect");
-      }
-
-      return !active;
-    });
+  let [showModal, toggleModal] = useRoutedModal("connect");
 
   const { data: status } = useQuery("/status/");
   const { t } = useTranslation();

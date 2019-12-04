@@ -15,7 +15,6 @@ export default function useRoutedModal(urlHash) {
   const toggleModal = () =>
     setModal(active => {
       if (location.hash === "#" + urlHash) {
-        //I don't think it works this way.
         history.push(location.pathname);
       } else {
         history.push(location.pathname + "#" + urlHash);
