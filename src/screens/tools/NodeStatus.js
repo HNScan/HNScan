@@ -2,7 +2,7 @@ import React, { Suspense, useState } from "react";
 import { useResource } from "rest-hooks";
 import humanizeDuration from "humanize-duration";
 import { useLocation, useHistory } from "react-router-dom";
-import { Card, Table, Modal, Header, Text, Code } from "@urkellabs/ucl";
+import { Card, Table, Modal, Text, Code, HelpIcon } from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
 
 // Components
@@ -22,14 +22,29 @@ function ConnectHelp(props) {
       title={"Connecting to this node"}
     >
       <p>
-        This node's IP is <Code>{props.ip}</Code> and identity key is:{" "}
-        <Code>{props.idkey}</Code>
+        This node's IP is{" "}
+        <Code copy>
+          <p>{props.ip}</p>
+        </Code>{" "}
+        and identity key is:{" "}
+        <Code copy>
+          <p>{props.idkey}</p>
+        </Code>
       </p>
-      <p>There are 2 supported methods of connecting to this node.</p>
-      <Header medium>Through the RPC</Header>
       <Text>
-        If you have an HSD node running, as well as hs-client installed, then
-        run.{" "}
+        To add this node to your outbound connections, run the following:
+        <Code copy>
+          <p>{`$hsd-cli rpc addnode ${props.idkey}@${props.ip} add`}</p>
+        </Code>
+        If you do not have hsd-cli installed, follow these{" "}
+        <a
+          href="https://handshake-org.github.io/guides/mac-install.html#hsd-installation-instructions"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          instructions
+        </a>
+        .
       </Text>
     </Modal>
   );
@@ -74,7 +89,8 @@ const NodeStatusContainer = () => {
                 label="node_status.host"
                 value={`${status.key}@${status.host}:${status.port}`}
               />
-              <button onClick={toggleModal} />
+              {/* <button onClick={toggleModal} /> */}
+              <HelpIcon circle onClick={toggleModal} />
             </Table.Tr>
             <Table.Tr>
               <StackedData
