@@ -1,15 +1,10 @@
 import React from "react";
-import {
-  Card,
-  Col,
-  Header,
-  LanguageSwitcher,
-  Row,
-  Text,
-  ThemeToggler
-} from "@urkellabs/ucl";
+import { Card, Col, Header, LanguageSwitcher, Row, Text } from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+
+// Components
+import ThemeSwitcher from "components/shared/ThemeSwitcher";
 
 const SmallText = styled(Text)`
   font-size: 0.875rem;
@@ -58,7 +53,7 @@ export default function Settings() {
         label={t("settings.theme_title")}
         description={t("settings.theme_desc")}
       >
-        <ThemeToggler />
+        <ThemeSwitcher />
       </SettingsInput>
     </Card>
   );
