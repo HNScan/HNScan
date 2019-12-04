@@ -6,7 +6,7 @@ on:
       paths-ignore:
         - 'package.json'
         - 'CHANGELOG.md'
-    
+
 jobs:
   build:
     name: Deploy To Github Pages
@@ -16,9 +16,9 @@ jobs:
       - name: Bump version and push tag
         uses: TriPSs/conventional-changelog-action@master
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.ACCESS_TOKEN }}
           git-message: 'chore(release): {version}'
-          preset: 'react'
+          preset: 'angular'
           tag-prefix: ''
           output-file: 'CHANGELOG.md'
       - uses: actions/setup-node@v1
