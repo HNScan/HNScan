@@ -1,17 +1,10 @@
 import React from "react";
-import {
-  Card,
-  Col,
-  Header,
-  LanguageSwitcher,
-  Row,
-  Text,
-  ThemeToggler
-} from "@urkellabs/ucl";
+import { Card, Col, Header, LanguageSwitcher, Row, Text } from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 // Components
+import ThemeSwitcher from "components/shared/ThemeSwitcher";
 import NetworkSwitcher from "components/shared/NetworkSwitcher";
 
 const SmallText = styled(Text)`
@@ -61,7 +54,7 @@ export default function Settings() {
         label={t("settings.theme_title")}
         description={t("settings.theme_desc")}
       >
-        <ThemeToggler />
+        <ThemeSwitcher />
       </SettingsInput>
       <SettingsInput
         label={t("settings.network_title")}
