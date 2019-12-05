@@ -28,7 +28,4 @@ i18n
     }
   });
 
-// i18n.changeLanguage(JSON.parse(window.localStorage.getItem("i18nextLng")));
-console.log(i18n.language);
-
 export default i18n;
