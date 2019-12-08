@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 const Row = ({ name, state, height, loading }) => (
   <Table.Tr>
-    <Table.Td width="75%">
+    <Table.Td>
       {loading ? <Skeleton /> : <Link to={"/name/" + name}>{name}</Link>}
     </Table.Td>
     <Table.Td>{loading ? <Skeleton /> : state}</Table.Td>
