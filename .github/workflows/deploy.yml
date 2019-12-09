@@ -3,9 +3,6 @@ on:
   push:
       branches:
         - master
-      paths-ignore:
-        - 'package.json'
-        - 'CHANGELOG.md'
 
 jobs:
   build:
@@ -13,14 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Bump version and push tag
-        uses: TriPSs/conventional-changelog-action@releases/v1
-        with:
-          github-token: ${{ secrets.ACCESS_TOKEN }}
-          git-message: 'chore(release): {version}'
-          preset: 'angular'
-          tag-prefix: ''
-          output-file: 'CHANGELOG.md'
       - uses: actions/setup-node@v1
         with:
           node-version: '10.x'
