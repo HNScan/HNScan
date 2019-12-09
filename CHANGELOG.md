@@ -1,3 +1,7 @@
+## [0.2.3](https://github.com/HandshakeAlliance/HNScan/compare/0.2.2...0.2.3) (2019-12-09)
+
+
+
 ## [0.2.2](https://github.com/HandshakeAlliance/HNScan/compare/0.2.1...0.2.2) (2019-12-09)
 
 
