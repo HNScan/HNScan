@@ -1,6 +1,6 @@
 {
   "name": "hnscan",
-  "version": "0.2.3",
+  "version": "0.0.0",
   "private": true,
   "homepage": "https://hnscan.com",
   "dependencies": {
@@ -23,9 +23,9 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "ucllink": "yalc link @urkellabs/ucl",
-    "start": "react-scripts start",
+    "start": "REACT_APP_GIT_SHA=`git rev-parse --short HEAD` react-scripts start",
     "setup": "yarn",
-    "build": "react-scripts build",
+    "build": "REACT_APP_GIT_SHA=`git rev-parse --short HEAD` react-scripts build",
     "test": "react-scripts test --passWithNoTests",
     "eject": "react-scripts eject"
   },
