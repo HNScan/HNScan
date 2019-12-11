@@ -10078,6 +10078,11 @@ react-select@^3.0.8:
     react-input-autosize "^2.2.2"
     react-transition-group "^2.2.1"
 
+react-solitude@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-solitude/-/react-solitude-1.0.0.tgz#8f3e2bef42757ada537b1d0dbaf642843a2ace4b"
+  integrity sha512-M8mcGWM2/w+D7zsqe+WtyZrscofgA3ss4ubT22pXTrjgbVS1DdfgWf4e3Av56Fvih8uc4zy4Dc/a13cAFK4HxA==
+
 react-transition-group@^2.2.1:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.9.0.tgz#df9cdb025796211151a436c69a8f3b97b5b07c8d"

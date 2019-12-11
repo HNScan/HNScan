@@ -1,7 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles, useTheme, ApiConfig } from "@urkellabs/ucl";
+import { SolitaryRoute } from "react-solitude";
 
 // Special
 import ScrollToTop from "components/shared/ScrollToTop";
@@ -53,28 +54,32 @@ function App() {
             <Navigation />
             <ContentContainer>
               <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/address/:hash" exact component={Address} />
-                <Route path="/blocks" exact component={Blocks} />
-                <Route path="/block/:height" exact component={Block} />
-                <Route path="/names" exact component={Names} />
-                <Route path="/name/:name" exact component={Name} />
-                <Route path="/settings" exact component={Settings} />
+                <SolitaryRoute path="/" exact component={Home} />
+                <SolitaryRoute
+                  path="/address/:hash"
+                  exact
+                  component={Address}
+                />
+                <SolitaryRoute path="/blocks" exact component={Blocks} />
+                <SolitaryRoute path="/block/:height" exact component={Block} />
+                <SolitaryRoute path="/names" exact component={Names} />
+                <SolitaryRoute path="/name/:name" exact component={Name} />
+                <SolitaryRoute path="/settings" exact component={Settings} />
                 {/* Ideally let's get a recent transactions page going */}
-                <Route path="/tx/:hash" exact component={Transaction} />
-                <Route path="/search" exact component={Search} />
+                <SolitaryRoute path="/tx/:hash" exact component={Transaction} />
+                <SolitaryRoute path="/search" exact component={Search} />
                 {/* More Screens */}
                 {/* Tool Screens */}
-                <Route path="/peers" exact component={Peers} />
-                <Route path="/status" exact component={NodeStatus} />
-                <Route path="/charts" exact component={Charts} />
-                <Route path="/changelog" exact component={Changelog} />
-                <Route
+                <SolitaryRoute path="/peers" exact component={Peers} />
+                <SolitaryRoute path="/status" exact component={NodeStatus} />
+                <SolitaryRoute path="/charts" exact component={Charts} />
+                <SolitaryRoute path="/changelog" exact component={Changelog} />
+                <SolitaryRoute
                   path="/airdropclaim"
                   exact
                   component={AirdropClaimScreen}
                 />
-                <Route path="*" component={NotFoundScreen} />
+                <SolitaryRoute path="*" component={NotFoundScreen} />
               </Switch>
             </ContentContainer>
             <Footer />
