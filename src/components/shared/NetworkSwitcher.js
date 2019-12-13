@@ -10,7 +10,7 @@ export default function NetworkSwitcher(props) {
   let options = [
     { value: "http://localhost:8080", label: "Local Testnet" },
     { value: "https://api.hnscan.com", label: "HNScan Testnet" },
-    { value: "http://", label: "Experimental Testnet" }
+    { value: "https://experimental.hnscan.com", label: "Experimental Testnet" }
   ];
 
   return (
