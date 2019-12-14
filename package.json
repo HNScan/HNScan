@@ -16,7 +16,7 @@
     "react-i18next": "^11.0.1",
     "react-router-dom": "^5.1.0",
     "react-scripts": "3.3.0",
-    "react-solitude": "1.0.0",
+    "react-solitude": "^1.0.2",
     "styled-components": "^5.0.0-beta.9",
     "styled-theming": "^2.2.0"
   },
