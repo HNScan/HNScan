@@ -199,8 +199,11 @@ export default function Footer() {
               <FooterLink as={Link} to="/status">
                 {t("footer.node_status")}
               </FooterLink>
-              <FooterLink as={Link} to="/airdropclaim">
-                {t("footer.airdrop_claim")}
+              {/* <FooterLink as={Link} to="/airdropclaim"> */}
+              {/*   {t("footer.airdrop_claim")} */}
+              {/* </FooterLink> */}
+              <FooterLink as={Link} to="/charts">
+                {t("footer.charts")}
               </FooterLink>
             </LinksContainer>
           </LeftLinksContainer>
