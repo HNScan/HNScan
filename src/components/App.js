@@ -67,7 +67,7 @@ function App() {
                 {/* Tool Screens */}
                 <Route path="/peers" exact component={Peers} />
                 <Route path="/status" exact component={NodeStatus} />
-                <Route path="/charts" exact component={Charts} />
+                <Route path="/charts" component={Charts} />
                 <Route path="/changelog" exact component={Changelog} />
                 <Route
                   path="/airdropclaim"
