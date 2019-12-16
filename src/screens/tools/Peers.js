@@ -5,7 +5,7 @@ import { Pagination, usePage, useQuery } from "@urkellabs/ucl";
 import PeerInfo from "components/PeerInfo";
 
 //Containers
-import Map from "containers/NodeMap";
+import NodeMap from "containers/NodeMap";
 
 const PeersContainer = ({ page }) => {
   const limit = 10;
@@ -24,7 +24,7 @@ export default function Peers() {
   return (
     <>
       <Suspense fallback={<div>Loading Chart...</div>}>
-        <Map />
+        <NodeMap />
       </Suspense>
       <Suspense fallback={<div>Loading Peers...</div>}>
         <PeersContainer page={page} />
