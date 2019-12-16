@@ -1,18 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Card, useQuery, Map } from "@urkellabs/ucl";
 
-const MapWrapper = styled(Card)`
-  // min-height: 500px;
-  height: 500px;
+const Wrapper = styled.div`
+  height: 55vh;
+  width: 100%;
 `;
 
-export default function PeersMap() {
+export default function NodeMap() {
   const { data } = useQuery("/mapdata");
 
   return (
-    <MapWrapper>
-      <Map data={data} />
-    </MapWrapper>
+    <Wrapper>
+      <Card fullHeight>
+        <Map data={data.data} />
+      </Card>
+    </Wrapper>
   );
 }
