@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Switch, Route, useRouteMatch } from "react-router-dom";
+import { Switch, Route, useRouteMatch, Tabs, Tab } from "react-router-dom";
 import styled from "styled-components";
 import { Flex } from "@urkellabs/ucl";
 
@@ -14,18 +14,33 @@ const Wrapper = styled(Flex)`
 //@todo we need to figure out a better color scheme here as well.
 //@todo would be cool to link "source" like Etherscan does, but link it to our API docs when we have them.
 //@todo right now we default to difficulty for the "url"/charts -> I think we can in the future make this a lander for charts, rather than just default to difficulty similar to etherscan. Allow people to pick it out..
+//@todo do we need the switch here?
 
 export default function Charts() {
-  let { path } = useRouteMatch();
+  let { path, url } = useRouteMatch();
   return (
-    <Switch>
-      <Route exact path={path}>
-        <Wrapper align="center" columns>
-          <Suspense fallback={<div>Loading...</div>}>
-            <DailyDifficulty />
-          </Suspense>
-        </Wrapper>
-      </Route>
-    </Switch>
+    <>
+      <Tabs>
+        <Tab to={`${url}/difficulty`}>Difficulty</Tab>
+        <Tab to={`${url}/dailytransactions`}>Daily TX</Tab>
+      </Tabs>
+
+      <Switch>
+        <Route path={path}>
+          <Wrapper align="center" columns>
+            <Suspense fallback={<div>Loading...</div>}>
+              <DailyDifficulty />
+            </Suspense>
+          </Wrapper>
+        </Route>
+        <Route path={url + "/charts/dailytransactions"}>
+          <Wrapper align="center" columns>
+            <Suspense fallback={<div>Loading...</div>}>
+              <DailyDifficulty />
+            </Suspense>
+          </Wrapper>
+        </Route>
+      </Switch>
+    </>
   );
 }
