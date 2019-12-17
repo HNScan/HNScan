@@ -33,6 +33,7 @@ import Changelog from "screens/Changelog";
 
 // Error Pages
 import NotFoundScreen from "screens/errors/NotFound";
+import NetworkBoundary from "screens/errors/NetworkBoundary";
 
 // Internationalization
 import "../i18n/i18n";
@@ -50,34 +51,36 @@ function App() {
           <GlobalStyles />
           <Router>
             <ScrollToTop />
-            <Navigation />
-            <ContentContainer>
-              <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/address/:hash" exact component={Address} />
-                <Route path="/blocks" exact component={Blocks} />
-                <Route path="/block/:height" exact component={Block} />
-                <Route path="/names" exact component={Names} />
-                <Route path="/name/:name" exact component={Name} />
-                <Route path="/settings" exact component={Settings} />
-                {/* Ideally let's get a recent transactions page going */}
-                <Route path="/tx/:hash" exact component={Transaction} />
-                <Route path="/search" exact component={Search} />
-                {/* More Screens */}
-                {/* Tool Screens */}
-                <Route path="/peers" exact component={Peers} />
-                <Route path="/status" exact component={NodeStatus} />
-                <Route path="/charts" component={Charts} />
-                <Route path="/changelog" exact component={Changelog} />
-                <Route
-                  path="/airdropclaim"
-                  exact
-                  component={AirdropClaimScreen}
-                />
-                <Route path="*" component={NotFoundScreen} />
-              </Switch>
-            </ContentContainer>
-            <Footer />
+            <NetworkBoundary>
+              <Navigation />
+              <ContentContainer>
+                <Switch>
+                  <Route path="/" exact component={Home} />
+                  <Route path="/address/:hash" exact component={Address} />
+                  <Route path="/blocks" exact component={Blocks} />
+                  <Route path="/block/:height" exact component={Block} />
+                  <Route path="/names" exact component={Names} />
+                  <Route path="/name/:name" exact component={Name} />
+                  <Route path="/settings" exact component={Settings} />
+                  {/* Ideally let's get a recent transactions page going */}
+                  <Route path="/tx/:hash" exact component={Transaction} />
+                  <Route path="/search" exact component={Search} />
+                  {/* More Screens */}
+                  {/* Tool Screens */}
+                  <Route path="/peers" exact component={Peers} />
+                  <Route path="/status" exact component={NodeStatus} />
+                  <Route path="/charts" component={Charts} />
+                  <Route path="/changelog" exact component={Changelog} />
+                  <Route
+                    path="/airdropclaim"
+                    exact
+                    component={AirdropClaimScreen}
+                  />
+                  <Route path="*" component={NotFoundScreen} />
+                </Switch>
+              </ContentContainer>
+              <Footer />
+            </NetworkBoundary>
           </Router>
         </>
       </ApiConfig>
