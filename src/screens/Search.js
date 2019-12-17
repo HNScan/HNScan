@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 
-// Components
+// Containers
 import SearchBar from "containers/SearchBar";
 
 const Header = styled.h1`
@@ -11,16 +11,9 @@ const Header = styled.h1`
   font-size: 24px;
   font-weight: bold;
   text-align: center;
-
-  @media (min-width: $tablet) {
-    font-size: 32px;
-  }
 `;
 
 const SearchResultsTable = styled.table`
-  /* margin-top: 25px; */
-  background: ${props => props.theme.global.background};
-  color: ${props => props.theme.global.textColor};
   margin: 25px auto 0;
   font-size: 20px;
 `;
