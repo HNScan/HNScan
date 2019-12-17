@@ -26,7 +26,7 @@ const NavLinkItem = styled(NavBar.Item)`
 const ThemeTogglerWrapper = styled.div`
   margin: 0 0.5rem;
 
-  ${breakpoint.onlyMobile} {
+  ${breakpoint.upToDesktop} {
     display: none;
   }
 `;
