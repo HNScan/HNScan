@@ -6,6 +6,9 @@ import { Flex, Tabs, Tab } from "@urkellabs/ucl";
 // Containers
 import DailyDifficulty from "containers/charts/DailyDifficulty";
 import DailyTransactions from "containers/charts/DailyTransactions";
+import TotalSupply from "containers/charts/TotalSupply";
+import TotalTransactions from "containers/charts/TotalTransactions";
+import TotalBurned from "containers/charts/TotalBurned";
 
 const Wrapper = styled(Flex)`
   height: 60vh;
@@ -24,24 +27,32 @@ export default function Charts() {
       <Tabs>
         <Tab to={`${url}/difficulty`}>Difficulty</Tab>
         <Tab to={`${url}/dailytransactions`}>Daily TX</Tab>
+        <Tab to={`${url}/totaltransactions`}>Total TX</Tab>
+        <Tab to={`${url}/supply`}>Supply</Tab>
+        <Tab to={`${url}/burned`}>Burned</Tab>
       </Tabs>
-      <Switch>
-        <Route path={url + "/difficulty"}>
-          <Wrapper align="center" columns>
-            <Suspense fallback={<div>Loading...</div>}>
+      <Wrapper align="center" columns>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route path={url + "/difficulty"}>
               <DailyDifficulty />
-            </Suspense>
-          </Wrapper>
-        </Route>
-        <Route path={url + "/dailytransactions"}>
-          <Wrapper align="center" columns>
-            <Suspense fallback={<div>Loading...</div>}>
+            </Route>
+            <Route path={url + "/dailytransactions"}>
               <DailyTransactions />
-            </Suspense>
-          </Wrapper>
-        </Route>
-        <Redirect from={url} to={`${url}/difficulty`} />
-      </Switch>
+            </Route>
+            <Route path={url + "/totaltransactions"}>
+              <TotalTransactions />
+            </Route>
+            <Route path={url + "/supply"}>
+              <TotalSupply />
+            </Route>
+            <Route path={url + "/burned"}>
+              <TotalBurned />
+            </Route>
+            <Redirect from={url} to={`${url}/difficulty`} />
+          </Switch>
+        </Suspense>
+      </Wrapper>
     </>
   );
 }
