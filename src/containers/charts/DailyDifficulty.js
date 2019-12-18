@@ -10,7 +10,11 @@ export default function DailyDifficulty() {
 
   return (
     <Card fullHeight title="Daily Average Difficulty">
-      <TimeSeries data={data} />
+      <TimeSeries
+        title="Average Difficulty"
+        data={data}
+        tooltip={"Difficulty: [bold]{valueY}[/]"}
+      />
     </Card>
   );
 }
