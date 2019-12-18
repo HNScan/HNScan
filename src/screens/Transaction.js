@@ -30,7 +30,7 @@ const Container = styled.div`
 
 function TxDetailScreen({ hash }) {
   const { t } = useTranslation();
-  const tx = useQuery("/tx" + hash);
+  const tx = useQuery("/tx/" + hash);
 
   return (
     <>
