@@ -31,9 +31,8 @@
         n.src = '//cdn.urkellabs.com/solitude.js';
         e.parentNode.insertBefore(n, e)
       }(window, document, 'solitude');
-      // @todo change to production api url
       // @todo move this line to the tracking script
-      solitude('setTrackerUrl', 'http://localhost:9090/collect')
+      solitude('setTrackerUrl', 'https://api.solitudeanalytics.com/collect')
       solitude('set', 'siteId', '0000-0000-0001');
     </script>
     <!-- / Solitude-->
@@ -78,7 +77,6 @@
       })(window.location);
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
-
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
