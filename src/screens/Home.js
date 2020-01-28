@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Header, useQuery } from "@urkellabs/ucl";
+import humanizeDuration from "humanize-duration";
 
 //Components
 import NetworkSummary from "components/home/NetworkSummary";
@@ -37,13 +38,15 @@ function HomeView() {
   const { data: summary } = useQuery("/summary");
   const { data: blocks } = useQuery("/blocks/", { limit: 5 });
   const { data: txs } = useQuery("/txs/", { limit: 5 });
+
+  // @todo destroy this block of code upon release
   let [heightLeft, setHeightLeft] = useState("Loading...");
   useEffect(() => {
     async function fetchBtcHeight() {
       fetch("https://chain.api.btc.com/v3/block/latest").then(res =>
         res.json().then(data => {
           if (data.data.height < 615817)
-            setHeightLeft(615817 - data.data.height + " BTC blocks remaining");
+            setHeightLeft(615817 - data.data.height);
           else setHeightLeft("Launched!");
         })
       );
@@ -55,7 +58,10 @@ function HomeView() {
   return (
     <>
       <HorizontalContainer>
-        <Header>{"Time until launch: " + heightLeft}</Header>
+        <Header>{"Mainnet: " + heightLeft + " BTC blocks remaining"}</Header>
+        <Header small>
+          {"Approx. " + humanizeDuration(heightLeft * 10 * 60000)}
+        </Header>
       </HorizontalContainer>
       <HorizontalContainer>
         <NetworkSummary info={summary} />
