@@ -1,6 +1,6 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import styled from "styled-components";
-import { useQuery } from "@urkellabs/ucl";
+import { Header, useQuery } from "@urkellabs/ucl";
 
 //Components
 import NetworkSummary from "components/home/NetworkSummary";
@@ -37,10 +37,26 @@ function HomeView() {
   const { data: summary } = useQuery("/summary");
   const { data: blocks } = useQuery("/blocks/", { limit: 5 });
   const { data: txs } = useQuery("/txs/", { limit: 5 });
+  let [heightLeft, setHeightLeft] = useState("Loading...");
+  useEffect(() => {
+    async function fetchBtcHeight() {
+      fetch("https://chain.api.btc.com/v3/block/latest").then(res =>
+        res.json().then(data => {
+          if (data.data.height < 615817)
+            setHeightLeft(615817 - data.data.height + " BTC blocks remaining");
+          else setHeightLeft("Launched!");
+        })
+      );
+    }
+    fetchBtcHeight();
+  }, [heightLeft]);
 
   //All of these below should just be containers. @todo
   return (
     <>
+      <HorizontalContainer>
+        <Header>{"Time until launch: " + heightLeft}</Header>
+      </HorizontalContainer>
       <HorizontalContainer>
         <NetworkSummary info={summary} />
       </HorizontalContainer>
