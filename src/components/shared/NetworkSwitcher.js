@@ -13,12 +13,12 @@ export default function NetworkSwitcher(props) {
       label: "Local Testnet (http://localhost:8080)"
     },
     {
-      value: "https://api.hnscan.com",
-      label: "HNScan Testnet (https://api.hnscan.com)"
-    },
-    {
       value: "https://experimental.hnscan.com",
       label: "Experimental Testnet (https://experimental.hnscan.com)"
+    },
+    {
+      value: "https://api.hnscan.com",
+      label: "HNScan Mainnet (https://api.hnscan.com)"
     }
   ];
 
