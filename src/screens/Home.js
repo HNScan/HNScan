@@ -1,7 +1,6 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense } from "react";
 import styled from "styled-components";
-import { Header, useQuery } from "@urkellabs/ucl";
-import humanizeDuration from "humanize-duration";
+import { useQuery } from "@urkellabs/ucl";
 
 //Components
 import NetworkSummary from "components/home/NetworkSummary";
