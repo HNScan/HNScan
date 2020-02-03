@@ -39,30 +39,9 @@ function HomeView() {
   const { data: blocks } = useQuery("/blocks/", { limit: 5 });
   const { data: txs } = useQuery("/txs/", { limit: 5 });
 
-  // @todo destroy this block of code upon release
-  let [heightLeft, setHeightLeft] = useState("Loading...");
-  useEffect(() => {
-    async function fetchBtcHeight() {
-      fetch("https://chain.api.btc.com/v3/block/latest").then(res =>
-        res.json().then(data => {
-          if (data.data.height < 615817)
-            setHeightLeft(615817 - data.data.height);
-          else setHeightLeft("Launched!");
-        })
-      );
-    }
-    fetchBtcHeight();
-  }, [heightLeft]);
-
   //All of these below should just be containers. @todo
   return (
     <>
-      <HorizontalContainer>
-        <Header>{"Mainnet: " + heightLeft + " BTC blocks remaining"}</Header>
-        <Header small>
-          {"Approx. " + humanizeDuration(heightLeft * 10 * 60000)}
-        </Header>
-      </HorizontalContainer>
       <HorizontalContainer>
         <NetworkSummary info={summary} />
       </HorizontalContainer>
