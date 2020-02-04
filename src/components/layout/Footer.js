@@ -8,8 +8,6 @@ import { Cog, ExternalLink } from "@urkellabs/ucl";
 // SVGs
 import LogoText from "components/svg/LogoText";
 
-// @note we should be exporting this from somewhere other than here. But, not a big deal,
-// that is something to be done later.
 const textColor = theme("mode", {
   light: "#4a4a4a",
   dark: "#afafaf"
@@ -196,9 +194,6 @@ export default function Footer() {
               <FooterLink as={Link} to="/status">
                 {t("footer.node_status")}
               </FooterLink>
-              {/* <FooterLink as={Link} to="/airdropclaim"> */}
-              {/*   {t("footer.airdrop_claim")} */}
-              {/* </FooterLink> */}
               <FooterLink as={Link} to="/charts">
                 {t("footer.charts")}
               </FooterLink>
@@ -220,11 +215,11 @@ export default function Footer() {
                 {t("footer.academy")}
               </FooterLink>
               <FooterLink
-                href="https://handshake.community"
+                href="https://hnspool.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("footer.community")}
+                {t("footer.pool")}
               </FooterLink>
               <FooterLink
                 href="https://urkel.io"
