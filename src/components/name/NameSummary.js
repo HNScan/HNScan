@@ -9,7 +9,6 @@ import StackedData from "components/shared/StackedData";
 function timeToNextState(blocks) {
   if (blocks) {
     let today = new Date();
-    console.log(today.getTime(), (blocks / 144) * 24);
     let timeLeft = new Date(
       today.getTime() + (blocks / 144) * 24 * 3600 * 1000
     );
