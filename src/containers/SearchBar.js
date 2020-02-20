@@ -37,6 +37,11 @@ const background = theme("mode", {
   dark: "#575757"
 });
 
+const backgroundActive = theme("mode", {
+  light: "#fbfbfb",
+  dark: "#505050"
+});
+
 const borderColor = theme("mode", {
   light: "#e7e7e7",
   dark: "#444"
@@ -78,11 +83,13 @@ const SearchInput = styled.input`
   line-height: 1.5;
   padding-bottom: calc(0.375em - 1px);
   padding-top: calc(0.375em - 1px);
+  outline: none;
   position: relative;
   vertical-align: top;
 
   &:focus {
     box-shadow: none !important;
+    background: ${backgroundActive};
   }
   &::placeholder {
     color: ${lightTextColor};
@@ -97,6 +104,8 @@ const SearchBar = props => {
   //Search API Call
   const search = async e => {
     e.preventDefault();
+    if (!query.length) return;
+
     //@todo convert this to useQuery
     let result = await fetch(
       `${process.env.REACT_APP_API_URL}/search?q=${query}`
