@@ -26,7 +26,7 @@ const NavLinkItem = styled(NavBar.Item)`
 const ThemeTogglerWrapper = styled.div`
   margin: 0 0.5rem;
 
-  ${breakpoint.onlyMobile} {
+  ${breakpoint.upToDesktop} {
     display: none;
   }
 `;
@@ -96,14 +96,14 @@ export default function Navigation() {
                 <NavBar.Item as={Link} to={"/peers"}>
                   Peers
                 </NavBar.Item>
+                <NavBar.Item as={Link} to={"/charts"}>
+                  Charts
+                </NavBar.Item>
                 {/* <NavBar.Item as={Link} to={"/airdropclaim"}>
                   Claim Your Airdrop
                 </NavBar.Item>
                 <NavBar.Item as={Link} to={"/mempool"}>
                   Mempool
-                </NavBar.Item>
-                <NavBar.Item as={Link} to={"/charts"}>
-                  Charts
                 </NavBar.Item>
                 <NavBar.Item as={Link} to={"/logs"}>
                   Logs

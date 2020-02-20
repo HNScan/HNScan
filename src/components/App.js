@@ -34,6 +34,7 @@ import Changelog from "screens/Changelog";
 
 // Error Pages
 import NotFoundScreen from "screens/errors/NotFound";
+import NetworkBoundary from "screens/errors/NetworkBoundary";
 
 // Internationalization
 import "../i18n/i18n";
@@ -51,38 +52,52 @@ function App() {
           <GlobalStyles />
           <Router>
             <ScrollToTop />
-            <Navigation />
-            <ContentContainer>
-              <Switch>
-                <SolitaryRoute path="/" exact component={Home} />
-                <SolitaryRoute
-                  path="/address/:hash"
-                  exact
-                  component={Address}
-                />
-                <SolitaryRoute path="/blocks" exact component={Blocks} />
-                <SolitaryRoute path="/block/:height" exact component={Block} />
-                <SolitaryRoute path="/names" exact component={Names} />
-                <SolitaryRoute path="/name/:name" exact component={Name} />
-                <SolitaryRoute path="/settings" exact component={Settings} />
-                {/* Ideally let's get a recent transactions page going */}
-                <SolitaryRoute path="/tx/:hash" exact component={Transaction} />
-                <SolitaryRoute path="/search" exact component={Search} />
-                {/* More Screens */}
-                {/* Tool Screens */}
-                <SolitaryRoute path="/peers" exact component={Peers} />
-                <SolitaryRoute path="/status" exact component={NodeStatus} />
-                <SolitaryRoute path="/charts" exact component={Charts} />
-                <SolitaryRoute path="/changelog" exact component={Changelog} />
-                <SolitaryRoute
-                  path="/airdropclaim"
-                  exact
-                  component={AirdropClaimScreen}
-                />
-                <SolitaryRoute path="*" component={NotFoundScreen} />
-              </Switch>
-            </ContentContainer>
-            <Footer />
+            <NetworkBoundary>
+              <Navigation />
+              <ContentContainer>
+                <Switch>
+                  <SolitaryRoute path="/" exact component={Home} />
+                  <SolitaryRoute
+                    path="/address/:hash"
+                    exact
+                    component={Address}
+                  />
+                  <SolitaryRoute path="/blocks" exact component={Blocks} />
+                  <SolitaryRoute
+                    path="/block/:height"
+                    exact
+                    component={Block}
+                  />
+                  <SolitaryRoute path="/names" exact component={Names} />
+                  <SolitaryRoute path="/name/:name" exact component={Name} />
+                  <SolitaryRoute path="/settings" exact component={Settings} />
+                  {/* Ideally let's get a recent transactions page going */}
+                  <SolitaryRoute
+                    path="/tx/:hash"
+                    exact
+                    component={Transaction}
+                  />
+                  <SolitaryRoute path="/search" exact component={Search} />
+                  {/* More Screens */}
+                  {/* Tool Screens */}
+                  <SolitaryRoute path="/peers" exact component={Peers} />
+                  <SolitaryRoute path="/status" exact component={NodeStatus} />
+                  <SolitaryRoute path="/charts" component={Charts} />
+                  <SolitaryRoute
+                    path="/changelog"
+                    exact
+                    component={Changelog}
+                  />
+                  <SolitaryRoute
+                    path="/airdropclaim"
+                    exact
+                    component={AirdropClaimScreen}
+                  />
+                  <SolitaryRoute path="*" component={NotFoundScreen} />
+                </Switch>
+              </ContentContainer>
+              <Footer />
+            </NetworkBoundary>
           </Router>
         </>
       </ApiConfig>
