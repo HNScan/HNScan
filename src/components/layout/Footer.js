@@ -90,11 +90,6 @@ export const Header = styled.div`
   width: 100%;
 `;
 
-export const ContactItem = styled.div`
-  font-size: 10pt;
-  margin: 5px 0;
-`;
-
 // External Links using <a>
 export const FooterLink = styled.a`
   font-size: 10pt;
@@ -105,6 +100,11 @@ export const FooterLink = styled.a`
   @media (min-width: 445px) {
     margin: 5px 0;
   }
+`;
+
+export const ContactItem = styled(FooterLink)`
+  font-size: 10pt;
+  margin: 5px 0;
 `;
 
 export const RightContent = styled.div`
@@ -170,7 +170,9 @@ export default function Footer() {
           <Logo />
           <Tagline>{t("footer.tagline")}</Tagline>
           <Header>{t("footer.contact")}</Header>
-          <ContactItem>{t("footer.support_email")}</ContactItem>
+          <ContactItem href="mailto:engineering@urkellabs.com">
+            {t("footer.support_email")}
+          </ContactItem>
         </LeftContent>
         <RightContent>
           <LeftLinksContainer>
