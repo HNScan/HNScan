@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery, Card, TimeSeries } from "@urkellabs/ucl";
+import { useQuery, Card, LineChart } from "@urkellabs/ucl";
 
 export default function DailyDifficulty() {
   //@todo eventually we can make this configurable, but no need right now.
@@ -10,11 +10,7 @@ export default function DailyDifficulty() {
 
   return (
     <Card fullHeight title="Daily Average Difficulty">
-      <TimeSeries
-        title="Average Difficulty"
-        data={data}
-        tooltip={"Difficulty: [bold]{valueY}[/]"}
-      />
+      <LineChart data={data} axesLabels={["Date", "Difficulty"]} />
     </Card>
   );
 }

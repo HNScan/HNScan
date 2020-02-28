@@ -30,6 +30,7 @@ export default function NetworkSwitcher(props) {
       }
       onChange={kv => {
         setNetwork(kv.value);
+        window.location.reload();
       }}
     />
   );

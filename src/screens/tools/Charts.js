@@ -10,10 +10,16 @@ import TotalSupply from "containers/charts/TotalSupply";
 import TotalTransactions from "containers/charts/TotalTransactions";
 import TotalBurned from "containers/charts/TotalBurned";
 
-const Wrapper = styled(Flex)`
+const ChartsWrapper = styled(Flex)`
   height: 60vh;
   width: 100%;
   margin-top: 20px;
+`;
+
+const TabsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
 `;
 
 //@todo we need to figure out a better color scheme here as well.
@@ -24,14 +30,16 @@ export default function Charts() {
   let { url } = useRouteMatch();
   return (
     <>
-      <Tabs>
-        <Tab to={`${url}/difficulty`}>Difficulty</Tab>
-        <Tab to={`${url}/dailytransactions`}>Daily TX</Tab>
-        <Tab to={`${url}/totaltransactions`}>Total TX</Tab>
-        <Tab to={`${url}/supply`}>Supply</Tab>
-        <Tab to={`${url}/burned`}>Burned</Tab>
-      </Tabs>
-      <Wrapper align="center" columns>
+      <TabsWrapper>
+        <Tabs>
+          <Tab to={`${url}/difficulty`}>Difficulty</Tab>
+          <Tab to={`${url}/dailytransactions`}>Daily TX</Tab>
+          <Tab to={`${url}/totaltransactions`}>Total TX</Tab>
+          <Tab to={`${url}/supply`}>Supply</Tab>
+          <Tab to={`${url}/burned`}>Burned</Tab>
+        </Tabs>
+      </TabsWrapper>
+      <ChartsWrapper align="center" columns>
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
             <Route path={url + "/difficulty"}>
@@ -52,7 +60,7 @@ export default function Charts() {
             <Redirect from={url} to={`${url}/difficulty`} />
           </Switch>
         </Suspense>
-      </Wrapper>
+      </ChartsWrapper>
     </>
   );
 }

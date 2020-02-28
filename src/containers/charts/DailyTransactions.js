@@ -10,11 +10,7 @@ export default function DailyTransactions() {
 
   return (
     <Card fullHeight title="Daily Transactions">
-      <LineChart
-        data={data}
-        title="# TXs per Day"
-        tooltip="Transactions: [bold]{valueY}[\]"
-      />
+      <LineChart data={data} axesLabels={["Date", "Transactions"]} />
     </Card>
   );
 }
