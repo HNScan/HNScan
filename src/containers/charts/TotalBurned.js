@@ -10,12 +10,7 @@ export default function TotalBurned() {
 
   return (
     <Card fullHeight title="Total HNS Burned">
-      <LineChart
-        data={data}
-        title="Burned HNS"
-        tooltip="Total Burned HNS: [bold]{valueY}[\]"
-        fill
-      />
+      <LineChart data={data} axesLabels={["Date", "Burned HNS"]} />
     </Card>
   );
 }

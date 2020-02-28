@@ -102,6 +102,7 @@ const SearchBar = props => {
   const { t } = useTranslation();
 
   //Search API Call
+  // @todo we should add some validation interaction for searches that fail
   const search = async e => {
     e.preventDefault();
     if (!query.length) return;
@@ -110,6 +111,9 @@ const SearchBar = props => {
     let result = await fetch(
       `${process.env.REACT_APP_API_URL}/search?q=${query}`
     );
+
+    // Close the nav on successful search (if in mobile)
+    props.toggleNav(false);
 
     let data = await result.json();
 
@@ -126,8 +130,6 @@ const SearchBar = props => {
   };
   return (
     <SearchWrapper className="control has-icons-left" onSubmit={search}>
-      {/* @todo might need this for mobile. Test */}
-      {/* <button className="hiddenSearchSubmit" type="submit"></button> */}
       <SearchInput
         type="search"
         placeholder={t("search.placeholder")}

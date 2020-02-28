@@ -10,12 +10,7 @@ export default function TotalSupply() {
 
   return (
     <Card fullHeight title="Total HNS Supply">
-      <LineChart
-        data={data}
-        title="Circulating HNS"
-        tooltip="Total HNS: [bold]{valueY}[\]"
-        fill
-      />
+      <LineChart data={data} axesLabels={["Date", "Total HNS"]} isArea />
     </Card>
   );
 }

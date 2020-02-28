@@ -10,12 +10,7 @@ export default function TotalTransactions() {
 
   return (
     <Card fullHeight title="Total Transactions">
-      <LineChart
-        data={data}
-        title="# of Transactions"
-        tooltip="Total TXs: [bold]{valueY}[\]"
-        fill
-      />
+      <LineChart data={data} isArea axesLabels={["Date", "Total"]} />
     </Card>
   );
 }

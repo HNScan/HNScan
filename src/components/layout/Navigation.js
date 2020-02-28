@@ -68,10 +68,18 @@ export default function Navigation() {
         </NavBar.Brand>
         <NavBar.Menu active={mobileNav}>
           <NavBar.Start>
-            <NavLinkItem as={Link} to={"/blocks"}>
+            <NavLinkItem
+              as={Link}
+              to={"/blocks"}
+              onClick={() => updateMobileNav(active => !active)}
+            >
               Blocks
             </NavLinkItem>
-            <NavLinkItem as={Link} to={"/names"}>
+            <NavLinkItem
+              as={Link}
+              to={"/names"}
+              onClick={() => updateMobileNav(active => !active)}
+            >
               Names
             </NavLinkItem>
             <NavLinkItem
@@ -155,7 +163,7 @@ export default function Navigation() {
           </NavBar.Start>
           <NavBar.End>
             <NavBar.Item>
-              <SearchBar />
+              <SearchBar toggleNav={updateMobileNav} />
               <ThemeTogglerWrapper>
                 <ThemeToggler />
               </ThemeTogglerWrapper>
