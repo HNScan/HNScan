@@ -1,5 +1,7 @@
 import React from "react";
-import { useQuery, Card, LineChart } from "@urkellabs/ucl";
+import { useQuery, LineChart } from "@urkellabs/ucl";
+
+import { sciNotation } from "utils/util";
 
 export default function TotalTransactions() {
   //@todo eventually we can make this configurable, but no need right now.
@@ -9,8 +11,16 @@ export default function TotalTransactions() {
   });
 
   return (
-    <Card fullHeight title="Total Transactions">
-      <LineChart data={data} isArea axesLabels={["Date", "Total"]} />
-    </Card>
+    <LineChart
+      axisLabels={["", "Transactions (in thousands)"]}
+      chartLabel="Total Transactions"
+      data={data}
+      dataLabels={["Total Transactions"]}
+      yFormatter={el => el / 1000}
+      // @note add me if transactions start getting out of hand
+      // yTooltipFormatter={el =>
+      //   `${sciNotation(el, 4)[0]} x 10^${sciNotation(el, 4)[1]}`
+      // }
+    />
   );
 }
