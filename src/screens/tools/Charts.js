@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
-import { Switch, Route, useRouteMatch, Redirect } from "react-router-dom";
 import styled from "styled-components";
-import { Flex, Row, Col } from "@urkellabs/ucl";
+import { Row, Col } from "@urkellabs/ucl";
 
 // Containers
 import DailyDifficulty from "containers/charts/DailyDifficulty";
@@ -30,7 +29,6 @@ const CustomCol = styled(Col)`
 //@todo right now we default to difficulty for the "url"/charts -> I think we can in the future make this a lander for charts, rather than just default to difficulty similar to etherscan. Allow people to pick it out..
 
 export default function Charts() {
-  let { url } = useRouteMatch();
   return (
     <>
       <ChartsWrapper>
@@ -48,10 +46,9 @@ export default function Charts() {
             <CustomCol mobile={12} desktop={6}>
               <TotalSupply />
             </CustomCol>
-            <CustomCol mobile={12} desktop={6}>
+            <CustomCol mobile={12} desktop={12}>
               <TotalBurned />
             </CustomCol>
-            <Redirect from={url} to={`${url}/difficulty`} />
           </Row>
         </Suspense>
       </ChartsWrapper>
