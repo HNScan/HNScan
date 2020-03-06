@@ -53,7 +53,8 @@ const TransactionList = ({ url, page, from }) => {
   const renderTransactions = data.result.map((tx, index) => (
     <Container key={index}>
       <HashWrapper>
-        Tx {index + 1}:&nbsp;<Link to={"/tx/" + tx.hash}>{tx.hash}</Link>
+        Tx {index + 1 + offset}:&nbsp;
+        <Link to={"/tx/" + tx.hash}>{tx.hash}</Link>
       </HashWrapper>
       <Row>
         <Col mobile={12} tablet>
@@ -65,6 +66,9 @@ const TransactionList = ({ url, page, from }) => {
       </Row>
     </Container>
   ));
+  if (!data.result.length) {
+    return <></>;
+  }
   return (
     <>
       <Card
