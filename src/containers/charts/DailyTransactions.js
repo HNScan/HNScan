@@ -1,7 +1,5 @@
 import React from "react";
-import { useQuery, Card, LineChart } from "@urkellabs/ucl";
-
-import { sciNotation } from "utils/util";
+import { useQuery, LineChart } from "@urkellabs/ucl";
 
 export default function DailyTransactions() {
   //@todo eventually we can make this configurable, but no need right now.
