@@ -11,7 +11,6 @@ import TransactionList from "containers/TransactionList";
 
 //@todo if someone requests a wrong address (IE wrong network, help them understand). Show a screen for that.
 //@todo show a QR code component here.
-//@todo add a copy button for the address at the top.
 //@todo Allow a copy button for the QR code as well, if we implement it.
 function AddressView({ hash, page, url }) {
   const { data: address } = useQuery("/addresses/" + hash);
