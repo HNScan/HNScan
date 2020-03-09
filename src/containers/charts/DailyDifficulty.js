@@ -17,9 +17,6 @@ export default function DailyDifficulty() {
       data={data}
       dataLabels={["Daily Average Difficulty"]}
       yFormatter={el => el / 1000000}
-      yTooltipFormatter={el =>
-        `${sciNotation(el, 4)[0]} x 10^${sciNotation(el, 4)[1]}`
-      }
     />
   );
 }

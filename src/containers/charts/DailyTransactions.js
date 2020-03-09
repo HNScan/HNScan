@@ -14,10 +14,6 @@ export default function DailyTransactions() {
       chartLabel="Daily Transactions"
       data={data}
       dataLabels={["Daily Transactions"]}
-      // @note add me once daily transactions start getting out of hand
-      // yTooltipFormatter={el =>
-      //   `${sciNotation(el, 4)[0]} x 10^${sciNotation(el, 4)[1]}`
-      // }
     />
   );
 }
