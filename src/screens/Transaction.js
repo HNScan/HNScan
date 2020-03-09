@@ -1,7 +1,16 @@
 import React, { Suspense } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { Row, Col, Card, Table, useQuery } from "@urkellabs/ucl";
+import {
+  Row,
+  Col,
+  Card,
+  Table,
+  useQuery,
+  Code,
+  breakpoint,
+  Header
+} from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
 
 // Components
@@ -28,12 +37,44 @@ const Container = styled.div`
   }
 `;
 
+const TxWrapper = styled.div`
+  width: 100%;
+  word-wrap: break-word;
+  margin-bottom: 16px;
+  padding: 10px;
+`;
+
+const TxTitle = styled(Header)`
+  font-weight: 700;
+`;
+
+const TxHash = styled(Code)`
+  background: transparent;
+  color: inherit;
+  font-size: 14px;
+  max-width: 400px;
+  padding: 0;
+  font-weight: 400;
+
+  ${breakpoint.tablet} {
+    max-width: initial;
+  }
+
+  * {
+    margin-left: 4px;
+  }
+`;
+
 function TxDetailScreen({ hash }) {
   const { t } = useTranslation();
   const { data: tx } = useQuery("/txs/" + hash);
 
   return (
     <>
+      <TxWrapper>
+        <TxTitle small>Transaction</TxTitle>
+        <TxHash copy>{hash}</TxHash>
+      </TxWrapper>
       <Card title={t("tx_detail.summary")}>
         <Row>
           <Col mobile={12} tablet>

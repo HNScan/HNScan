@@ -146,6 +146,17 @@ export default function Navigation() {
                 </NavBar.Item> */}
                 <NavBar.Item
                   as="a"
+                  href="https://hnspool.com/docs/introduction"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Start Mining&nbsp;
+                  <IconWrapper>
+                    <ExternalLink />
+                  </IconWrapper>
+                </NavBar.Item>
+                <NavBar.Item
+                  as="a"
                   href="https://github.com/HandshakeAlliance/HNScan/issues"
                   target="_blank"
                   rel="noopener noreferrer"

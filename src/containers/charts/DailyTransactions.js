@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery, Card, LineChart } from "@urkellabs/ucl";
+import { useQuery, LineChart } from "@urkellabs/ucl";
 
 export default function DailyTransactions() {
   //@todo eventually we can make this configurable, but no need right now.
@@ -9,8 +9,15 @@ export default function DailyTransactions() {
   });
 
   return (
-    <Card fullHeight title="Daily Transactions">
-      <LineChart data={data} axesLabels={["Date", "Transactions"]} />
-    </Card>
+    <LineChart
+      axisLabels={["", "Transactions"]}
+      chartLabel="Daily Transactions"
+      data={data}
+      dataLabels={["Daily Transactions"]}
+      // @note add me once daily transactions start getting out of hand
+      // yTooltipFormatter={el =>
+      //   `${sciNotation(el, 4)[0]} x 10^${sciNotation(el, 4)[1]}`
+      // }
+    />
   );
 }

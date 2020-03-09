@@ -25,7 +25,7 @@ const SummaryCardItem = styled.div`
 
 const PeerInfo = ({ peers }) => {
   const { t } = useTranslation();
-  const peerTable = peers.map(peer => (
+  const peerTable = peers?.map(peer => (
     <SummaryCardItem key={peer.addr}>
       <Row>
         <Col mobile={12} tablet>

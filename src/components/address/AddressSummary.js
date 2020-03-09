@@ -1,6 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { Row, Col, Card, Skeleton } from "@urkellabs/ucl";
+import {
+  Row,
+  Col,
+  Card,
+  Skeleton,
+  Header,
+  Code,
+  breakpoint
+} from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
 
 // Components
@@ -12,16 +20,26 @@ import { hnsValues } from "utils/util";
 const AddressWrapper = styled.div`
   width: 100%;
   word-wrap: break-word;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   padding: 10px;
 `;
 
-const AddressHash = styled.div`
-  font-size: 16px;
+const AddressHash = styled(Code)`
+  background: transparent;
+  font-size: 14px;
   max-width: 400px;
+  padding: 0;
+
+  ${breakpoint.tablet} {
+    max-width: initial;
+  }
+
+  * {
+    margin-left: 4px;
+  }
 `;
 
-const AddressTitle = styled(AddressHash)`
+const AddressTitle = styled(Header)`
   font-weight: 700;
 `;
 
@@ -34,8 +52,8 @@ export default function AddressSummary({ hash, received, spent, confirmed }) {
   return (
     <>
       <AddressWrapper>
-        <AddressTitle>{t("address_detail.address")}</AddressTitle>
-        <AddressHash>{hash || <Skeleton />}</AddressHash>
+        <AddressTitle small>{t("address_detail.address")}</AddressTitle>
+        <AddressHash copy>{hash || <Skeleton />}</AddressHash>
       </AddressWrapper>
       <Card title={t("address_detail.summary")}>
         <Row>

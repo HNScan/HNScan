@@ -1,5 +1,7 @@
 import React from "react";
-import { useQuery, Card, LineChart } from "@urkellabs/ucl";
+import { useQuery, LineChart } from "@urkellabs/ucl";
+
+import { sciNotation } from "utils/util";
 
 export default function TotalSupply() {
   //@todo eventually we can make this configurable, but no need right now.
@@ -9,8 +11,15 @@ export default function TotalSupply() {
   });
 
   return (
-    <Card fullHeight title="Total HNS Supply">
-      <LineChart data={data} axesLabels={["Date", "Total HNS"]} isArea />
-    </Card>
+    <LineChart
+      axisLabels={["", "HNS Tokens (in millions)"]}
+      chartLabel="Total HNS Supply"
+      data={data}
+      dataLabels={["Total HNS Supply"]}
+      yFormatter={el => el / 1000000}
+      yTooltipFormatter={el =>
+        `${sciNotation(el, 4)[0]} x 10^${sciNotation(el, 4)[1]}`
+      }
+    />
   );
 }
