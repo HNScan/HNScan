@@ -29,6 +29,7 @@ import AirdropClaimScreen from "screens/tools/AirdropClaim/AirdropClaimScreen";
 import NodeStatus from "screens/tools/NodeStatus";
 import Peers from "screens/tools/Peers";
 import Charts from "screens/tools/Charts";
+import ChartDetail from "screens/ChartDetail";
 import Changelog from "screens/Changelog";
 
 // Error Pages
@@ -69,7 +70,8 @@ function App() {
                   {/* Tool Screens */}
                   <Route path="/peers" exact component={Peers} />
                   <Route path="/status" exact component={NodeStatus} />
-                  <Route path="/charts" component={Charts} />
+                  <Route path="/charts" exact component={Charts} />
+                  <Route path="/charts/:name" component={ChartDetail} />
                   <Route path="/changelog" exact component={Changelog} />
                   <Route
                     path="/airdropclaim"

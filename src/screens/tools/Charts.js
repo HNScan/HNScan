@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { Card, Row, Col } from "@urkellabs/ucl";
 
 // Containers
@@ -20,23 +21,21 @@ const CustomCol = styled(Col)`
   padding-right: 1.5rem;
   padding-left: 1.5rem;
   position: relative;
-  transition: transform 0.5s ease-in;
 
   * {
     width: 100%;
   }
 
-  /* &:hover {
+  &:hover {
     cursor: pointer;
-    transform: scale(1.01);
-  } */
+  }
 `;
 
 // This container will block any interactions on the immediate graph below it,
 // ensuring that we don't get tooltips from these graphs
 // @smell, there's probably a better way to do this...
 const InteractonBlocker = styled.div`
-  /* cursor: pointer; */
+  cursor: pointer;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -54,11 +53,11 @@ export default function Charts() {
           <Card title="Market Data">
             <Row>
               <CustomCol mobile={12} desktop={4}>
-                <InteractonBlocker />
+                <InteractonBlocker as={Link} to="/charts/supply" />
                 <TotalSupply />
               </CustomCol>
               <CustomCol mobile={12} desktop={4}>
-                <InteractonBlocker />
+                <InteractonBlocker as={Link} to="/charts/burned" />
                 <TotalBurned />
               </CustomCol>
             </Row>
@@ -66,15 +65,15 @@ export default function Charts() {
           <Card title="Chain Data">
             <Row>
               <CustomCol mobile={12} desktop={4}>
-                <InteractonBlocker />
+                <InteractonBlocker as={Link} to="/charts/difficulty" />
                 <DailyDifficulty />
               </CustomCol>
               <CustomCol mobile={12} desktop={4}>
-                <InteractonBlocker />
+                <InteractonBlocker as={Link} to="/charts/dailytransactions" />
                 <DailyTransactions />
               </CustomCol>
               <CustomCol mobile={12} desktop={4}>
-                <InteractonBlocker />
+                <InteractonBlocker as={Link} to="/charts/totaltransactions" />
                 <TotalTransactions />
               </CustomCol>
             </Row>
