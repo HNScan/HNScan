@@ -1,8 +1,6 @@
 import React from "react";
 import { useQuery, LineChart } from "@urkellabs/ucl";
 
-import { sciNotation } from "utils/util";
-
 export default function DailyDifficulty() {
   //@todo eventually we can make this configurable, but no need right now.
   const { data } = useQuery("/charts/difficulty", {

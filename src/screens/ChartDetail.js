@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import styled from "styled-components";
-import { Card, Row, Col } from "@urkellabs/ucl";
+import { Card } from "@urkellabs/ucl";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 // Containers
