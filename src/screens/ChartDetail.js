@@ -9,6 +9,9 @@ import DailyTransactions from "containers/charts/DailyTransactions";
 import TotalSupply from "containers/charts/TotalSupply";
 import TotalTransactions from "containers/charts/TotalTransactions";
 import TotalBurned from "containers/charts/TotalBurned";
+import AirdropStats from "containers/charts/AirdropStats";
+import DailyClaims from "containers/charts/DailyClaims";
+import NameClaim from "containers/charts/NameClaim";
 
 const ChartsWrapper = styled.div`
   width: 100%;
@@ -54,6 +57,17 @@ export default function Charts() {
                   path="/charts/difficulty"
                   component={DailyDifficulty}
                 />
+                <Route
+                  exact
+                  path="/charts/airdropstats"
+                  component={AirdropStats}
+                />
+                <Route
+                  exact
+                  path="/charts/dailyclaims"
+                  component={DailyClaims}
+                />
+                <Route exact path="/charts/nameclaims" component={NameClaim} />
                 <Redirect to="/charts/difficulty" />
               </Switch>
             </Graph>

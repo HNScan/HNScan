@@ -15,6 +15,7 @@ export default function DailyDifficulty() {
       data={data}
       dataLabels={["Daily Average Difficulty"]}
       yFormatter={el => el / 1000000}
+      yTooltipFormatter={el => el.toLocaleString()}
     />
   );
 }

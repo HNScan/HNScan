@@ -9,6 +9,9 @@ import DailyTransactions from "containers/charts/DailyTransactions";
 import TotalSupply from "containers/charts/TotalSupply";
 import TotalTransactions from "containers/charts/TotalTransactions";
 import TotalBurned from "containers/charts/TotalBurned";
+import AirdropStatsSimple from "containers/charts/AirdropStatsSimple";
+import DailyClaims from "containers/charts/DailyClaims";
+import NameClaim from "containers/charts/NameClaim";
 
 const ChartsWrapper = styled.div`
   width: 100%;
@@ -75,6 +78,22 @@ export default function Charts() {
               <CustomCol mobile={12} desktop={4}>
                 <InteractonBlocker as={Link} to="/charts/totaltransactions" />
                 <TotalTransactions />
+              </CustomCol>
+            </Row>
+          </Card>
+          <Card title="Handshake data">
+            <Row>
+              <CustomCol mobile={12} desktop={4}>
+                <InteractonBlocker as={Link} to="/charts/dailyclaims" />
+                <DailyClaims />
+              </CustomCol>
+              <CustomCol mobile={12} desktop={4}>
+                <InteractonBlocker as={Link} to="/charts/airdropstats" />
+                <AirdropStatsSimple />
+              </CustomCol>
+              <CustomCol mobile={12} desktop={4}>
+                <InteractonBlocker as={Link} to="/charts/nameclaims" />
+                <NameClaim />
               </CustomCol>
             </Row>
           </Card>

@@ -1,8 +1,8 @@
 import React from "react";
 import { useQuery, LineChart } from "@urkellabs/ucl";
 
-export default function TotalBurned() {
-  //@todo eventually we can make this configurable, but no need right now.
+export default function DailyClaims() {
+  // @todo we make the CORRECT request here!
   const { data } = useQuery("/charts/burned", {
     startTime: Math.floor(Date.now() / 1000) - 1000 * 24 * 3600,
     endTime: Math.floor(Date.now() / 1000)
@@ -10,12 +10,12 @@ export default function TotalBurned() {
 
   return (
     <LineChart
-      axisLabels={["", "HNS Tokens (in millions)"]}
-      chartLabel="Total HNS Burned"
+      axisLabels={["", "Claims"]}
+      chartLabel="Daily Airdrop Claims"
       data={data}
-      dataLabels={["Total HNS Burned"]}
-      yFormatter={el => (el / 1000000).toLocaleString()}
+      dataLabels={["Daily Airdrop Claims"]}
       yTooltipFormatter={el => el.toLocaleString()}
+      yFormatter={el => el.toLocaleString()}
     />
   );
 }

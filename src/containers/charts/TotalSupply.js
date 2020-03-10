@@ -14,7 +14,8 @@ export default function TotalSupply() {
       chartLabel="Total HNS Supply"
       data={data}
       dataLabels={["Total HNS Supply"]}
-      yFormatter={el => el / 1000000}
+      yFormatter={el => (el / 1000000).toLocaleString()}
+      yTooltipFormatter={el => el.toLocaleString()}
     />
   );
 }
