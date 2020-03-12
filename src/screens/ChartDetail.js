@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import styled from "styled-components";
-import { Card } from "@urkellabs/ucl";
+import { Card, LineChart } from "@urkellabs/ucl";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 // Containers
@@ -20,6 +20,7 @@ const ChartsWrapper = styled.div`
 
 const CustomCard = styled(Card)`
   height: 500px;
+  position: relative;
 `;
 
 const PoweredBy = styled.div`
@@ -36,7 +37,14 @@ export default function Charts() {
   return (
     <>
       <ChartsWrapper>
-        <Suspense fallback={<div>Loading...</div>}>
+        {/* @smell - careful, this might look weird for piecharts that are loading */}
+        <Suspense
+          fallback={
+            <CustomCard>
+              <LineChart loading data={[]} />
+            </CustomCard>
+          }
+        >
           <CustomCard fullHeight>
             <Graph>
               <Switch>
