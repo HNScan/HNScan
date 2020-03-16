@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { Card, Flex, Col } from "@urkellabs/ucl";
+import { Card, Flex, Col, Tooltip } from "@urkellabs/ucl";
 import { useTranslation, Trans } from "react-i18next";
 
 // Components
@@ -16,7 +16,13 @@ import {
 import Arrow from "components/svg/RightArrow";
 
 // Util
-import { truncateHash, timeAgo, hnsValues, sumTxOutputs } from "utils/util";
+import {
+  humanizeTimestamp,
+  truncateHash,
+  timeAgo,
+  hnsValues,
+  sumTxOutputs
+} from "utils/util";
 
 const Transaction = ({ tx }) => {
   return (
@@ -49,7 +55,13 @@ const Transaction = ({ tx }) => {
         {/* ----- Right Side / Bottom Side ----- */}
         <Col>
           <RightItemDetail>
-            <em>{timeAgo(tx.time)}</em>
+            <Tooltip
+              trigger="mouseenter"
+              touchHold
+              title={humanizeTimestamp(tx.time)}
+            >
+              <em>{timeAgo(tx.time)}</em>
+            </Tooltip>
           </RightItemDetail>
         </Col>
       </SummaryItem>

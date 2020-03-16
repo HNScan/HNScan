@@ -9,7 +9,8 @@ import {
   useQuery,
   Code,
   breakpoint,
-  Header
+  Header,
+  Tooltip
 } from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
 
@@ -18,7 +19,12 @@ import StackedData from "components/shared/StackedData";
 import { InputList, OutputList } from "components/shared/PutsList";
 
 // Util
-import { timeAgo, hnsValues, sumTxOutputs } from "utils/util";
+import {
+  humanizeTimestamp,
+  timeAgo,
+  hnsValues,
+  sumTxOutputs
+} from "utils/util";
 
 const Container = styled.div`
   width: 100%;
@@ -78,7 +84,18 @@ function TxDetailScreen({ hash }) {
       <Card title={t("tx_detail.summary")}>
         <Row>
           <Col mobile={12} tablet>
-            <StackedData label="tx_detail.received" value={timeAgo(tx.time)} />
+            <StackedData
+              label="tx_detail.received"
+              value={
+                <Tooltip
+                  trigger="mouseenter"
+                  touchHold
+                  title={humanizeTimestamp(tx.time)}
+                >
+                  {timeAgo(tx.time)}
+                </Tooltip>
+              }
+            />
           </Col>
           <Col mobile={12} tablet>
             <StackedData

@@ -61,7 +61,7 @@ StackedData.propTypes = {
     PropTypes.string,
     PropTypes.number,
     PropTypes.element
-  ]).isRequired,
+  ]),
   link: PropTypes.string
 };
 

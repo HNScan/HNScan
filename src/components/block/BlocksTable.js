@@ -1,10 +1,17 @@
 import React from "react";
-import { Pagination, Card, Skeleton, Hidden, Table } from "@urkellabs/ucl";
+import {
+  Pagination,
+  Card,
+  Skeleton,
+  Hidden,
+  Table,
+  Tooltip
+} from "@urkellabs/ucl";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 // Util
-import { timeAgo, truncateHash } from "utils/util";
+import { humanizeTimestamp, timeAgo, truncateHash } from "utils/util";
 
 function Row({ height, size, time, miner, txs, loading }) {
   const { t } = useTranslation();
@@ -37,7 +44,9 @@ function Row({ height, size, time, miner, txs, loading }) {
         <Hidden tablet>{t("blocks.size") + size} </Hidden>
       </Table.Td>
       <Hidden onlyMobile as={Table.Td}>
-        {timeAgo(time)}
+        <Tooltip trigger="mouseenter" touchHold title={humanizeTimestamp(time)}>
+          {timeAgo(time)}
+        </Tooltip>
       </Hidden>
       <Table.Td>
         <Hidden onlyMobile>
@@ -46,7 +55,9 @@ function Row({ height, size, time, miner, txs, loading }) {
         <Hidden tablet>
           <Link to={"/address/" + miner}>{truncateHash(miner)}</Link>
         </Hidden>
-        <Hidden tablet>{timeAgo(time)}</Hidden>
+        <Tooltip trigger="mouseenter" touchHold title={humanizeTimestamp(time)}>
+          <Hidden tablet>{timeAgo(time)}</Hidden>
+        </Tooltip>
       </Table.Td>
       <Hidden onlyMobile as={Table.Td}>
         {size}
