@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Trans } from "react-i18next";
-import { Tooltip } from "@urkellabs/ucl";
 
 // Util
 //@todo rename to toHNS()
