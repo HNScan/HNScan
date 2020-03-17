@@ -1,12 +1,12 @@
 import React from "react";
-import { Row, Col, Card } from "@urkellabs/ucl";
+import { Row, Col, Card, Tooltip } from "@urkellabs/ucl";
 import { useParams } from "react-router-dom";
 
 // Components
 import StackedData from "components/shared/StackedData";
 
 // Util
-import { timeAgo, hnsValues, checkPool } from "utils/util";
+import { humanizeTimestamp, timeAgo, hnsValues, checkPool } from "utils/util";
 import { useTranslation } from "react-i18next";
 
 const BlockSummarySkeleton = () => {
@@ -25,7 +25,15 @@ export default function BlockSummary({ block, skeleton }) {
         <Col mobile={12} tablet>
           <StackedData
             label="block_detail.received"
-            value={timeAgo(block.time)}
+            value={
+              <Tooltip
+                trigger="mouseenter"
+                touchHold
+                title={humanizeTimestamp(block.time)}
+              >
+                {timeAgo(block.time)}
+              </Tooltip>
+            }
           />
         </Col>
         <Col mobile={12} tablet>

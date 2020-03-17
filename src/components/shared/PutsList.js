@@ -5,13 +5,13 @@ import { Trans } from "react-i18next";
 
 // Util
 //@todo rename to toHNS()
-import { hnsValues } from "utils/util";
+import { hnsValues, truncateHash } from "utils/util";
 
 const Container = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   padding: 20px;
 `;
 
@@ -29,7 +29,8 @@ const DataContainer = styled.div`
 
 const PutsWrapper = styled.div`
   padding: 10px;
-  text-align: center;
+  font-size: 14px;
+  text-align: left;
 `;
 
 function renderInput(input) {
@@ -46,7 +47,10 @@ function renderInput(input) {
     return (
       <Trans
         i18nKey="puts_list.input_from"
-        values={{ value: hnsValues(input.value), address: input.address }}
+        values={{
+          value: hnsValues(input.value),
+          address: truncateHash(input.address)
+        }}
       >
         <Link to={"/address/" + input.address}></Link>
       </Trans>
@@ -74,7 +78,10 @@ const renderOutputAction = output => {
     return (
       <Trans
         i18nKey="puts_list.output_to"
-        values={{ value: hnsValues(output.value), address: output.address }}
+        values={{
+          value: hnsValues(output.value),
+          address: truncateHash(output.address)
+        }}
       >
         <Link to={"/address/" + output.address}></Link>
       </Trans>

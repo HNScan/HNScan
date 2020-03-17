@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Pagination, Card, Table } from "@urkellabs/ucl";
+import { Pagination, Card, Table, Tooltip } from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
 
 // Util
-import { hnsValues, timeAgo } from "utils/util";
+import { humanizeTimestamp, hnsValues, timeAgo } from "utils/util";
 
 export default function NameHistory({ history, page, changePage, pages, url }) {
   const { t } = useTranslation();
@@ -12,7 +12,15 @@ export default function NameHistory({ history, page, changePage, pages, url }) {
     <Table.Tr key={index}>
       <Table.Td>{name.action}</Table.Td>
       {/* @fixme Not working */}
-      <Table.Td>{timeAgo(name.time)}</Table.Td>
+      <Table.Td>
+        <Tooltip
+          trigger="mouseenter"
+          touchHold
+          title={humanizeTimestamp(name.time)}
+        >
+          {timeAgo(name.time)}
+        </Tooltip>
+      </Table.Td>
       {/* @todo need to link this */}
       <Table.Td>
         <Link to={"/block/" + name.height}>{name.height}</Link>

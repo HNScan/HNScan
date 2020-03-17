@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Flex, Col } from "@urkellabs/ucl";
+import { Card, Flex, Col, Tooltip } from "@urkellabs/ucl";
 import { useTranslation, Trans } from "react-i18next";
 
 // Components
@@ -15,7 +15,7 @@ import {
 import BlockLogo from "components/svg/Block";
 
 // Util
-import { truncateHash, timeAgo } from "utils/util";
+import { humanizeTimestamp, truncateHash, timeAgo } from "utils/util";
 
 const BlockCardItem = ({ block }) => {
   return (
@@ -49,7 +49,13 @@ const BlockCardItem = ({ block }) => {
         </Col>
         <Col>
           <RightItemDetail>
-            <em>{timeAgo(block.time)}</em>
+            <Tooltip
+              trigger="mouseenter"
+              touchHold
+              title={humanizeTimestamp(block.time)}
+            >
+              <em>{timeAgo(block.time)}</em>
+            </Tooltip>
           </RightItemDetail>
         </Col>
       </SummaryItem>

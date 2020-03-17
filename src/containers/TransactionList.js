@@ -36,6 +36,10 @@ const HashWrapper = styled.div`
   padding: 10px 0 10px 0;
 `;
 
+const TxWrapper = styled.span`
+  white-space: nowrap;
+`;
+
 //@todo Highlight the Input/Output that is TO the address here.
 //Just make this a filter option (so it could be used on the block page), but auto enable it when coming from the Address page, that way we can keep this same component.
 //Filter options.
@@ -53,7 +57,7 @@ const TransactionList = ({ url, page, from }) => {
   const renderTransactions = data.result.map((tx, index) => (
     <Container key={index}>
       <HashWrapper>
-        Tx {index + 1 + offset}:&nbsp;
+        <TxWrapper>Tx {index + 1 + offset}:&nbsp;</TxWrapper>
         <Link to={"/tx/" + tx.hash}>{tx.hash}</Link>
       </HashWrapper>
       <Row>

@@ -1,5 +1,6 @@
 import humanizeDuration from "humanize-duration";
 import Decimal from "decimal.js";
+import moment from "moment";
 
 const exponentScales = [
   {
@@ -151,4 +152,11 @@ export function checkPool(minerAddress) {
   //Check if a pool exists with this address, otherwise just return.
 
   return minerAddress;
+}
+
+export function humanizeTimestamp(timestamp, format) {
+  return moment
+    .utc(timestamp * 1000)
+    .local()
+    .format(format || "MMM DD YYYY, HH:mm:ss");
 }
