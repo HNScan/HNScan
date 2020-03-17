@@ -15,10 +15,7 @@ export default function TotalTransactions() {
       data={data}
       dataLabels={["Total Transactions"]}
       yFormatter={el => el / 1000}
-      // @note add me if transactions start getting out of hand
-      // yTooltipFormatter={el =>
-      //   `${sciNotation(el, 4)[0]} x 10^${sciNotation(el, 4)[1]}`
-      // }
+      yTooltipFormatter={el => el.toLocaleString()}
     />
   );
 }

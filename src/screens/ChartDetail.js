@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import styled from "styled-components";
-import { Card } from "@urkellabs/ucl";
+import { Card, LineChart } from "@urkellabs/ucl";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 // Containers
@@ -9,6 +9,9 @@ import DailyTransactions from "containers/charts/DailyTransactions";
 import TotalSupply from "containers/charts/TotalSupply";
 import TotalTransactions from "containers/charts/TotalTransactions";
 import TotalBurned from "containers/charts/TotalBurned";
+import AirdropStats from "containers/charts/AirdropStats";
+import DailyClaims from "containers/charts/DailyClaims";
+import NameClaim from "containers/charts/NameClaim";
 
 const ChartsWrapper = styled.div`
   width: 100%;
@@ -17,6 +20,7 @@ const ChartsWrapper = styled.div`
 
 const CustomCard = styled(Card)`
   height: 500px;
+  position: relative;
 `;
 
 const PoweredBy = styled.div`
@@ -33,7 +37,14 @@ export default function Charts() {
   return (
     <>
       <ChartsWrapper>
-        <Suspense fallback={<div>Loading...</div>}>
+        {/* @smell - careful, this might look weird for piecharts that are loading */}
+        <Suspense
+          fallback={
+            <CustomCard>
+              <LineChart loading data={[]} />
+            </CustomCard>
+          }
+        >
           <CustomCard fullHeight>
             <Graph>
               <Switch>
@@ -54,6 +65,17 @@ export default function Charts() {
                   path="/charts/difficulty"
                   component={DailyDifficulty}
                 />
+                <Route
+                  exact
+                  path="/charts/airdropstats"
+                  component={AirdropStats}
+                />
+                <Route
+                  exact
+                  path="/charts/dailyclaims"
+                  component={DailyClaims}
+                />
+                <Route exact path="/charts/nameclaims" component={NameClaim} />
                 <Redirect to="/charts/difficulty" />
               </Switch>
             </Graph>
