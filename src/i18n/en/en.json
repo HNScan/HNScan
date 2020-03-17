@@ -10,7 +10,7 @@
       "chainwork": "Chainwork",
 
       "recent_transactions": "Recent Transactions",
-      "tx_num": "TX #: <0>{{hash}}</0>",
+      "tx_num": "TX: <0>{{hash}}</0>",
       "amount": "Amount: {{amount}}",
       "fee": "Fee: {{fee}}",
 
