@@ -224,7 +224,7 @@ export default function Footer() {
                 {t("footer.pool")}
               </FooterLink>
               <FooterLink
-                href="https://urkel.io"
+                href="https://urkellabs.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
