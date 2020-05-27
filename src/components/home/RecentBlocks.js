@@ -1,15 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Flex, Col } from "@urkellabs/ucl";
+import styled from "styled-components";
+import { Card, Flex, Col, Row, Spacer, Text, breakpoint } from "@urkellabs/ucl";
 import { useTranslation, Trans } from "react-i18next";
-
-// Components
-import {
-  SummaryItem,
-  ItemLogo,
-  LeftItemDetail,
-  RightItemDetail
-} from "./styled-components";
 
 // SVGs
 import BlockLogo from "components/svg/Block";
@@ -17,20 +10,31 @@ import BlockLogo from "components/svg/Block";
 // Util
 import { truncateHash, timeAgo } from "utils/util";
 
+let BlockIcon = styled(BlockLogo)`
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+`;
+
+let Time = styled(Flex)`
+  ${breakpoint.tablet} {
+    justify-content: flex-end;
+  }
+`;
+
 const BlockCardItem = ({ block }) => {
   return (
-    <Col>
-      <SummaryItem>
-        <Col>
-          <LeftItemDetail>
-            <ItemLogo>
-              <BlockLogo />
-            </ItemLogo>
+    <Row>
+      <Spacer px={10} />
+      <Col mobile={12} tablet>
+        <Flex columns>
+          <Flex>
+            <BlockIcon />
             <Trans i18nKey="home.block_num" values={{ height: block.height }}>
               <Link to={"/block/" + block.height}></Link>
             </Trans>
-          </LeftItemDetail>
-          <LeftItemDetail>
+          </Flex>
+          <Flex>
             <Trans
               i18nKey="home.mined_by"
               values={{ miner: truncateHash(block.miner) }}
@@ -39,21 +43,19 @@ const BlockCardItem = ({ block }) => {
                 {/* @todo check pool */}
               </Link>
             </Trans>
-          </LeftItemDetail>
-          <LeftItemDetail>
-            <Trans
-              i18nKey="home.transactions"
-              values={{ tx_num: block.tx.length }}
-            />
-          </LeftItemDetail>
-        </Col>
-        <Col>
-          <RightItemDetail>
-            <em>{timeAgo(block.time)}</em>
-          </RightItemDetail>
-        </Col>
-      </SummaryItem>
-    </Col>
+          </Flex>
+          <Trans i18nKey="home.transactions" values={{ tx_num: block.txs }} />
+        </Flex>
+      </Col>
+      <Col mobile={12} tablet>
+        <Time>
+          <Text small bold>
+            {timeAgo(block.time)}
+          </Text>
+        </Time>
+      </Col>
+      <Spacer px={10} />
+    </Row>
   );
 };
 
@@ -65,9 +67,9 @@ export default function RecentBlocks({ blocks }) {
   return (
     <Card
       title={t("home.recent_blocks")}
-      headerAction={<Link to="/blocks"></Link>}
+      headerAction={<Link to="/blocks">See More</Link>}
     >
-      <Flex columns>{blockRows}</Flex>
+      {blockRows}
     </Card>
   );
 }
