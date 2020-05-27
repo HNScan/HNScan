@@ -6,7 +6,7 @@ import { NamesSkeleton, NamesTable } from "components/name/NamesTable";
 
 function NamesView({ page }) {
   const pageOffset = (page - 1) * 25;
-  const { data } = useQuery("/names/", { offset: pageOffset });
+  const { data } = useQuery("/names", { offset: pageOffset });
   const pages = Math.ceil(data.total / data.limit);
 
   return <NamesTable names={data.result} page={page} pages={pages} />;
