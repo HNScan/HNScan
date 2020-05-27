@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
 import { GlobalStyles, useTheme, ApiConfig } from "@urkellabs/ucl";
 
 // Special
@@ -43,7 +42,7 @@ import "../i18n/i18n";
 import useNetwork from "hooks/useNetwork";
 
 function App() {
-  const [theme] = useTheme();
+  useTheme();
   const [network] = useNetwork();
   return (
     <ApiConfig config={{ url: network }}>
