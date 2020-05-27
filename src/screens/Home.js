@@ -35,8 +35,8 @@ const IndividualCardContainer = styled.div`
 //@todo skeleton.
 function HomeView() {
   const { data: summary } = useQuery("/summary");
-  const { data: blocks } = useQuery("/blocks/", { limit: 5 });
-  const { data: txs } = useQuery("/txs/", { limit: 5 });
+  const { data: blocks } = useQuery("/blocks", { limit: 5 });
+  const { data: txs } = useQuery("/txs", { limit: 5 });
 
   //All of these below should just be containers. @todo
   return (

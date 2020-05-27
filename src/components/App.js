@@ -46,47 +46,45 @@ function App() {
   const [theme] = useTheme();
   const [network] = useNetwork();
   return (
-    <ThemeProvider theme={theme}>
-      <ApiConfig config={{ url: network }}>
-        <>
-          <GlobalStyles />
-          <Router>
-            <ScrollToTop />
-            <NetworkBoundary>
-              <Navigation />
-              <ContentContainer>
-                <Switch>
-                  <Route path="/" exact component={Home} />
-                  <Route path="/address/:hash" exact component={Address} />
-                  <Route path="/blocks" exact component={Blocks} />
-                  <Route path="/block/:height" exact component={Block} />
-                  <Route path="/names" exact component={Names} />
-                  <Route path="/name/:name" exact component={Name} />
-                  <Route path="/settings" exact component={Settings} />
-                  {/* Ideally let's get a recent transactions page going */}
-                  <Route path="/tx/:hash" exact component={Transaction} />
-                  <Route path="/search" exact component={Search} />
-                  {/* More Screens */}
-                  {/* Tool Screens */}
-                  <Route path="/peers" exact component={Peers} />
-                  <Route path="/status" exact component={NodeStatus} />
-                  <Route path="/charts" exact component={Charts} />
-                  <Route path="/charts/:name" component={ChartDetail} />
-                  <Route path="/changelog" exact component={Changelog} />
-                  <Route
-                    path="/airdropclaim"
-                    exact
-                    component={AirdropClaimScreen}
-                  />
-                  <Route path="*" component={NotFoundScreen} />
-                </Switch>
-              </ContentContainer>
-              <Footer />
-            </NetworkBoundary>
-          </Router>
-        </>
-      </ApiConfig>
-    </ThemeProvider>
+    <ApiConfig config={{ url: network }}>
+      <>
+        <GlobalStyles />
+        <Router>
+          <ScrollToTop />
+          <NetworkBoundary>
+            <Navigation />
+            <ContentContainer>
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/address/:hash" exact component={Address} />
+                <Route path="/blocks" exact component={Blocks} />
+                <Route path="/block/:height" exact component={Block} />
+                <Route path="/names" exact component={Names} />
+                <Route path="/name/:name" exact component={Name} />
+                <Route path="/settings" exact component={Settings} />
+                {/* Ideally let's get a recent transactions page going */}
+                <Route path="/tx/:hash" exact component={Transaction} />
+                <Route path="/search" exact component={Search} />
+                {/* More Screens */}
+                {/* Tool Screens */}
+                <Route path="/peers" exact component={Peers} />
+                <Route path="/status" exact component={NodeStatus} />
+                <Route path="/charts" exact component={Charts} />
+                <Route path="/charts/:name" component={ChartDetail} />
+                <Route path="/changelog" exact component={Changelog} />
+                <Route
+                  path="/airdropclaim"
+                  exact
+                  component={AirdropClaimScreen}
+                />
+                <Route path="*" component={NotFoundScreen} />
+              </Switch>
+            </ContentContainer>
+            <Footer />
+          </NetworkBoundary>
+        </Router>
+      </>
+    </ApiConfig>
   );
 }
 
