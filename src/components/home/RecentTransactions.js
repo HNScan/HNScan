@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Card, Flex, Col, Row, Spacer, Text, breakpoint } from "@urkellabs/ucl";
 import { useTranslation, Trans } from "react-i18next";
+
+// Components
+import Link from "components/Link";
 
 // SVGs
 import Arrow from "components/svg/RightArrow";
@@ -31,20 +33,26 @@ const Transaction = ({ tx }) => {
         <Flex columns>
           <Flex>
             <ArrowIcon />
-            <Trans
-              i18nKey="home.tx_num"
-              values={{ hash: truncateHash(tx.hash) }}
-            >
-              <Link to={"/tx/" + tx.hash}></Link>
-            </Trans>
+            <Text small>
+              <Trans
+                i18nKey="home.tx_num"
+                values={{ hash: truncateHash(tx.hash) }}
+              >
+                <Link to={"/tx/" + tx.hash}></Link>
+              </Trans>
+            </Text>
           </Flex>
           <Flex>
-            <Trans
-              i18nKey="home.amount"
-              values={{ amount: hnsValues(tx.value) }}
-            />
+            <Text small>
+              <Trans
+                i18nKey="home.amount"
+                values={{ amount: hnsValues(tx.value) }}
+              />
+            </Text>
           </Flex>
-          <Trans i18nKey="home.fee" values={{ fee: hnsValues(tx.fee) }} />
+          <Text small>
+            <Trans i18nKey="home.fee" values={{ fee: hnsValues(tx.fee) }} />
+          </Text>
         </Flex>
       </Col>
       <Col mobile={12} tablet>

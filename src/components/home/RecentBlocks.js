@@ -1,8 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Card, Flex, Col, Row, Spacer, Text, breakpoint } from "@urkellabs/ucl";
 import { useTranslation, Trans } from "react-i18next";
+
+// Components
+import Link from "components/Link";
 
 // SVGs
 import BlockLogo from "components/svg/Block";
@@ -30,21 +32,27 @@ const BlockCardItem = ({ block }) => {
         <Flex columns>
           <Flex>
             <BlockIcon />
-            <Trans i18nKey="home.block_num" values={{ height: block.height }}>
-              <Link to={"/block/" + block.height}></Link>
-            </Trans>
+            <Text small>
+              <Trans i18nKey="home.block_num" values={{ height: block.height }}>
+                <Link to={"/block/" + block.height}></Link>
+              </Trans>
+            </Text>
           </Flex>
           <Flex>
-            <Trans
-              i18nKey="home.mined_by"
-              values={{ miner: truncateHash(block.miner) }}
-            >
-              <Link to={"/address/" + block.miner}>
-                {/* @todo check pool */}
-              </Link>
-            </Trans>
+            <Text small>
+              <Trans
+                i18nKey="home.mined_by"
+                values={{ miner: truncateHash(block.miner) }}
+              >
+                <Link to={"/address/" + block.miner}>
+                  {/* @todo check pool */}
+                </Link>
+              </Trans>
+            </Text>
           </Flex>
-          <Trans i18nKey="home.transactions" values={{ tx_num: block.txs }} />
+          <Text small>
+            <Trans i18nKey="home.transactions" values={{ tx_num: block.txs }} />
+          </Text>
         </Flex>
       </Col>
       <Col mobile={12} tablet>

@@ -10,13 +10,14 @@ import StackedData from "components/shared/StackedData";
 // Util
 import { timeAgo } from "utils/util";
 
-const borderColor = theme("mode", {
-  light: "#dfdfdf",
-  dark: "#444444"
-});
+//@todo fix this
+// const borderColor = theme("mode", {
+//   light: "#dfdfdf",
+//   dark: "#444444"
+// });
 
 const SummaryCardItem = styled.div`
-  border-bottom: 1px solid ${borderColor};
+  border-bottom: 1px solid #dfdfdf;
   padding: 24px;
   &:last-child {
     border-bottom: 0;
