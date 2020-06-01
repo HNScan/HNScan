@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import theme from "styled-theming";
 import { Cog, ExternalLink } from "@urkellabs/ucl";
+
+// Components
+import Link from "components/Link";
 
 // SVGs
 import LogoText from "components/svg/LogoText";
@@ -95,7 +97,7 @@ export const FooterLink = styled.a`
   font-size: 10pt;
   margin: 8px 0;
   width: 55%;
-  color: ${textColor};
+  color: #4a4a4a;
 
   @media (min-width: 445px) {
     margin: 5px 0;
