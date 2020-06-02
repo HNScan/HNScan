@@ -1,7 +1,9 @@
 import React from "react";
 import { Pagination, Card, Skeleton, Hidden, Table } from "@urkellabs/ucl";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
+// Components
+import Link from "components/Link";
 
 // Util
 import { timeAgo, truncateHash } from "utils/util";

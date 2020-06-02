@@ -29,7 +29,7 @@ export default function BlockSummary({ block, skeleton }) {
           />
         </Col>
         <Col mobile={12} tablet>
-          <StackedData label="block_detail.total_txs" value={block.txs} />
+          <StackedData label="block_detail.total_txs" value={block.num_tx} />
         </Col>
         <Col mobile={12} tablet>
           <StackedData
@@ -42,8 +42,8 @@ export default function BlockSummary({ block, skeleton }) {
         <Col mobile={12} tablet>
           <StackedData
             label="block_detail.mined_by"
-            value={checkPool(block.miner)}
-            link={"/address/" + block.miner}
+            value={checkPool(block.mined_by)}
+            link={"/address/" + block.mined_by}
           />
         </Col>
         <Col mobile={12} tablet>

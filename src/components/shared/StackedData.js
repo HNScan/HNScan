@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { Table } from "@urkellabs/ucl";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+
+// Components
+import Link from "components/Link";
 
 const CellWrapper = styled(Table.Td)`
   display: flex;
