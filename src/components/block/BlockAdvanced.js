@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import StackedData from "components/shared/StackedData";
 
 // Util
-import { sciNotation, hnsValues } from "utils/util";
+import { sciNotation } from "utils/util";
 
 export default function BlockAdvanced({ block }) {
   let [difficulty, exponent] = sciNotation(block.difficulty, 5);
@@ -18,16 +18,23 @@ export default function BlockAdvanced({ block }) {
         <Col mobile={12} desktop>
           <Table>
             <Table.Body>
-              {block.prevBlock && (
+              {block.previous_hash && (
                 <Table.Tr>
                   <StackedData
                     cell
                     label="block_detail.previous_block"
-                    value={block.prevBlock}
+                    value={block.previous_hash}
                     link={"/block/" + (block.height - 1)}
                   />
                 </Table.Tr>
               )}
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.timestamp"
+                  value={block.time}
+                />
+              </Table.Tr>
               <Table.Tr>
                 <StackedData
                   cell
@@ -63,15 +70,15 @@ export default function BlockAdvanced({ block }) {
               <Table.Tr>
                 <StackedData
                   cell
-                  label="block_detail.average_fee"
-                  value={hnsValues(block.averageFee)}
+                  label="block_detail.nonce"
+                  value={block.nonce}
                 />
               </Table.Tr>
               <Table.Tr>
                 <StackedData
                   cell
-                  label="block_detail.nonce"
-                  value={block.nonce}
+                  label="block_detail.extra_nonce"
+                  value={block.extra_nonce}
                 />
               </Table.Tr>
             </Table.Body>
@@ -80,12 +87,12 @@ export default function BlockAdvanced({ block }) {
         <Col mobile={12} desktop>
           <Table>
             <Table.Body>
-              {block.nextHash && (
+              {block.next_hash && (
                 <Table.Tr>
                   <StackedData
                     cell
                     label="block_detail.next_block"
-                    value={block.nextHash}
+                    value={block.next_hash}
                     link={"/block/" + (block.height + 1)}
                   />
                 </Table.Tr>
@@ -101,28 +108,35 @@ export default function BlockAdvanced({ block }) {
                 <StackedData
                   cell
                   label="block_detail.merkle_root"
-                  value={block.merkleRoot}
+                  value={block.merkle_root}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.witness_root"
+                  value={block.witness_root}
                 />
               </Table.Tr>
               <Table.Tr>
                 <StackedData
                   cell
                   label="block_detail.tree_root"
-                  value={block.treeRoot}
-                />
-              </Table.Tr>
-              <Table.Tr>
-                <StackedData
-                  cell
-                  label="block_detail.filter_root"
-                  value={block.filterRoot}
+                  value={block.tree_root}
                 />
               </Table.Tr>
               <Table.Tr>
                 <StackedData
                   cell
                   label="block_detail.reserved_root"
-                  value={block.reservedRoot}
+                  value={block.reserved_root}
+                />
+              </Table.Tr>
+              <Table.Tr>
+                <StackedData
+                  cell
+                  label="block_detail.mask"
+                  value={block.mask}
                 />
               </Table.Tr>
               <Table.Tr>

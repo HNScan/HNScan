@@ -41,6 +41,7 @@
       "confirmations": "Confirmations",
 
       "advanced": "Advanced",
+      "timestamp": "Timestamp",
       "previous_block": "Previous Block",
       "difficulty": "Difficulty",
       "version": "Version",
@@ -48,12 +49,14 @@
       "size": "Size",
       "average_fee": "Average Fee",
       "nonce": "Nonce",
+      "extra_nonce": "Extra Nonce",
       "next_block": "Next Block",
       "hash": "Hash",
       "merkle_root": "Merkle Root",
       "tree_root": "Tree Root",
-      "filter_root": "Filter Root",
+      "witness_root": "Witness Root",
       "reserved_root": "Reserved Root",
+      "mask": "Mask",
       "chainwork": "Chainwork",
 
       "transaction": "Transaction",
