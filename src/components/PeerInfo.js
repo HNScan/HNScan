@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Card, Col, Row, Table } from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
-import theme from "styled-theming";
 
 // Components
 import StackedData from "components/shared/StackedData";

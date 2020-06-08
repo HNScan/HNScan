@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { Card, Row, Col, Spacer } from "@urkellabs/ucl";
 
 // Containers
-import DailyDifficulty from "containers/charts/DailyDifficulty";
 import DailyTransactions from "containers/charts/DailyTransactions";
 import TotalSupply from "containers/charts/TotalSupply";
 import TotalTransactions from "containers/charts/TotalTransactions";
