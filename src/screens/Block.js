@@ -28,13 +28,13 @@ function BlockContainer({ height, page }) {
       <Spacer px={20} />
       <BlockAdvanced block={block} />
       <Spacer px={20} />
-      {/* <Suspense fallback={<div>Loading...</div>}> */}
-      {/*   <TransactionList */}
-      {/*     url={"/block/" + height} */}
-      {/*     page={page} */}
-      {/*     from={{ height }} */}
-      {/*   /> */}
-      {/* </Suspense> */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <TransactionList
+          url={"/block/" + height}
+          page={page}
+          from={{ height }}
+        />
+      </Suspense>
     </>
   );
 }
