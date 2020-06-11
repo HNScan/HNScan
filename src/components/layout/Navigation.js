@@ -175,9 +175,9 @@ export default function Navigation() {
           <NavBar.End>
             <NavBar.Item>
               <SearchBar toggleNav={updateMobileNav} />
-              <ThemeTogglerWrapper>
-                <ThemeToggler />
-              </ThemeTogglerWrapper>
+              {/* <ThemeTogglerWrapper> */}
+              {/*   <ThemeToggler /> */}
+              {/* </ThemeTogglerWrapper> */}
             </NavBar.Item>
           </NavBar.End>
         </NavBar.Menu>
