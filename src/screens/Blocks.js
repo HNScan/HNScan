@@ -1,12 +1,5 @@
 import React, { Suspense } from "react";
-import {
-  usePage,
-  useQuery,
-  Filter,
-  Selection,
-  Option,
-  Flex
-} from "@urkellabs/ucl";
+import { usePage, useQuery, EmptyState } from "@urkellabs/ucl";
 
 // Components
 import { BlocksTable, BlocksSkeleton } from "components/block/BlocksTable";
@@ -18,6 +11,10 @@ function BlocksView({ page }) {
 
   const pages = Math.ceil(data.total / 25);
 
+  if (data.result.length === 0) {
+    return <EmptyState />;
+  }
+
   return <BlocksTable blocks={data.result} pages={pages} page={page} />;
 }
 
@@ -26,13 +23,6 @@ export default function Blocks() {
 
   return (
     <>
-      <Flex>
-        <Filter>
-          <Selection>
-            <Option>test</Option>
-          </Selection>
-        </Filter>
-      </Flex>
       <Suspense fallback={<BlocksSkeleton />}>
         <BlocksView page={page} />
       </Suspense>
