@@ -9,7 +9,8 @@ import {
   useQuery,
   Code,
   breakpoint,
-  Header
+  Header,
+  Spacer
 } from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
 
@@ -81,10 +82,7 @@ function TxDetailScreen({ hash }) {
             <StackedData label="tx_detail.received" value={timeAgo(tx.time)} />
           </Col>
           <Col mobile={12} tablet>
-            <StackedData
-              label="tx_detail.amount"
-              value={hnsValues(sumTxOutputs(tx.outputs))}
-            />
+            <StackedData label="tx_detail.amount" value={hnsValues(tx.value)} />
           </Col>
           <Col mobile={12} tablet>
             <StackedData label="tx_detail.fee" value={hnsValues(tx.fee)} />
@@ -97,7 +95,7 @@ function TxDetailScreen({ hash }) {
           </Col>
         </Row>
       </Card>
-
+      <Spacer />
       <Card title={t("tx_detail.advanced")} collapse closed>
         <Row>
           <Col mobile={12} desktop>
@@ -149,7 +147,7 @@ function TxDetailScreen({ hash }) {
           </Col>
         </Row>
       </Card>
-
+      <Spacer />
       <Card title={t("tx_detail.tx_activity")} collapse>
         <Container>
           <Row>
