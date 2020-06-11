@@ -1,7 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { Card, Flex, Col, Row, Spacer, Text, breakpoint } from "@urkellabs/ucl";
+import {
+  Card,
+  Flex,
+  Col,
+  Row,
+  Spacer,
+  Text,
+  breakpoint,
+  EmptyState
+} from "@urkellabs/ucl";
 import { useTranslation, Trans } from "react-i18next";
+import { useHistory } from "react-router-dom";
 
 // Components
 import Link from "components/Link";
@@ -69,6 +79,22 @@ const BlockCardItem = ({ block }) => {
 
 export default function RecentBlocks({ blocks }) {
   const { t } = useTranslation();
+  let history = useHistory();
+
+  if (blocks.length === 0) {
+    return (
+      <Card title={t("home.recent_transactions")}>
+        <EmptyState
+          header="No Blocks yet"
+          icon={<BlockLogo />}
+          action={() => {
+            history.push("/status");
+          }}
+          actionTitle="Check Node Status"
+        />
+      </Card>
+    );
+  }
   const blockRows = blocks.map((block, index) => (
     <BlockCardItem key={index} block={block} />
   ));

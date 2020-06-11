@@ -1,8 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Card, Flex, Col, Row, Spacer, Text, breakpoint } from "@urkellabs/ucl";
+import {
+  Card,
+  Flex,
+  Col,
+  Row,
+  Spacer,
+  Text,
+  breakpoint,
+  EmptyState
+} from "@urkellabs/ucl";
 import { useTranslation, Trans } from "react-i18next";
+import { useHistory } from "react-router-dom";
 
 // Components
 import Link from "components/Link";
@@ -36,7 +46,7 @@ const Transaction = ({ tx }) => {
             <Text small>
               <Trans
                 i18nKey="home.tx_num"
-                values={{ hash: truncateHash(tx.txid) }}
+                values={{ hash: truncateHash(tx.tx_id) }}
               >
                 <Link to={"/tx/" + tx.hash}></Link>
               </Trans>
@@ -67,8 +77,25 @@ const Transaction = ({ tx }) => {
 };
 
 export default function RecentTransactions({ txs }) {
-  const txRows = txs.map((tx, index) => <Transaction key={index} tx={tx} />);
   const { t } = useTranslation();
+  let history = useHistory();
+
+  if (txs.length === 0) {
+    return (
+      <Card title={t("home.recent_transactions")}>
+        <EmptyState
+          header="No transactions yet"
+          icon={<Arrow />}
+          action={() => {
+            history.push("/status");
+          }}
+          actionTitle="Check Node Status"
+        />
+      </Card>
+    );
+  }
+
+  const txRows = txs.map((tx, index) => <Transaction key={index} tx={tx} />);
 
   return <Card title={t("home.recent_transactions")}>{txRows}</Card>;
 }
