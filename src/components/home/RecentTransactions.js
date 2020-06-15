@@ -48,7 +48,7 @@ const Transaction = ({ tx }) => {
                 i18nKey="home.tx_num"
                 values={{ hash: truncateHash(tx.tx_id) }}
               >
-                <Link to={"/tx/" + tx.hash}></Link>
+                <Link to={"/tx/" + tx.tx_id}></Link>
               </Trans>
             </Text>
           </Flex>

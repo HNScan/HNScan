@@ -126,11 +126,7 @@ function TxDetailScreen({ hash }) {
             <Table>
               <Table.Body>
                 <Table.Tr>
-                  <StackedData
-                    cell
-                    label="tx_detail.witness_hash"
-                    value={tx.witnessHash}
-                  />
+                  <StackedData cell label="tx_detail.txid" value={tx.tx_id} />
                 </Table.Tr>
                 <Table.Tr>
                   <StackedData

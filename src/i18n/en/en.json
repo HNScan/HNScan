@@ -126,7 +126,7 @@
       "hash": "Hash",
       "height": "Block Height",
       "locktime": "Locktime",
-      "witness_hash": "Witness Hash",
+      "txid": "Transaction ID",
       "version": "Version",
       "index": "Index",
 
