@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { useParams } from "react-router-dom";
-import { usePage, useQuery } from "@urkellabs/ucl";
+import { usePage, useQuery, Spacer } from "@urkellabs/ucl";
 
 // Components
 import NameSummary from "components/name/NameSummary";
@@ -21,12 +21,14 @@ function NameView({ name, page, changePage, url }) {
   return (
     <>
       <NameSummary name={nameData} />
+      <Spacer />
       <NameAdvanced name={nameData} />
       {name.records && <NameRecords records={name.records} />}
+      <Spacer />
       <NameHistory
         history={data.result}
         page={page}
-        pages={Math.ceil(data.total / data.limit)}
+        pages={Math.ceil(data.total / 25)}
         url={"/name/" + name}
       />
     </>
