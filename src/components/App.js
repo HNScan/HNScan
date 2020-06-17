@@ -67,7 +67,7 @@ function App() {
                   <Route path="/search" exact component={Search} />
                   {/* More Screens */}
                   {/* Tool Screens */}
-                  <Route path="/peers" exact component={Peers} />
+                  {/* <Route path="/peers" exact component={Peers} /> */}
                   <Route path="/status" exact component={NodeStatus} />
                   <Route path="/charts" exact component={Charts} />
                   <Route path="/charts/:name" component={ChartDetail} />

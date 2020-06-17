@@ -101,9 +101,9 @@ export default function Navigation() {
                 <NavBar.Item as={Link} to={"/status"}>
                   Node Status
                 </NavBar.Item>
-                <NavBar.Item as={Link} to={"/peers"}>
-                  Peers
-                </NavBar.Item>
+                {/* <NavBar.Item as={Link} to={"/peers"}> */}
+                {/*   Peers */}
+                {/* </NavBar.Item> */}
                 <NavBar.Item as={Link} to={"/charts"}>
                   Charts
                 </NavBar.Item>
