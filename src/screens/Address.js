@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { useParams } from "react-router-dom";
-import { usePage, useQuery } from "@urkellabs/ucl";
+import { usePage, useQuery, Spacer } from "@urkellabs/ucl";
 
 // Components
 import AddressSummary from "components/address/AddressSummary";
@@ -23,6 +23,7 @@ function AddressView({ hash, page, url }) {
         spent={address.spent}
         confirmed={address.confirmed}
       />
+      <Spacer />
       <Suspense fallback={<div>Loading...</div>}>
         <TransactionList
           url={"/address/" + hash}

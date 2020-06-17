@@ -54,7 +54,7 @@ const TransactionList = ({ url, page, from }) => {
     <Container key={index}>
       <HashWrapper>
         Tx {index + 1 + offset}:&nbsp;
-        <Link to={"/tx/" + tx.hash}>{tx.hash}</Link>
+        <Link to={"/tx/" + tx.tx_id}>{tx.tx_id}</Link>
       </HashWrapper>
       <Row>
         <Col mobile={12} tablet>
