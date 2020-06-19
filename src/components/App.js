@@ -26,7 +26,7 @@ import AirdropClaimScreen from "screens/tools/AirdropClaim/AirdropClaimScreen";
 
 // Tool Pages
 import NodeStatus from "screens/tools/NodeStatus";
-import Peers from "screens/tools/Peers";
+// import Peers from "screens/tools/Peers";
 import Charts from "screens/tools/Charts";
 import ChartDetail from "screens/ChartDetail";
 import Changelog from "screens/Changelog";
@@ -42,7 +42,7 @@ import "../i18n/i18n";
 import useNetwork from "hooks/useNetwork";
 
 function App() {
-  useTheme();
+  useTheme(true);
   const [network] = useNetwork();
   return (
     <React.StrictMode>
