@@ -1,24 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { Row, Col, Pagination, Card, useQuery } from "@urkellabs/ucl";
 import theme from "styled-theming";
 import { useTranslation } from "react-i18next";
 
 // Components
 import { InputList, OutputList } from "components/shared/PutsList";
+import Link from "components/Link";
 
-const borderColor = theme("mode", {
-  light: "#dfdfdf",
-  dark: "#575757"
-});
+// const borderColor = theme("mode", {
+//   light: "#dfdfdf",
+//   dark: "#575757"
+// });
 
 const Container = styled.div`
   width: 100%;
   padding: 10px 0;
   display: flex;
   flex-direction: column;
-  border-bottom: 2px solid ${borderColor};
+  border-bottom: 2px solid #dfdfdf;
 
   &:first-child {
     padding: 0;
@@ -31,7 +31,7 @@ const Container = styled.div`
 `;
 
 const HashWrapper = styled.div`
-  border-bottom: 1px solid ${borderColor};
+  border-bottom: 1px solid #dfdfdf;
   display: flex;
   padding: 10px 0 10px 0;
 `;
