@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { useParams } from "react-router-dom";
-import { usePage, useQuery } from "@urkellabs/ucl";
+import { usePage, useQuery, Spacer } from "@urkellabs/ucl";
 
 // Components
 import BlockSummary from "components/block/BlockSummary";
@@ -18,13 +18,16 @@ function BlockSkeleton() {
 }
 
 //@todo move most of this into a component, not in here.
+//@todo save preferences on advanced if it's open or closed.
 function BlockContainer({ height, page }) {
   const { data: block } = useQuery("/blocks/" + height);
 
   return (
     <>
       <BlockSummary block={block} />
+      <Spacer px={20} />
       <BlockAdvanced block={block} />
+      <Spacer px={20} />
       <Suspense fallback={<div>Loading...</div>}>
         <TransactionList
           url={"/block/" + height}

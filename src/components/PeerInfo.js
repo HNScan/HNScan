@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Card, Col, Row, Table } from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
-import theme from "styled-theming";
 
 // Components
 import StackedData from "components/shared/StackedData";
@@ -10,13 +9,14 @@ import StackedData from "components/shared/StackedData";
 // Util
 import { timeAgo } from "utils/util";
 
-const borderColor = theme("mode", {
-  light: "#dfdfdf",
-  dark: "#444444"
-});
+//@todo fix this
+// const borderColor = theme("mode", {
+//   light: "#dfdfdf",
+//   dark: "#444444"
+// });
 
 const SummaryCardItem = styled.div`
-  border-bottom: 1px solid ${borderColor};
+  border-bottom: 1px solid #dfdfdf;
   padding: 24px;
   &:last-child {
     border-bottom: 0;

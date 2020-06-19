@@ -20,11 +20,11 @@ function handleUnconfirmed(data, size) {
 export default function NetworkSummary({ info }) {
   let hashrate = formatLargeNumber(info.hashrate, 3);
   let unconfirmed = info.unconfirmed;
-  let memSize = formatLargeNumber(info.unconfirmedSize, 2);
+  let memSize = formatLargeNumber(info.unconfirmed_size, 2);
   let network = info.network;
   let difficulty = sciNotation(info.difficulty, 3);
-  let chainwork = sciNotation(parseInt("0x" + info.chainWork), 2);
-  let registeredNames = info.registeredNames;
+  let chainwork = sciNotation(parseInt("0x" + info.chain_work), 2);
+  let registeredNames = info.registered_names;
 
   const { t } = useTranslation();
 

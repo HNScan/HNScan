@@ -1,10 +1,9 @@
 import React, { Suspense } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Card, Row, Col } from "@urkellabs/ucl";
+import { Card, Row, Col, Spacer } from "@urkellabs/ucl";
 
 // Containers
-import DailyDifficulty from "containers/charts/DailyDifficulty";
 import DailyTransactions from "containers/charts/DailyTransactions";
 import TotalSupply from "containers/charts/TotalSupply";
 import TotalTransactions from "containers/charts/TotalTransactions";
@@ -62,12 +61,9 @@ export default function Charts() {
               </CustomCol>
             </Row>
           </Card>
+          <Spacer />
           <Card title="Chain Data">
             <Row>
-              <CustomCol mobile={12} desktop={4}>
-                <InteractonBlocker as={Link} to="/charts/difficulty" />
-                <DailyDifficulty />
-              </CustomCol>
               <CustomCol mobile={12} desktop={4}>
                 <InteractonBlocker as={Link} to="/charts/dailytransactions" />
                 <DailyTransactions />

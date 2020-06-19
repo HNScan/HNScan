@@ -29,6 +29,9 @@ const Graph = styled.div`
   height: 95%;
 `;
 
+//@todo move this to tools
+//@todo remove the time on the date, just show the actual date.
+
 export default function Charts() {
   return (
     <>

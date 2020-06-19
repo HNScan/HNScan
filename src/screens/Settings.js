@@ -6,6 +6,7 @@ import {
   LanguageSwitcher,
   Row,
   Text,
+  Container,
   useLocalStorage
 } from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
@@ -26,7 +27,7 @@ const supportedOptions = [
 
 function SettingsInput({ label, description, children }) {
   return (
-    <>
+    <Container>
       <Row>
         <Header small bold margin="12px 0 6px">
           {label}
@@ -38,7 +39,7 @@ function SettingsInput({ label, description, children }) {
         </Col>
         <Col>{children}</Col>
       </Row>
-    </>
+    </Container>
   );
 }
 
@@ -59,12 +60,12 @@ export default function Settings() {
           }
         />
       </SettingsInput>
-      <SettingsInput
-        label={t("settings.theme_title")}
-        description={t("settings.theme_desc")}
-      >
-        <ThemeSwitcher />
-      </SettingsInput>
+      {/* <SettingsInput */}
+      {/*   label={t("settings.theme_title")} */}
+      {/*   description={t("settings.theme_desc")} */}
+      {/* > */}
+      {/*   <ThemeSwitcher /> */}
+      {/* </SettingsInput> */}
       <SettingsInput
         label={t("settings.network_title")}
         description={t("settings.network_desc")}

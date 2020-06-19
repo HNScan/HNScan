@@ -32,30 +32,30 @@ const SearchWrapper = styled.form`
   text-align: left;
 `;
 
-const background = theme("mode", {
-  light: "#fff",
-  dark: "#575757"
-});
+// const background = theme("mode", {
+//   light: "#fff",
+//   dark: "#575757"
+// });
 
-const backgroundActive = theme("mode", {
-  light: "#fbfbfb",
-  dark: "#505050"
-});
+// const backgroundActive = theme("mode", {
+//   light: "#fbfbfb",
+//   dark: "#505050"
+// });
 
-const borderColor = theme("mode", {
-  light: "#e7e7e7",
-  dark: "#444"
-});
+// const borderColor = theme("mode", {
+//   light: "#e7e7e7",
+//   dark: "#444"
+// });
 
-const textColor = theme("mode", {
-  light: "#4a4a4a",
-  dark: "#afafaf"
-});
+// const textColor = theme("mode", {
+//   light: "#4a4a4a",
+//   dark: "#afafaf"
+// });
 
-const lightTextColor = theme("mode", {
-  light: "#dbdbdb",
-  dark: "#969696"
-});
+// const lightTextColor = theme("mode", {
+//   light: "#dbdbdb",
+//   dark: "#969696"
+// });
 
 const SearchInput = styled.input`
   width: 350px;
@@ -64,9 +64,9 @@ const SearchInput = styled.input`
   -webkit-appearance: none;
 
   // Bulma Style Overrides
-  background: ${background};
-  border: 1px solid ${borderColor};
-  color: ${textColor};
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  color: #4a4a4a;
 
   //Bulma helper
   border-radius: 290486px;
@@ -89,10 +89,10 @@ const SearchInput = styled.input`
 
   &:focus {
     box-shadow: none !important;
-    background: ${backgroundActive};
+    background: #fbfbfb;
   }
   &::placeholder {
-    color: ${lightTextColor};
+    color: #dbdbdb;
   }
 `;
 

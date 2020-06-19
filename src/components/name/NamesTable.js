@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Pagination, Card, Skeleton, Table } from "@urkellabs/ucl";
 import { useTranslation } from "react-i18next";
+
+// Components
+import Link from "components/Link";
 
 const Row = ({ name, state, height, loading }) => (
   <Table.Tr>

@@ -8,7 +8,8 @@ const color = theme("mode", {
 });
 
 const Arrow = styled(ArrowIcon)`
-  stroke: ${color};
+  // stroke: ${color};
+stroke: var(--color-gray-7);
 `;
 
 function ArrowIcon(props) {

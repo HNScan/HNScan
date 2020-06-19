@@ -62,7 +62,7 @@ function ConnectHelp(props) {
 const NodeStatusContainer = () => {
   let [showModal, toggleModal] = useRoutedModal("connect");
 
-  const { data: status } = useQuery("/status/");
+  const { data: status } = useQuery("/status");
   const { t } = useTranslation();
   let [difficulty, exponent] = sciNotation(status.difficulty, 5);
   let totalDownloaded = formatLargeNumber(status.totalBytesRecv, 2);

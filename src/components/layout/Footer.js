@@ -1,22 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import theme from "styled-theming";
 import { Cog, ExternalLink } from "@urkellabs/ucl";
 
+// Components
+import Link from "components/Link";
+
 // SVGs
 import LogoText from "components/svg/LogoText";
 
-const textColor = theme("mode", {
-  light: "#4a4a4a",
-  dark: "#afafaf"
-});
+// const textColor = theme("mode", {
+//   light: "#4a4a4a",
+//   dark: "#afafaf"
+// });
 
-const textColorHover = theme("mode", {
-  light: "#646464",
-  dark: "#969696"
-});
+// const textColorHover = theme("mode", {
+//   light: "#646464",
+//   dark: "#969696"
+// });
 
 const Logo = styled(LogoText)`
   margin-bottom: 10px;
@@ -27,13 +29,13 @@ const SubText = styled.span`
   font-size: 10px;
 `;
 const CogWrapper = styled.div`
-  color: ${textColor};
+  color: #4a4a4a;
   margin-bottom: 0.75rem;
   height: 24px;
   width: 24px;
 
   &:hover {
-    color: ${textColorHover};
+    color: #646464;
   }
 `;
 
@@ -95,7 +97,7 @@ export const FooterLink = styled.a`
   font-size: 10pt;
   margin: 8px 0;
   width: 55%;
-  color: ${textColor};
+  color: #4a4a4a;
 
   @media (min-width: 445px) {
     margin: 5px 0;
@@ -170,7 +172,7 @@ export default function Footer() {
           <Logo />
           <Tagline>{t("footer.tagline")}</Tagline>
           <Header>{t("footer.contact")}</Header>
-          <ContactItem href="mailto:engineering@urkellabs.com">
+          <ContactItem href="mailto:support@hnscan.com">
             {t("footer.support_email")}
           </ContactItem>
         </LeftContent>

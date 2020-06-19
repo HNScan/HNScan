@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
 import { GlobalStyles, useTheme, ApiConfig } from "@urkellabs/ucl";
 
 // Special
@@ -27,7 +26,7 @@ import AirdropClaimScreen from "screens/tools/AirdropClaim/AirdropClaimScreen";
 
 // Tool Pages
 import NodeStatus from "screens/tools/NodeStatus";
-import Peers from "screens/tools/Peers";
+// import Peers from "screens/tools/Peers";
 import Charts from "screens/tools/Charts";
 import ChartDetail from "screens/ChartDetail";
 import Changelog from "screens/Changelog";
@@ -43,10 +42,10 @@ import "../i18n/i18n";
 import useNetwork from "hooks/useNetwork";
 
 function App() {
-  const [theme] = useTheme();
+  useTheme(true);
   const [network] = useNetwork();
   return (
-    <ThemeProvider theme={theme}>
+    <React.StrictMode>
       <ApiConfig config={{ url: network }}>
         <>
           <GlobalStyles />
@@ -68,7 +67,7 @@ function App() {
                   <Route path="/search" exact component={Search} />
                   {/* More Screens */}
                   {/* Tool Screens */}
-                  <Route path="/peers" exact component={Peers} />
+                  {/* <Route path="/peers" exact component={Peers} /> */}
                   <Route path="/status" exact component={NodeStatus} />
                   <Route path="/charts" exact component={Charts} />
                   <Route path="/charts/:name" component={ChartDetail} />
@@ -86,7 +85,7 @@ function App() {
           </Router>
         </>
       </ApiConfig>
-    </ThemeProvider>
+    </React.StrictMode>
   );
 }
 

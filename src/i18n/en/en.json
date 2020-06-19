@@ -41,6 +41,7 @@
       "confirmations": "Confirmations",
 
       "advanced": "Advanced",
+      "timestamp": "Timestamp",
       "previous_block": "Previous Block",
       "difficulty": "Difficulty",
       "version": "Version",
@@ -48,12 +49,14 @@
       "size": "Size",
       "average_fee": "Average Fee",
       "nonce": "Nonce",
+      "extra_nonce": "Extra Nonce",
       "next_block": "Next Block",
       "hash": "Hash",
       "merkle_root": "Merkle Root",
       "tree_root": "Tree Root",
-      "filter_root": "Filter Root",
+      "witness_root": "Witness Root",
       "reserved_root": "Reserved Root",
+      "mask": "Mask",
       "chainwork": "Chainwork",
 
       "transaction": "Transaction",
@@ -123,7 +126,7 @@
       "hash": "Hash",
       "height": "Block Height",
       "locktime": "Locktime",
-      "witness_hash": "Witness Hash",
+      "txid": "Transaction ID",
       "version": "Version",
       "index": "Index",
 
@@ -204,7 +207,7 @@
       "twitter": "Twitter",
       "version": "Current Version",
       "copyright": "Handshake Alliance. All Rights Reserved.",
-      "support_email": "engineering@urkellabs.com",
+      "support_email": "support@hnscan.com",
       "tagline": "Your trusted source for on chain Handshake information"
     }
   }

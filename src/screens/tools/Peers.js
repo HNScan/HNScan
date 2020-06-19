@@ -9,7 +9,7 @@ import NodeMap from "containers/NodeMap";
 
 const PeersContainer = ({ page }) => {
   const limit = 10;
-  const { data } = useQuery("/peers/", { page });
+  const { data } = useQuery("/peers", { page });
 
   return (
     <>
