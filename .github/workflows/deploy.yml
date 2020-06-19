@@ -24,6 +24,6 @@ jobs:
           BRANCH: gh-pages
           FOLDER: build
           BUILD_SCRIPT: yarn build
-          REACT_APP_API_URL: https://api.hnscan.com
+          REACT_APP_API_URL: https://beta.urkellabs.com
 
 
