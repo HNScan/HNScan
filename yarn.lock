@@ -2331,10 +2331,10 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@urkellabs/ucl@^0.1.106":
-  version "0.1.106"
-  resolved "https://registry.yarnpkg.com/@urkellabs/ucl/-/ucl-0.1.106.tgz#c016d25aa3c11ad63a4725982c4225a2ef175376"
-  integrity sha512-cdS2Kw6lohkoH85hfz6xq6qOFBTFi0LEdAD5Z0yT5f7pNq4bhaSKpICOa09zRL2al9Tg7g83FDRQWeT+DqvVjQ==
+"@urkellabs/ucl@^0.1.111":
+  version "0.1.111"
+  resolved "https://registry.yarnpkg.com/@urkellabs/ucl/-/ucl-0.1.111.tgz#1609b11f46e9172b85e0b13289ed520356fe3e23"
+  integrity sha512-WWvnKOKD5nd48ruImAjG7v/sxCHyod5gdmIUfxj1UO5rTaPBinSlexBmU2EjiW0vmqGLVTMRpC6dEezmj00TIg==
   dependencies:
     "@babel/runtime" "^7.6.3"
     "@nivo/calendar" "^0.61.1"
