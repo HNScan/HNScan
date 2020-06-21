@@ -1,5 +1,6 @@
 import React from "react";
-import { useQuery, LineChart } from "@urkellabs/ucl";
+import { useQuery } from "@urkellabs/ucl";
+import { LineChart } from "@urkellabs/uchl";
 
 export default function DailyDifficulty() {
   //@todo eventually we can make this configurable, but no need right now.

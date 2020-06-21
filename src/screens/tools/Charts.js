@@ -62,6 +62,19 @@ export default function Charts() {
             </Row>
           </Card>
           <Spacer />
+          <Card title="Auction Data">
+            <Row>
+              <CustomCol mobile={12} desktop={4}>
+                <InteractonBlocker as={Link} to="/charts/dailytransactions" />
+                <DailyTransactions />
+              </CustomCol>
+              <CustomCol mobile={12} desktop={4}>
+                <InteractonBlocker as={Link} to="/charts/totaltransactions" />
+                <TotalTransactions />
+              </CustomCol>
+            </Row>
+          </Card>
+          <Spacer />
           <Card title="Chain Data">
             <Row>
               <CustomCol mobile={12} desktop={4}>

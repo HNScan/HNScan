@@ -28,7 +28,7 @@ import AirdropClaimScreen from "screens/tools/AirdropClaim/AirdropClaimScreen";
 import NodeStatus from "screens/tools/NodeStatus";
 // import Peers from "screens/tools/Peers";
 import Charts from "screens/tools/Charts";
-import ChartDetail from "screens/ChartDetail";
+import ChartDetail from "screens/tools/ChartDetail";
 import Changelog from "screens/Changelog";
 
 // Error Pages
