@@ -5,9 +5,12 @@ import { Card, Row, Col, Spacer } from "@urkellabs/ucl";
 
 // Containers
 import DailyTransactions from "containers/charts/DailyTransactions";
+import DailyOpens from "containers/charts/DailyOpens";
+import DailyBids from "containers/charts/DailyBids";
 import TotalSupply from "containers/charts/TotalSupply";
 import TotalTransactions from "containers/charts/TotalTransactions";
 import TotalBurned from "containers/charts/TotalBurned";
+import TotalLocked from "containers/charts/TotalLocked";
 
 const ChartsWrapper = styled.div`
   width: 100%;
@@ -59,18 +62,22 @@ export default function Charts() {
                 <InteractonBlocker as={Link} to="/charts/burned" />
                 <TotalBurned />
               </CustomCol>
+              <CustomCol mobile={12} desktop={4}>
+                <InteractonBlocker as={Link} to="/charts/locked" />
+                <TotalLocked />
+              </CustomCol>
             </Row>
           </Card>
           <Spacer />
           <Card title="Auction Data">
             <Row>
               <CustomCol mobile={12} desktop={4}>
-                <InteractonBlocker as={Link} to="/charts/dailytransactions" />
-                <DailyTransactions />
+                <InteractonBlocker as={Link} to="/charts/dailyopens" />
+                <DailyOpens />
               </CustomCol>
               <CustomCol mobile={12} desktop={4}>
-                <InteractonBlocker as={Link} to="/charts/totaltransactions" />
-                <TotalTransactions />
+                <InteractonBlocker as={Link} to="/charts/dailybids" />
+                <DailyBids />
               </CustomCol>
             </Row>
           </Card>
