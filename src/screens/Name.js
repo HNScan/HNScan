@@ -7,6 +7,9 @@ import NameSummary from "components/name/NameSummary";
 import NameAdvanced from "components/name/NameAdvanced";
 import NameHistory from "components/name/NameHistory";
 
+// Error Boundary
+import NameError from "screens/errors/NameError";
+
 //@todo remove this.
 
 const NameRecords = () => <div>todo</div>;
@@ -39,8 +42,10 @@ export default function Name() {
   const page = usePage();
   const { name } = useParams();
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <NameView name={name} page={page} />
-    </Suspense>
+    <NameError name={name}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <NameView name={name} page={page} />
+      </Suspense>
+    </NameError>
   );
 }
