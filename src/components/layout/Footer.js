@@ -262,7 +262,7 @@ export default function Footer() {
                 {t("footer.medium")}
               </FooterLink>
               <FooterLink
-                href="https://twitter.com/hnsalliance"
+                href="https://twitter.com/UrkelLabs"
                 target="_blank"
                 rel="noopener noreferrer"
               >
